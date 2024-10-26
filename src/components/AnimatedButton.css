@@ -1,0 +1,36 @@
+body{
+    color: white;
+  }
+  
+  .animated-button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    color: #fff;
+    background: transparent;
+    border: 2px solid #fff;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.3s ease;
+  }
+  
+  .animated-button .fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #fff;
+    z-index: -1;
+    transition: width 0.4s ease;
+  }
+  
+  .animated-button:hover .fill {
+    width: 100%;
+  }
+  
+  .animated-button:hover {
+    color: #222;
+  }
