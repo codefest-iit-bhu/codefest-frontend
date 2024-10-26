@@ -1,5 +1,6 @@
 import HeadingA from "../components/HeadingA";
 import Navbar from "../components/Navbar";
+import Testimonials from "../components/Testimonials";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <div className="p-16">
       <HeadingA text="Who are we" size="2xl"/>
       </div>
+      <Testimonials />
     </>
   );
 }
