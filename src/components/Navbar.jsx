@@ -22,7 +22,7 @@ function Navbar() {
             <Link text="Sponsors" href="/sponsors" />
             <Link text="CA" href="/CA" />
             <Link text="About" href="/about" />
-            <Link text="Login" href="/login" />
+            <Link text="Login/Register" href="/login" />
           </div>
         </nav>
 
@@ -83,7 +83,7 @@ function Navbar() {
             <Link text="Sponsors" href="/sponsors" />
             <Link text="CA" href="/CA" />
             <Link text="About" href="/about" />
-            <Link text="Login" href="/login" />
+            <Link text="Login/Register" href="/login" />
           </div>
         </div>
       </div>

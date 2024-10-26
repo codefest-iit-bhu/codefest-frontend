@@ -5,15 +5,16 @@ body{
   .animated-button {
     position: relative;
     display: inline-block;
-    padding: 12px 24px;
+    padding: 8px 30px;
     font-size: 16px;
-    color: #fff;
+    color: rgb(156,163,175);
     background: transparent;
-    border: 2px solid #fff;
+    border: 2px solid rgb(156,163,175);
     cursor: pointer;
     overflow: hidden;
     z-index: 1;
     transition: color 0.3s ease;
+    font-weight: 600;
   }
   
   .animated-button .fill {
@@ -22,7 +23,7 @@ body{
     left: 0;
     width: 0;
     height: 100%;
-    background: #fff;
+    background: rgb(156,163,175);
     z-index: -1;
     transition: width 0.4s ease;
   }
