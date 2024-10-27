@@ -1,12 +1,14 @@
 import HeadingA from "../components/HeadingA";
 import Navbar from "../components/Navbar";
+// import Whoarewe from "../components/Whoarewe";
+// import Lookback from "../components/Lookback";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="p-16">
-      <HeadingA text="Who are we" size="2xl"/>
+      <div className="p-16 flex flex-col items-left">
+        <HeadingA text="Who are we" size="2xl" />
       </div>
     </>
   );

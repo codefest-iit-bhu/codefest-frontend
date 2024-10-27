@@ -4,7 +4,7 @@ import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import Events from "./routes/Events";
-
+import CA from "./routes/CA";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -25,5 +25,9 @@ export const router = createBrowserRouter([
   {
     path: "/events",
     element: <Events />,
+  },
+  {
+    path: "/CA",
+    element: <CA />,
   },
 ]);

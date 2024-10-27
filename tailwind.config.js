@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        vermilion: '#e74c3c', // Replace with your actual vermilion color
+      },
+      fontFamily: {
+        quicksand: ['Quicksand', 'sans-serif'],
+        'robo-slab': ['Roboto Slab', 'serif'],
+      },
+    },
   },
   plugins: [],
 }
