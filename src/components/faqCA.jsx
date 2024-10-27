@@ -33,10 +33,10 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="w-full py-10 bg-white">
+    <div className="w-full py-10">
 
       <div className="flex items-end justify-end px-40 mb-10">
-        <h1 className="text-6xl font-bold text-black">FAQ</h1>
+        <h1 className="text-6xl font-bold text-white">FAQ</h1>
       </div>
       <hr className="ml-[900px] mr-16 my-4 mb-10" />
 
@@ -56,14 +56,14 @@ const FAQSection = () => {
             {faqItems.map((item, index) => (
               <li key={index} className="border-b pb-4">
                 <h3
-                  className="font-bold text-lg text-gray-800 cursor-pointer"
+                  className="font-bold text-lg text-white cursor-pointer"
                   onClick={() => handleQuestionClick(index)} 
                 >
                   {item.question}
                 </h3>
 
                 {expandedIndex === index && (
-                  <p className="text-gray-600 mt-2 transition-all duration-300">
+                  <p className="text-white mt-2 transition-all duration-300">
                     {item.answer}
                   </p>
                 )}

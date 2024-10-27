@@ -29,9 +29,9 @@ const tasks = [
 
 const BenefitsSection = () => {
   return (
-    <section className="py-10 bg-white">
+    <section className="py-10">
       <div className="px-20">
-        <p className="text-4xl font-bold text-gray-800 mb-10">
+        <p className="text-4xl font-bold text-white mb-10">
           Why should you become a Campus Ambassador?
         </p>
         <hr className="my-4 mb-10"/>
@@ -46,7 +46,7 @@ const BenefitsSection = () => {
                 <span className="text-orange-600 text-lg font-semibold">
                   {task.start}
                 </span>
-                <p className="text-gray-700">{task.rest}</p>
+                <p className="text-white">{task.rest}</p>
               </li>
             ))}
           </ul>
