@@ -1,19 +1,17 @@
-import React from "react";
+import BenefitsSection from "../components/Benefit_CA";
+import FAQSection from "../components/faqCA"
 import Navbar from "../components/Navbar";
-import AboutCA from "../components/ca_about";
-import Job from "../components/ca_jobs";
-export default function CA(){
+
+export default function CA() {
   return (
     <>
-    <Navbar/>
-    <div >
-      <main >
-          <AboutCA />
-          <Job/>
-      </main>
-    </div>
+      <Navbar />
+      <div>
+        <BenefitsSection/>
+      </div>
+      <div>
+        <FAQSection/>
+      </div>
     </>
   );
-};
-
-
+}
