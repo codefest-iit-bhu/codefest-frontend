@@ -11,7 +11,8 @@ export default function Events(){
     return(
         <>
             <Navbar />
-            <Timeline events={events} />
+            <div className="white ml-12 mt-12">Events</div>
+            {/* <Timeline events={events} /> */}
         </>
     );
 }

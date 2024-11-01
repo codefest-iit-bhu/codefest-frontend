@@ -19,9 +19,9 @@ function Navbar() {
           <div className="flex space-x-4 w-full">
             <Link text="Home" href="/" />
             <Link text="Events" href="/events" />
-            <Link text="Sponsors" href="/sponsors" />
+            <Link text="Sponsors" href="/home#sponsors" />
             <Link text="CA" href="/CA" />
-            <Link text="About" href="/about" />
+            <Link text="About" href="/home" />
             <Link text="Login/Register" href="/login" />
           </div>
         </nav>
