@@ -37,7 +37,7 @@ const lookbackData = [
 const Lookback = () => {
   return (
     <div className="py-8 px-4 text-center">
-      <h2 className="text-3xl font-semibold mb-4">Lookback</h2>
+      <h2 className="text-4xl font-extrabold text-center text-primary mb-10">Highlights</h2>
       <hr className="border-orange-500 w-20 mx-auto mb-8" />
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">

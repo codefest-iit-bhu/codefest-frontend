@@ -29,7 +29,7 @@ const Testimonials = () => {
 
   return (
     <div className="w-full px-6 py-12 bg-background flex flex-col items-center">
-      <h2 className="text-4xl font-extrabold text-center text-primary mb-10 font-serif">Testimonials</h2>
+      <h2 className="text-4xl font-extrabold text-center text-primary mb-10">Testimonials</h2>
       <div className="space-y-12 w-full max-w-3xl">
         {testimonials.map((testimonial, index) => (
           <TestimonialCard key={index} testimonial={testimonial} isReversed={index % 2 !== 0} />

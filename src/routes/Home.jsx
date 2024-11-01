@@ -14,8 +14,9 @@ export default function Home() {
         <Whoarewe />
         {/* <HeadingA text="Lookback" size="2xl"/> */}
         <Lookback />
+        </div>
       <div className="p-16">
-      <HeadingA text="Who are we" size="2xl"/>
+      {/* <HeadingA text="Who are we" size="2xl"/> */}
       <PreviousSponsors />
       </div>
       <Testimonials />

@@ -33,7 +33,7 @@ const PreviousSponsors = () => {
 
   return (
     <div className="p-6 bg-background rounded-md shadow-md">
-      <h2 className="text-xl font-semibold mb-4">Previous Sponsors</h2>
+      <h2 className="text-4xl font-extrabold text-center text-primary mb-10">Previous Sponsors</h2>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mx-4">
         {sponsors.map((sponsor, index) => (
           <SponsorLogo key={index} src={sponsor.src} alt={sponsor.alt} />
