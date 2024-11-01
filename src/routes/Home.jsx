@@ -2,6 +2,8 @@ import HeadingA from "../components/HeadingA";
 import Navbar from "../components/Navbar";
 import Whoarewe from "../components/Whoarewe";
 import Lookback from "../components/Lookback";
+import PreviousSponsors from "../components/PreviousSponsors";
+import Testimonials from "../components/Testimonials";
 
 export default function Home() {
   return (
@@ -12,7 +14,11 @@ export default function Home() {
         <Whoarewe />
         {/* <HeadingA text="Lookback" size="2xl"/> */}
         <Lookback />
+      <div className="p-16">
+      <HeadingA text="Who are we" size="2xl"/>
+      <PreviousSponsors />
       </div>
+      <Testimonials />
     </>
   );
 }
