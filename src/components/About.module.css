@@ -9,6 +9,18 @@
     padding-right: 5%;
     align-items: center;
   }
+.aboutHeading {
+    width: 100%;
+    font-size: 40px;
+    padding-top: 30px;
+    display: flex;
+    background: #fff;
+    color: black;
+    padding-left: 5%;
+    padding-right: 5%;
+    align-items: center;
+    text-align: center;
+  }
 
   .aboutContainers{
     width: 100%;
@@ -24,12 +36,8 @@
   .aboutImage {
     text-align: center;
     width: 50%;
-  }
-  
-  .aboutImage img {
     margin: auto;
   }
-  
   @media (max-width: 576px) {
     .aboutImage img {
       width: 240px;
@@ -42,12 +50,12 @@
     }
   }
   
-  .aboutHead p,li {
+  .aboutHead p,li,h1,h2 {
     text-align: justify;
     align-items: center;
     line-height: 32px;
-    width: 49%;
-    padding: 25px 50px 0 0;
+    width: 48%;
+    padding: 25px 25px 0 0;
   }
   .aboutHeads  p {
     text-align: justify;

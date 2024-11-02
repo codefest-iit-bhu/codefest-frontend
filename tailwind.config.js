@@ -7,7 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        vermilion: '#e74c3c', // Replace with your actual vermilion color
+        vermilion: '#e74c3c',
+        brown: {
+          500: '#8B4513', // Example medium brown
+          600: '#A0522D', // Example dark brown
+        }, // Replace with your actual vermilion color
       },
       fontFamily: {
         quicksand: ['Quicksand', 'sans-serif'],
