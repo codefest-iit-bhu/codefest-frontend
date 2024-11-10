@@ -1,5 +1,7 @@
-import React from 'react';
-import perk from '../assets/CA_images/perks.svg';
+import React from "react";
+import perk from "../assets/CA_images/perks.svg";
+import HeadingA from "../components/HeadingA";
+import TextBox from "../components/TextBox";
 const tasks = [
   {
     start: "A certificate of recognition, authenticated by the HoD",
@@ -31,28 +33,30 @@ const BenefitsSection = () => {
   return (
     <section className="py-10">
       <div className="px-20">
-        <p className="text-4xl font-bold text-white mb-10">
+        <p className="text-5xl font-bold text-white mb-10">
           Why should you become a Campus Ambassador?
         </p>
-        <hr className="my-4 mb-10"/>
+        <hr className="my-4 mb-10" />
       </div>
 
       <div className="flex flex-col md:flex-row items-center justify-evenly">
-
-        <div className="md:w-1/2 w-full max-w-md px-8">
-          <ul className="space-y-6 list-none">
-            {tasks.map((task, i) => (
-              <li key={i} className="flex flex-col">
-                <span className="text-orange-600 text-lg font-semibold">
-                  {task.start}
-                </span>
-                <p className="text-white">{task.rest}</p>
-              </li>
-            ))}
-          </ul>
+        <div className="w-full md:w-1/2 rounded-md py-4 backdrop-blur-[2px]">
+          <div className="w-full px-8">
+            <ul className="space-y-6 list-none">
+              {tasks.map((task, i) => (
+                <li key={i} className="flex flex-col">
+                  <span className="text-lime-400 text-xl font-bold font-sans">
+                    {task.start}
+                  </span>
+                  <p className="text-emerald-100 font-sans text-lg font-bold">
+                    {task.rest}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-
-        <div className="pb-10">
+        <div className="pb-10 md:w-1/3 w-full flex justify-center">
           <img
             src={perk}
             alt="Campus Ambassador Perks"
@@ -60,9 +64,7 @@ const BenefitsSection = () => {
           />
         </div>
       </div>
-      
     </section>
-
   );
 };
 
