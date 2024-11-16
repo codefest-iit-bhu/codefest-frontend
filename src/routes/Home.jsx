@@ -1,5 +1,7 @@
 import HeadingA from "../components/HeadingA";
 import Navbar from "../components/Navbar";
+// import Whoarewe from "../components/Whoarewe";
+// import Lookback from "../components/Lookback";
 import Whoarewe from "../components/Whoarewe";
 import Lookback from "../components/Lookback";
 import PreviousSponsors from "../components/PreviousSponsors";

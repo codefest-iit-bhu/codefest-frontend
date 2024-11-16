@@ -9,6 +9,18 @@
     padding-right: 5%;
     align-items: center;
   }
+.aboutHeading {
+    width: 100%;
+    font-size: 40px;
+    padding-top: 30px;
+    display: flex;
+    background: #fff;
+    color: black;
+    padding-left: 5%;
+    padding-right: 5%;
+    align-items: center;
+    text-align: center;
+  }
 
   .aboutContainers{
     width: 100%;
@@ -30,6 +42,8 @@
     margin: auto;
   }
   
+    margin: auto;
+  }
   @media (max-width: 576px) {
     .aboutImage img {
       width: 240px;
