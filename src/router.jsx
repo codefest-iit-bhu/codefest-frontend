@@ -5,6 +5,8 @@ import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import Events from "./routes/Events";
 import CA from "./routes/CA";
+import NewUser from "./routes/NewUser";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -30,4 +32,8 @@ export const router = createBrowserRouter([
     path: "/CA",
     element: <CA />,
   },
+  {
+    path:"/newUser",
+    element:<NewUser/>
+  }
 ]);

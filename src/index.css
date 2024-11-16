@@ -4,13 +4,13 @@
 
 @font-face {
   font-family: "Minecraft";
-  src: local("Minecraft"), url(./fonts/MinecraftRegular-Bmg3.otf) format("opentype");
+  src: local("Minecraft"), url(./fonts/MinecraftRegular-Bmg3.otf);
 }
 
 @font-face {
   font-family: "Minecraft";
   font-weight: 900;
-  src: local("Minecraft"), url(./fonts/MinecraftBold-nMK1.otf) format("opentype");
+  src: local("Minecraft"), url(./fonts/MinecraftBold-nMK1.otf);
 }
 
 body{
