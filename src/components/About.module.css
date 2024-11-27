@@ -41,9 +41,6 @@
   .aboutImage img {
     margin: auto;
   }
-  
-    margin: auto;
-  }
   @media (max-width: 576px) {
     .aboutImage img {
       width: 240px;

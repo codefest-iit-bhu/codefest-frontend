@@ -9,7 +9,7 @@ const tasks = [
   },
   {
     start: "Unlock a treasure chest of exciting goodies",
-    rest: "– perks you won’t find anywhere else!",
+    rest: "- perks you won't find anywhere else!",
   },
   {
     start: "Free access",
