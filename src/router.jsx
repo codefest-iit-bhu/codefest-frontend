@@ -7,6 +7,7 @@ import Events from "./routes/Events";
 import CA from "./routes/CA";
 import NewUser from "./routes/NewUser";
 import { Event } from "./routes/Event";
+import VerifyEmail from "./routes/VerifyEmail";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup />,
+  },
+  {
+    path: "/verifyEmail",
+    element: <VerifyEmail />,
   },
   {
     path: "/events",
