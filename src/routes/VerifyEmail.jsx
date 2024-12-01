@@ -1,28 +1,28 @@
 import HeadingA from "../components/HeadingA";
+import TextBox from "../components/TextBox";
 import EmailBox from "../components/EmailBox";
-import PasswordBox from "../components/PasswordBox";
 import AnimatedButton from "../components/AnimatedButton";
 import api from "../api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { REFRESH_TOKEN } from "../constants";
 
-const LOGIN_URL = "/auth/login";
+const VERIFY_EMAIL_URL = "/auth/verify_email";
 
-export default function Login() {
+export default function VerifyEmail() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [otp, setOtp] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await api.post(
-        LOGIN_URL,
+        VERIFY_EMAIL_URL,
         JSON.stringify({
           email: email,
-          password: password,
+          otp: otp,
         }),
         {
           headers: {
@@ -31,10 +31,10 @@ export default function Login() {
           withCredentials: true,
         }
       );
-      if (response.status === 200) {
+      if (response.status === 201) {
         // saving refresh token in local storage
         localStorage.setItem(REFRESH_TOKEN, response.data.refresh_token);
-        alert(response.data.message);
+        alert("Email verified successfully");
         navigate("/home");
       }
     } catch (error) {
@@ -43,8 +43,7 @@ export default function Login() {
       } else {
         alert("Something went wrong");
       }
-      // Refreshing the page
-      window.location.reload();
+      navigate("/signup");
     }
   };
 
@@ -52,7 +51,7 @@ export default function Login() {
     <>
       <div className="w-[100vw] h-[100vh] flex justify-center items-center">
         <div className="rounded-md flex flex-col items-center py-4 w-[500px] backdrop-blur-[2px]">
-          <HeadingA text="weee" size="2xl" />
+          <HeadingA text="yoooo" size="2xl" />
           <EmailBox
             placeholder="Email"
             name="email"
@@ -61,21 +60,15 @@ export default function Login() {
               setEmail(e.target.value);
             }}
           />
-          <PasswordBox
-            placeholder="Password"
-            name="password"
-            value={password}
+          <TextBox
+            placeholder="OTP"
+            name="otp"
+            value={otp}
             onChange={(e) => {
-              setPassword(e.target.value);
+              setOtp(e.target.value);
             }}
           />
-          <AnimatedButton text="Login >" onClick={handleSubmit} />
-          <a
-            href="/signup"
-            className="text-gray-400 text-md underline underline-offset-2"
-          >
-            Dont have an account? Click here
-          </a>
+          <AnimatedButton text="Verify >" onClick={handleSubmit} />
         </div>
       </div>
     </>
