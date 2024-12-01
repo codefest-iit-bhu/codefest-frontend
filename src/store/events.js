@@ -1,15 +1,16 @@
 export default [
-    {
-        name: "Vista",
-        title: "Vista",
-        date: '24 March, 2025',
-        last_date_reg: '23 March, 2025',
-        overview: `
+  {
+    id: "event1",
+    name: "Vista",
+    title: "Vista",
+    date: "24 March, 2025",
+    last_date_reg: "23 March, 2025",
+    overview: `
         <p>• Vista'24 will be a computer vision competition for participants to show their skills in exploring various exploits in the realm of computer vision.</p>
         <p>• Problem statement will be visible at the start of the competition.</p>
         <p>• A team of a maximum of 3 members is allowed.</p>
         `,
-        description: `
+    description: `
         <p>• It's a 6-day online live event, having challenges from different categories like image classification, object detection, image segmentation etc.</p>
         <p>• We will be conducting it on Kaggle.</p>
         <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</a>.</p>
@@ -17,7 +18,7 @@ export default [
         <p>• Vista'24 will start on 24th March.</p>
         <p>• The link to the competition will be shared via email to registered participants on 24th March at 12 PM IST.</p>
         `,
-        rules: `
+    rules: `
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
         <p>• Please refrain from discussing strategy and solutions during the contest.</p>
         <p>• A team size of a maximum of 3 is allowed, which you can form after joining the competition individually.</p>
@@ -25,29 +26,31 @@ export default [
         <p>• CNN, Deep Learning, or Machine Learning models can be used.</p>
         <p>• Privately sharing code or data outside of teams is not permitted.</p>
         `,
-        scoring: `
+    scoring: `
         <p>• The scoreboard will be present during the contest.</p>
         <p>• Scoring will be based on dynamic scoring.</p>
         <p>• Teams are ranked by score. If two or more teams achieve the same score, the tie will be broken by considering the submission time of the file; earlier submissions will be placed higher.</p>
         `,
-        howto: `
+    howto: `
         <p>• To register as a team, first, each individual must register for the competition independently. Once registered, there will be an option available to merge into a team on Kaggle. You can merge with up to three members to form your team.</p>
         <p>• The same username and email address should be used to register on Kaggle and CodeFest website.</p>
         <p>• The prize is awarded to the entire team collectively.</p>
         `,
-        contact: "For further queries about this event, please contact Ayush Barot (+919909764364)",
-    },
-    {
-        name: "Enigma",
-        title: "Enigma",
-        date: '29 March, 2025',
-        last_date_reg: '27 March, 2025',
-        overview: `
+    contact:
+      "For further queries about this event, please contact Ayush Barot (+919909764364)",
+  },
+  {
+    id: "event2",
+    name: "Enigma",
+    title: "Enigma",
+    date: "29 March, 2025",
+    last_date_reg: "27 March, 2025",
+    overview: `
         <p>Enigma is a thrilling machine-learning competition where we challenge the participants to showcase their prowess by designing a self-learning model that will provide efficient solutions to real-life problems.</p>
         <p>• Problem statement will be visible at the start of the competition.</p>
         <p>• A team of a maximum of 3 members is allowed.</p>
         `,
-        description: `
+    description: `
         <p>• It's a 3-day online live event.</p>
         <p>• We will be conducting it on Kaggle.</p>
         <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</a></p>
@@ -55,7 +58,7 @@ export default [
         <p>• Enigma'24 will start on 29th March.</p>
         <p>• The link to the competition will be shared via email to registered participants on 29th March at 12 PM IST.</p>
         `,
-        rules: `
+    rules: `
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
         <p>• Please refrain from discussing strategy and solutions during the contest.</p>
         <p>• A team size of a maximum of 3 is allowed, which you can form after joining the competition individually.</p>
@@ -64,30 +67,32 @@ export default [
         <p>• Privately sharing code or data outside of teams is not permitted.</p>
         <p>• A team can make 10 submissions per day.</p>
         `,
-        scoring: `
+    scoring: `
         <p>• The scoreboard will be present during the contest.</p>
         <p>• Scoring will be based on dynamic scoring.</p>
         <p>• The Evaluation Criteria for this competition will be revealed on the Kaggle Contest Page itself.</p>
         <p>• Teams are ranked by score. If two or more teams achieve the same score, the tie will be broken by considering the submission time of the file; earlier submissions will be placed higher.</p>
         `,
-        howto: `
+    howto: `
         <p>• To register as a team, first, each individual must register for the competition independently. Once registered, there will be an option available to merge into a team on Kaggle. You can merge with up to three members to form your team.</p>
         <p>• The same username and email address should be used to register on Kaggle and Codefest website.</p>
         <p>• The prize is awarded to the entire team collectively.</p>
         `,
-        contact: "For further queries about this event, please contact Harsh Kumar (+918102213997)",
-    },
-    {
-        name: "Capture The Flag",
-        title: "Capture The Flag",
-        date: '17 February, 2025',
-        last_date_reg: '16 February, 2025',
-        overview: `
+    contact:
+      "For further queries about this event, please contact Harsh Kumar (+918102213997)",
+  },
+  {
+    id: "event3",
+    name: "Capture The Flag",
+    title: "Capture The Flag",
+    date: "17 February, 2025",
+    last_date_reg: "16 February, 2025",
+    overview: `
         <p>Capture the Flag (CTF) will be a cyber security competition for participants to show their skills in exploring various exploits in the realm of computer systems.</p>
         <p>• Problems will be visible at the start of the competition.</p>
         <p>• A team of a maximum of 3 members is allowed.</p>
         `,
-        description: `
+    description: `
         <p>• It's a 24-hour online live event, having challenges from different categories like reverse engineering, forensics, web exploration, cryptography, etc.</p>
         <p>• We will be conducting it on the CTFd platform.</p>
         <p>• Each category would have at least 3-4 challenges of difficulty ranging from Easy to Hard level.</p>
@@ -97,7 +102,7 @@ export default [
         <p>• The CTF event will start on 17th February.</p>
         <p>• The link to the competition will be shared via email to registered participants on 17th February at 12 PM IST.</p>
         `,
-        rules: `
+    rules: `
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any a situation of malpractice arises.</p>
         <p>• Please refrain from discussing strategy and solutions during the contest.</p>
         <p>• A team size of a maximum of 3 is allowed.</p>
@@ -105,29 +110,31 @@ export default [
         <p>• The person could have an unlimited number of submissions in most cases, but brute-forcing a server would be penalized and would result in an IP ban and discarding the team from the contest.</p>
         <p>• Refrain from using automated tools like burp suite, SQL map, or fuzzing in finding solutions until and unless specifically mentioned in the challenge.</p>
         `,
-        scoring: `
+    scoring: `
         <p>• The scoreboard will be present during the contest.</p>
         <p>• Scoring will be based on dynamic scoring.</p>
         <p>• Teams are ranked by score. If two or more teams achieve the same score, then the tie will be broken by the total time taken to submit the last solution, resulting in a higher score.</p>
         `,
-        howto: `
+    howto: `
         <p>• To register as a team, first, each individual must register for the competition independently. Once registered, there will be an option available to merge into a team on CTFd. You can merge with up to three members to form your team.</p>
         <p>• The same username and email address should be used to register on CTFd and CodeFest website.</p>
         <p>• The prize is awarded to the entire team collectively.</p>
         `,
-        contact: "For further queries about this event, please contact Soumyadeep Das (+919569946415)",
-    },
-    {
-        name: "Manthan",
-        title: "Manthan",
-        date: '17 April, 2025',
-        last_date_reg: '16 April, 2025',
-        overview: `
+    contact:
+      "For further queries about this event, please contact Soumyadeep Das (+919569946415)",
+  },
+  {
+    id: "event4",
+    name: "Manthan",
+    title: "Manthan",
+    date: "17 April, 2025",
+    last_date_reg: "16 April, 2025",
+    overview: `
         <p>Manthan will be a competitive programming contest (open to all) where participants are posed with problems of varying difficulties to be solved in a few hours.</p>
         <p>• Participants should be registered on the CodeFest Website to be eligible for prizes</p>
         <p>• It is an individual participation event.</p>
         `,
-        description: `
+    description: `
         <p>• Platform: Codechef</p>
         <p>• Contest date: Will be conducted in April. Exact dates will be announced later.</p>
         <p>• Contest duration: 2-3 hours, from 8 PM.</p>
@@ -135,26 +142,28 @@ export default [
         <p>• Participants have to register on the CodeFest website</p>
         <p>• Problems will be visible at the start of the contest. Contest link will be emailed to registered participants.</p>
         `,
-        rules: `
+    rules: `
         <p>• Normal rules of Codechef contests apply.</p>
         <p>• A team size of a maximum of 1 is allowed.</p>
         <p>• The same username and email address should be used to register on CodeChef and CodeFest websites.</p>
         `,
-        scoring: `
+    scoring: `
         <p>• Normal scoring policies of Codechef contests apply.</p>
         `,
-        contact: "For further queries about this event, please contact Kushagra (+919566204257)",
-    },
-    {
-        name: "HaXplore",
-        title: "HaXplore",
-        date: '29 March, 2025',
-        last_date_reg: '27 March, 2025',
-        overview: `
+    contact:
+      "For further queries about this event, please contact Kushagra (+919566204257)",
+  },
+  {
+    id: "event5",
+    name: "HaXplore",
+    title: "HaXplore",
+    date: "29 March, 2025",
+    last_date_reg: "27 March, 2025",
+    overview: `
         <p>HaXplore stands as the premier hackathon organized as part of Codefest, the annual departmental fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi. This esteemed event serves as a dynamic platform where innovative minds from diverse domains converge to articulate their groundbreaking ideas. Participants come together to not only showcase their creativity but also engage in spirited competition as they strive for excellence. HaXplore fosters an environment that encourages collaboration and the exploration of cutting-edge solutions, making it a hub for transformative technological endeavors.</p>`,
-        duration: `<p><b>From March 29th through April 1st</b>, the annual 72-Hour Hackathon will take place. This hackathon is a weekend-long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a tight 72-hour time constraint. By the deadline at the end of the day on March 3rd, teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
+    duration: `<p><b>From March 29th through April 1st</b>, the annual 72-Hour Hackathon will take place. This hackathon is a weekend-long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a tight 72-hour time constraint. By the deadline at the end of the day on March 3rd, teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
         `,
-        rules: `
+    rules: `
         <ol>
         <li><b>Registration and Team Formation</b>
         <ul>
@@ -183,7 +192,7 @@ export default [
         </ul>
         </li>
         </ol>`,
-        submission: `<ol>
+    submission: `<ol>
         <li><b>GitHub Repository:</b>
         <ul>
         <li>Participants must create a public GitHub repository for their project.</li>
@@ -219,8 +228,8 @@ export default [
         </ul>
         </li>
         </ol>`,
-        contact: `
+    contact: `
         <p>• For information related to the event, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</a></p>
         <p>• For further queries about this event, please contact Bhav Khurana (+917087341267)</p>`,
-    }
+  },
 ];
