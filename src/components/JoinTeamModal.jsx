@@ -12,13 +12,17 @@ const JoinTeamModal = ({ isOpen, onClose }) => {
       setError("");
 
       // Make API call to join team using fetch
-      const response = await fetch("/member/join", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ teamCode }),
-      });
+      const response = await fetch(
+        "https://codefest-backend-igxy.onrender.com/api/v1/member/join",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ teamCode }),
+          withCredentials: true,
+        }
+      );
 
       const data = await response.json();
       //setError("Failed to join team");
@@ -31,7 +35,7 @@ const JoinTeamModal = ({ isOpen, onClose }) => {
         setError(data.message || "Failed to join team");
       }
     } catch (err) {
-      // Handle network errors
+      // Handle errors
       setError("Failed to join team");
 
       //setError(data.message || "Failed to join team");
@@ -43,12 +47,12 @@ const JoinTeamModal = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white rounded-lg p-6 w-96 relative">
-        <button
+        {/* <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
         >
           x
-        </button>
+        </button> */}
 
         <h2 className="text-2xl font-bold mb-4 text-lime-600">Join Team</h2>
 
@@ -71,18 +75,18 @@ const JoinTeamModal = ({ isOpen, onClose }) => {
 
         {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
 
-        <div className="flex justify-end space-x-2">
-          <button
-            onClick={onClose}
-            className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
-          >
-            Cancel
-          </button>
+        <div className="flex flex-col gap-3">
           <button
             onClick={handleJoin}
             className="px-4 py-2 bg-lime-600 text-white rounded-md hover:bg-lime-700"
           >
             Join
+          </button>
+          <button
+            onClick={onClose}
+            className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+          >
+            Cancel
           </button>
         </div>
       </div>

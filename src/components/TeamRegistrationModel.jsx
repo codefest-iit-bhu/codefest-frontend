@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -24,13 +27,16 @@ const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
 
     try {
       console.log(teamName);
-      const response = await fetch("/team/name_available", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name }),
-      });
+      const response = await fetch(
+        "https://codefest-backend-igxy.onrender.com/api/v1/team/name_available",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name }),
+        }
+      );
 
       const data = await response.json();
 
@@ -42,7 +48,7 @@ const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
   };
 
   // Debounced validation
-  const debouncedValidation = useCallback(debounce(validateTeamName, 2000), []);
+  const debouncedValidation = useCallback(debounce(validateTeamName, 1000), []);
 
   // Handle team name input change
   const handleTeamNameChange = (e) => {
@@ -59,16 +65,20 @@ const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
 
     try {
       console.log(teamName, event.id);
-      const response = await fetch("/team/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          teamName,
-          eventId: event.id,
-        }),
-      });
+      const response = await fetch(
+        "https://codefest-backend-igxy.onrender.com/api/v1/team/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            teamName: teamName,
+            eventId: event.id,
+          }),
+          withCredentials: true,
+        }
+      );
 
       const data = await response.json();
 
