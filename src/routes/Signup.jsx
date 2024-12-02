@@ -7,8 +7,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
 
-const SIGNUP_URL = "/auth/signup";
-
+//const SIGNUP_URL = "/auth/signup";
+const SIGNUP_URL =
+  "https://codefest-backend-igxy.onrender.com/api/v1/auth/signup";
 export default function Signup() {
   const navigate = useNavigate();
 

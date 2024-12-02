@@ -20,7 +20,7 @@ const JoinTeamModal = ({ isOpen, onClose }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ teamCode }),
-          withCredentials: true,
+          credentials: "include",
         }
       );
 

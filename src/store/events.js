@@ -1,6 +1,6 @@
 export default [
   {
-    id: "event1",
+    id: "event123",
     name: "Vista",
     title: "Vista",
     date: "24 March, 2025",
@@ -40,7 +40,7 @@ export default [
       "For further queries about this event, please contact Ayush Barot (+919909764364)",
   },
   {
-    id: "event2",
+    id: "event123",
     name: "Enigma",
     title: "Enigma",
     date: "29 March, 2025",
@@ -82,7 +82,7 @@ export default [
       "For further queries about this event, please contact Harsh Kumar (+918102213997)",
   },
   {
-    id: "event3",
+    id: "event123",
     name: "Capture The Flag",
     title: "Capture The Flag",
     date: "17 February, 2025",
@@ -124,7 +124,7 @@ export default [
       "For further queries about this event, please contact Soumyadeep Das (+919569946415)",
   },
   {
-    id: "event4",
+    id: "event123",
     name: "Manthan",
     title: "Manthan",
     date: "17 April, 2025",
@@ -154,7 +154,7 @@ export default [
       "For further queries about this event, please contact Kushagra (+919566204257)",
   },
   {
-    id: "event5",
+    id: "event123",
     name: "HaXplore",
     title: "HaXplore",
     date: "29 March, 2025",

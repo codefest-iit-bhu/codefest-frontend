@@ -7,7 +7,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { REFRESH_TOKEN } from "../constants";
 
-const LOGIN_URL = "/auth/login";
+//const LOGIN_URL = "/auth/login";
+const LOGIN_URL =
+  "https://codefest-backend-igxy.onrender.com/api/v1/auth/login";
 
 export default function Login() {
   const navigate = useNavigate();

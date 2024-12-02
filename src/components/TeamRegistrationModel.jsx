@@ -64,7 +64,7 @@ const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
     if (teamNameStatus !== "available") return;
 
     try {
-      console.log(teamName, event.id);
+      console.log(teamName, event.id, event.last_date_reg);
       const response = await fetch(
         "https://codefest-backend-igxy.onrender.com/api/v1/team/create",
         {
@@ -73,10 +73,11 @@ const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            eventDeadline: event.last_date_reg,
             teamName: teamName,
             eventId: event.id,
           }),
-          withCredentials: true,
+          credentials: "include",
         }
       );
 
