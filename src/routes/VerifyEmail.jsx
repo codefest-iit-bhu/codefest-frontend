@@ -6,6 +6,7 @@ import api from "../api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { REFRESH_TOKEN } from "../constants";
+import toast from "react-hot-toast";
 
 const VERIFY_EMAIL_URL =
   "https://codefest-backend-igxy.onrender.com/api/v1/auth/verify_email";
@@ -13,16 +14,17 @@ const VERIFY_EMAIL_URL =
 export default function VerifyEmail() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const email = urlSearchParams.get("email");
     try {
       const response = await api.post(
         VERIFY_EMAIL_URL,
         JSON.stringify({
-          email: email,
+          email,
           otp: otp,
         }),
         {
@@ -34,15 +36,15 @@ export default function VerifyEmail() {
       );
       if (response.status === 201) {
         // saving refresh token in local storage
-        localStorage.setItem(REFRESH_TOKEN, response.data.refresh_token);
-        alert("Email verified successfully");
+        localStorage.setItem(REFRESH_TOKEN, response.data.refreshToken);
+        toast.success("Email verified successfully");
         navigate("/home");
       }
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       } else {
-        alert("Something went wrong");
+        toast.error("Something went wrong");
       }
       navigate("/signup");
     }
@@ -52,15 +54,10 @@ export default function VerifyEmail() {
     <>
       <div className="w-[100vw] h-[100vh] flex justify-center items-center">
         <div className="rounded-md flex flex-col items-center py-4 w-[500px] backdrop-blur-[2px]">
-          <HeadingA text="yoooo" size="2xl" />
-          <EmailBox
-            placeholder="Email"
-            name="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
+          <HeadingA text="Email Verification" size="2xl" />
+          <div>
+            If you don't find OTP, please check in spam.
+          </div>
           <TextBox
             placeholder="OTP"
             name="otp"

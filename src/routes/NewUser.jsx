@@ -26,7 +26,7 @@ export default function NewUser() {
                 if (!data.userExists) {
                     navigate(`/signup?username=${Username}`);
                 } else {
-                    alert("User Already Exists");
+                    toast.error("User Already Exists");
                 }
             }
         }
