@@ -6,6 +6,7 @@ import AnimatedButton from "../components/AnimatedButton";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
+import toast from "react-hot-toast";
 
 const SIGNUP_URL = "/auth/signup";
 
@@ -26,7 +27,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (credentials.password !== credentials.confirmPassword) {
-      alert("Password does not match");
+      toast.error("Password does not match");
     } else {
       try {
         const response = await api.post(
@@ -45,14 +46,14 @@ export default function Signup() {
         );
 
         if (response.status === 200) {
-          alert("Signup successful");
-          navigate("/verifyEmail");
+          toast.success("Signup successful");
+          navigate(`/verifyEmail?email=${credentials.email}`);
         }
       } catch (error) {
         if (error.response) {
-          alert(error.response.data.message);
+          toast.error(error.response.data.message);
         } else {
-          alert("Something went wrong");
+          toast.error("Something went wrong");
         }
       }
     }

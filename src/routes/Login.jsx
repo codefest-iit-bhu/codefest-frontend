@@ -6,6 +6,7 @@ import api from "../api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { REFRESH_TOKEN } from "../constants";
+import toast from "react-hot-toast";
 
 const LOGIN_URL = "/auth/login";
 
@@ -33,15 +34,15 @@ export default function Login() {
       );
       if (response.status === 200) {
         // saving refresh token in local storage
-        localStorage.setItem(REFRESH_TOKEN, response.data.refresh_token);
-        alert(response.data.message);
+        localStorage.setItem(REFRESH_TOKEN, response.data.refreshToken);
+        toast.success(response.data.message);
         navigate("/home");
       }
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       } else {
-        alert("Something went wrong");
+        toast.error("Something went wrong");
       }
       // Refreshing the page
       window.location.reload();

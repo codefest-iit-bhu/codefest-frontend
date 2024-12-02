@@ -1,1 +1,1 @@
-export const REFRESH_TOKEN = "refresh";
+export const REFRESH_TOKEN = "refreshToken";
