@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         quicksand: ['Quicksand', 'sans-serif'],
         'robo-slab': ['Roboto Slab', 'serif'],
+        pixel: ['"Press Start 2P"', 'sans-serif'],
       },
     },
   },
