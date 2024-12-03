@@ -7,10 +7,15 @@ import Events from "./routes/Events";
 import CA from "./routes/CA";
 import NewUser from "./routes/NewUser";
 import { Event } from "./routes/Event";
+import SetPasswordRoute from "./routes/SetPassword";
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    element: <Index />,
+  },
+  {
+    path: "/main",
     element: <Index />,
   },
   {
@@ -40,5 +45,9 @@ export const router = createBrowserRouter([
   {
     path:"/newUser",
     element:<NewUser/>
+  },
+  {
+    path:"/SetPassword",
+    element:<SetPasswordRoute/>
   }
 ]);

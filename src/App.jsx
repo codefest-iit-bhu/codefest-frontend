@@ -5,6 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
 import { QueryClient, QueryClientProvider } from 'react-query';
 
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Background />
         <RouterProvider router={router}></RouterProvider>
       </div>
+      
     </QueryClientProvider>
   );
 };

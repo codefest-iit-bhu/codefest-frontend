@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Link from "./Link";
+import LogoutButton from '../components/LogoutButton';
+import { useAuth } from "../utils/islogged"
 
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const { isLoggedIn, handleLogout } = useAuth();
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -22,7 +24,11 @@ function Navbar() {
             {/* <Link text="Sponsors" href="/home#sponsors" /> */}
             <Link text="CA" href="/CA" />
             {/* <Link text="About" href="/home" /> */}
-            <Link text="Login/Register" href="/login" />
+            {isLoggedIn ? (
+              <LogoutButton />
+            ) : (
+              <Link text="Login/Register" href="/login" />
+            )}
           </div>
         </nav>
 
