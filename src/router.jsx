@@ -36,6 +36,10 @@ export const router = createBrowserRouter([
     element: <VerifyEmail />,
   },
   {
+    path: "/verifyEmail",
+    element: <VerifyEmail />,
+  },
+  {
     path: "/events",
     element: <Events />,
   },
