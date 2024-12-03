@@ -8,6 +8,8 @@ import CA from "./routes/CA";
 import NewUser from "./routes/NewUser";
 import { Event } from "./routes/Event";
 import VerifyEmail from "./routes/VerifyEmail";
+import AllUsers from "./routes/Admin/AllUsers";
+import AllCaRequests from "./routes/Admin/AllCaRequests";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ export const router = createBrowserRouter([
   {
     path: "/CA",
     element: <CA />,
+  },
+  {
+    path: "/allUsers",
+    element: <AllUsers />,
+  },
+  {
+    path: "/allCaRequests",
+    element: <AllCaRequests />,
   },
   {
     path:"/newUser",
