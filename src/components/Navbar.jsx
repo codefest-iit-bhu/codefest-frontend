@@ -17,11 +17,11 @@ function Navbar() {
       <div className="fixed w-full">
         <nav className="hidden lg:flex text-white w-full py-2">
           <div className="flex space-x-4 w-full">
-            <Link text="Home" href="/" />
+            <Link text="Main" href="/" />
             <Link text="Events" href="/events" />
-            <Link text="Sponsors" href="/sponsors" />
+            {/* <Link text="Sponsors" href="/home#sponsors" /> */}
             <Link text="CA" href="/CA" />
-            <Link text="About" href="/about" />
+            {/* <Link text="About" href="/home" /> */}
             <Link text="Login/Register" href="/login" />
           </div>
         </nav>
