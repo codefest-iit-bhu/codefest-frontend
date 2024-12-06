@@ -31,39 +31,25 @@ const tasks = [
 
 const BenefitsSection = () => {
   return (
-    <section className="py-10">
-      <div className="px-20">
-        <p className="text-5xl font-bold text-white mb-10">
-          Why should you become a Campus Ambassador?
+    <section className="py-10 flex flex-col items-center">
+      <div className="px-10">
+        <p className="text-5xl font-bold text-white mb-10 text-center">
+          Why should you become a
+          <img src="/campusAmbassdor.png" alt="" />
         </p>
-        <hr className="my-4 mb-10" />
       </div>
 
-      <div className="flex flex-col md:flex-row items-center justify-evenly">
-        <div className="w-full md:w-1/2 rounded-md py-4 backdrop-blur-[2px]">
-          <div className="w-full px-8">
-            <ul className="space-y-6 list-none">
-              {tasks.map((task, i) => (
-                <li key={i} className="flex flex-col">
-                  <span className="text-lime-400 text-xl font-bold font-sans">
-                    {task.start}
-                  </span>
-                  <p className="text-emerald-100 font-sans text-lg font-bold">
-                    {task.rest}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="pb-10 md:w-1/3 w-full flex justify-center">
-          <img
-            src={perk}
-            alt="Campus Ambassador Perks"
-            className="w-30 h-64 "
-          />
-        </div>
-      </div>
+      <ul className="w-full list-[circle]">
+        {tasks.map((task, i) => (
+          <>
+          <li key={i} className="flex flex-col w-full px-10 text-3xl text-wrap">
+            <span className="font-bold">{task.start}</span>
+            {task.rest}
+          </li>
+          {(i==2) && <img src="/cloud1.svg"/>}
+          </>
+        ))}
+      </ul>
     </section>
   );
 };

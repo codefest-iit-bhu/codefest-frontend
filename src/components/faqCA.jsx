@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import faq from "../assets/CA_images/faq.svg";
 
 const FAQSection = () => {
-  const [expandedIndex, setExpandedIndex] = useState(null);
-
   const faqItems = [
     {
       question: "What is the role of a Campus Ambassador?",
@@ -34,49 +32,18 @@ const FAQSection = () => {
     },
   ];
 
-  const handleQuestionClick = (index) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
-
   return (
-    <div className="w-full py-10">
-      <div className="flex items-end justify-end px-40 mb-10">
-        <h1 className="text-6xl font-bold text-white">FAQ</h1>
+    <div className="w-full py-10 flex flex-col">
+      <div className="flex justify-center px-40 mb-10 relative">
+        <h1 className="text-[100px] font-bold text-white z-[0.5]">FAQ</h1>
+        <img src="/cloud2.svg" alt="" className="absolute right-0" />
       </div>
-      <hr className="ml-[900px] mr-16 my-4 mb-10" />
 
-      <div className="flex flex-col md:flex-row justify-evenly items-start">
-        <div className="md:w-1/3 w-full flex justify-center">
-          <img
-            src={faq}
-            alt="Campus Ambassador Perks"
-            className="w-64 h-64 object-cover"
-          />
-        </div>
-
-        <div className="flex items-start justify-start md:w-1/2 w-full">
-          <div className="rounded-md py-4 backdrop-blur-[2px] px-4 py-4">
-            <ul className="space-y-4">
-              {faqItems.map((item, index) => (
-                <li key={index} className="border-b pb-4">
-                  <h3
-                    className="cursor-pointer text-lime-400 text-xl font-bold font-sans"
-                    onClick={() => handleQuestionClick(index)}
-                  >
-                    {item.question}
-                  </h3>
-
-                  {expandedIndex === index && (
-                    <p className="text-emerald-100 font-sans text-lg font-bold mt-2 transition-all duration-300">
-                      {item.answer}
-                    </p>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
+      <ul className="w-full flex flex-col items-center text-3xl z-[0.5]">
+        {faqItems.map((item, index) => (
+          <li key={index}>FAQ item</li>
+        ))}
+      </ul>
     </div>
   );
 };

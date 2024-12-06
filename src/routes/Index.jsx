@@ -18,10 +18,10 @@ export default function Home() {
       <a href="/home"className="w-fit h-fit">
         <img src="/exploreButton.png" alt="" className="hover:scale-110"/>
       </a>
-      <a href="#"className="w-fit h-fit">
+      <a href="/login"className="w-fit h-fit">
         <img src="/registerLoginButton.png" alt="" className="hover:scale-110"/>
       </a>
-      <a href="#"className="w-fit h-fit">
+      <a href="/ca"className="w-fit h-fit">
         <img src="/campusAmbassdorButton.png" alt="" className="hover:scale-110"/>
       </a>
       </div>

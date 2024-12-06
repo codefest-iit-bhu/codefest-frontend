@@ -16,7 +16,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="h-16 flex items-center fixed w-full bg-[#4E4040] z-[1]">
+      <div className="h-10 fixed w-full bg-[#4E4040] z-[1]">
         <nav className="hidden lg:flex text-white w-full py-1">
           <div className="flex space-x-4 w-full">
             <Link text="Main" href="/" />
@@ -93,7 +93,7 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div className="block h-16"></div>
+      <div className="block h-10"></div>
     </>
   );
 }
