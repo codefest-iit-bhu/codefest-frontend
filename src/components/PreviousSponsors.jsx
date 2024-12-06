@@ -11,8 +11,11 @@ import hackerearth from '../assets/Sponsors/hackerearth.png';
 import hackerrank from '../assets/Sponsors/hackerrank.png';
 
 const SponsorLogo = ({ src, alt }) => (
-  <div className="flex items-center justify-center p-2 border rounded-full bg-white border-border aspect-square">
-    <img src={src} alt={alt} className="h-100" />
+  <div className="w-[200px] h-[200px] md:w-[300px] md:h-[300px] relative">
+    <img src="/previousSponsorsBox.png" alt="" className="w-[200px] h-[200px] md:w-[300px] md:h-[300px] absolute"/>
+    <div className="absolute w-[164px] h-[165px] md:w-[248px] md:h-[248px] top-[17px] left-[17px] overflow-hidden flex items-center justify-center">
+    <img src={src} alt="" className="w-[167px] h-[167px] md:w-[200px] md:h-[200px]"/>
+    </div>
   </div>
 );
 
@@ -32,9 +35,15 @@ const PreviousSponsors = () => {
   ];
 
   return (
-    <div className="p-6 bg-background rounded-md shadow-md">
-      <h2 className="text-4xl font-extrabold text-center text-primary mb-10">Previous Sponsors</h2>
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mx-4">
+    <div className="p-6 mb-10">
+      <div className="w-fit mb-10">
+        <img
+          src="/previousSponsors.png"
+          alt=""
+          className="h-[150px] object-contain"
+        />
+      </div>
+      <div className="flex flex-wrap justify-center gap-10">
         {sponsors.map((sponsor, index) => (
           <SponsorLogo key={index} src={sponsor.src} alt={sponsor.alt} />
         ))}

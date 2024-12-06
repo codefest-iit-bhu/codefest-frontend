@@ -1,7 +1,7 @@
 export default function Whoarewe() {
   return (
     <>
-      <div className="w-full flex items-center justify-center">
+      <div className="w-full flex items-center justify-center my-10">
         <div className="relative w-full md:w-[50vw] h-fit flex flex-col items-center justify-center">
           <div className="w-[80%] h-[15vw] md:h-[10vw] absolute top-[16vw] md:top-[11vw] overflow-y-scroll no-scrollbar text-black">
             <p>

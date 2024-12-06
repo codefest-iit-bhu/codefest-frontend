@@ -1,9 +1,8 @@
-import React from 'react';
-import TestimonialCard from './TestimonialCard';
-import touristImage from '../assets/Testimonial/tourist.jpeg';
-import rajShuklaImage from '../assets/Testimonial/raj-shukla.jpeg';
-import infosecIITRImage from '../assets/Testimonial/infosec.jpeg';
-
+import React from "react";
+import TestimonialCard from "./TestimonialCard";
+import touristImage from "../assets/Testimonial/tourist.jpeg";
+import rajShuklaImage from "../assets/Testimonial/raj-shukla.jpeg";
+import infosecIITRImage from "../assets/Testimonial/infosec.jpeg";
 
 const Testimonials = () => {
   const testimonials = [
@@ -12,6 +11,12 @@ const Testimonials = () => {
       imgAlt: "Gennady Korotkevich (Tourist) Profile",
       imgSrc: touristImage,
       msg: "Marathon had some good problems and it was prepared very well. I loved the idea of hosting Mahamania at Topcoder! The problems were interesting too. Perplexed had some nice problems as well. Overall I enjoyed all three events -- thanks a lot!",
+    },
+    {
+      name: "Kylian Mbappe",
+      imgAlt: "Kylian Mbappe",
+      imgSrc: "",
+      msg: "I think sometimes in the life I'm too competetive.",
     },
     {
       name: "Raj Shukla",
@@ -24,15 +29,21 @@ const Testimonials = () => {
       imgAlt: "Infosec IIT R Profile",
       imgSrc: infosecIITRImage,
       msg: "I feel that the competition was challenging. Some of the challenges were a bit tough others were easy. I will definitely recommend others to take part in this CTF and also encourage organizers to conduct such events more often.",
-    }
+    },
   ];
 
   return (
-    <div className="w-full px-6 py-12 bg-background flex flex-col items-center">
-      <h2 className="text-4xl font-extrabold text-center text-primary mb-10">Testimonials</h2>
-      <div className="space-y-12 w-full max-w-3xl">
+    <div className="w-full px-6 py-12 bg-background flex flex-col mb-10">
+      <div className="w-fit">
+        <img
+          src="/testimonials.png"
+          alt=""
+          className="h-[150px] object-contain mb-10"
+        />
+      </div>
+      <div className="w-full flex justify-center gap-10 flex-wrap">
         {testimonials.map((testimonial, index) => (
-          <TestimonialCard key={index} testimonial={testimonial} isReversed={index % 2 !== 0} />
+          <TestimonialCard key={index} testimonial={testimonial} />
         ))}
       </div>
     </div>

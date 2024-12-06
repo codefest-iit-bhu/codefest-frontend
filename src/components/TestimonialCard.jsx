@@ -1,19 +1,26 @@
-import React from 'react'
+import React from "react";
 
-const TestimonialCard = ({ testimonial, isReversed }) => {
-    return (
-      <div className={`relative flex ${isReversed ? "md:flex-row-reverse" : ""} items-start`}>
-        <img
-          alt={testimonial.imgAlt}
-          src={testimonial.imgSrc}
-          className={`w-20 h-20 rounded-full shadow-lg transform transition-transform hover:scale-105 absolute z-10 ${isReversed ? "top-0 -right-6" : "top-0 -left-6"}`}
-        />
-        <div className="flex-1 p-8 bg-gray-300 rounded-lg shadow-lg ml-10 mr-10 mt-6 transform transition-transform hover:scale-105 hover:shadow-xl">
-          <div className="text-xl font-semibold text-black mb-2">{testimonial.name}</div>
-          <p className="text-black">{testimonial.msg}</p>
+const TestimonialCard = ({ testimonial }) => {
+  return (
+    <>
+      <div
+        className="w-[600px] h-[235px] relative flex-shrink-0"
+        style={{
+          background: 'url("/testimonialBox.png")',
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+        }}
+      >
+        <div className="w-[125px] h-[125px] top-[40px] left-[8px] absolute rounded-full overflow-hidden">
+          <img src={testimonial.imgSrc} alt="" />
+        </div>
+        <div className="absolute h-[120px] w-[380px] top-[40px] left-[150px] overflow-x-hidden overflow-y-scroll no-scrollbar text-black">
+          <p className="font-bold">{testimonial.name}</p>
+          {testimonial.msg}
         </div>
       </div>
-    );
-  };
+    </>
+  );
+};
 
-export default TestimonialCard
+export default TestimonialCard;

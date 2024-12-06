@@ -17,6 +17,7 @@ export default {
         quicksand: ['Quicksand', 'sans-serif'],
         'robo-slab': ['Roboto Slab', 'serif'],
         pixel: ['"Press Start 2P"', 'sans-serif'],
+        pixelifySans: ['Pixelify Sans', 'sans-serif'],
       },
     },
   },
