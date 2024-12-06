@@ -12,10 +12,9 @@ const queryClient = new QueryClient();
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App w-[100vw] h-[100vh] overflow-x-hidden overflow-y-scroll no-scrollbar">
+      <div className="App w-[100vw] h-[100vh] absolute overflow-x-hidden overflow-y-scroll no-scrollbar">
         <Toaster position="top-center" />
         <Toaster position="top-center" />
-        <Background />
         <RouterProvider router={router}></RouterProvider>
       </div>
       

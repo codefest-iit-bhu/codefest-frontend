@@ -16,7 +16,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="fixed w-full">
+      <div className="fixed w-full bg-[#4E4040] z-[1]">
         <nav className="hidden lg:flex text-white w-full py-2">
           <div className="flex space-x-4 w-full">
             <Link text="Main" href="/" />

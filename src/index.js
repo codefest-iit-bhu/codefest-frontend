@@ -7,6 +7,8 @@ import Vue from 'vue';
 import vueCustomElement from 'vue-custom-element';
 import ResponsiveTwoColumnLayout from './path/to/ResponsiveTwoColumnLayout.vue';
 import SectionLayout from './path/to/SectionLayout.vue';
+import '@fontsource-variable/pixelify-sans'
+
 
 Vue.use(vueCustomElement);
 

@@ -4,53 +4,61 @@ import sample from "./logo.svg";
 const lookbackData = [
   {
     id: 1,
-    imageSrc: "https://loremflickr.com/200/200?random=1",
+    imageSrc: "/Award.png",
     label: "Prize Money",
     value: "Rs 500,000",
   },
   {
     id: 2,
-    imageSrc: "https://loremflickr.com/200/200?random=1",
+    imageSrc: "/Globe.png",
     label: "Prize Money",
     value: "98",
   },
   {
     id: 3,
-    imageSrc: "https://loremflickr.com/200/200?random=1",
+    imageSrc: "/Users.png",
     label: "Participants",
     value: "24,654",
   },
   {
     id: 4,
-    imageSrc: "https://loremflickr.com/200/200?random=1",
+    imageSrc: "/TrendingUp.png",
     label: "Unique Visitors",
     value: "328,902",
   },
   {
     id: 5,
-    imageSrc: "https://loremflickr.com/200/200?random=5",
+    imageSrc: "/Edit.png",
     label: "Registrations",
     value: "16,302",
   },
 ];
 
+const PixelBox = ({ title, text, img_src }) => {
+  return (
+    <>
+      <div
+        className="h-[142px] w-[200px] text-black flex flex-col justify-center items-center"
+        style={{
+          backgroundImage: "url('/pixelBox.png')",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <img src={img_src} alt="" className="w-10 mb-2" />
+        <div className="font-bold">{title}</div>
+        <div className="text-sm">{text}</div>
+      </div>
+    </>
+  );
+};
+
 const Lookback = () => {
   return (
-    <div className="py-8 px-4 text-center">
-      <h2 className="text-4xl font-extrabold text-center text-primary mb-10">Highlights</h2>
-      <hr className="border-orange-500 w-20 mx-auto mb-8" />
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-        {lookbackData.map((item) => (
-          <div
-            key={item.id}
-            className="flex flex-col items-center bg-orange-500 text-white rounded-lg p-4 shadow-lg mb-10 mr-9"
-          >
-            <img src={sample} alt={item.label} className="w-16 h-16 mb-6" />
-            <p className="text-sm font-medium">{item.label}</p>
-            <p className="text-lg font-bold">{item.value}</p>
-          </div>
-        ))}
+    <div className="text-center bg-[#140B29] mt-[100px] w-screen">
+      <img src="lookback.png" alt="" />
+      <div className="w-full flex justify-center gap-2">
+        {lookbackData.map((data)=><PixelBox title={data.label} text={data.value} img_src={data.imageSrc} key={data.id}/>)}
+        
       </div>
     </div>
   );
