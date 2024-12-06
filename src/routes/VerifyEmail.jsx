@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { REFRESH_TOKEN } from "../constants";
 import toast from "react-hot-toast";
 
-const VERIFY_EMAIL_URL = "/auth/verify_email";
+const VERIFY_EMAIL_URL =
+  "https://codefest-backend-igxy.onrender.com/api/v1/auth/verify_email";
 
 export default function VerifyEmail() {
   const navigate = useNavigate();

@@ -10,7 +10,9 @@ import { REFRESH_TOKEN } from "../constants";
 import toast from "react-hot-toast";
 import TextBox from '../components/TextBox';
 
-const LOGIN_URL = "/auth/login";
+//const LOGIN_URL = "/auth/login";
+const LOGIN_URL =
+  "https://codefest-backend-igxy.onrender.com/api/v1/auth/login";
 
 export default function Login() {
   const handleGoogleLogin = () => {
