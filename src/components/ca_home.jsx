@@ -1,12 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./About.module.css";
 import aboutImage from "../assets/home_ca.png";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.aboutContainers}>
       <div className={styles.aboutHeading}>
-        <h1 className="text-vermilion"><b>CodeFest '24</b></h1>
+        <h1 className="text-vermilion">
+          <b>CodeFest '24</b>
+        </h1>
       </div>
       <div className={styles.aboutContainer}>
         <div className={styles.aboutHead}>
@@ -16,9 +21,13 @@ const Home = () => {
             Want to be a part of the <span className="text-vermilion">BIGGEST</span> coding festival of the country?
           </h2>
           <p className="mt-2">
-            Be part of <span className="text-vermilion">CODEFEST'24</span> by becoming our <span className="text-vermilion">CAMPUS AMBASSADOR</span>.
+            Be part of <span className="text-vermilion">CODEFEST'24</span> by becoming our{" "}
+            <span className="text-vermilion">CAMPUS AMBASSADOR</span>.
           </p>
-          <button className="mt-6 bg-brown-600 text-white hover:bg-vermilion flex items-center justify-center px-6 py-2 rounded-lg">
+          <button
+            className="mt-6 bg-brown-600 text-white hover:bg-vermilion flex items-center justify-center px-6 py-2 rounded-lg"
+            onClick={() => navigate("/ca-register")}
+          >
             REGISTER
           </button>
         </div>
@@ -31,4 +40,3 @@ const Home = () => {
 };
 
 export default Home;
-
