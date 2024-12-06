@@ -9,6 +9,7 @@ import CARegistration from "./routes/CA_register"
 import MyTeams from "./routes/MyTeams";
 import NewUser from "./routes/NewUser";
 import { Event } from "./routes/Event";
+import SetPasswordRoute from "./routes/SetPassword";
 import VerifyEmail from "./routes/VerifyEmail";
 import AllUsers from "./routes/Admin/AllUsers";
 import AllCaRequests from "./routes/Admin/AllCaRequests";
@@ -16,6 +17,10 @@ import AllCaRequests from "./routes/Admin/AllCaRequests";
 export const router = createBrowserRouter([
   {
     path: "/",
+    element: <Index />,
+  },
+  {
+    path: "/main",
     element: <Index />,
   },
   {
@@ -35,6 +40,10 @@ export const router = createBrowserRouter([
     element: <VerifyEmail />,
   },
   {
+    path: "/verifyEmail",
+    element: <VerifyEmail />,
+  },
+  {
     path: "/events",
     element: <Events />,
   },
@@ -45,6 +54,10 @@ export const router = createBrowserRouter([
   {
     path: "/CA",
     element: <CA />,
+  },
+  {
+    path:"/SetPassword",
+    element:<SetPasswordRoute/>
   },
   {
     path: "/allUsers",
