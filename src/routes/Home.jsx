@@ -16,12 +16,13 @@ export default function Home() {
       <div className="p-16 flex flex-col items-left">
         <Whoarewe />
       </div>
-      <div className="bg-[#140B29]">
+      <div className="bg-[#140B29] w-screen">
         <Lookback />
         <Testimonials />
+        <PreviousSponsors />
+        <img src="cat.svg" alt="" className="w-full"/>
+        <Footer />
       </div>
-      <PreviousSponsors />
-      <Footer />
     </>
   );
 }

@@ -38,13 +38,13 @@ const PixelBox = ({ title, text, img_src }) => {
   return (
     <>
       <div
-        className="h-[142px] w-[200px] text-black flex flex-col flex-shrink-0 justify-center items-center"
+        className="h-[95px] w-[133px] md:h-[142px] md:w-[200px] text-black flex flex-col flex-shrink-0 justify-center items-center"
         style={{
           backgroundImage: "url('/pixelBox.png')",
           backgroundRepeat: "no-repeat",
         }}
       >
-        <img src={img_src} alt="" className="w-10 mb-2" />
+        <img src={img_src} alt="" className="w-5 md:w-10 mb-2" />
         <div className="font-bold">{title}</div>
         <div className="text-sm">{text}</div>
       </div>
@@ -54,9 +54,10 @@ const PixelBox = ({ title, text, img_src }) => {
 
 const Lookback = () => {
   return (
-    <div className="text-center bg-[#140B29] mt-[100px] w-screen mb-10">
-      <img src="lookback.png" alt="" className="h-[150px] mb-10" />
-      <div className="w-full flex justify-center gap-2 flex-wrap">
+    <div className="bg-[#140B29] mt-[100px] w-screen mb-10">
+      {/* <img src="lookback.png" alt="" className="h-[150px] mb-10" /> */}
+      <div className="text-5xl md:text-7xl p-10">LOOKBACK</div>
+      <div className="w-full flex justify-center gap-2 flex-wrap p-2">
         {lookbackData.map((data) => <PixelBox title={data.label} text={data.value} img_src={data.imageSrc} key={data.id} />)}
 
       </div>
