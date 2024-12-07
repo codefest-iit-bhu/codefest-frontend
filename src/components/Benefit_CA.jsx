@@ -2,6 +2,8 @@ import React from "react";
 import perk from "../assets/CA_images/perks.svg";
 import HeadingA from "../components/HeadingA";
 import TextBox from "../components/TextBox";
+import { useUser } from "../context/context";
+import { useNavigate } from "react-router-dom";
 const tasks = [
   {
     start: "A certificate of recognition, authenticated by the HoD",
@@ -30,6 +32,8 @@ const tasks = [
 ];
 
 const BenefitsSection = () => {
+  const { isAuthenticated } = useUser();
+  const navigate = useNavigate()
   return (
     <section className="py-10 flex flex-col items-center">
       <div className="px-10">
@@ -42,11 +46,11 @@ const BenefitsSection = () => {
       <ul className="w-full list-[circle]">
         {tasks.map((task, i) => (
           <>
-          <li key={i} className="flex flex-col w-full px-10 text-3xl text-wrap">
-            <span className="font-bold">{task.start}</span>
-            {task.rest}
-          </li>
-          {(i==2) && <img src="/cloud1.svg"/>}
+            <li key={i} className="flex flex-col w-full px-10 text-3xl text-wrap">
+              <span className="font-bold">{task.start}</span>
+              {task.rest}
+            </li>
+            {(i == 2) && <img src="/cloud1.svg" />}
           </>
         ))}
       </ul>

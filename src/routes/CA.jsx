@@ -18,7 +18,6 @@
 //   );
 // };
 
-
 import BenefitsSection from "../components/Benefit_CA";
 import FAQSection from "../components/faqCA"
 import Footer from "../components/Footer";
@@ -29,10 +28,10 @@ export default function CA() {
     <>
       <Navbar />
       <div className="bg-[#140B29] w-screen flex flex-col items-center">
-        <BenefitsSection/>
+        <BenefitsSection />
       </div>
       <div className="bg-[#140B29]">
-        <FAQSection/>
+        <FAQSection />
       </div>
       <Footer />
     </>

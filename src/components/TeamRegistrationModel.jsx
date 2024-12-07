@@ -3,6 +3,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "../utils/axiosInstance";
+import toast from "react-hot-toast";
 
 const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
   const [teamName, setTeamName] = useState("");
@@ -25,26 +27,19 @@ const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
       return;
     }
 
-    try {
-      console.log(teamName);
-      const response = await fetch(
-        "https://codefest-backend-igxy.onrender.com/api/v1/team/name_available",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name }),
+    const response = await axios.post(
+      "/team/name_available",
+      { name, eventId: event.id },
+      {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
         }
-      );
+      }
+    );
 
-      const data = await response.json();
+    const { data } = response;
 
-      setTeamNameStatus(data.status === "success" ? "available" : "taken");
-    } catch (error) {
-      console.error("Team name validation error:", error);
-      setTeamNameStatus("error");
-    }
+    setTeamNameStatus(data.status === "success" ? "available" : "taken");
   };
 
   // Debounced validation
@@ -63,36 +58,21 @@ const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
 
     if (teamNameStatus !== "available") return;
 
-    try {
-      console.log(teamName, event.id, event.last_date_reg);
-      const response = await fetch(
-        "https://codefest-backend-igxy.onrender.com/api/v1/team/create",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            eventDeadline: event.last_date_reg,
-            teamName: teamName,
-            eventId: event.id,
-          }),
-          credentials: "include",
+    await axios.post(
+      "/team/create",
+      {
+        teamName: teamName,
+        eventId: event.id,
+      },
+      {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
         }
-      );
-
-      const data = await response.json();
-
-      if (data.success) {
-        navigate("/myTeams");
-      } else {
-        // Handle registration failure
-        alert(data.message);
       }
-    } catch (error) {
-      console.error("Team registration error:", error);
-      alert("An error occurred during registration");
-    }
+    );
+
+    toast.success("Team registered successfully")
+    return navigate("/myTeams");
   };
 
   if (!isOpen) return null;
@@ -138,10 +118,9 @@ const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
             disabled={teamNameStatus !== "available"}
             className={`
               w-full py-2 rounded-md text-black font-semibold
-              ${
-                teamNameStatus === "available"
-                  ? "bg-lime-600 hover:bg-lime-700"
-                  : "bg-gray-400 cursor-not-allowed"
+              ${teamNameStatus === "available"
+                ? "bg-lime-600 hover:bg-lime-700"
+                : "bg-gray-400 cursor-not-allowed"
               }
             `}
           >

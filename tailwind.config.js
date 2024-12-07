@@ -1,16 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        vermilion: '#e74c3c',
+        vermilion: "#e74c3c",
         brown: {
-          500: '#8B4513', // Example medium brown
-          600: '#A0522D', // Example dark brown
+          500: "#8B4513", // Example medium brown
+          600: "#A0522D", // Example dark brown
         }, // Replace with your actual vermilion color
       },
       fontFamily: {
@@ -22,4 +19,4 @@ export default {
     },
   },
   plugins: [],
-}
+};

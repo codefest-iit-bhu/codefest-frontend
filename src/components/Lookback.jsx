@@ -55,10 +55,10 @@ const PixelBox = ({ title, text, img_src }) => {
 const Lookback = () => {
   return (
     <div className="text-center bg-[#140B29] mt-[100px] w-screen mb-10">
-      <img src="lookback.png" alt="" className="h-[150px] mb-10"/>
+      <img src="lookback.png" alt="" className="h-[150px] mb-10" />
       <div className="w-full flex justify-center gap-2 flex-wrap">
-        {lookbackData.map((data)=><PixelBox title={data.label} text={data.value} img_src={data.imageSrc} key={data.id}/>)}
-        
+        {lookbackData.map((data) => <PixelBox title={data.label} text={data.value} img_src={data.imageSrc} key={data.id} />)}
+
       </div>
     </div>
   );

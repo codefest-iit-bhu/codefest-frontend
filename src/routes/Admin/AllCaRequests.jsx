@@ -3,87 +3,69 @@ import api from "../../api";
 import toast from "react-hot-toast";
 import CaCard from "../../components/CaCard";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../context/context";
+import axios from "../../utils/axiosInstance";
 
 const ALL_REQUESTS_URL = "/ca/all";
 
 const AllCaRequests = () => {
   const [requests, setRequests] = useState([]);
   const navigate = useNavigate();
+  const { user } = useUser();
 
   useEffect(() => {
+    if (user.role !== "admin") {
+      return navigate("/CA");
+    }
+
     const fetchRequests = async () => {
-      try {
-        const response = await api.get(ALL_REQUESTS_URL, {
-          withCredentials: true,
-        });
-        setRequests(response.data);
-      } catch (error) {
-        if (error.response) {
-          toast.error(error.response.data.message);
-        } else {
-          toast.error("Something went wrong");
-        }
-        navigate("/login");
-      }
+      const response = await axios.get("/ca/all", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setRequests(response.data);
     };
 
     fetchRequests();
   }, []);
 
   const handleApprove = async (id, msg) => {
-    try {
-      const response = await api.patch(
-        `/ca/${id}`,
-        JSON.stringify({
-          status: "approved",
-          adminMessage: msg,
-        }),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
-      if (response.status === 200) {
-        toast.success("Request approved");
-        window.location.reload();
+    const response = await axios.patch(
+      `/ca/${id}`,
+      JSON.stringify({
+        status: "approved",
+        adminMessage: msg,
+      }),
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
-    } catch (error) {
-      if (error.response) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error("Something went wrong");
-      }
+    );
+    if (response.status === 200) {
+      toast.success("Request approved");
+      window.location.reload();
     }
   };
 
   const handleReject = async (id, msg) => {
-    try {
-        const response = await api.patch(
-          `/ca/${id}`,
-          JSON.stringify({
-            status: "rejected",
-            adminMessage: msg,
-          }),
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-            withCredentials: true,
-          }
-        );
-        if (response.status === 200) {
-          toast.success("Request rejected");
-          window.location.reload();
-        }
-      } catch (error) {
-        if (error.response) {
-          toast.error(error.response.data.message);
-        } else {
-          toast.error("Something went wrong");
-        }
+    const response = await axios.patch(
+      `/ca/${id}`,
+      JSON.stringify({
+        status: "rejected",
+        adminMessage: msg,
+      }),
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
+    );
+    if (response.status === 200) {
+      toast.success("Request rejected");
+      window.location.reload();
+    }
   };
 
   return (

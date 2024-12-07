@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "../utils/axiosInstance";
 
 const JoinTeamModal = ({ isOpen, onClose }) => {
   const [teamCode, setTeamCode] = useState("");
@@ -7,39 +8,21 @@ const JoinTeamModal = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
 
   const handleJoin = async () => {
-    try {
-      // Reset previous errors
-      setError("");
+    // Reset previous errors
+    setError("");
 
-      // Make API call to join team using fetch
-      const response = await fetch(
-        "https://codefest-backend-igxy.onrender.com/api/v1/member/join",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ teamCode }),
-          credentials: "include",
+    const response = await axios.post(
+      "/member/join",
+      { teamCode },
+      {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
         }
-      );
-
-      const data = await response.json();
-      //setError("Failed to join team");
-
-      // If successful, redirect to /myTeams
-      if (data.success) {
-        navigate("/myTeams");
-      } else {
-        // Set error message from backend
-        setError(data.message || "Failed to join team");
       }
-    } catch (err) {
-      // Handle errors
-      setError("Failed to join team");
+    );
 
-      //setError(data.message || "Failed to join team");
-    }
+    navigate("/myTeams");
+
   };
 
   if (!isOpen) return null;

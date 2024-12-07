@@ -1,101 +1,80 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./TeamCard.css";
+import axios from "../utils/axiosInstance";
+import toast from "react-hot-toast";
+import events from "../store/events.js";
 
-const TeamCard = ({ team, onTeamDelete, onMemberUpdate }) => {
+
+const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [message, setMessage] = useState("");
-  const [currentUserId, setCurrentUserId] = useState(null);
   const [members, setMembers] = useState(team.members);
+  const eventName = events.find((event) => event.id === team.event.eventId).name;
 
+  const isLeader = team.teamLeader === user._id;
   useEffect(() => {
-    // Fetch current user ID
-    const fetchCurrentUser = async () => {
-      try {
-        const response = await axios.get("/user/me");
-        setCurrentUserId(response.data._id);
-      } catch (err) {
-        console.error("Failed to fetch current user:", err);
-      }
-    };
-    fetchCurrentUser();
-  }, []);
 
-  const isLeader = team.teamLeader === currentUserId;
+  }, [team.teamLeader])
 
   const handleDeleteTeam = async () => {
-    // if (!isLeader) return;
     setIsProcessing(true);
-    try {
-      const response = await axios.delete("/team", {
+    await axios.delete(
+      "/team",
+      {
         data: { teamCode: team.teamCode },
-      });
-      if (response.data.success) {
-        onTeamDelete(team.teamCode);
-        setMessage("Team deleted successfully.");
-      } else {
-        setMessage(response.data.message);
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
-    } catch (err) {
-      console.error(err);
-      setMessage("Failed to delete the team.");
-    } finally {
-      setIsProcessing(false);
-    }
+    );
+    onTeamDelete(team.teamCode);
+    toast.success("Team deleted successfully.");
+    setIsProcessing(false);
   };
 
   const handleChangeLeader = async (newLeaderId) => {
     setIsProcessing(true);
-    try {
-      const response = await axios.post("/team/changeLeader", {
+    await axios.patch(
+      "/team/changeLeader",
+      {
         teamCode: team.teamCode,
         newLeader: newLeaderId,
-      });
-      if (response.data.success) {
-        setMessage("Leader changed successfully.");
-        setMembers(
-          members.map((member) =>
-            member._id === newLeaderId
-              ? { ...member, isLeader: true }
-              : { ...member, isLeader: false }
-          )
-        );
-      } else {
-        setMessage(response.data.message);
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
-    } catch (err) {
-      console.error(err);
-      setMessage("Failed to change leader.");
-    } finally {
-      setIsProcessing(false);
-    }
+    );
+    toast.success("Leader changed successfully.");
+    team.teamLeader = newLeaderId;
+    setIsProcessing(false);
   };
 
   const handleRemoveMember = async (memberId) => {
     setIsProcessing(true);
-    try {
-      const response = await axios.delete("/member", {
+    await axios.delete("/member",
+      {
         data: { userId: memberId, teamId: team._id },
-      });
-      if (response.data.status === "success") {
-        const updatedMembers = members.filter((member) => member._id !== memberId);
-        setMembers(updatedMembers);
-        onMemberUpdate(team.teamCode, updatedMembers);
-        setMessage("Member removed successfully.");
-      } else {
-        setMessage(response.data.message);
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
-    } catch (err) {
-      console.error(err);
-      setMessage("Failed to remove member.");
-    } finally {
-      setIsProcessing(false);
-    }
+    );
+    const updatedMembers = members.filter(
+      (member) => member.user._id !== memberId
+    );
+    setMembers(updatedMembers);
+    onMemberUpdate(team.teamCode, updatedMembers);
+    toast.success("Member removed successfully.");
+    setIsProcessing(false);
   };
 
   return (
-    <div className="team-card">
+    <div className="team-card" id={team.teamName}>
       {/* {isLeader && ( */}
+      {
+        team.teamLeader === user._id &&
         <button
           className="delete-team-button"
           onClick={handleDeleteTeam}
@@ -103,24 +82,29 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate }) => {
         >
           <i className="fa-solid fa-trash-can"></i>
         </button>
+      }
       {/* )} */}
       <h3 className="team-name">{team.teamName}</h3>
+      <p>Event Name: <span className="font-bold">{eventName}</span> </p>
       <p>
         Code: <span className="highlight">{team.teamCode}</span>
       </p>
       <p>
         Space Remaining:{" "}
-        <span className="highlight">{team.maxMembers - members.length}</span>
+        <span className="highlight">{team.event.maxMembers - members.length}</span>
       </p>
       <p>Members:</p>
       <ul className="member-list">
         {members.map((member) => (
-          <li key={member._id} className="member-item">
-            {member.name}
-            {isLeader && member._id !== currentUserId && (
+          <li key={member.user._id} className="member-item text-black">
+            {member.user.name}
+            {
+              (member.user._id === team.teamLeader && <span> (L)</span>)
+            }
+            {isLeader && member.user._id !== user._id && (
               <button
                 className="remove-member-button"
-                onClick={() => handleRemoveMember(member._id)}
+                onClick={() => handleRemoveMember(member.user._id)}
               >
                 Remove
               </button>
@@ -130,6 +114,9 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate }) => {
       </ul>
       {/* {isLeader && (
         <> */}
+      {
+        team.teamLeader === user._id &&
+        <>
           <p>Change Leader:</p>
           <select
             className="change-leader-dropdown"
@@ -137,13 +124,16 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate }) => {
             disabled={isProcessing}
           >
             <option value="">--Select Member--</option>
-            {members.map((member) => (
-              <option key={member._id} value={member._id}>
-                {member.name}
+            {members.map((member) => {
+              if (member.user._id === user._id || member.user._id === team.teamLeader) return;
+              return <option key={member.user._id} value={member.user._id}>
+                {member.user.name}
               </option>
-            ))}
+            })}
           </select>
-        {/* </>
+        </>
+      }
+      {/* </>
       )} */}
       {message && <p className="error-message">{message}</p>}
     </div>

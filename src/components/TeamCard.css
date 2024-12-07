@@ -1,66 +1,65 @@
 .teams-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    padding: 2rem;
-    background-color: #000;
-    color: #fff;
-  }
-  
-  .team-card {
-    width: 90%;
-    max-width: 400px;
-    background: linear-gradient(145deg, #e0e0e0, #f2f2f2);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    color: #2d3748;
-    position: relative;
-  }
-  
-  .team-card h3 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #f5a623;
-  }
-  
-  .highlight {
-    font-weight: bold;
-    color: #f5a623;
-  }
-  
-  .member-list {
-    margin: 1rem 0;
-    padding-left: 1rem;
-  }
-  
-  .member-item {
-    font-size: 0.9rem;
-    color: #4a5568;
-  }
-  
-  .delete-team-button,
-  .remove-member-button {
-    background-color: #e53e3e;
-    color: #fff;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(229, 62, 62, 0.4);
-  }
-  
-  .change-leader-dropdown {
-    font-size: 1rem;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    background-color: #f9f9f9;
-  }
-  
-  .error-message {
-    color: red;
-    margin-top: 1rem;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #000;
+  color: #fff;
+}
+
+.team-card {
+  width: 90%;
+  max-width: 400px;
+  background: linear-gradient(145deg, #e0e0e0, #f2f2f2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: #2d3748;
+  position: relative;
+}
+
+.team-card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f5a623;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #f5a623;
+}
+
+.member-list {
+  margin: 1rem 0;
+  padding-left: 1rem;
+}
+
+.member-item {
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.delete-team-button,
+.remove-member-button {
+  background-color: #e53e3e;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(229, 62, 62, 0.4);
+}
+
+.change-leader-dropdown {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  background-color: #f9f9f9;
+}
+
+.error-message {
+  color: red;
+  margin-top: 1rem;
+}

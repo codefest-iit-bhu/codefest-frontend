@@ -4,15 +4,15 @@ import PasswordBox from "../components/PasswordBox";
 import EmailBox from "../components/EmailBox";
 import AnimatedButton from "../components/AnimatedButton";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../api";
 import toast from "react-hot-toast";
+import axios from "../utils/axiosInstance";
+import { useUser } from "../context/context";
 
-//const SIGNUP_URL = "/auth/signup";
-const SIGNUP_URL =
-  "https://codefest-backend-igxy.onrender.com/api/v1/auth/signup";
 export default function Signup() {
   const navigate = useNavigate();
+  const { isAuthenticated } = useUser();
 
   const [credentials, setCredentials] = useState({
     username: "",
@@ -30,35 +30,28 @@ export default function Signup() {
     if (credentials.password !== credentials.confirmPassword) {
       toast.error("Password does not match");
     } else {
-      try {
-        const response = await api.post(
-          SIGNUP_URL,
-          JSON.stringify({
-            name: credentials.username,
-            email: credentials.email,
-            password: credentials.password,
-          }),
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-            withCredentials: true,
-          }
-        );
+      const response = await axios.post(
+        "/auth/signup",
+        JSON.stringify({
+          name: credentials.username,
+          email: credentials.email,
+          password: credentials.password,
+        })
+      );
 
-        if (response.status === 200) {
-          toast.success("Signup successful");
-          navigate(`/verifyEmail?email=${credentials.email}`);
-        }
-      } catch (error) {
-        if (error.response) {
-          toast.error(error.response.data.message);
-        } else {
-          toast.error("Something went wrong");
-        }
+      if (response.status === 200) {
+        toast.success("Email Verification sent");
+        navigate(`/verifyEmail?email=${credentials.email}`);
       }
     }
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      window.location.href = "/";
+      return;
+    }
+  }, [])
 
   return (
     <>
@@ -90,12 +83,12 @@ export default function Signup() {
             onChange={handleCredentials}
           />
           <AnimatedButton text="Signup >" onClick={handleSubmit} />
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="text-gray-400 text-md underline underline-offset-2"
           >
             Already have an account? Click here
-          </a>
+          </Link>
         </div>
       </div>
     </>

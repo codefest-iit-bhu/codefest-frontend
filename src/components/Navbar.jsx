@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Link from "./Link";
-import LogoutButton from '../components/LogoutButton';
-import { useAuth } from "../utils/islogged"
+import LogoutButton from "../components/LogoutButton";
+import { useUser } from "../context/context";
 
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const { isLoggedIn, handleLogout } = useAuth();
+  const { isAuthenticated } = useUser();
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -21,11 +21,12 @@ function Navbar() {
           <div className="flex space-x-4 w-full">
             <Link text="Main" href="/" />
             <Link text="Events" href="/events" />
-            {/* <Link text="Sponsors" href="/home#sponsors" /> */}
             <Link text="CA" href="/CA" />
-            {/* <Link text="About" href="/home" /> */}
-            {isLoggedIn ? (
-              <LogoutButton />
+            {isAuthenticated ? (
+              <>
+                <Link text="My Teams" href="/myTeams" />
+                <LogoutButton />
+              </>
             ) : (
               <Link text="Login/Register" href="/login" />
             )}
@@ -33,12 +34,12 @@ function Navbar() {
         </nav>
 
         <div className="lg:hidden flex items-center">
-          <a
+          <Link
             className="flex items-center w-fit text-white mx-4 mt-4 font-bold text-2xl"
             href="/home"
           >
             CodeFest
-          </a>
+          </Link>
 
           <div className="flex w-full items-center justify-end">
             <button
@@ -66,16 +67,14 @@ function Navbar() {
         </div>
 
         <div
-          className={`fixed top-0 left-0 h-full w-full bg-gray-800 bg-opacity-75 z-10 transition-opacity duration-300 ${
-            isSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
+          className={`fixed top-0 left-0 h-full w-full bg-gray-800 bg-opacity-75 z-10 transition-opacity duration-300 ${isSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
           onClick={closeSidebar}
         ></div>
 
         <div
-          className={`fixed top-0 left-0 h-full w-72 bg-gray-900 text-white z-20 transition-transform duration-300 ${
-            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+          className={`fixed top-0 left-0 h-full w-72 bg-gray-900 text-white z-20 transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
         >
           <div className="flex flex-col h-full p-4 space-y-4">
             <div
@@ -86,10 +85,15 @@ function Navbar() {
             </div>
             <Link text="Home" href="/" />
             <Link text="Events" href="/events" />
-            <Link text="Sponsors" href="/sponsors" />
             <Link text="CA" href="/CA" />
-            <Link text="About" href="/about" />
-            <Link text="Login/Register" href="/login" />
+            {isAuthenticated ? (
+              <>
+                <Link text="My Teams" href="/myTeams" />
+                <LogoutButton />
+              </>
+            ) : (
+              <Link text="Login/Register" href="/login" />
+            )}
           </div>
         </div>
       </div>

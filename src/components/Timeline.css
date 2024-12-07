@@ -1,83 +1,83 @@
 /* General timeline styles */
 .timeline {
-    position: relative;
-    max-width: 800px; /* Adjust based on your layout */
-    margin: 0 auto;
-    padding: 20px 0;
-    list-style-type: none;
+  position: relative;
+  max-width: 800px; /* Adjust based on your layout */
+  margin: 0 auto;
+  padding: 20px 0;
+  list-style-type: none;
 }
 
 /* Central line for the timeline */
 .timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%; /* Center line */
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background-color: #e0e0e0; /* Line color */
+  content: "";
+  position: absolute;
+  left: 50%; /* Center line */
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #e0e0e0; /* Line color */
 }
 
 /* Individual events */
 .timeline-event {
-    position: relative;
-    padding: 10px 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    background-color: #f9f9f9; /* Event background */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding: 10px 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  background-color: #f9f9f9; /* Event background */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Align left and right events */
 .timeline-event.left {
-    left: 0;
+  left: 0;
 }
 
 .timeline-event.right {
-    left: 50%;
-    transform: translateX(50%); /* Shift right events to the right */
+  left: 50%;
+  transform: translateX(50%); /* Shift right events to the right */
 }
 
 /* Date styles */
 .event-date {
-    position: absolute;
-    top: -10px;
-    left: -70px; /* Position to the left for left events */
-    font-weight: bold;
-    color: #333;
+  position: absolute;
+  top: -10px;
+  left: -70px; /* Position to the left for left events */
+  font-weight: bold;
+  color: #333;
 }
 
 .timeline-event.right .event-date {
-    left: auto; /* Remove left positioning for right events */
-    right: -70px; /* Position to the right for right events */
+  left: auto; /* Remove left positioning for right events */
+  right: -70px; /* Position to the right for right events */
 }
 
 /* Content styles */
 .event-content {
-    padding: 15px;
-    border-radius: 4px;
-    background-color: #fff; /* Content background */
-    position: relative;
-    z-index: 1; /* Above line */
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #fff; /* Content background */
+  position: relative;
+  z-index: 1; /* Above line */
 }
 
 /* Add arrow effect */
 .timeline-event:before {
-    content: '';
-    position: absolute;
-    top: 15px;
-    left: 100%; /* Position arrow on the right side */
-    border-width: 8px;
-    border-style: solid;
-    border-color: transparent transparent transparent #fff; /* Arrow color */
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 100%; /* Position arrow on the right side */
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent transparent #fff; /* Arrow color */
 }
 
 .timeline-event.right:before {
-    left: -8px; /* Position arrow on the left side */
-    border-color: transparent #fff transparent transparent; /* Arrow color */
+  left: -8px; /* Position arrow on the left side */
+  border-color: transparent #fff transparent transparent; /* Arrow color */
 }
 
 /* Styling for the last event */
 .timeline-event:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }

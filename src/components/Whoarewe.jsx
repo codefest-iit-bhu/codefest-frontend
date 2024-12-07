@@ -1,4 +1,8 @@
+import { Link } from "react-router-dom";
+import { useUser } from "../context/context";
+
 export default function Whoarewe() {
+  const { isAuthenticated } = useUser();
   return (
     <>
       <div className="w-full flex items-center justify-center my-10">
@@ -29,11 +33,18 @@ export default function Whoarewe() {
             </p>
           </div>
           <img src="aByteAboutUs.png" alt="" className="w-full" />
-          <div className="absolute w-fit h-[6.5vw] md:h-[4vw] bottom-[0.5vw] flex items-center">
-            <a href="/login" className="inline-block h-full">
-              <img src="registerLoginButton.png" alt="" className="h-full hover:scale-110"/>
-            </a>
-          </div>
+          {
+            !isAuthenticated &&
+            <div className="absolute w-fit h-[6.5vw] md:h-[4vw] bottom-[0.5vw] flex items-center">
+              <Link to="/login" className="inline-block h-full">
+                <img
+                  src="registerLoginButton.png"
+                  alt=""
+                  className="h-full hover:scale-110"
+                />
+              </Link>
+            </div>
+          }
         </div>
       </div>
     </>

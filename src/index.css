@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body {
-  font-family: 'Pixelify Sans Variable', system-ui;
-} */
-
+body {
+  font-family: "Pixelify Sans Variable", system-ui;
+}

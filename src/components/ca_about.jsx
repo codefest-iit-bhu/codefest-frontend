@@ -4,10 +4,11 @@ import aboutImage from "../assets/about_ca.avif";
 
 const About = () => {
   return (
-    
     <div className={styles.aboutContainers}>
       <div className={styles.aboutHeading}>
-      <h1><b>What is the Campus Ambassador Program?</b></h1>
+        <h1>
+          <b>What is the Campus Ambassador Program?</b>
+        </h1>
       </div>
       <div className={styles.aboutContainer}>
         <div className={styles.aboutImage}>
@@ -25,8 +26,7 @@ const About = () => {
             well-deserved rewards.
           </p>
         </div>
-        </div>
-
+      </div>
     </div>
   );
 };

@@ -1,15 +1,33 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import TeamRegistrationModal from "../components/TeamRegistrationModel.jsx";
 import JoinTeamModal from "../components/JoinTeamModal.jsx"; // New import
 import events from "../store/events.js";
+import { useUser } from "../context/context.jsx";
+import axios from "../utils/axiosInstance.js";
 
 export const Event = () => {
   const { name } = useParams();
   const event = events.find((event) => event.name === name);
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
   const [isJoinTeamModalOpen, setIsJoinTeamModalOpen] = useState(false);
+  const { isAuthenticated } = useUser();
+  const [isMember, setIsMember] = useState(false);
+  const [teamName, setTeamName] = useState("");
+
+  useEffect(() => {
+    async function getIsMember() {
+      const res = await axios.get(`/event/${event.id}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      setIsMember(res.data.isMember);
+      if (res.data.isMember) {
+        setTeamName(res.data.teamName);
+      }
+    }
+    if (isAuthenticated) getIsMember();
+  }, []);
 
   const data = {
     "Detailed Description": event.description,
@@ -21,8 +39,7 @@ export const Event = () => {
   return (
     <>
       <Navbar />
-
-      <div className="flex flex-col md:flex-row items-center justify-evenly">
+      <div className="flex flex-col md:flex-row items-center justify-evenly bg-gray-600">
         <div className="w-full md:w-1/2 rounded-md py-4 backdrop-blur-[2px] px-6">
           <div className="text-center text-4xl text-lime-400">{event.name}</div>
           <div className="text-center text-lg mb-6">{event.date}</div>
@@ -34,20 +51,34 @@ export const Event = () => {
             <span> {event.last_date_reg} </span>
           </div>
 
-          <div className="flex justify-center mt-3 space-x-3">
-            <button
-              className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
-              onClick={() => setIsRegistrationModalOpen(true)}
-            >
-              Register Now!
-            </button>
-            <button
-              className="bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors"
-              onClick={() => setIsJoinTeamModalOpen(true)}
-            >
-              Join Team
-            </button>
-          </div>
+          {isAuthenticated && (
+            <div className="flex justify-center mt-3 space-x-3">
+              {!isMember ? (
+                <>
+                  <button
+                    className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
+                    onClick={() => setIsRegistrationModalOpen(true)}
+                  >
+                    Register Now!
+                  </button>
+                  <button
+                    className="bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors"
+                    onClick={() => setIsJoinTeamModalOpen(true)}
+                  >
+                    Join Team
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to={`/myTeams#${teamName}`}
+                  className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
+                  onClick={() => setIsRegistrationModalOpen(true)}
+                >
+                  My Team
+                </Link>
+              )}
+            </div>
+          )}
 
           <div className="mt-6">
             <div dangerouslySetInnerHTML={{ __html: event.overview }} />

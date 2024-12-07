@@ -1,33 +1,34 @@
-import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
-import axios from '../utils/axiosInstance';
-import { AxiosResponse } from 'axios';
+import React, { createContext, useState, useContext, useEffect } from "react";
+import axios from "../utils/axiosInstance";
 
-const UserContext = createContext < UserContextType | undefined > (undefined);
+const UserContext = createContext(undefined);
 
 export const useUser = () => {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error('useUser must be used within a UserProvider');
+    throw new Error("useUser must be used within a UserProvider");
   }
   return context;
 };
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState < User | null > (null);
+  const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (token) {
         try {
-          const res = await axios.get("/auth/me", {
-            "headers": { "Authorization": `Bearer ${token}` },
+          const res = await axios.get("/user/me", {
+            headers: { Authorization: `Bearer ${token}` },
           });
-          if (res && res.data)
+          if (res && res.data) {
+            setIsAuthenticated(!!res.data._id);
             setUser(res.data);
-          else {
-            localStorage.removeItem("token")
-            setUser({})
+          } else {
+            localStorage.removeItem("token");
+            setUser({});
           }
         } catch (error) {
           console.error("Error fetching user:", error);
@@ -37,11 +38,11 @@ export const UserProvider = ({ children }) => {
         setUser({});
       }
     };
-    fetchUser()
-  }, [])
+    fetchUser();
+  }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, isAuthenticated }}>
       {children}
     </UserContext.Provider>
   );

@@ -18,10 +18,13 @@ const Home = () => {
           <p className="mt-2 text-xl">Imagine. Create. Iterate.</p>
           <p className="mt-1 text-xl">IIT (BHU), Varanasi | February 2025</p>
           <h2 className="text-2xl font-semibold">
-            Want to be a part of the <span className="text-vermilion">BIGGEST</span> coding festival of the country?
+            Want to be a part of the{" "}
+            <span className="text-vermilion">BIGGEST</span> coding festival of
+            the country?
           </h2>
           <p className="mt-2">
-            Be part of <span className="text-vermilion">CODEFEST'24</span> by becoming our{" "}
+            Be part of <span className="text-vermilion">CODEFEST'24</span> by
+            becoming our{" "}
             <span className="text-vermilion">CAMPUS AMBASSADOR</span>.
           </p>
           <button
