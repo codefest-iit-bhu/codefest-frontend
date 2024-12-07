@@ -7,7 +7,7 @@ export default function Whoarewe() {
     <>
       <div className="w-full flex items-center justify-center my-10">
         <div className="relative w-full md:w-[50vw] h-fit flex flex-col items-center justify-center">
-          <div className="w-[80%] h-[15vw] md:h-[10vw] absolute top-[16vw] md:top-[11vw] overflow-y-scroll no-scrollbar text-black">
+          <div className="w-[70%] md:w-[70%] text-[12px] md:text-xl max-[500px]:h-[40vw] max-[500px]:top-[14vw] h-[45vw] md:h-[28vw] absolute top-[16vw] md:top-[10vw] min-[1600px]:h-[450px] min-[1600px]:top-[160px] min-[1600px]:w-[550px] overflow-y-scroll no-scrollbar text-black">
             <p>
               The{" "}
               <span className="font-semibold">
@@ -32,13 +32,13 @@ export default function Whoarewe() {
               glory.
             </p>
           </div>
-          <img src="aByteAboutUs.png" alt="" className="w-full" />
+          <img src="aByteAboutUs.svg" alt="" className="w-[800px] left-auto" />
           {
             !isAuthenticated &&
-            <div className="absolute w-fit h-[6.5vw] md:h-[4vw] bottom-[0.5vw] flex items-center">
+            <div className="absolute w-fit h-[10vw] md:h-[4vw] bottom-[-80px] md:bottom-[-150px] flex items-center">
               <Link to="/login" className="inline-block h-full">
                 <img
-                  src="registerLoginButton.png"
+                  src="registerLoginButton2.svg"
                   alt=""
                   className="h-full hover:scale-110"
                 />
