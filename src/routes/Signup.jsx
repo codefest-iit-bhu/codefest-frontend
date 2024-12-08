@@ -1,14 +1,10 @@
-import HeadingA from "../components/HeadingA";
-import TextBox from "../components/TextBox";
-import PasswordBox from "../components/PasswordBox";
-import EmailBox from "../components/EmailBox";
-import AnimatedButton from "../components/AnimatedButton";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import api from "../api";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "../utils/axiosInstance";
 import { useUser } from "../context/context";
+import Login_Signup from "../backgrounds/Login_Signup";
+import "../App.css";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -51,44 +47,97 @@ export default function Signup() {
       window.location.href = "/";
       return;
     }
-  }, [])
+  }, []);
 
   return (
     <>
-      <div className="w-[100vw] h-[100vh] flex justify-center items-center">
-        <div className="rounded-md flex flex-col items-center py-4 w-[500px] backdrop-blur-[2px]">
-          <HeadingA text="eyyy" size="2xl" />
-          <TextBox
-            placeholder="Username"
-            name="username"
-            value={credentials.username}
-            onChange={handleCredentials}
-          />
-          <EmailBox
-            placeholder="Email"
-            name="email"
-            value={credentials.email}
-            onChange={handleCredentials}
-          />
-          <PasswordBox
-            placeholder="Password"
-            name="password"
-            value={credentials.password}
-            onChange={handleCredentials}
-          />
-          <PasswordBox
-            placeholder="Confirm Password"
-            name="confirmPassword"
-            value={credentials.confirmPassword}
-            onChange={handleCredentials}
-          />
-          <AnimatedButton text="Signup >" onClick={handleSubmit} />
-          <Link
-            to="/login"
-            className="text-gray-400 text-md underline underline-offset-2"
-          >
-            Already have an account? Click here
-          </Link>
+      <Login_Signup />
+      <div className="flex flex-col items-center justify-center h-screen bg-cover bg-center">
+        <div className="relative bg-purple-900 p-6 rounded-2xl shadow-lg w-[450px]">
+          <div className="bg-gray-100 rounded-xl px-6 py-8 shadow-inner mt-6 relative">
+            <div className="absolute -top-4 left-4 flex space-x-2">
+              <button
+                onClick={() => {
+                  navigate("/login");
+                }}
+                className="relative px-4 py-1 font-bold text-black bg-gray-400 rounded-lg hover:bg-gray-500"
+              >
+                Login
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/signup");
+                }}
+                className="relative px-4 py-1 font-bold text-black bg-gray-100 rounded-lg"
+              >
+                Sign up
+              </button>
+            </div>
+            <div className="space-y-6">
+              <div className="flex items-center">
+                <label className="block text-lg font-medium text-black mb-2 w-24">
+                  Name
+                </label>
+                <div className="pixel-corners--wrapper">
+                  <input
+                    type="text"
+                    placeholder="name"
+                    value={credentials.username}
+                    onChange={handleCredentials}
+                    className="bg-gray-300 block flex-1 px-3 py-2 border-2 border-black rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600 text-black pixel-corners"
+                  />
+                </div>
+              </div>
+              <div className="flex items-center">
+                <label className="block text-lg font-medium text-black mb-2 w-24">
+                  E-mail
+                </label>
+                <div className="pixel-corners--wrapper">
+                  <input
+                    type="email"
+                    placeholder="email"
+                    value={credentials.email}
+                    onChange={handleCredentials}
+                    className="bg-gray-300 block flex-1 px-3 py-2 border-2 border-black rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600 text-black pixel-corners"
+                  />
+                </div>
+              </div>
+              <div className="flex items-center">
+                <label className="block text-lg font-medium text-black mb-2 w-24">
+                  Password
+                </label>
+                <div className="pixel-corners--wrapper">
+                  <input
+                    type="password"
+                    placeholder="password"
+                    value={credentials.password}
+                    onChange={handleCredentials}
+                    className="bg-gray-300 block flex-1 px-3 py-2 border-2 border-black rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600 text-black pixel-corners"
+                  />
+                </div>
+              </div>
+              <div className="flex items-center">
+                <label className="block text-lg font-medium text-black mb-2 w-24">
+                  Confirm Password
+                </label>
+                <div className="pixel-corners--wrapper">
+                  <input
+                    type="password"
+                    placeholder="confirm password"
+                    value={credentials.confirmPassword}
+                    onChange={handleCredentials}
+                    className="bg-gray-300 block flex-1 px-3 py-2 border-2 border-black rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600 text-black pixel-corners"
+                  />
+                </div>
+              </div>
+              <button
+                onClick={handleSubmit}
+                className="w-full py-2 text-xl text-black bg-orange-200 rounded-full border-2 border-black hover:bg-orange-400 pixel-corners"
+              >
+                SIGN UP
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </>
