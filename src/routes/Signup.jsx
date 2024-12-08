@@ -43,6 +43,10 @@ export default function Signup() {
     }
   };
 
+  const handleGoogleSignin = () => {
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/api/v1/Oauth2/google`;
+  };
+
   useEffect(() => {
     if (isAuthenticated) {
       window.location.href = "/";
@@ -147,7 +151,10 @@ export default function Signup() {
           </div>
         </div>
         <div className="mt-4">
-          <button className="bg-orange-200 flex items-center justify-center w-full py-2 px-4 text-black rounded-full border-2 border-black hover:bg-orange-400 pixel-corners">
+          <button
+            onClick={handleGoogleSignin}
+            className="bg-orange-200 flex items-center justify-center w-full py-2 px-4 text-black rounded-full border-2 border-black hover:bg-orange-400 pixel-corners"
+          >
             <img src={GoogleLogo} alt="Google Logo" className="w-5 h-5 mr-2" />
             Sign in with Google
           </button>
