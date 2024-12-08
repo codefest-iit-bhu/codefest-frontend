@@ -19,6 +19,9 @@ export default function Signup() {
   });
 
   const handleCredentials = (e) => {
+    console.log(e.target.name);
+    console.log(e.target);
+    console.log(e.target.value);
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
@@ -86,6 +89,7 @@ export default function Signup() {
                 <div className="pixel-corners--wrapper">
                   <input
                     type="text"
+                    name="username"
                     placeholder="name"
                     value={credentials.username}
                     onChange={handleCredentials}
@@ -100,6 +104,7 @@ export default function Signup() {
                 <div className="pixel-corners--wrapper">
                   <input
                     type="email"
+                    name="email"
                     placeholder="email"
                     value={credentials.email}
                     onChange={handleCredentials}
@@ -114,6 +119,7 @@ export default function Signup() {
                 <div className="pixel-corners--wrapper">
                   <input
                     type="password"
+                    name="password"
                     placeholder="password"
                     value={credentials.password}
                     onChange={handleCredentials}
@@ -128,6 +134,7 @@ export default function Signup() {
                 <div className="pixel-corners--wrapper">
                   <input
                     type="password"
+                    name="confirm password"
                     placeholder="confirm password"
                     value={credentials.confirmPassword}
                     onChange={handleCredentials}
