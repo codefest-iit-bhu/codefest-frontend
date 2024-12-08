@@ -10,6 +10,7 @@ const Teams = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useUser();
+  console.log(user);
 
   useEffect(() => {
     const fetchTeams = async () => {
@@ -44,18 +45,19 @@ const Teams = () => {
       <div className="teams-container">
         {isLoading ? (
           <Loader />
+        ) : teams ? (
+          teams.map((team) => (
+            <TeamCard
+              key={team.teamCode}
+              team={team}
+              onTeamDelete={handleTeamDelete}
+              onMemberUpdate={handleMemberUpdate}
+              user={user}
+            />
+          ))
         ) : (
-          teams ?
-            teams.map((team) => (
-              <TeamCard
-                key={team.teamCode}
-                team={team}
-                onTeamDelete={handleTeamDelete}
-                onMemberUpdate={handleMemberUpdate}
-                user={user}
-              />)) : <p>No Teams</p>
-        )
-        }
+          <p>No Teams</p>
+        )}
       </div>
     </>
   );
