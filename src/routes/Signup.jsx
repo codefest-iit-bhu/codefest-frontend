@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "../utils/axiosInstance";
 import { useUser } from "../context/context";
 import Login_Signup from "../backgrounds/Login_Signup";
 import "../App.css";
+import GoogleLogo from "/google.svg";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -130,6 +131,12 @@ export default function Signup() {
                   />
                 </div>
               </div>
+              <Link
+                to="/login"
+                className="text-blue-400 text-md underline underline-offset-2"
+              >
+                Already have an account? Click here
+              </Link>
               <button
                 onClick={handleSubmit}
                 className="w-full py-2 text-xl text-black bg-orange-200 rounded-full border-2 border-black hover:bg-orange-400 pixel-corners"
@@ -138,6 +145,12 @@ export default function Signup() {
               </button>
             </div>
           </div>
+        </div>
+        <div className="mt-4">
+          <button className="bg-orange-200 flex items-center justify-center w-full py-2 px-4 text-black rounded-full border-2 border-black hover:bg-orange-400 pixel-corners">
+            <img src={GoogleLogo} alt="Google Logo" className="w-5 h-5 mr-2" />
+            Sign in with Google
+          </button>
         </div>
       </div>
     </>
