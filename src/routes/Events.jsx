@@ -1,36 +1,34 @@
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import Timeline from "../components/Timeline";
-import events from "../store/events.js";
+import MobileEventsPage from "./Eventsmobileview";
+import DesktopEventsPage from "./EventsDesktopview";
+
 export default function Events() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); 
+    };
+
+    // Check screen size on initial render
+    handleResize();
+
+    // Add event listener to update on resize
+    window.addEventListener("resize", handleResize);
+
+    // Clean up event listener
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <>
-      <div className="bg-[rgba(20,11,41,1)]">
-        <Navbar />
-        <div className="relative flex flex-col justify-center items-center">
-          <div>
-            <img
-              src="/events_heading.svg"
-              alt="Events"
-              class="relative p-[10vh] mx-auto"
-            />
-          </div>
-          <div>
-            <img 
-            src="/events_track.svg"
-            alt="Events Track image"
-            className="relative mt-[10vh] "
-            />
-          </div>
-          <div>
-            <img 
-            src="/events_foot_design.svg"
-            alt="Events Footer Design"
-            className="w-[100vw]"
-            />
-          </div>
-        </div>
-        {/* <Timeline events={events} /> */}
-      </div>
-    </>
+    <div className="bg-[rgba(20,11,41,1)]">
+      <Navbar />
+      {isMobile ? (
+        <MobileEventsPage />
+      ) : (
+        <DesktopEventsPage />
+      )}
+    </div>
   );
 }
