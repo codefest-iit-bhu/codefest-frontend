@@ -39,10 +39,39 @@ export const Event = () => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col md:flex-row items-center justify-evenly bg-gray-600">
-        <div className="w-full md:w-1/2 rounded-md py-4 backdrop-blur-[2px] px-6">
-          <div className="text-center text-4xl text-lime-400">{event.name}</div>
+      <div
+        className="flex flex-col md:flex-row items-center justify-evenly"
+        style={{ backgroundColor: "#140B29" }}
+      >
+        <div className="w-full md:w-2/3 rounded-md py-4 backdrop-blur-[2px] px-6">
+          <div
+            className="text-center text-6xl text-lime-400"
+          >
+            {event.name}
+          </div>
           <div className="text-center text-lg mb-6">{event.date}</div>
+
+          <div className="relative mt-6 mb-6">
+            <img
+              src="../src/assets/cloud-left.png"
+              alt="Cloud Left"
+              className="absolute top-0 left-0 w-40 h-auto"
+            />
+            <br />
+            
+            <img
+              src="../src/assets/flag.png"
+              alt="Flag Icon"
+              className="mx-auto w-40 h-auto"
+            />
+            <br />
+            
+            <img
+              src="../src/assets/cloud-right.png"
+              alt="Cloud Right"
+              className="absolute bottom-0 right-0 w-40 h-auto"
+            />
+          </div>
 
           <div>
             <span className="text-xl text-lime-400">
@@ -94,6 +123,15 @@ export const Event = () => {
           <div className="mt-6 mb-6">
             <div className="text-xl text-lime-400 mb-4">Contact:</div>
             <div> {event.contact} </div>
+          </div>
+
+          <div className="mt-6">
+            <img
+              src="../src/assets/bottom-part.png"
+              alt="ground"
+              className="w-full h-auto"
+            />
+            
           </div>
         </div>
       </div>
