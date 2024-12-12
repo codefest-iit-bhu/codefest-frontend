@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import MobileEventsPage from "./Eventsmobileview";
 import DesktopEventsPage from "./EventsDesktopview";
+import Footer from "../components/Footer";
 
 export default function Events() {
   const [isMobile, setIsMobile] = useState(false);
@@ -29,6 +30,7 @@ export default function Events() {
       ) : (
         <DesktopEventsPage />
       )}
+      <Footer />
     </div>
   );
 }
