@@ -19,6 +19,9 @@ export default function Signup() {
   });
 
   const handleCredentials = (e) => {
+    console.log(e.target.name);
+    console.log(e.target);
+    console.log(e.target.value);
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
