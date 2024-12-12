@@ -80,6 +80,7 @@ export default function Login() {
                 <div className="pixel-corners--wrapper">
                   <input
                     type="email"
+                    name="email"
                     placeholder="email"
                     value={credentials.email}
                     onChange={handleCredentials}
@@ -94,6 +95,7 @@ export default function Login() {
                 <div className="pixel-corners--wrapper">
                   <input
                     type="password"
+                    name="password"
                     placeholder="password"
                     value={credentials.password}
                     onChange={handleCredentials}

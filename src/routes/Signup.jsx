@@ -86,6 +86,7 @@ export default function Signup() {
                 <div className="pixel-corners--wrapper">
                   <input
                     type="text"
+                    name="username"
                     placeholder="name"
                     value={credentials.username}
                     onChange={handleCredentials}
@@ -100,6 +101,7 @@ export default function Signup() {
                 <div className="pixel-corners--wrapper">
                   <input
                     type="email"
+                    name="email"
                     placeholder="email"
                     value={credentials.email}
                     onChange={handleCredentials}
@@ -114,6 +116,7 @@ export default function Signup() {
                 <div className="pixel-corners--wrapper">
                   <input
                     type="password"
+                    name="password"
                     placeholder="password"
                     value={credentials.password}
                     onChange={handleCredentials}
@@ -128,6 +131,7 @@ export default function Signup() {
                 <div className="pixel-corners--wrapper">
                   <input
                     type="password"
+                    name="confirmPassword"
                     placeholder="confirm password"
                     value={credentials.confirmPassword}
                     onChange={handleCredentials}
