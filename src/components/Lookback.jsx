@@ -56,7 +56,7 @@ const Lookback = () => {
   return (
     <div className="bg-[#140B29] mt-[100px] w-screen mb-10">
       {/* <img src="lookback.png" alt="" className="h-[150px] mb-10" /> */}
-      <div className="text-5xl md:text-7xl p-10">LOOKBACK</div>
+      <div className="text-5xl md:text-7xl p-10 z-[1]">LOOKBACK</div>
       <div className="w-full flex justify-center gap-2 flex-wrap p-2">
         {lookbackData.map((data) => <PixelBox title={data.label} text={data.value} img_src={data.imageSrc} key={data.id} />)}
 
