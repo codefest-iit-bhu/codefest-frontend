@@ -134,7 +134,7 @@ export default function Signup() {
                 <div className="pixel-corners--wrapper">
                   <input
                     type="password"
-                    name="confirm password"
+                    name="confirmPassword"
                     placeholder="confirm password"
                     value={credentials.confirmPassword}
                     onChange={handleCredentials}

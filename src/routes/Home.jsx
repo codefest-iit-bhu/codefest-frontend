@@ -16,21 +16,21 @@ export default function Home() {
         <div className="w-full flex justify-center pt-10 px-10">
           <img src="codefestLogo.svg" alt="" className="w-[600px]" />
         </div>
-        <div className="p-10 flex flex-col items-center w-full">
+        <div className="p-10 flex flex-col items-center w-full overflow-y-hidden">
           <img
             src="/clouds2.svg"
             alt=""
-            className="h-[80vh] z-[0.5] absolute left-0"
+            className="h-[80vh] z-[0.5] absolute left-0 max-md:h-[60vh]"
           />
           <img
             src="/clouds3.svg"
             alt=""
-            className="h-[80vh] z-[0.5] absolute right-0"
+            className="h-[80vh] z-[0.5] absolute right-0 max-md:h-[60vh]"
           />
           <img
             src="/amongus.svg"
             alt=""
-            className="h-[10vh] z-[0.5] absolute right-[20vh] bottom-[calc(30vh-175px)]"
+            className="h-[10vh] z-[0.5] absolute right-[20vh] bottom-[calc(30vh-175px)] max-md:hidden"
           />
           <Whoarewe />
         </div>
