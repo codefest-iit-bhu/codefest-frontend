@@ -39,7 +39,7 @@ export const Event = () => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col md:flex-row items-center justify-evenly bg-gray-600">
+      <div className="flex flex-col md:flex-row items-center justify-evenly"style={{ backgroundColor: "#140B29", color: "#FFFFFF" }}>
         <div className="w-full md:w-1/2 rounded-md py-4 backdrop-blur-[2px] px-6">
           <div className="text-center text-4xl text-lime-400">{event.name}</div>
           <div className="text-center text-lg mb-6">{event.date}</div>
