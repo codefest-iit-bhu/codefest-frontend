@@ -3,7 +3,7 @@ import Timeline from "../components/Timeline.jsx";
 
 function VerticalLine({ angle }) {
     return (
-        <img 
+        <img
             src="/vertical_dotted_line.svg"
             alt="vertical_dotted_line"
             className={`w-[1.5%] ml-[12%] transform`}
@@ -36,29 +36,29 @@ export default function DesktopEventsPage() {
             <div>
                 {eventDetails.map((event, idx) => (
                     <div key={event.alt}>
-                    <div className={`flex ${idx % 2 === 0 ? "flex-row" : "flex-row-reverse"} items-center`}>
-    {/* Timeline */}
-    <Timeline events={events} index={event.index} className={`${idx % 2 === 0 ? "ml-0" : "ml-auto"}`} />
-    
-    {/* Event Icon */}
-    <img 
-        src={event.icon}
-        alt={event.alt}
-        className="w-[10vw]"
-    />
-</div>
-                    
-                    {/* Render VerticalLine only if it's not the last event */}
-                    {idx < eventDetails.length - 1 && (
-                        <div className="flex justify-center">
-                            <VerticalLine angle={idx % 2 === 1 ? 45 : -45} />
+                        <div className={`flex ${idx % 2 === 0 ? "flex-row" : "flex-row-reverse"} items-center`}>
+                            {/* Timeline */}
+                            <Timeline events={events} index={event.index} className={`${idx % 2 === 0 ? "ml-0" : "ml-auto"}`} />
+
+                            {/* Event Icon */}
+                            <img
+                                src={event.icon}
+                                alt={event.alt}
+                                className="w-[10vw]"
+                            />
                         </div>
-                    )}
-                </div>
+
+                        {/* Render VerticalLine only if it's not the last event */}
+                        {idx < eventDetails.length - 1 && (
+                            <div className="flex justify-center">
+                                <VerticalLine angle={idx % 2 === 1 ? 45 : -45} />
+                            </div>
+                        )}
+                    </div>
                 ))}
             </div>
             <div>
-                <img 
+                <img
                     src="/events_foot_design.svg"
                     alt="Events Footer Design"
                     className="w-[100vw]"

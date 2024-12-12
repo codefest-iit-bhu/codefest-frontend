@@ -35,7 +35,7 @@ const BenefitsSection = () => {
   const { isAuthenticated } = useUser();
   const navigate = useNavigate()
   return (
-    <section className="py-10 flex flex-col items-center">
+    <section className="py-10 flex flex-col items-center w-2/3">
       <div className="px-10">
         <p className="text-5xl font-bold text-white mb-10 text-center">
           Why should you become a
