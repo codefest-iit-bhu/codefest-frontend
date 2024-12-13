@@ -1,9 +1,9 @@
 <svg width="368" height="258" viewBox="0 0 368 258" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<line x1="301" y1="126.5" x2="358" y2="126.5" stroke="#A589CE" stroke-width="5"/>
+<line x1="296" y1="118.5" x2="353" y2="118.5" stroke="#A589CE" stroke-width="5"/>
 <g filter="url(#filter0_d_0_1)">
 <rect x="4" width="360" height="250" fill="url(#pattern0_0_1)" shape-rendering="crispEdges"/>
 </g>
-<rect x="60.6328" y="3.55383" width="259.579" height="222.93" fill="url(#pattern1_0_1)"/>
+<rect x="64.6328" y="9.55389" width="259.579" height="222.93" fill="url(#pattern1_0_1)"/>
 <defs>
 <filter id="filter0_d_0_1" x="0" y="0" width="368" height="258" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>

@@ -3,7 +3,7 @@ import './EventCard.css';
 
 const EventCard = ({ title, date, lastDateReg }) => {
   return (
-    <div className="event-card  w-[10vw]">
+    <div className="event-card">
       <h1 className="event-title">{title}</h1>
       <p className="event-date">{date}</p>
       <hr className="divider" />
