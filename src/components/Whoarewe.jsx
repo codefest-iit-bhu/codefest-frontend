@@ -5,7 +5,7 @@ export default function Whoarewe() {
   const { isAuthenticated } = useUser();
   return (
     <>
-      <div className="w-full flex items-center justify-center my-10">
+      <div className="w-full flex items-center justify-center my-10 font-mono">
         <div className="relative w-full md:w-[50vw] h-fit flex flex-col items-center justify-center">
           <div className="w-[70%] md:w-[70%] text-[12px] md:text-xl max-[500px]:h-[40vw] max-[500px]:top-[14vw] h-[45vw] md:h-[28vw] absolute top-[16vw] md:top-[10vw] min-[1600px]:h-[450px] min-[1600px]:top-[160px] min-[1600px]:w-[550px] overflow-y-scroll no-scrollbar text-black">
             <p>

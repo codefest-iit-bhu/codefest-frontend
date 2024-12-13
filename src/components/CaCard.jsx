@@ -8,7 +8,7 @@ const CaCard = ({ request, onApprove, onReject }) => {
   };
 
   return (
-    <div className="backdrop-blur-md bg-gray-700/30 rounded-lg p-6 shadow-lg text-white">
+    <div className="backdrop-blur-md bg-gray-700/30 rounded-lg p-6 shadow-lg text-white font-mono">
       <h2 className="text-xl font-semibold mb-2">User: {request.user.name}</h2>
       <p className="mb-1">
         <span className="font-medium">Institute:</span> {request.institute}

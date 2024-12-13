@@ -4,8 +4,8 @@ import { REFRESH_TOKEN } from "../constants";
 import toast from "react-hot-toast";
 import axios from "../utils/axiosInstance";
 import { useUser } from "../context/context";
-import Login_Signup from "../backgrounds/Login_Signup";
 import GoogleLogo from "/google.svg";
+import Background from "../backgrounds/Background";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -50,8 +50,8 @@ export default function Login() {
 
   return (
     <>
-      <Login_Signup />
-      <div className="flex flex-col items-center justify-center h-screen bg-cover bg-center">
+      <Background image_path={"/login_signup.svg"} />
+      <div className="flex flex-col items-center justify-center h-screen bg-cover bg-center scale-[80%] sm:scale-100">
         <div className="relative bg-purple-900 p-6 rounded-2xl shadow-lg w-[450px]">
           <div className="bg-gray-100 rounded-xl px-6 py-8 shadow-inner mt-6 relative">
             <div className="absolute -top-4 left-4 flex space-x-2">

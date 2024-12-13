@@ -30,9 +30,9 @@ export default function CA() {
       <div className="bg-[#140B29] w-screen flex flex-col items-center">
         <BenefitsSection />
       </div>
-      {/* <div className="bg-[#140B29]">
+      <div className="bg-[#140B29] md:h-[140vh] lg:h-[130vh]">
         <FAQSection />
-      </div> */}
+      </div>
       {/* <Footer /> */}
     </>
   );

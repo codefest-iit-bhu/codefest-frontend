@@ -4,7 +4,7 @@ const TestimonialCard = ({ testimonial }) => {
   return (
     <>
       <div
-        className="w-[300px] h-[126px] md:w-[600px] md:h-[235px] relative flex-shrink-0 text-[12px] md:text-lg"
+        className="w-[300px] h-[126px] md:w-[600px] md:h-[235px] relative flex-shrink-0 text-[12px] md:text-lg font-mono"
         style={{
           background: 'url("/testimonialBox.png")',
           backgroundRepeat: "no-repeat",

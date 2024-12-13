@@ -35,15 +35,32 @@ const FAQSection = () => {
   return (
     <div className="w-full py-10 flex flex-col">
       <div className="flex justify-center px-40 mb-10 relative">
-        <h1 className="text-[100px] font-bold text-white z-[0.5]">FAQ</h1>
+        <h1 className="text-[100px] font-bold text-white z-20">FAQs</h1>
         <img src="/cloud2.svg" alt="" className="absolute right-0" />
       </div>
 
-      <ul className="w-full flex flex-col items-center text-3xl z-[0.5]">
-        {faqItems.map((item, index) => (
-          <li key={index}>FAQ item</li>
-        ))}
-      </ul>
+      <div className="flex justify-center">
+        <div id="accordion-collapse" data-accordion="collapse" className="font-mono flex flex-col gap-4 z-10 sm:px-3 lg:w-4/5">
+          {faqItems.map((item, index) => (
+            <>
+              <h2 id={`accordion-collapse-heading-${index}`}>
+                <button type="button" className="flex items-center justify-between w-full p-5 font-medium rtl:text-right border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 hover:bg-purple-500 gap-3 text-white text-lg bg-transparent" data-accordion-target={`#accordion-collapse-body-${index}`} aria-expanded="true" aria-controls={`accordion-collapse-body-${index}`}>
+                  <span> {item.question} </span>
+                  <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                  </svg>
+                </button>
+              </h2>
+              <div id={`accordion-collapse-body-${index}`} className="hidden" aria-labelledby={`accordion-collapse-heading-${index}`}>
+                <div className="p-5 border border-b-0 border-gray-200 bg-gray-500">
+                  <p className="mb-2"> {item.answer} </p>
+                </div>
+              </div>
+            </>
+          ))}
+        </div>
+      </div>
+
     </div>
   );
 };

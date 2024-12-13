@@ -42,7 +42,7 @@ const PreviousSponsors = () => {
   ];
 
   return (
-    <div className="p-6 mb-10">
+    <div className="sm:p-6 mb-10">
       {/* <div className="w-fit mb-10">
         <img
           src="/previousSponsors.png"
