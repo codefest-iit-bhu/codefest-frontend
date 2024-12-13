@@ -208,7 +208,7 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
   ).name;
 
   const isLeader = team.teamLeader === user._id;
-  useEffect(() => {}, [team.teamLeader]);
+  useEffect(() => { }, [team.teamLeader]);
 
   const handleDeleteTeam = async () => {
     const ans = window.confirm("Do you want to delete the team?");
@@ -257,8 +257,23 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
     }
   };
 
-  const handleLeaveTeam = async (memberId) => {
+  const handleLeaveTeam = async () => {
     //leave team logic
+    const ans = window.confirm("Do you want to leave this team?");
+    if (!ans) {
+      return;
+    }
+    const memberId = user._id;
+    setIsProcessing(true);
+    await axios.delete("/member", {
+      data: { userId: memberId, teamId: team._id },
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    toast.success("Team left successfully.");
+    setIsProcessing(false);
+    window.location.reload();
     return;
   };
 
@@ -330,7 +345,7 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
         </div>
       )}
 
-      <div className="team-card" id={team.teamName}>
+      <div className="team-card font-mono" id={team.teamName}>
         <Teamcardbg />
         <div className="team-card">
           <h3 className="team-name">{team.teamName}</h3>
@@ -358,9 +373,9 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
                 {members.map((member) => (
                   <li
                     key={member.user._id}
-                    className="member-item text-white flex justify-between items-center"
+                    className="member-item text-white flex justify-between items-center w-full"
                   >
-                    <div className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-2 w-full">
                       {member.user.name}
                       {member.user._id === team.teamLeader && (
                         <span className="ml-1 text-xs">(L)</span>

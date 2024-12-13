@@ -42,7 +42,7 @@ const Teams = () => {
   return (
     <>
       <Navbar />
-      <div className="teams-container">
+      <div className="teams-container bg-[#140B29] min-h-[95vh]">
         {isLoading ? (
           <Loader />
         ) : teams ? (

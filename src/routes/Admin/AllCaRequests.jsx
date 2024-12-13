@@ -5,6 +5,7 @@ import CaCard from "../../components/CaCard";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/context";
 import axios from "../../utils/axiosInstance";
+import Navbar from "../../components/Navbar";
 
 const ALL_REQUESTS_URL = "/ca/all";
 
@@ -68,8 +69,9 @@ const AllCaRequests = () => {
     }
   };
 
-  return (
-    <div className="flex flex-col items-center min-h-screen p-4">
+  return (<>
+    <Navbar />
+    <div className="flex flex-col items-center min-h-screen p-4 bg-[#140B29] h-[100vh]">
       <h1 className="text-4xl font-bold mb-10 text-white">All CA Requests</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
         {requests.map((request) => (
@@ -82,6 +84,7 @@ const AllCaRequests = () => {
         ))}
       </div>
     </div>
+  </>
   );
 };
 

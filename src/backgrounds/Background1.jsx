@@ -5,7 +5,7 @@ export default function Background1() {
         src="/LandingPage.svg"
         width={0}
         height={0}
-        className="absolute h-[100vh] md:h-auto w-fit md:w-[100vw] object-cover md:top-[-10vw] z-[-1]"
+        className="absolute h-[100vh] lg:h-auto w-fit md:w-[100vw] object-cover lg:-mt-[20vh] xl:-mt-[35vh] z-[-1]"
       />
     </>
   );

@@ -15,7 +15,7 @@ const Testimonials = () => {
     {
       name: "Kylian Mbappe",
       imgAlt: "Kylian Mbappe",
-      imgSrc: "",
+      imgSrc: "https://imageio.forbes.com/specials-images/imageserve/626c7cf3616c1112ae834a2b/0x0.jpg?format=jpg&crop=1603,1603,x1533,y577,safe&height=416&width=416&fit=bounds",
       msg: "I think sometimes in the life I'm too competetive.",
     },
     {
