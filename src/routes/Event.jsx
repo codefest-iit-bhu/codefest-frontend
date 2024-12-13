@@ -6,6 +6,9 @@ import JoinTeamModal from "../components/JoinTeamModal.jsx"; // New import
 import events from "../store/events.js";
 import { useUser } from "../context/context.jsx";
 import axios from "../utils/axiosInstance.js";
+import cloudLeft from "../assets/cloud-left.png";
+import cloudRight from "../assets/cloud-right.png";
+import flag from "../assets/flag.png";
 
 export const Event = () => {
   const { name } = useParams();
@@ -49,35 +52,35 @@ export const Event = () => {
           >
             {event.name}
           </div>
-          <div className="text-center text-lg mb-6">{event.date}</div>
+          <div className="text-center text-lg mb-6 font-mono">{event.date}</div>
 
           <div className="relative mt-6 mb-6">
             <img
-              src="../src/assets/cloud-left.png"
+              src={cloudLeft}
               alt="Cloud Left"
               className="absolute top-0 left-0 w-40 h-auto"
             />
             <br />
-            
+
             <img
-              src="../src/assets/flag.png"
+              src={flag}
               alt="Flag Icon"
               className="mx-auto w-40 h-auto"
             />
             <br />
-            
+
             <img
-              src="../src/assets/cloud-right.png"
+              src={cloudRight}
               alt="Cloud Right"
               className="absolute bottom-0 right-0 w-40 h-auto"
             />
           </div>
 
-          <div>
-            <span className="text-xl text-lime-400">
+          <div className="text-2xl">
+            <span className="text-lime-400">
               Registration Deadline:
             </span>
-            <span> {event.last_date_reg} </span>
+            <span className="font-mono"> {event.last_date_reg} </span>
           </div>
 
           {isAuthenticated && (
@@ -85,13 +88,13 @@ export const Event = () => {
               {!isMember ? (
                 <>
                   <button
-                    className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
+                    className="bg-lime-600 text-white p-3 font-bold rounded-lg hover:bg-lime-700 transition-colors"
                     onClick={() => setIsRegistrationModalOpen(true)}
                   >
                     Register Now!
                   </button>
                   <button
-                    className="bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors"
+                    className="bg-green-600 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
                     onClick={() => setIsJoinTeamModalOpen(true)}
                   >
                     Join Team
@@ -109,12 +112,12 @@ export const Event = () => {
             </div>
           )}
 
-          <div className="mt-6">
+          <div className="mt-6 text-lg font-mono">
             <div dangerouslySetInnerHTML={{ __html: event.overview }} />
           </div>
 
           {Object.entries(data).map(([key, value]) => (
-            <div className="mt-6" key={key}>
+            <div className="mt-6 font-mono" key={key}>
               <div className="text-xl text-lime-400 mb-4"> {key} :</div>
               <div dangerouslySetInnerHTML={{ __html: value }} />
             </div>
@@ -122,7 +125,7 @@ export const Event = () => {
 
           <div className="mt-6 mb-6">
             <div className="text-xl text-lime-400 mb-4">Contact:</div>
-            <div> {event.contact} </div>
+            <div className="font-mono"> {event.contact} </div>
           </div>
 
           <div className="mt-6">
@@ -131,7 +134,7 @@ export const Event = () => {
               alt="ground"
               className="w-full h-auto"
             />
-            
+
           </div>
         </div>
       </div>
