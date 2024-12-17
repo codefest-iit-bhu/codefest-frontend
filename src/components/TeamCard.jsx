@@ -195,6 +195,8 @@ import axios from "../utils/axiosInstance";
 import toast from "react-hot-toast";
 import events from "../store/events.js";
 import Teamcardbg from "../backgrounds/team_card.jsx";
+import Confirmation from "./Confirmation.jsx";
+import Modal from "./Modal.jsx";
 
 const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
   const [isProcessing, setIsProcessing] = useState(false);
@@ -202,6 +204,8 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
   const [members, setMembers] = useState(team.members);
   const [isChangeLeaderModalOpen, setIsChangeLeaderModalOpen] = useState(false);
   const [selectedNewLeader, setSelectedNewLeader] = useState("");
+  const [confirm, setConfirm] = useState(false);
+  const [openConfirm, setOpenConfirm] = useState(false);
 
   const eventName = events.find(
     (event) => event.id === team.event.eventId
@@ -398,13 +402,13 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
           <div className="bottom-4">
             {team.teamLeader === user._id ? (
               <>
-                <button
+                {members.length > 1 && <button
                   className="delete-team-button ml-7"
                   onClick={() => setIsChangeLeaderModalOpen(true)}
                   disabled={isProcessing}
                 >
                   <img src="/leadercard.png" alt="Change Leader" />
-                </button>
+                </button>}
 
                 <button
                   className="delete-team-button ml-7"
@@ -427,6 +431,9 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
 
           {message && <p className="error-message">{message}</p>}
         </div>
+        {/* <Modal isOpen={openConfirm} onClose={() => setOpenConfirm(false)}>
+          <Confirmation confirm={confirm} setConfirm={setConfirm} setOpenConfirm={setOpenConfirm} />
+        </Modal> */}
       </div>
     </>
   );

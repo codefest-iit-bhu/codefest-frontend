@@ -45,7 +45,7 @@ export default function Home() {
             alt=""
             className="w-[8vw] absolute right-16 translate-y-[-16vw]"
           />
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </div>
     </>

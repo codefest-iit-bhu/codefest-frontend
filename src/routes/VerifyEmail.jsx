@@ -40,6 +40,7 @@ export default function VerifyEmail() {
 
   return (
     <>
+      <Background image_path={"/login_signup.svg"} />
       <div className="w-[100vw] h-[100vh] flex justify-center items-center bg-gray-600">
         <div className="rounded-md flex flex-col items-center py-4 w-[500px] backdrop-blur-[2px]">
           <HeadingA text="Email Verification" size="2xl" />

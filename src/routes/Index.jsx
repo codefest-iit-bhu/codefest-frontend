@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useUser } from "../context/context";
 import Background from "../backgrounds/Background";
+import PixelTimer from "../components/PixelTimer";
 
 export default function Home() {
   const { isAuthenticated } = useUser()
@@ -11,7 +12,8 @@ export default function Home() {
       <div className="absolute top-[15vh] lg:top-[10vh] w-screen flex justify-center sm:px-10 px-12 sm:scale-100 scale-110">
         <img src="/codefestLogo.svg" alt="" />
       </div>
-      <div className="w-screen h-screen flex flex-col justify-center items-center gap-4 sm:gap-8 overflow-hidden -mt-[5vh] sm:mt-0">
+      <div className="w-screen h-screen flex flex-col justify-center items-center gap-4 sm:gap-6 overflow-hidden -mt-[5vh] sm:mt-0">
+        {/* <PixelTimer /> */}
         <a href="/home" className="w-fit h-fit">
           <img src="/exploreButton.png" alt="" className="hover:scale-110 scale-75 sm:scale-100" />
         </a>

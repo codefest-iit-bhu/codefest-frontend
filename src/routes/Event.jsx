@@ -9,6 +9,7 @@ import axios from "../utils/axiosInstance.js";
 import cloudLeft from "../assets/cloud-left.png";
 import cloudRight from "../assets/cloud-right.png";
 import flag from "../assets/flag.png";
+import ground from "../assets/bottom-part.png"
 
 export const Event = () => {
   const { name } = useParams();
@@ -58,14 +59,14 @@ export const Event = () => {
             <img
               src={cloudLeft}
               alt="Cloud Left"
-              className="absolute top-0 left-0 w-40 h-auto"
+              className="absolute top-0 left-0 w-40 h-auto -z-10"
             />
             <br />
 
             <img
               src={flag}
               alt="Flag Icon"
-              className="mx-auto w-40 h-auto"
+              className="mx-auto w-40 h-auto z-20"
             />
             <br />
 
@@ -83,34 +84,38 @@ export const Event = () => {
             <span className="font-mono"> {event.last_date_reg} </span>
           </div>
 
-          {isAuthenticated && (
-            <div className="flex justify-center mt-3 space-x-3">
-              {!isMember ? (
-                <>
-                  <button
-                    className="bg-lime-600 text-white p-3 font-bold rounded-lg hover:bg-lime-700 transition-colors"
-                    onClick={() => setIsRegistrationModalOpen(true)}
-                  >
-                    Register Now!
-                  </button>
-                  <button
-                    className="bg-green-600 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
-                    onClick={() => setIsJoinTeamModalOpen(true)}
-                  >
-                    Join Team
-                  </button>
-                </>
-              ) : (
-                <Link
-                  to={`/myTeams#${teamName}`}
-                  className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
-                  onClick={() => setIsRegistrationModalOpen(true)}
+          <div className="flex justify-center mt-3 space-x-3">
+            {!isMember ? (
+              <>
+                <button
+                  className="bg-lime-600 text-white p-3 font-bold rounded-lg hover:bg-lime-700 transition-colors"
+                  onClick={() => {
+                    if (!isAuthenticated) return window.location.href = "/login";
+                    setIsRegistrationModalOpen(true)
+                  }}
                 >
-                  My Team
-                </Link>
-              )}
-            </div>
-          )}
+                  Register Now!
+                </button>
+                <button
+                  className="bg-green-600 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
+                  onClick={() => {
+                    if (!isAuthenticated) return window.location.href = "/login";
+                    setIsJoinTeamModalOpen(true)
+                  }}
+                >
+                  Join Team
+                </button>
+              </>
+            ) : (
+              <Link
+                to={`/myTeams#${teamName}`}
+                className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
+                onClick={() => setIsRegistrationModalOpen(true)}
+              >
+                My Team
+              </Link>
+            )}
+          </div>
 
           <div className="mt-6 text-lg font-mono">
             <div dangerouslySetInnerHTML={{ __html: event.overview }} />
@@ -130,7 +135,7 @@ export const Event = () => {
 
           <div className="mt-6">
             <img
-              src="../src/assets/bottom-part.png"
+              src={ground}
               alt="ground"
               className="w-full h-auto"
             />

@@ -4,7 +4,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
   background-color: #000;
 }
 
@@ -14,9 +13,9 @@
   justify-content: center;
   padding: 20px;
   border: 8px solid #9c27b0;
-  box-shadow: 
+  box-shadow:
     0 0 0 4px #6a1b9a,
-    0 0 15px #9c27b0, 
+    0 0 15px #9c27b0,
     0 0 30px #9c27b0;
   border-radius: 0;
   background: #111;
@@ -34,10 +33,10 @@
 
 .timer-value {
   font-family: "Press Start 2P", cursive;
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #9c27b0;
-  text-shadow: 
-    2px 2px #6a1b9a, 
+  text-shadow:
+    2px 2px #6a1b9a,
     4px 4px #000;
 }
 

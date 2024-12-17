@@ -4,6 +4,7 @@ import { useUser } from "../context/context";
 import axios from "../utils/axiosInstance";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
+import Confirmation from "../components/Confirmation";
 
 const Teams = () => {
   const [teams, setTeams] = useState([]);
@@ -42,7 +43,7 @@ const Teams = () => {
   return (
     <>
       <Navbar />
-      <div className="teams-container bg-[#140B29] min-h-[95vh]">
+      <div className="teams-container bg-purple-800 min-h-[95vh]">
         {isLoading ? (
           <Loader />
         ) : teams ? (

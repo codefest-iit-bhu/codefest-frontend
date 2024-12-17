@@ -16,7 +16,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="h-10 fixed w-full bg-[#4E4040] z-[10]">
+      <div className="h-12 flex justify-evenly items-center absolute top-0 left-0 w-full bg-[#4E4040] z-[10]">
         <nav className="hidden lg:flex text-white w-full py-1">
           <div className="flex space-x-4 w-full">
             <Link text="Main" href="/" />
@@ -67,16 +67,14 @@ function Navbar() {
         </div>
 
         <div
-          className={`fixed top-0 left-0 h-full w-full bg-gray-800 bg-opacity-75 z-10 transition-opacity duration-300 ${
-            isSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
+          className={`fixed top-0 left-0 h-full w-full bg-gray-800 bg-opacity-75 z-10 transition-opacity duration-300 ${isSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
           onClick={closeSidebar}
         ></div>
 
         <div
-          className={`fixed top-0 left-0 h-full w-72 bg-gray-900 text-white z-20 transition-transform duration-300 ${
-            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+          className={`fixed top-0 left-0 h-full w-72 bg-gray-900 text-white z-20 transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
         >
           <div className="flex flex-col h-full p-4 space-y-4">
             <div

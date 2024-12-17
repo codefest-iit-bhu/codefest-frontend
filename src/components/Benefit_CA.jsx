@@ -44,13 +44,12 @@ const BenefitsSection = () => {
       </div>
 
       {
-        isAuthenticated &&
         <div>
           <a href="/ca-register">
             <button className="p-4 rounded-lg bg-orange-500 text-white text-lg font-bold">Register Now!</button>
           </a>
           {
-            user.role === "admin" &&
+            user?.role === "admin" &&
             <a href="/allCaRequests">
               <button className="p-4 rounded-lg bg-purple-500 text-white text-lg font-bold ml-5">Admin Panel</button>
             </a>
@@ -58,14 +57,14 @@ const BenefitsSection = () => {
         </div>
       }
 
-      <ul className="w-full list-[circle]">
+      <ul className="w-full list-[circle] mt-5 flex flex-col gap-8">
         {tasks.map((task, i) => (
           <>
             <li key={i} className="flex flex-col w-full px-10 text-wrap font-mono text-lg md:text-2xl">
-              <span className="font-bold">{task.start}</span>
+              <span className="font-bold text-orange-400">{task.start}</span>
               {task.rest}
             </li>
-            {(i == 2) && <img src="/cloud1.svg" />}
+            {(i == 2) && <img src="/cloud1.svg" className="w-1/2" />}
           </>
         ))}
       </ul>

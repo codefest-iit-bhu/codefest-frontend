@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./PixelTimer.css";
 
-const PixelTimer = ({ height = "200px", width = "500px" }) => {
+const PixelTimer = ({ height = "150px", width = "500px" }) => {
   const targetDate = new Date("2025-01-03T00:00:00"); // Hardcoded target date
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
 
@@ -52,7 +52,7 @@ const PixelTimer = ({ height = "200px", width = "500px" }) => {
     if (timeLeft.days > 0 || units.length > 0) units.push({ label: "Days", value: timeLeft.days });
     if (timeLeft.hours > 0 || units.length > 0) units.push({ label: "Hours", value: timeLeft.hours });
     if (timeLeft.minutes > 0 || units.length > 0) units.push({ label: "Minutes", value: timeLeft.minutes });
-    units.push({ label: "Seconds", value: timeLeft.seconds }); 
+    units.push({ label: "Seconds", value: timeLeft.seconds });
 
     return units.map((unit, index) => (
       <React.Fragment key={index}>

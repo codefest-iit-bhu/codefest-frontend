@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SetPassword from "../components/SetPassword";
 import axios from "../utils/axiosInstance";
+import Background from "../backgrounds/Background";
 
 const SetPasswordRoute = () => {
   const navigate = useNavigate();
@@ -22,9 +23,12 @@ const SetPasswordRoute = () => {
   };
 
   return (
-    <div className="set-password-page">
-      <SetPassword onSubmit={handleSetPassword} />
-    </div>
+    <>
+      <Background image_path={"/login_signup.svg"} />
+      <div className="set-password-page">
+        <SetPassword onSubmit={handleSetPassword} />
+      </div>
+    </>
   );
 };
 
