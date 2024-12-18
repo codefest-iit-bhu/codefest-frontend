@@ -12,11 +12,11 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="w-screen bg-[#140B29]">
+      <div className="w-screen bg-[#140B29] pt-6">
         <div className="w-full flex justify-center pt-10 px-10">
           <img src="codefestLogo.svg" alt="" className="w-[600px]" />
         </div>
-        <div className="p-10 flex flex-col items-center w-full overflow-y-hidden">
+        <div className="flex flex-col items-center w-full overflow-y-hidden p-6">
           <img
             src="/clouds2.svg"
             alt=""
@@ -30,7 +30,7 @@ export default function Home() {
           <img
             src="/amongus.svg"
             alt=""
-            className="h-[10vh] z-[0.5] absolute right-[20vh] bottom-[calc(30vh-175px)] max-md:hidden"
+            className="h-[10vh] z-[0.5] absolute right-[20vh] bottom-[calc(30vh-160px)] max-md:hidden"
           />
           <Whoarewe />
         </div>

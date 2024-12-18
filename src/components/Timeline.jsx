@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import EventCard from "./EventCard"; 
+import EventCard from "./EventCard";
 
-const Timeline = ({ events, index }) => {
-  const event = events[index]; 
+const Timeline = ({ event }) => {
 
   return (
     <div className="timeline-container">

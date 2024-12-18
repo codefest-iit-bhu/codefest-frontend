@@ -38,9 +38,12 @@ const FAQ = () => {
     };
 
     return (
-        <div className="w-full mx-auto border-t-[1px] p-4 font-mono flex flex-col items-center">
-            <h1 className="text-3xl font-bold text-center">FAQs</h1>
-            <div className="space-y-4 w-[70vw]">
+        <div className="w-full mx-auto p-4 font-mono flex flex-col items-center">
+            <div className="flex justify-center px-40 mb-10 w-full">
+                <h1 className="text-5xl font-bold text-white z-20">FAQs</h1>
+                <img src="/cloud2.svg" alt="" className="absolute right-0 z-0 lg:block hidden" />
+            </div>
+            <div className="space-y-4 w-[70vw] z-10 mb-4">
                 {faqs.map((faq, index) => (
                     <div
                         key={index}

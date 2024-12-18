@@ -34,13 +34,6 @@ const Testimonials = () => {
 
   return (
     <div className="w-full px-6 py-12 bg-background flex flex-col mb-10">
-      {/* <div className="w-fit">
-        <img
-          src="/testimonials.png"
-          alt=""
-          className="h-[150px] object-contain mb-10"
-        />
-      </div> */}
       <div className="text-5xl md:text-7xl p-10">TESTIMONIALS</div>
       <div className="w-full flex justify-center gap-10 flex-wrap">
         {testimonials.map((testimonial, index) => (

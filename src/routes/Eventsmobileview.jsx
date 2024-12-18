@@ -3,10 +3,10 @@ import events from "../store/events.js";
 
 function VerticalLine() {
     return (
-        <img 
+        <img
             src="/vertical_dotted_line.svg"
             alt="vertical_dotted_line"
-            className="w-[1%] ml-[12%]"
+            className="w-[1%] ml-[12%] scale-150 sm:scale-100"
         />
     );
 }
@@ -30,24 +30,24 @@ export default function Eventsmobileview() {
                 />
             </div>
             <div>
-                {eventDetails.map((event, idx) => (
-                    <div key={event.alt}>
+                {events.sort((a, b) => (new Date(a.last_date_reg)) - (new Date(b.last_date_reg))).map((event, index) => (
+                    <div key={event.name}>
                         <div className="flex">
-                            <img 
-                                src={event.icon}
-                                alt={event.alt}
+                            <img
+                                src={event.image_desk_path}
+                                alt={event.name}
                                 className="w-[26vw]"
                             />
-                            <Timeline events={events} index={event.index} />
+                            <Timeline event={event} />
                         </div>
-                        
+
                         {/* Render VerticalLine only if it's not the last event */}
-                        {idx < eventDetails.length - 1 && <VerticalLine />}
+                        {index < eventDetails.length - 1 && <VerticalLine />}
                     </div>
                 ))}
             </div>
             <div>
-                <img 
+                <img
                     src="/events_foot_design.svg"
                     alt="Events Footer Design"
                     className="w-[100vw] mt-[8vh]"

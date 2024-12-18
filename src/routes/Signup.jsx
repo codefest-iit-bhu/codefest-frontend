@@ -6,6 +6,7 @@ import { useUser } from "../context/context";
 import Login_Signup from "../backgrounds/Login_Signup";
 import "../App.css";
 import GoogleLogo from "/google.svg";
+import ReturnHome from "../components/ReturnHome";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -60,6 +61,7 @@ export default function Signup() {
   return (
     <>
       <Login_Signup />
+      <ReturnHome />
       <div className="flex flex-col items-center justify-center h-screen bg-cover bg-center">
         <div className="relative bg-purple-900 p-6 rounded-2xl shadow-lg w-[450px]">
           <div className="bg-gray-100 rounded-xl px-6 py-8 shadow-inner mt-6 relative">

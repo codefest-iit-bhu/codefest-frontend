@@ -6,6 +6,7 @@ import axios from "../utils/axiosInstance";
 import { useUser } from "../context/context";
 import GoogleLogo from "/google.svg";
 import Background from "../backgrounds/Background";
+import ReturnHome from "../components/ReturnHome";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ export default function Login() {
   return (
     <>
       <Background image_path={"/login_signup.svg"} />
+      <ReturnHome />
       <div className="flex flex-col items-center justify-center h-screen bg-cover bg-center scale-[80%] sm:scale-100">
         <div className="relative bg-purple-900 p-6 rounded-2xl shadow-lg w-[450px]">
           <div className="bg-gray-100 rounded-xl px-6 py-8 shadow-inner mt-6 relative">

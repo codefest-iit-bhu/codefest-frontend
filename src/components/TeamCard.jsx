@@ -333,13 +333,13 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
             <div className="flex justify-end space-x-2">
               <button
                 onClick={() => setIsChangeLeaderModalOpen(false)}
-                className="px-4 py-2 bg-gray-200 rounded"
+                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-400 transition-all cursor-pointer duration-500"
               >
                 Cancel
               </button>
               <button
                 onClick={handleChangeLeader}
-                className="px-4 py-2 bg-blue-500 text-white rounded"
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer transition-all duration-500"
                 disabled={!selectedNewLeader || isProcessing}
               >
                 Change Leader
@@ -403,7 +403,7 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
             {team.teamLeader === user._id ? (
               <>
                 {members.length > 1 && <button
-                  className="delete-team-button ml-7"
+                  className="delete-team-button ml-7 hover:scale-105 transition-all duration-500"
                   onClick={() => setIsChangeLeaderModalOpen(true)}
                   disabled={isProcessing}
                 >
@@ -411,7 +411,7 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
                 </button>}
 
                 <button
-                  className="delete-team-button ml-7"
+                  className="delete-team-button ml-7 hover:scale-105 transition-all duration-500"
                   onClick={handleDeleteTeam}
                   disabled={isProcessing}
                 >
@@ -420,7 +420,7 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
               </>
             ) : (
               <button
-                className="leave-team-button ml-7"
+                className="leave-team-button ml-7 hover:scale-105 transition-all duration-500"
                 onClick={handleLeaveTeam}
                 disabled={isProcessing}
               >
@@ -428,6 +428,8 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
               </button>
             )}
           </div>
+
+          <div className="flex justify-end"> <span className="font-bold">{events.find(event => event.id === team.event.eventId).date}</span></div>
 
           {message && <p className="error-message">{message}</p>}
         </div>

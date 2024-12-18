@@ -11,7 +11,7 @@ const lookbackData = [
   {
     id: 2,
     imageSrc: "/Globe.png",
-    label: "Prize Money",
+    label: "Colleges",
     value: "98",
   },
   {
@@ -38,7 +38,7 @@ const PixelBox = ({ title, text, img_src }) => {
   return (
     <>
       <div
-        className="h-[95px] w-[133px] md:h-[142px] md:w-[200px] text-black flex flex-col flex-shrink-0 justify-center items-center"
+        className="h-[95px] w-[133px] md:h-[142px] md:w-[200px] text-black flex flex-col flex-shrink-0 justify-center items-center hover:scale-105 rounded-lg transition-all duration-300"
         style={{
           backgroundImage: "url('/pixelBox.png')",
           backgroundRepeat: "no-repeat",
@@ -54,7 +54,7 @@ const PixelBox = ({ title, text, img_src }) => {
 
 const Lookback = () => {
   return (
-    <div className="bg-[#140B29] mt-[100px] w-screen mb-10">
+    <div className="bg-[#140B29] md:mt-28 lg:mt-8 w-screen mb-10">
       {/* <img src="lookback.png" alt="" className="h-[150px] mb-10" /> */}
       <div className="text-5xl md:text-7xl p-10 z-[1]">LOOKBACK</div>
       <div className="w-full flex justify-center gap-2 flex-wrap p-2">

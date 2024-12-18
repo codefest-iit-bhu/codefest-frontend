@@ -17,25 +17,30 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        try {
-          const res = await axios.get("/user/me", {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          if (res && res.data) {
-            setIsAuthenticated(!!res.data._id);
-            setUser(res.data);
-          } else {
-            localStorage.removeItem("token");
+      try {
+        const token = localStorage.getItem("token");
+        if (token) {
+          try {
+            const res = await axios.get("/user/me", {
+              headers: { Authorization: `Bearer ${token}` },
+            });
+            if (res && res.data) {
+              setIsAuthenticated(!!res.data._id);
+              setUser(res.data);
+            } else {
+              localStorage.removeItem("token");
+              setUser({});
+            }
+          } catch (error) {
+            console.error("Error fetching user:", error);
             setUser({});
           }
-        } catch (error) {
-          console.error("Error fetching user:", error);
+        } else {
           setUser({});
         }
-      } else {
+      } catch (error) {
         setUser({});
+        setIsAuthenticated(false);
       }
     };
     fetchUser();

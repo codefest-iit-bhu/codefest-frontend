@@ -11,7 +11,7 @@ import hackerearth from "../assets/Sponsors/hackerearth.png";
 import hackerrank from "../assets/Sponsors/hackerrank.png";
 
 const SponsorLogo = ({ src, alt }) => (
-  <div className="w-[150px] h-[150px] md:w-[300px] md:h-[300px] relative">
+  <div className="w-[150px] h-[150px] md:w-[300px] md:h-[300px] relative hover:scale-[102%] transition-all duration-300">
     <img
       src="/previousSponsorsBox.svg"
       alt=""

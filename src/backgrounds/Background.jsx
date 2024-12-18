@@ -5,7 +5,7 @@ export default function Background({ image_path }) {
                 src={image_path}
                 width={0}
                 height={0}
-                className="absolute h-[100vh] lg:h-auto w-fit md:w-[100vw] object-cover lg:-mt-[20vh] xl:-mt-[35vh] z-[-1]"
+                className="absolute top-0 left-0 h-[100vh] lg:h-[110vh] xl:h-[125vh] w-fit md:w-[100vw] object-cover lg:-mt-[10vh] xl:-mt-[25vh] z-[-1] overflow-y-hidden"
             />
         </>
     );

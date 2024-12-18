@@ -5,6 +5,7 @@ export default [
         title: "Vista",
         date: "24 March, 2025",
         last_date_reg: "23 March, 2025",
+        image_desk_path: "/vistas_desk.svg",
         overview: `
         <p>• Vista'24 will be a computer vision competition for participants to show their skills in exploring various exploits in the realm of computer vision.</p>
         <p>• Problem statement will be visible at the start of the competition.</p>
@@ -45,6 +46,7 @@ export default [
         title: "Enigma",
         date: "29 March, 2025",
         last_date_reg: "27 March, 2025",
+        image_desk_path: "/enigma_desk.svg",
         overview: `
         <p>Enigma is a thrilling machine-learning competition where we challenge the participants to showcase their prowess by designing a self-learning model that will provide efficient solutions to real-life problems.</p>
         <p>• Problem statement will be visible at the start of the competition.</p>
@@ -87,6 +89,7 @@ export default [
         title: "Capture The Flag",
         date: "17 February, 2025",
         last_date_reg: "16 February, 2025",
+        image_desk_path: "/ctf_desk.svg",
         overview: `
         <p>Capture the Flag (CTF) will be a cyber security competition for participants to show their skills in exploring various exploits in the realm of computer systems.</p>
         <p>• Problems will be visible at the start of the competition.</p>
@@ -129,6 +132,7 @@ export default [
         title: "Manthan",
         date: "17 April, 2025",
         last_date_reg: "16 April, 2025",
+        image_desk_path: "/manthan_desk.svg",
         overview: `
         <p>Manthan will be a competitive programming contest (open to all) where participants are posed with problems of varying difficulties to be solved in a few hours.</p>
         <p>• Participants should be registered on the CodeFest Website to be eligible for prizes</p>
@@ -159,6 +163,7 @@ export default [
         title: "HaXplore",
         date: "29 March, 2025",
         last_date_reg: "27 March, 2025",
+        image_desk_path: "/haxplore_desk.svg",
         overview: `
         <p>HaXplore stands as the premier hackathon organized as part of Codefest, the annual departmental fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi. This esteemed event serves as a dynamic platform where innovative minds from diverse domains converge to articulate their groundbreaking ideas. Participants come together to not only showcase their creativity but also engage in spirited competition as they strive for excellence. HaXplore fosters an environment that encourages collaboration and the exploration of cutting-edge solutions, making it a hub for transformative technological endeavors.</p>`,
         duration: `<p><b>From March 29th through April 1st</b>, the annual 72-Hour Hackathon will take place. This hackathon is a weekend-long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a tight 72-hour time constraint. By the deadline at the end of the day on March 3rd, teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
