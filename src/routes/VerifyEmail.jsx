@@ -1,14 +1,12 @@
 import HeadingA from "../components/HeadingA";
-import TextBox from "../components/TextBox";
-import EmailBox from "../components/EmailBox";
 import AnimatedButton from "../components/AnimatedButton";
-import api from "../api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { REFRESH_TOKEN } from "../constants";
 import toast from "react-hot-toast";
 import axios from "../utils/axiosInstance";
 import PinInput from "react-pin-input";
+import Background from "../backgrounds/Background";
 
 export default function VerifyEmail() {
   const navigate = useNavigate();

@@ -16,7 +16,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="h-12 flex lg:justify-evenly justify-end items-center absolute top-0 left-0 w-full bg-[#6e3a12] z-[10]">
+      <div className="h-12 flex lg:justify-evenly justify-end items-center absolute top-0 left-0 w-full bg-[#473737] z-[10]">
         <nav className="hidden lg:flex text-white w-full h-full">
           <div className="flex space-x-4 w-full">
             <Link text="Main" href="/" />

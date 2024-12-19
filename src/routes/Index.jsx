@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useUser } from "../context/context";
 import Background from "../backgrounds/Background";
-import PixelTimer from "../components/PixelTimer";
 
 export default function Home() {
   const { isAuthenticated } = useUser()
@@ -10,19 +9,19 @@ export default function Home() {
     <>
       <Background image_path={"/LandingPage.svg"} />
       <div className="absolute top-[15vh] lg:top-[10vh] w-screen flex justify-center sm:px-10 px-12 sm:scale-100 scale-110">
-        <img src="/codefestLogo.svg" alt="" />
+        <img src="/codefestLogo.svg" alt="Codefest'25" />
       </div>
       <div className="overscroll-none w-screen h-screen flex flex-col justify-center items-center gap-4 sm:gap-6 overflow-hidden -mt-[5vh] sm:mt-0">
         {/* <PixelTimer /> */}
         <a href="/home" className="w-fit h-fit">
-          <img src="/exploreButton.png" alt="" className="hover:scale-110 scale-75 sm:scale-100 transition-all duration-300" />
+          <img src="/exploreButton.png" alt="Explore" className="hover:scale-110 scale-75 sm:scale-100 transition-all duration-300" />
         </a>
         {
           !isAuthenticated &&
           <Link to="/login" className="w-fit h-fit">
             <img
               src="/registerLoginButton.png"
-              alt=""
+              alt="Register / Login"
               className="hover:scale-110 scale-75 sm:scale-100 transition-all duration-300"
             />
           </Link>
@@ -30,7 +29,7 @@ export default function Home() {
         <a href="/CA" className="w-fit h-fit">
           <img
             src="/campusAmbassdorButton.png"
-            alt=""
+            alt="Campus Ambassdor"
             className="hover:scale-110 scale-75 sm:scale-100 transition-all duration-300"
           />
         </a>

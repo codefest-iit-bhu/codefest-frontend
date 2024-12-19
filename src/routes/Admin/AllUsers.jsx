@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
-import api from "../../api";
 import toast from "react-hot-toast";
 import UserCard from "../../components/UserCard";
-import { useNavigate } from "react-router-dom";
 import axios from "../../utils/axiosInstance";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -35,7 +32,7 @@ const AllUsers = () => {
   };
 
   return (
-    <div className="p-6 flex flex-col items-center gap-6">
+    <div className="p-6 flex flex-col items-center gap-6 bg-black">
       <h1 className="text-3xl font-bold text-white drop-shadow-lg">All Users</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
         {users.map((user) => (

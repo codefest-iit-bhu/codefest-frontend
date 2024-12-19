@@ -1,10 +1,8 @@
 import React from "react";
-import { useUser } from "../context/context";
 import axios from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 const LogoutButton = () => {
-  const navigate = useNavigate()
   const logoutHandler = async () => {
     const token = localStorage.getItem("token");
     const refreshToken = localStorage.getItem("refreshToken");
