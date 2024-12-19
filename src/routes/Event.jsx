@@ -10,6 +10,7 @@ import cloudLeft from "../assets/cloud-left.png";
 import cloudRight from "../assets/cloud-right.png";
 import flag from "../assets/flag.png";
 import ground from "../assets/bottom-part.png"
+import Footer from "../components/Footer.jsx";
 
 export const Event = () => {
   const { name } = useParams();
@@ -45,9 +46,9 @@ export const Event = () => {
       <Navbar />
       <div
         className="flex flex-col md:flex-row items-center justify-evenly"
-        style={{ backgroundColor: "#140B29" }}
+        style={{ backgroundColor: "#1E032C" }}
       >
-        <div className="w-full md:w-2/3 rounded-md py-4 backdrop-blur-[2px] px-6">
+        <div className="w-full md:w-2/3 rounded-md pt-4 backdrop-blur-[2px] px-6">
           <div
             className="text-center text-6xl text-lime-400"
           >
@@ -143,6 +144,7 @@ export const Event = () => {
           </div>
         </div>
       </div>
+      <Footer />
 
       <TeamRegistrationModal
         isOpen={isRegistrationModalOpen}
