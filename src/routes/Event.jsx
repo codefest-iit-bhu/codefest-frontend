@@ -20,6 +20,17 @@ export const Event = () => {
   const { isAuthenticated } = useUser();
   const [isMember, setIsMember] = useState(false);
   const [teamName, setTeamName] = useState("");
+  const [browser, setBrowser] = useState("");
+
+  function detectBrowser() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.includes('chrome') && !userAgent.includes('edg')) {
+      return setBrowser('chrome')
+    } else if (userAgent.includes('firefox')) {
+      return setBrowser('firefox');
+    }
+    setBrowser('default');
+  }
 
   useEffect(() => {
     async function getIsMember() {
@@ -31,6 +42,7 @@ export const Event = () => {
         setTeamName(res.data.teamName);
       }
     }
+    detectBrowser();
     if (isAuthenticated) getIsMember();
   }, []);
 
@@ -45,8 +57,7 @@ export const Event = () => {
     <>
       <Navbar />
       <div
-        className="flex flex-col md:flex-row items-center justify-evenly"
-        style={{ backgroundColor: "#1E032C" }}
+        className={`flex flex-col md:flex-row items-center justify-evenly ${browser === "firefox" ? "bg-[#1E032C]" : "bg-[#140C27]"}`}
       >
         <div className="w-full md:w-2/3 rounded-md pt-4 backdrop-blur-[2px] px-6">
           <div
@@ -59,21 +70,21 @@ export const Event = () => {
           <div className="relative mt-6 mb-6">
             <img
               src={cloudLeft}
-              alt="Cloud Left"
+              alt=""
               className="absolute top-0 left-0 w-40 h-auto -z-10"
             />
             <br />
 
             <img
               src={flag}
-              alt="Flag Icon"
+              alt=""
               className="mx-auto w-40 h-auto z-20"
             />
             <br />
 
             <img
               src={cloudRight}
-              alt="Cloud Right"
+              alt=""
               className="absolute bottom-0 right-0 w-40 h-auto"
             />
           </div>
@@ -137,7 +148,7 @@ export const Event = () => {
           <div className="mt-6">
             <img
               src={ground}
-              alt="ground"
+              alt=""
               className="w-full h-auto"
             />
 

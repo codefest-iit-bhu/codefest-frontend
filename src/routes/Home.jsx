@@ -1,7 +1,4 @@
-import HeadingA from "../components/HeadingA";
 import Navbar from "../components/Navbar";
-// import Whoarewe from "../components/Whoarewe";
-// import Lookback from "../components/Lookback";
 import Whoarewe from "../components/Whoarewe";
 import Lookback from "../components/Lookback";
 import PreviousSponsors from "../components/PreviousSponsors";
@@ -14,7 +11,7 @@ export default function Home() {
       <Navbar />
       <div className="w-screen bg-[#140B29] pt-6">
         <div className="w-full flex justify-center pt-10 px-10">
-          <img src="codefestLogo.svg" alt="" className="w-[600px]" />
+          <img src="codefestLogo.svg" alt="Codefest'25" className="w-[600px]" />
         </div>
         <div className="flex flex-col items-center w-full overflow-y-hidden p-6">
           <img

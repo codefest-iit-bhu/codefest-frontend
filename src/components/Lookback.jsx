@@ -1,5 +1,3 @@
-//import React from 'react';
-import sample from "./logo.svg";
 // Sample data array for dynamic rendering
 const lookbackData = [
   {
@@ -54,8 +52,7 @@ const PixelBox = ({ title, text, img_src }) => {
 
 const Lookback = () => {
   return (
-    <div className="bg-[#140B29] md:mt-28 lg:mt-8 w-screen mb-10">
-      {/* <img src="lookback.png" alt="" className="h-[150px] mb-10" /> */}
+    <div className="bg-[#140B29] mt-32 md:mt-28 lg:mt-8 w-screen mb-10">
       <div className="text-5xl md:text-7xl p-10 z-[1]">LOOKBACK</div>
       <div className="w-full flex justify-center gap-2 flex-wrap p-2">
         {lookbackData.map((data) => <PixelBox title={data.label} text={data.value} img_src={data.imageSrc} key={data.id} />)}

@@ -4,11 +4,9 @@ import { useUser } from "../context/context";
 import axios from "../utils/axiosInstance";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
-import Confirmation from "../components/Confirmation";
 
 const Teams = () => {
   const [teams, setTeams] = useState([]);
-  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useUser();
   console.log(user);

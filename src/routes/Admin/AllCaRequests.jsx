@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
-import api from "../../api";
 import toast from "react-hot-toast";
 import CaCard from "../../components/CaCard";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/context";
 import axios from "../../utils/axiosInstance";
 import Navbar from "../../components/Navbar";
-
-const ALL_REQUESTS_URL = "/ca/all";
 
 const AllCaRequests = () => {
   const [requests, setRequests] = useState([]);

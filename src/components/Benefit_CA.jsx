@@ -1,9 +1,5 @@
 import React from "react";
-import perk from "../assets/CA_images/perks.svg";
-import HeadingA from "../components/HeadingA";
-import TextBox from "../components/TextBox";
 import { useUser } from "../context/context";
-import { useNavigate } from "react-router-dom";
 const tasks = [
   {
     start: "• A certificate of recognition, authenticated by the HoD",
@@ -38,7 +34,7 @@ const BenefitsSection = () => {
       <div className="px-10 mt-12">
         <p className="text-3xl md:text-5xl font-bold text-white mb-10 text-center">
           Why should you become a
-          <img src="/campusAmbassdor.png" alt="" />
+          <img src="/campusAmbassdor.png" alt="Campus Ambassador" />
         </p>
       </div>
 
@@ -61,7 +57,7 @@ const BenefitsSection = () => {
               <span className="font-bold text-indigo-400">{task.start}</span>
               {task.rest}
             </li>
-            {(i == 2) && <img src="/cloud1.svg" className="w-1/2" />}
+            {(i == 2) && <img src="/cloud1.svg" className="w-1/2" alt="" />}
           </div>
         ))}
       </ul>
