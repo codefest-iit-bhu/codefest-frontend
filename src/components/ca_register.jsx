@@ -7,6 +7,11 @@ const CARegistration = () => {
   const [formData, setFormData] = useState({
     institute: "",
     userDescription: "",
+    graduation_year: "",
+    contact_number: "",
+    whatsapp_number: "",
+    branch: "",
+    ca_brought_by: "",
   });
   const [userRequest, setUserRequest] = useState({});
 
@@ -21,6 +26,11 @@ const CARegistration = () => {
       setFormData({
         institute: response.data.institute || "",
         userDescription: response.data.userDescription || "",
+        graduation_year: response.data.graduation_year || "",
+        contact_number: response.data.contact_number || "",
+        whatsapp_number: response.data.whatsapp_number || "",
+        branch: response.data.branch || "",
+        ca_brought_by: response.data.ca_brought_by || "",
       });
     };
 
@@ -42,7 +52,6 @@ const CARegistration = () => {
     }
   };
 
-  // Update the request status to pending
   const handleUpdateStatus = async (id) => {
     const updatedRequest = await axios.patch(
       `/ca/${id}`,
@@ -54,19 +63,22 @@ const CARegistration = () => {
       }
     );
     toast.success("Status updated");
-    setUserRequest(updatedRequest.body ? updatedRequest.body : {});
+    setUserRequest(updatedRequest.data ? updatedRequest.data : {});
     window.location.reload();
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} font-pixelifySans bg-[rgba(20,11,41,1)] text-white p-8 rounded-lg`}
+    >
       <h1 className="text-3xl font-bold">Campus Ambassador Registration</h1>
-      <p className="mt-2 font-mono">Join us as a Campus Ambassador for CodeFest '24!</p>
+      <p className="mt-2">Join us as a Campus Ambassador for CodeFest'25!</p>
 
       {/* Registration Form */}
       <form onSubmit={handleSubmit} className={styles.form}>
+        {/* Original Fields */}
         <div className={styles.formGroup}>
-          <label htmlFor="institute" className="block text-lg font-medium font-mono">
+          <label htmlFor="institute" className="block text-lg font-medium">
             Institute Name
           </label>
           <input
@@ -77,7 +89,7 @@ const CARegistration = () => {
             onChange={(e) =>
               setFormData({ ...formData, institute: e.target.value })
             }
-            className="mt-1 font-mono block w-full px-3 py-2 border border-gray-300 rounded-md text-black"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black font-mono"
             required
           />
         </div>
@@ -85,7 +97,7 @@ const CARegistration = () => {
         <div className={styles.formGroup}>
           <label
             htmlFor="userDescription"
-            className="block text-lg font-medium font-mono"
+            className="block text-lg font-medium"
           >
             Statement of Purpose
           </label>
@@ -97,15 +109,43 @@ const CARegistration = () => {
               setFormData({ ...formData, userDescription: e.target.value })
             }
             rows="4"
-            className="mt-1 font-mono block w-full px-3 py-2 border border-gray-300 rounded-md text-black"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black font-mono"
           ></textarea>
         </div>
 
+        {/* New Fields */}
+        {[
+          { label: "Graduation Year", id: "graduation_year", type: "number" },
+          { label: "Contact Number", id: "contact_number", type: "tel" },
+          { label: "WhatsApp Number", id: "whatsapp_number", type: "tel" },
+          { label: "Branch", id: "branch", type: "text" },
+          { label: "Referred By", id: "ca_brought_by", type: "text" },
+        ].map((field) => (
+          <div key={field.id} className={styles.formGroup}>
+            <label htmlFor={field.id} className="block text-lg font-medium">
+              {field.label}
+            </label>
+            <input
+              type={field.type}
+              id={field.id}
+              name={field.id}
+              value={formData[field.id]}
+              onChange={(e) =>
+                setFormData({ ...formData, [field.id]: e.target.value })
+              }
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black font-mono"
+              required
+            />
+          </div>
+        ))}
+
         <button
           type="submit"
-          className="mt-4 font-bold bg-brown-600 text-white px-6 py-2 rounded-lg hover:bg-vermilion"
+          className="mt-4 bg-brown-600 text-white px-6 py-2 rounded-lg hover:bg-vermilion"
         >
-          {(userRequest && Object.keys(userRequest).length > 0) ? "Update Request" : "Submit Request"}
+          {userRequest && Object.keys(userRequest).length > 0
+            ? "Update Request"
+            : "Submit Request"}
         </button>
       </form>
 

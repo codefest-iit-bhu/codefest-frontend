@@ -76,7 +76,7 @@ export const Event = () => {
             <br />
 
             <img
-              src={flag}
+              src={event.image_desk_path}
               alt=""
               className="mx-auto w-40 h-auto z-20"
             />

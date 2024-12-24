@@ -74,7 +74,7 @@ const Footer = () => {
 
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="text-sm">
-                        © 2024 Codefest'25. All rights reserved.
+                        © 2025 Codefest'25. All rights reserved.
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ export default function CA() {
     <>
       <Navbar />
       <div>
-        <main className="bg-[#140B29] h-[100vh]">
+        <main className="bg-[#140B29]">
           <CARegistration></CARegistration>
         </main>
       </div>
