@@ -16,7 +16,7 @@ const lookbackData = [
     id: 3,
     imageSrc: "/Users.png",
     label: "Participants",
-    value: "24,654",
+    value: "35,654",
   },
   {
     id: 4,
@@ -28,7 +28,7 @@ const lookbackData = [
     id: 5,
     imageSrc: "/Edit.png",
     label: "Registrations",
-    value: "16,302",
+    value: "22,302",
   },
 ];
 

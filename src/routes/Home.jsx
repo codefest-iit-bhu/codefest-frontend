@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import Whoarewe from "../components/Whoarewe";
 import Lookback from "../components/Lookback";
+import OurSponsors from "../components/OurSponsors";
 import PreviousSponsors from "../components/PreviousSponsors";
 import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
@@ -34,6 +35,7 @@ export default function Home() {
         <div className="w-screen">
           <Lookback />
           <Testimonials />
+          <OurSponsors/>
           <PreviousSponsors />
           <img src="cat.svg" alt="" className="w-full" />
           {/* AMONGUS */}
