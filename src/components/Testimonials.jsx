@@ -35,7 +35,7 @@ const Testimonials = () => {
 
   return (
     <div className="w-full px-6 py-12 bg-background flex flex-col mb-10">
-      <div className="text-5xl md:text-7xl p-10">TESTIMONIALS</div>
+      <div className="text-4xl sm:text-5xl md:text-7xl p-10">TESTIMONIALS</div>
       <div className="w-full flex justify-center gap-10 flex-wrap">
         {testimonials.map((testimonial, index) => (
           <TestimonialCard key={index} testimonial={testimonial} />

@@ -9,7 +9,6 @@ const Teams = () => {
   const [teams, setTeams] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useUser();
-  console.log(user);
 
   useEffect(() => {
     const fetchTeams = async () => {
@@ -44,7 +43,7 @@ const Teams = () => {
       <div className="teams-container bg-purple-800 min-h-[95vh]">
         {isLoading ? (
           <Loader />
-        ) : teams ? (
+        ) : teams && teams.length > 0 ? (
           teams.map((team) => (
             <TeamCard
               key={team.teamCode}
@@ -55,7 +54,7 @@ const Teams = () => {
             />
           ))
         ) : (
-          <p>No Teams</p>
+          <div className="w-full text-xl font-mono flex justify-center items-center h-[90vh]">You have not registered for any event</div>
         )}
       </div>
     </>
