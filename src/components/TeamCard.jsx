@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./TeamCard.css";
 import axios from "../utils/axiosInstance";
 import toast from "react-hot-toast";
-import events from "../store/events.js";
+import events from "../store/events2.js";
 import Teamcardbg from "../backgrounds/team_card.jsx";
 
 const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {

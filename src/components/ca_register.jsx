@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./CARegistration.module.css";
 import axios from "../utils/axiosInstance";
 import toast from "react-hot-toast";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const CARegistration = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const CARegistration = () => {
     ca_brought_by: "",
   });
   const [userRequest, setUserRequest] = useState({});
+  const [referralLink, setReferralLink] = useState("");
 
   useEffect(() => {
     const fetchRequest = async () => {
@@ -32,6 +34,7 @@ const CARegistration = () => {
         branch: response.data.branch || "",
         ca_brought_by: response.data.ca_brought_by || "",
       });
+      setReferralLink(window.location.origin + "/signup?referralCode=" + response.data.referralCode);
     };
 
     fetchRequest();
@@ -169,6 +172,22 @@ const CARegistration = () => {
                   {userRequest.status}
                 </span>
               </p>
+              {
+                userRequest.status === "approved" &&
+                <div className="text-black font-mono">
+                  <div className="font-bold">Referral Link: </div>
+                  <div className="flex gap-2">
+                    <span className="w-3/4 py-1 px-2 border">
+                      {referralLink}
+                    </span>
+                    <CopyToClipboard text={referralLink}
+                      onCopy={() => toast.success("Copied")}>
+                      <button className="cursor-pointer py-1 px-2 bg-orange-500 text-white rounded-lg">Copy</button>
+                    </CopyToClipboard>
+                  </div>
+                  <p className="text-sm text-gray-700 mt-2">(Share this link with new users for signing up to get points )</p>
+                </div>
+              }
               {userRequest.status === "rejected" && (
                 <>
                   <p className="text-black font-mono">

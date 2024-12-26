@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useUser } from "../context/context";
+import axios from "../utils/axiosInstance";
 const tasks = [
   {
     start: "• A certificate of recognition, authenticated by the HoD",
@@ -29,6 +30,19 @@ const tasks = [
 
 const BenefitsSection = () => {
   const { user } = useUser();
+  const [caRequestExists, setCaRequestExists] = useState(false);
+  useEffect(() => {
+    const fetchRequest = async () => {
+      const response = await axios.get("/ca/my", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      if (response.data && Object.keys(response.data).length > 0) setCaRequestExists(true);
+    };
+
+    if (localStorage.getItem("token")) fetchRequest();
+  }, [])
   return (
     <section className="py-10 flex flex-col items-center sm:px-3 lg:w-4/5">
       <div className="px-10 mt-12">
@@ -40,7 +54,16 @@ const BenefitsSection = () => {
 
       {
         <div>
-          <button className="p-4 rounded-lg transition-all duration-500 hover:bg-orange-600 bg-orange-500 text-white text-lg font-bold" onClick={() => window.location.href = "/ca-register"}>Register Now!</button>
+          <button className="p-4 rounded-lg transition-all duration-500 hover:bg-orange-600 bg-orange-500 text-white text-lg font-bold" onClick={() => window.location.href = "/ca-register"}>
+            {
+              caRequestExists ? "Your Request" : "Register Now!"
+            }
+          </button>
+          <a href="/ca_leaderboard">
+            <button className="p-4 rounded-lg transition-all duration-500 hover:bg-gray-200 bg-white border-2 border-orange-500 text-orange-500 text-lg font-bold ml-5" onClick={() => window.location.href = "/ca-register"}>
+              CA Leaderboard
+            </button>
+          </a>
           {
             user?.role === "admin" &&
             <a href="/allCaRequests">

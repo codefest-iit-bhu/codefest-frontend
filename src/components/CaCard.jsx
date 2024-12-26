@@ -25,6 +25,7 @@ const CaCard = ({ request, onApprove, onReject }) => {
         { label: "WhatsApp Number", key: "whatsapp_number" },
         { label: "Branch", key: "branch" },
         { label: "Referred By", key: "ca_brought_by" },
+        { label: "Referral Code", key: "referralCode" },
       ].map((field) => (
         <p className="mb-1" key={field.key}>
           <span className="font-semibold">{field.label}:</span>{" "}

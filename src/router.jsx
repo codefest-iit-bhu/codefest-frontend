@@ -17,6 +17,7 @@ import BackendRedirection from "./routes/BackendRedirection";
 import PrivateRoute from "./components/ProtectedRoute";
 import Layout from "./layout/Layout";
 import PageTitle from "./components/PageTitle";
+import CALeaderboard from "./routes/CALeaderboard";
 
 export const router = createBrowserRouter([
   {
@@ -91,6 +92,13 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/ca_leaderboard",
+        element: <>
+          <PageTitle title="CA Leaderboard | Codefest IIT (BHU)" />
+          <CALeaderboard />,
+        </>
+      },
     ],
   },
   {
@@ -104,5 +112,5 @@ export const router = createBrowserRouter([
   {
     path: "/backend_redirect",
     element: <BackendRedirection />,
-  },
+  }
 ]);

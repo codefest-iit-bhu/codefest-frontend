@@ -30,7 +30,7 @@ export default function Eventsmobileview() {
                 />
             </div>
             <div>
-                {events.sort((a, b) => (new Date(a.last_date_reg)) - (new Date(b.last_date_reg))).map((event, index) => (
+                {events.sort((a, b) => (new Date(a.date.split(",").slice(0, 2).join(","))) - (new Date(b.date.split(",").slice(0, 2).join(",")))).map((event, index) => (
                     <div key={event.name}>
                         <div className="flex">
                             <img

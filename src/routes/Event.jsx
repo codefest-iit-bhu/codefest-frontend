@@ -8,7 +8,6 @@ import { useUser } from "../context/context.jsx";
 import axios from "../utils/axiosInstance.js";
 import cloudLeft from "../assets/cloud-left.png";
 import cloudRight from "../assets/cloud-right.png";
-import flag from "../assets/flag.png";
 import ground from "../assets/bottom-part.png"
 import Footer from "../components/Footer.jsx";
 
@@ -97,7 +96,7 @@ export const Event = () => {
           </div>
 
           <div className="flex justify-center mt-3 space-x-3">
-            {!isMember ? (
+            {/* {!isMember ? (
               <>
                 <button
                   className="bg-lime-600 text-white p-3 font-bold rounded-lg hover:bg-lime-700 transition-colors"
@@ -126,7 +125,10 @@ export const Event = () => {
               >
                 My Team
               </Link>
-            )}
+            )} */}
+            <span className="py-2 px-4 border border-lime-400 text-lime-400 rounded-lg font-mono text-lg">
+              Registrations will begin soon!
+            </span>
           </div>
 
           <div className="mt-6 text-lg font-mono">

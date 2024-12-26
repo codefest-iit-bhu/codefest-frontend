@@ -18,7 +18,7 @@ export default function DesktopEventsPage() {
                 <div className="w-full flex flex-col h-full gap-20">
 
                     {
-                        events.sort((a, b) => (new Date(a.last_date_reg)) - (new Date(b.last_date_reg))).map((event, index) => {
+                        events.sort((a, b) => (new Date(a.date.split(",").slice(0, 2).join(","))) - (new Date(b.date.split(",").slice(0, 2).join(",")))).map((event, index) => {
                             return <div className={`flex ${index % 2 ? "justify-end" : "justify-start"} items-center lg:px-20`}>
                                 {
                                     index % 2 === 0 && <Timeline event={event} />

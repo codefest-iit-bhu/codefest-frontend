@@ -15,13 +15,17 @@ export default function Login() {
     password: "",
   });
   const { isAuthenticated } = useUser();
+  const urlParams = new URLSearchParams(window.location.search);
+  const referralCode = urlParams.get("referralCode");
 
   const handleCredentials = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/api/v1/Oauth2/google`;
+    let endpoint = "api/v1/Oauth2/google";
+    if (referralCode) endpoint += "?referralCode=" + referralCode;
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/${endpoint}`;
   };
 
   const handleLogin = async () => {
