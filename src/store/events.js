@@ -212,8 +212,8 @@ export default [
         "id": "5",
         "name": "Manthan",
         "title": "Manthan",
-        "date": "17 April, 2025, 8 PM IST",
-        "last_date_reg": "16 April, 2025, 11:59 PM IST",
+        "date": "29 Jan, 2025, 8 PM IST",
+        "last_date_reg": "28 Jan, 2025, 11:59 PM IST",
         "image_desk_path": "/manthan_desk.svg",
         "overview": `
         <p>• Manthan is a competitive programming contest open to all, where participants are challenged with problems of varying difficulties to be solved within a few hours.</p>
