@@ -1,36 +1,36 @@
 import React from "react";
-import Background1 from "../backgrounds/Background1";
 import { Link } from "react-router-dom";
 import { useUser } from "../context/context";
+import Background from "../backgrounds/Background";
 
 export default function Home() {
   const { isAuthenticated } = useUser()
   return (
     <>
-      <Background1 />
-      <div className="absolute p-10 top-10 lg:top-[15vh] w-screen flex justify-center">
-        <img src="/codefestLogo.svg" alt="" />
+      <Background image_path={"/LandingPage.svg"} />
+      <div className="absolute top-[15vh] lg:top-[10vh] w-screen flex justify-center sm:px-10 px-12 sm:scale-100 scale-110">
+        <img src="/codefestLogo.svg" alt="Codefest'25" />
       </div>
-      {/* <div className="absolute font-pixelifySans text-[100px] top-10 w-screen text-center">CODEFEST'25</div> */}
-      <div className="w-screen h-screen flex flex-col justify-center items-center gap-8">
+      <div className="overscroll-none w-screen h-screen flex flex-col justify-center items-center gap-4 sm:gap-6 overflow-hidden -mt-[5vh] sm:mt-0">
+        {/* <PixelTimer /> */}
         <a href="/home" className="w-fit h-fit">
-          <img src="/exploreButton.png" alt="" className="hover:scale-110" />
+          <img src="/exploreButton.png" alt="Explore" className="hover:scale-110 scale-75 sm:scale-100 transition-all duration-300" />
         </a>
         {
           !isAuthenticated &&
           <Link to="/login" className="w-fit h-fit">
             <img
               src="/registerLoginButton.png"
-              alt=""
-              className="hover:scale-110"
+              alt="Register / Login"
+              className="hover:scale-110 scale-75 sm:scale-100 transition-all duration-300"
             />
           </Link>
         }
         <a href="/CA" className="w-fit h-fit">
           <img
             src="/campusAmbassdorButton.png"
-            alt=""
-            className="hover:scale-110"
+            alt="Campus Ambassdor"
+            className="hover:scale-110 scale-75 sm:scale-100 transition-all duration-300"
           />
         </a>
       </div>

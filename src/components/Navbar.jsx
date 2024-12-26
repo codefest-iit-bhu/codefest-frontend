@@ -16,8 +16,8 @@ function Navbar() {
 
   return (
     <>
-      <div className="h-10 fixed w-full bg-[#4E4040] z-[10]">
-        <nav className="hidden lg:flex text-white w-full py-1">
+      <div className="h-12 flex lg:justify-evenly justify-end items-center absolute top-0 left-0 w-full bg-[#473737] z-[10]">
+        <nav className="hidden lg:flex text-white w-full h-full">
           <div className="flex space-x-4 w-full">
             <Link text="Main" href="/" />
             <Link text="Events" href="/events" />
@@ -33,37 +33,29 @@ function Navbar() {
           </div>
         </nav>
 
-        <div className="lg:hidden flex items-center">
-          <Link
-            className="flex items-center w-fit text-white mx-4 mt-4 font-bold text-2xl"
-            href="/home"
+        <div className="lg:hidden flex items-center pr-6">
+          {/* <Link text="Home" href="/" /> */}
+          <button
+            className="h-[1.5rem] w-fit flex items-center justify-center font-bold text-2xl text-white"
+            onClick={toggleSidebar}
           >
-            CodeFest
-          </Link>
-
-          <div className="flex w-full items-center justify-end">
-            <button
-              className="h-[1.5rem] w-fit mx-4 mt-4 flex items-center justify-center font-bold text-2xl text-white"
-              onClick={toggleSidebar}
+            [
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="white"
+              className="w-6 h-6"
             >
-              [
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="white"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"
-                />
-              </svg>
-              ]
-            </button>
-          </div>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"
+              />
+            </svg>
+            ]
+          </button>
         </div>
 
         <div
@@ -78,12 +70,12 @@ function Navbar() {
         >
           <div className="flex flex-col h-full p-4 space-y-4">
             <div
-              className="h-[1.5rem] w-full flex items-center justify-center font-bold text-2xl text-gray-500 hover:bg-gray-400 hover:text-black"
+              className="h-[1.5rem] w-full flex items-center justify-center font-bold text-2xl text-gray-500 hover:bg-gray-400 hover:text-black transition-all duration-500"
               onClick={closeSidebar}
             >
               [ Close ]
             </div>
-            <Link text="Home" href="/" />
+            <Link text="Main" href="/" />
             <Link text="Events" href="/events" />
             <Link text="CA" href="/CA" />
             {isAuthenticated ? (

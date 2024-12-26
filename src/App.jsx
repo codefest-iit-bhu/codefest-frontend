@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Background from "./components/Background";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
 import { QueryClient, QueryClientProvider } from "react-query";

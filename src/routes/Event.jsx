@@ -6,6 +6,10 @@ import JoinTeamModal from "../components/JoinTeamModal.jsx"; // New import
 import events from "../store/events.js";
 import { useUser } from "../context/context.jsx";
 import axios from "../utils/axiosInstance.js";
+import cloudLeft from "../assets/cloud-left.png";
+import cloudRight from "../assets/cloud-right.png";
+import ground from "../assets/bottom-part.png"
+import Footer from "../components/Footer.jsx";
 
 export const Event = () => {
   const { name } = useParams();
@@ -15,6 +19,17 @@ export const Event = () => {
   const { isAuthenticated } = useUser();
   const [isMember, setIsMember] = useState(false);
   const [teamName, setTeamName] = useState("");
+  const [browser, setBrowser] = useState("");
+
+  function detectBrowser() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.includes('chrome') && !userAgent.includes('edg')) {
+      return setBrowser('chrome')
+    } else if (userAgent.includes('firefox')) {
+      return setBrowser('firefox');
+    }
+    setBrowser('default');
+  }
 
   useEffect(() => {
     async function getIsMember() {
@@ -26,6 +41,7 @@ export const Event = () => {
         setTeamName(res.data.teamName);
       }
     }
+    detectBrowser();
     if (isAuthenticated) getIsMember();
   }, []);
 
@@ -39,53 +55,88 @@ export const Event = () => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col md:flex-row items-center justify-evenly bg-gray-600">
-        <div className="w-full md:w-1/2 rounded-md py-4 backdrop-blur-[2px] px-6">
-          <div className="text-center text-4xl text-lime-400">{event.name}</div>
-          <div className="text-center text-lg mb-6">{event.date}</div>
+      <div
+        className={`flex flex-col md:flex-row items-center justify-evenly ${browser === "firefox" ? "bg-[#1E032C]" : "bg-[#140C27]"}`}
+      >
+        <div className="w-full md:w-2/3 rounded-md pt-4 backdrop-blur-[2px] px-6">
+          <div
+            className="text-center text-6xl text-lime-400"
+          >
+            {event.name}
+          </div>
+          <div className="text-center text-lg mb-6 font-mono">{event.date}</div>
 
-          <div>
-            <span className="text-xl text-lime-400">
-              Registration Deadline:
-            </span>
-            <span> {event.last_date_reg} </span>
+          <div className="relative mt-6 mb-6">
+            <img
+              src={cloudLeft}
+              alt=""
+              className="absolute top-0 left-0 w-40 h-auto -z-10"
+            />
+            <br />
+
+            <img
+              src={event.image_desk_path}
+              alt=""
+              className="mx-auto w-40 h-auto z-20"
+            />
+            <br />
+
+            <img
+              src={cloudRight}
+              alt=""
+              className="absolute bottom-0 right-0 w-40 h-auto"
+            />
           </div>
 
-          {isAuthenticated && (
-            <div className="flex justify-center mt-3 space-x-3">
-              {!isMember ? (
-                <>
-                  <button
-                    className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
-                    onClick={() => setIsRegistrationModalOpen(true)}
-                  >
-                    Register Now!
-                  </button>
-                  <button
-                    className="bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition-colors"
-                    onClick={() => setIsJoinTeamModalOpen(true)}
-                  >
-                    Join Team
-                  </button>
-                </>
-              ) : (
-                <Link
-                  to={`/myTeams#${teamName}`}
-                  className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
-                  onClick={() => setIsRegistrationModalOpen(true)}
-                >
-                  My Team
-                </Link>
-              )}
-            </div>
-          )}
+          <div className="text-2xl">
+            <span className="text-lime-400">
+              Registration Deadline:
+            </span>
+            <span className="font-mono"> {event.last_date_reg} </span>
+          </div>
 
-          <div className="mt-6">
+          <div className="flex justify-center mt-3 space-x-3">
+            {/* {!isMember ? (
+              <>
+                <button
+                  className="bg-lime-600 text-white p-3 font-bold rounded-lg hover:bg-lime-700 transition-colors"
+                  onClick={() => {
+                    if (!isAuthenticated) return window.location.href = "/login";
+                    setIsRegistrationModalOpen(true)
+                  }}
+                >
+                  Register Now!
+                </button>
+                <button
+                  className="bg-green-600 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
+                  onClick={() => {
+                    if (!isAuthenticated) return window.location.href = "/login";
+                    setIsJoinTeamModalOpen(true)
+                  }}
+                >
+                  Join Team
+                </button>
+              </>
+            ) : (
+              <Link
+                to={`/myTeams#${teamName}`}
+                className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
+                onClick={() => setIsRegistrationModalOpen(true)}
+              >
+                My Team
+              </Link>
+            )} */}
+            <span className="py-2 px-4 border border-lime-400 text-lime-400 rounded-lg font-mono text-lg">
+              Registrations will begin soon!
+            </span>
+          </div>
+
+          <div className="mt-6 text-lg font-mono">
             <div dangerouslySetInnerHTML={{ __html: event.overview }} />
           </div>
 
           {Object.entries(data).map(([key, value]) => (
-            <div className="mt-6" key={key}>
+            <div className="mt-6 font-mono" key={key}>
               <div className="text-xl text-lime-400 mb-4"> {key} :</div>
               <div dangerouslySetInnerHTML={{ __html: value }} />
             </div>
@@ -93,10 +144,20 @@ export const Event = () => {
 
           <div className="mt-6 mb-6">
             <div className="text-xl text-lime-400 mb-4">Contact:</div>
-            <div> {event.contact} </div>
+            <div className="font-mono"> {event.contact} </div>
+          </div>
+
+          <div className="mt-6">
+            <img
+              src={ground}
+              alt=""
+              className="w-full h-auto"
+            />
+
           </div>
         </div>
       </div>
+      <Footer />
 
       <TeamRegistrationModal
         isOpen={isRegistrationModalOpen}

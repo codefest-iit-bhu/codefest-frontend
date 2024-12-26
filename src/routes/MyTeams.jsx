@@ -7,9 +7,9 @@ import Navbar from "../components/Navbar";
 
 const Teams = () => {
   const [teams, setTeams] = useState([]);
-  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useUser();
+  console.log(user);
 
   useEffect(() => {
     const fetchTeams = async () => {
@@ -41,21 +41,22 @@ const Teams = () => {
   return (
     <>
       <Navbar />
-      <div className="teams-container">
+      <div className="teams-container bg-purple-800 min-h-[95vh]">
         {isLoading ? (
           <Loader />
+        ) : teams ? (
+          teams.map((team) => (
+            <TeamCard
+              key={team.teamCode}
+              team={team}
+              onTeamDelete={handleTeamDelete}
+              onMemberUpdate={handleMemberUpdate}
+              user={user}
+            />
+          ))
         ) : (
-          teams ?
-            teams.map((team) => (
-              <TeamCard
-                key={team.teamCode}
-                team={team}
-                onTeamDelete={handleTeamDelete}
-                onMemberUpdate={handleMemberUpdate}
-                user={user}
-              />)) : <p>No Teams</p>
-        )
-        }
+          <p>No Teams</p>
+        )}
       </div>
     </>
   );

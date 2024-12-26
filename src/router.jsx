@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { UserProvider } from "./context/context";
 import Index from "./routes/Index";
 import Home from "./routes/Home";
 import Login from "./routes/Login";
@@ -7,17 +8,16 @@ import Events from "./routes/Events";
 import CA from "./routes/CA";
 import CARegistration from "./routes/CA_register";
 import MyTeams from "./routes/MyTeams";
-import NewUser from "./routes/NewUser";
 import { Event } from "./routes/Event";
 import SetPasswordRoute from "./routes/SetPassword";
 import VerifyEmail from "./routes/VerifyEmail";
 import AllUsers from "./routes/Admin/AllUsers";
 import AllCaRequests from "./routes/Admin/AllCaRequests";
 import BackendRedirection from "./routes/BackendRedirection";
-import { UserProvider } from "./context/context";
 import PrivateRoute from "./components/ProtectedRoute";
 import Layout from "./layout/Layout";
 import PageTitle from "./components/PageTitle";
+import CALeaderboard from "./routes/CALeaderboard";
 
 export const router = createBrowserRouter([
   {
@@ -56,59 +56,54 @@ export const router = createBrowserRouter([
         path: "/signup",
         element: <Signup />,
       },
-    ],
-  },
-  {
-    path: "/verifyEmail",
-    element: <VerifyEmail />,
-  },
-  {
-    path: "",
-    element: (
-      <UserProvider>
-        <PrivateRoute>
-          <Layout />
-        </PrivateRoute>
-      </UserProvider>
-    ),
-    children: [
       {
         path: "/myTeams",
         element: (
-          <>
-            <PageTitle title="My Teams | Codefest'25" />
+          <PrivateRoute>
+            <PageTitle title="My Teams | Codefest IIT (BHU)" />
             <MyTeams />
-          </>
+          </PrivateRoute>
         ),
       },
       {
         path: "/ca-register",
         element: (
-          <>
-            <PageTitle title="CA Registration | Codefest'25" />
+          <PrivateRoute>
+            <PageTitle title="CA Registration | Codefest IIT (BHU)" />
             <CARegistration />
-          </>
+          </PrivateRoute>
         ),
       },
       {
         path: "/allCaRequests",
         element: (
-          <>
-            <PageTitle title="All CA Requests | Codefest'25" />
+          <PrivateRoute>
+            <PageTitle title="All CA Requests | Codefest IIT (BHU)" />
             <AllCaRequests />
-          </>
+          </PrivateRoute>
         ),
       },
       {
         path: "/allUsers",
         element: (
-          <>
-            <PageTitle title="All Users | Codefest'25" />
+          <PrivateRoute>
+            <PageTitle title="All Users | Codefest IIT (BHU)" />
             <AllUsers />
-          </>
+          </PrivateRoute>
         ),
-      }
+      },
+      {
+        path: "/ca_leaderboard",
+        element: <>
+          <PageTitle title="CA Leaderboard | Codefest IIT (BHU)" />
+          <CALeaderboard />,
+        </>
+      },
     ],
+  },
+  {
+    path: "/verifyEmail",
+    element: <VerifyEmail />,
   },
   {
     path: "/SetPassword",
@@ -117,5 +112,5 @@ export const router = createBrowserRouter([
   {
     path: "/backend_redirect",
     element: <BackendRedirection />,
-  },
+  }
 ]);

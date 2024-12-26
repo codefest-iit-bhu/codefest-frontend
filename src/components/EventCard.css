@@ -1,0 +1,26 @@
+.event-card {
+  background-color: #000;
+  border: 2px solid #c1a7ff;
+  border-radius: 12px;
+  padding: 3vh;
+  text-align: center;
+  width: 70vw;
+}
+
+.event-date {
+  font-size: 1.4rem;
+}
+
+.divider {
+  border: none;
+  height: 2px;
+  background-color: #f3ab55;
+  margin: 8px auto;
+  width: 90%;
+}
+
+@media (min-width: 768px) {
+  .event-card {
+    width: 30vw;
+  }
+}
