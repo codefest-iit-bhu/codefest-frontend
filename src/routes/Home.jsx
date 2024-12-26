@@ -35,8 +35,8 @@ export default function Home() {
         <div className="w-screen">
           <Lookback />
           <Testimonials />
-          <OurSponsors/>
-          <PreviousSponsors />
+          <OurSponsors />
+          {/* <PreviousSponsors /> */}
           <img src="cat.svg" alt="" className="w-full" />
           {/* AMONGUS */}
           <img

@@ -2,6 +2,16 @@ import React from "react";
 import ixigo from "../assets/Sponsors/ixigo.jpeg";
 import darkHorse from "../assets/Sponsors/project-dark-horse.jpeg";
 import codingNinjas from "../assets/Sponsors/coding-ninjas.jpeg";
+import aws from "../assets/Sponsors/aws.png";
+import cisco from "../assets/Sponsors/cisco.png";
+import mozilla from "../assets/Sponsors/mozilla1.png";
+import topcoder from "../assets/Sponsors/top-coder.png";
+import eligible from "../assets/Sponsors/eligible.png";
+import uber from "../assets/Sponsors/uber.png";
+import zebronics from "../assets/Sponsors/zebronics.png";
+import grabon from "../assets/Sponsors/grab-on.png";
+import hackerearth from "../assets/Sponsors/hackerearth.png";
+import hackerrank from "../assets/Sponsors/hackerrank.png";
 
 const SponsorLogo = ({ src, alt }) => (
   <div className="w-[150px] h-[150px] md:w-[300px] md:h-[300px] relative">
@@ -25,6 +35,16 @@ const PreviousSponsors = () => {
     { src: ixigo, alt: "IXIGO logo" },
     { src: darkHorse, alt: "DARKHORSE logo" },
     { src: codingNinjas, alt: "CODINGNINJAS logo" },
+    { src: aws, alt: "AWS logo" },
+    { src: cisco, alt: "CISCO logo" },
+    { src: mozilla, alt: "Mozilla logo" },
+    { src: topcoder, alt: "Topcoder logo" },
+    { src: eligible, alt: "Eligible logo" },
+    { src: uber, alt: "Uber logo" },
+    { src: zebronics, alt: "Zebronics logo" },
+    { src: grabon, alt: "GrabOn logo" },
+    { src: hackerearth, alt: "Hackerearth logo" },
+    { src: hackerrank, alt: "HackerRank logo" },
   ];
 
   return (
