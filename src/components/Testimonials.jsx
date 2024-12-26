@@ -1,6 +1,7 @@
 import React from "react";
 import TestimonialCard from "./TestimonialCard";
 import touristImage from "../assets/Testimonial/tourist.jpeg";
+import animeshpathakImage from "../assets/Testimonial/animesh-pathak.jpeg";
 import rajShuklaImage from "../assets/Testimonial/raj-shukla.jpeg";
 import infosecIITRImage from "../assets/Testimonial/infosec.jpeg";
 
@@ -13,10 +14,10 @@ const Testimonials = () => {
       msg: "Marathon had some good problems and it was prepared very well. I loved the idea of hosting Mahamania at Topcoder! The problems were interesting too. Perplexed had some nice problems as well. Overall I enjoyed all three events -- thanks a lot!",
     },
     {
-      name: "Kylian Mbappe",
-      imgAlt: "Kylian Mbappe",
-      imgSrc: "",
-      msg: "I think sometimes in the life I'm too competetive.",
+      name: "Animesh Pathak",
+      imgAlt: "Animesh Pathak",
+      imgSrc: animeshpathakImage,
+      msg: "CodeFest is a phenomenal platform that challenges young minds to innovate and excel. It’s incredible to see how it has grown to inspire countless students.",
     },
     {
       name: "Raj Shukla",
