@@ -69,6 +69,7 @@ const AllCaRequests = () => {
 
   // Prepare data for CSV export
   const csvHeaders = [
+    { label: "Name", key: "user"},
     { label: "Graduation Year", key: "graduation_year" },
     { label: "Contact Number", key: "contact_number" },
     { label: "WhatsApp Number", key: "whatsapp_number" },
@@ -78,7 +79,8 @@ const AllCaRequests = () => {
     { label: "Status", key: "status" },
   ];
 
-  const csvData = requests.map((request) => ({
+  const csvData = requests.map((request) => ({ 
+    user:request.user || "N/A",
     graduation_year: request.graduation_year || "N/A",
     contact_number: request.contact_number || "N/A",
     whatsapp_number: request.whatsapp_number || "N/A",
