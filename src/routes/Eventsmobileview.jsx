@@ -36,7 +36,7 @@ export default function Eventsmobileview() {
                             <img
                                 src={event.image_desk_path}
                                 alt={event.name}
-                                className="w-[26vw]"
+                                className="w-40 rounded-full mr-6"
                             />
                             <Timeline event={event} />
                         </div>

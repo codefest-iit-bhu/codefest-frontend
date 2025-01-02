@@ -18,6 +18,7 @@ import PrivateRoute from "./components/ProtectedRoute";
 import Layout from "./layout/Layout";
 import PageTitle from "./components/PageTitle";
 import CALeaderboard from "./routes/CALeaderboard";
+import AllTeams from "./routes/Admin/AllTeams";
 
 export const router = createBrowserRouter([
   {
@@ -98,6 +99,15 @@ export const router = createBrowserRouter([
           <PageTitle title="CA Leaderboard | Codefest IIT (BHU)" />
           <CALeaderboard />,
         </>
+      },
+      {
+        path: "/event/teams/:eventId",
+        element: (
+          <PrivateRoute>
+            <PageTitle title="All Teams | Codefest IIT (BHU)" />
+            <AllTeams />
+          </PrivateRoute>
+        ),
       },
     ],
   },

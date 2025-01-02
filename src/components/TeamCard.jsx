@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import events from "../store/events.js";
 import Teamcardbg from "../backgrounds/team_card.jsx";
 
-const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
+const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user, all = false }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [members, setMembers] = useState(team.members);
   const [isChangeLeaderModalOpen, setIsChangeLeaderModalOpen] = useState(false);
@@ -109,7 +109,7 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
   return (
     <>
       {/* Change Leader Modal */}
-      {isChangeLeaderModalOpen && (
+      {!all && isChangeLeaderModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-xl w-96 text-black">
             <h2 className="text-xl font-bold mb-4">Change Team Leader</h2>
@@ -173,7 +173,7 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
           )}
 
           <div>
-            {members.length === 1 && (team.event.maxMembers - members.length > 0) ? (
+            {!all && members.length === 1 && (team.event.maxMembers - members.length > 0) ? (
               <p className="mt-5">Invite members by sharing code!!</p>
             ) : (
               <ul className="member-list ">
@@ -190,7 +190,7 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
                       )}
                     </div>
 
-                    {isLeader && member.user._id !== user._id && (
+                    {!all && isLeader && member.user._id !== user._id && (
                       <button
                         className="remove-member-button text-xl ml-2 flex items-center justify-center text-red-600"
                         onClick={() => handleRemoveMember(member.user._id)}
@@ -203,35 +203,38 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
               </ul>
             )}
           </div>
-          <div className="bottom-4">
-            {team.teamLeader === user._id ? (
-              <>
-                {members.length > 1 && <button
-                  className="delete-team-button ml-7 hover:scale-105 transition-all duration-500"
-                  onClick={() => setIsChangeLeaderModalOpen(true)}
-                  disabled={isProcessing}
-                >
-                  <img src="/leadercard.png" alt="Change Leader" />
-                </button>}
+          {
+            !all &&
+            <div className="bottom-4">
+              {team.teamLeader === user._id ? (
+                <>
+                  {members.length > 1 && <button
+                    className="delete-team-button ml-7 hover:scale-105 transition-all duration-500"
+                    onClick={() => setIsChangeLeaderModalOpen(true)}
+                    disabled={isProcessing}
+                  >
+                    <img src="/leadercard.png" alt="Change Leader" />
+                  </button>}
 
+                  <button
+                    className="delete-team-button ml-7 hover:scale-105 transition-all duration-500"
+                    onClick={handleDeleteTeam}
+                    disabled={isProcessing}
+                  >
+                    <img src="/deletecard.png" alt="Delete Team" />
+                  </button>
+                </>
+              ) : (
                 <button
-                  className="delete-team-button ml-7 hover:scale-105 transition-all duration-500"
-                  onClick={handleDeleteTeam}
+                  className="leave-team-button ml-7 hover:scale-105 transition-all duration-500"
+                  onClick={handleLeaveTeam}
                   disabled={isProcessing}
                 >
-                  <img src="/deletecard.png" alt="Delete Team" />
+                  <img src="/leavecard.png" alt="Leave Team" />
                 </button>
-              </>
-            ) : (
-              <button
-                className="leave-team-button ml-7 hover:scale-105 transition-all duration-500"
-                onClick={handleLeaveTeam}
-                disabled={isProcessing}
-              >
-                <img src="/leavecard.png" alt="Leave Team" />
-              </button>
-            )}
-          </div>
+              )}
+            </div>
+          }
 
           <div className="flex justify-end"> <span className="font-bold">{events.find(event => event.id === team.event.eventId).date}</span></div>
         </div>

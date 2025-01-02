@@ -252,8 +252,8 @@ export default [
         "id": "6",
         "name": "Codewars",
         "title": "Codewars",
-        "date": "4 Jan, 2025, 2 PM IST",
-        "last_date_reg": "4 Jan, 2025, 2 PM IST",
+        "date": "4 Jan, 2025, 10 AM IST",
+        "last_date_reg": "4 Jan, 2025, 10 AM IST",
         "image_desk_path": "/codewars_desk.png",
         "max_members": 1,
         "overview":
@@ -262,7 +262,7 @@ export default [
         "description":
             "<p>• Platform: HackerRank</p>\
              <p>• Contest date: 4 Jan 2025</p>\
-             <p>• Contest duration: 3 hours, from 2 PM</p>\
+             <p>• Contest duration: 3 hours, from 10 AM</p>\
              <p>• It's a 3-hour contest, having two sections (usual CP questions, AprilFool's riddle-like questions).</p>\
              <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>\
              <p>• Participants have to register on the <a href='https://bit.ly/codewars25' target='_blank' class='text-blue-500 underline'>Hackerrank</a> and codefest website.</p>\

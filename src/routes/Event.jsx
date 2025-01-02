@@ -21,6 +21,7 @@ export const Event = () => {
   const [teamName, setTeamName] = useState("");
   const [browser, setBrowser] = useState("");
   const [registrations_open, setRegistrations_open] = useState(false);
+  const { user } = useUser();
 
   function detectBrowser() {
     const userAgent = navigator.userAgent.toLowerCase();
@@ -107,38 +108,51 @@ export const Event = () => {
 
           <div className="flex justify-center mt-3 space-x-3">
             {registrations_open ?
-              (!isMember ? (
-                <>
-                  <button
-                    className="bg-lime-600 text-white p-3 font-bold rounded-lg hover:bg-lime-700 transition-colors"
-                    onClick={() => {
-                      if (!isAuthenticated) return window.location.href = "/login";
-                      setIsRegistrationModalOpen(true)
-                    }}
-                  >
-                    Register Now!
-                  </button>
-                  {
-                    event.max_members > 1 && <button
-                      className="bg-green-600 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
+              <>
+                {!isMember ?
+                  <>
+                    <button
+                      className="bg-lime-600 text-white p-3 font-bold rounded-lg hover:bg-lime-700 transition-colors"
                       onClick={() => {
                         if (!isAuthenticated) return window.location.href = "/login";
-                        setIsJoinTeamModalOpen(true)
+                        setIsRegistrationModalOpen(true)
                       }}
                     >
-                      Join Team
+                      Register Now!
                     </button>
-                  }
-                </>
-              ) : (
-                <Link
-                  to={`/myTeams#${teamName}`}
-                  className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
-                  onClick={() => setIsRegistrationModalOpen(true)}
-                >
-                  My Team
-                </Link>
-              )) :
+                    {
+                      event.max_members > 1 && <button
+                        className="bg-green-600 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
+                        onClick={() => {
+                          if (!isAuthenticated) return window.location.href = "/login";
+                          setIsJoinTeamModalOpen(true)
+                        }}
+                      >
+                        Join Team
+                      </button>
+                    }
+                  </> :
+                  <Link
+                    to={`/myTeams#${teamName}`}
+                    className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
+                    onClick={() => setIsRegistrationModalOpen(true)}
+                  >
+                    My Team
+                  </Link>
+
+                }
+
+                {
+                  user && user.role === "admin" && <a href={`/event/teams/${event.id}`}>
+
+                    <button
+                      className="bg-blue-500 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
+                    >
+                      View Teams
+                    </button>
+                  </a>
+                }
+              </> :
               <span className="py-2 px-4 border border-lime-400 text-lime-400 rounded-lg font-mono text-lg">
                 Registrations will begin {event.id === "7" ? "on 3rd Jan 12pm" : "soon"} !
               </span>
