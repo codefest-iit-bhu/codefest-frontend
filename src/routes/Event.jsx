@@ -20,6 +20,7 @@ export const Event = () => {
   const [isMember, setIsMember] = useState(false);
   const [teamName, setTeamName] = useState("");
   const [browser, setBrowser] = useState("");
+  const [registrations_open, setRegistrations_open] = useState(false);
 
   function detectBrowser() {
     const userAgent = navigator.userAgent.toLowerCase();
@@ -33,7 +34,7 @@ export const Event = () => {
 
   useEffect(() => {
     async function getIsMember() {
-      const res = await axios.get(`/event/${event.id}`, {
+      const res = await axios.get(`/event/is_member/${event.id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setIsMember(res.data.isMember);
@@ -41,8 +42,17 @@ export const Event = () => {
         setTeamName(res.data.teamName);
       }
     }
+
+    async function getEvent() {
+      const res = await axios.get(`/event/${event.id}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      setRegistrations_open(res.data.registrations_open);
+    }
+
     detectBrowser();
     if (isAuthenticated) getIsMember();
+    getEvent();
   }, []);
 
   const data = {
@@ -77,7 +87,7 @@ export const Event = () => {
             <img
               src={event.image_desk_path}
               alt=""
-              className="mx-auto w-40 h-auto z-20"
+              className="mx-auto w-40 h-auto z-20 rounded-full"
             />
             <br />
 
@@ -96,39 +106,43 @@ export const Event = () => {
           </div>
 
           <div className="flex justify-center mt-3 space-x-3">
-            {/* {!isMember ? (
-              <>
-                <button
-                  className="bg-lime-600 text-white p-3 font-bold rounded-lg hover:bg-lime-700 transition-colors"
-                  onClick={() => {
-                    if (!isAuthenticated) return window.location.href = "/login";
-                    setIsRegistrationModalOpen(true)
-                  }}
+            {registrations_open ?
+              (!isMember ? (
+                <>
+                  <button
+                    className="bg-lime-600 text-white p-3 font-bold rounded-lg hover:bg-lime-700 transition-colors"
+                    onClick={() => {
+                      if (!isAuthenticated) return window.location.href = "/login";
+                      setIsRegistrationModalOpen(true)
+                    }}
+                  >
+                    Register Now!
+                  </button>
+                  {
+                    event.max_members > 1 && <button
+                      className="bg-green-600 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
+                      onClick={() => {
+                        if (!isAuthenticated) return window.location.href = "/login";
+                        setIsJoinTeamModalOpen(true)
+                      }}
+                    >
+                      Join Team
+                    </button>
+                  }
+                </>
+              ) : (
+                <Link
+                  to={`/myTeams#${teamName}`}
+                  className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
+                  onClick={() => setIsRegistrationModalOpen(true)}
                 >
-                  Register Now!
-                </button>
-                <button
-                  className="bg-green-600 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
-                  onClick={() => {
-                    if (!isAuthenticated) return window.location.href = "/login";
-                    setIsJoinTeamModalOpen(true)
-                  }}
-                >
-                  Join Team
-                </button>
-              </>
-            ) : (
-              <Link
-                to={`/myTeams#${teamName}`}
-                className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
-                onClick={() => setIsRegistrationModalOpen(true)}
-              >
-                My Team
-              </Link>
-            )} */}
-            <span className="py-2 px-4 border border-lime-400 text-lime-400 rounded-lg font-mono text-lg">
-              Registrations will begin soon!
-            </span>
+                  My Team
+                </Link>
+              )) :
+              <span className="py-2 px-4 border border-lime-400 text-lime-400 rounded-lg font-mono text-lg">
+                Registrations will begin {event.id === "7" ? "on 3rd Jan 12pm" : "soon"} !
+              </span>
+            }
           </div>
 
           <div className="mt-6 text-lg font-mono">

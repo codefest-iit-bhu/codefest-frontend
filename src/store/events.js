@@ -6,6 +6,7 @@ export default [
         "date": "25 Jan, 2025, 12 PM IST",
         "last_date_reg": "25 Jan, 2025",
         "image_desk_path": "/ctf_desk.svg",
+        "max_members": 3,
         "overview": `
         <p>• Capture the Flag (CTF) will be a cybersecurity competition for participants to show their skills in exploring various exploits in the realm of computer systems.</p>
         <p>• Problems will be visible at the start of the competition.</p>
@@ -16,7 +17,7 @@ export default [
         <p>• It's a 36-hour online live event, having challenges from different categories like reverse engineering, forensics, web exploitation, cryptography, etc.</p>
         <p>• We will be conducting it on the CTFd platform.</p>
         <p>• Each category would have at least 3-4 challenges of difficulty ranging from Easy to Hard level.</p>
-        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</Link>.</p>
+        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank">discord server</a>.</p>
         <p>• Participants have to register on the CodeFest website.</p>
         <p>• The registrations on the CTFd website will start on 20th Jan, at 12 PM IST.</p>
         <p>• (Note that this registration has to be done after registering on the CodeFest website).</p>
@@ -50,6 +51,7 @@ export default [
         "date": "29 Jan, 2025, 12 PM IST",
         "last_date_reg": "28 Jan, 2025",
         "image_desk_path": "/enigma_desk.svg",
+        "max_members": 3,
         "overview": `
         <p>• Enigma is a thrilling machine-learning competition where we challenge the participants to showcase their prowess by designing a self-learning model that will provide efficient solutions to real-life problems.</p>
         <p>• Problem statements will be visible at the start of the competition.</p>
@@ -58,7 +60,7 @@ export default [
         "description": `
         <p>• It's a 3-day online live event.</p>
         <p>• We will be conducting it on Kaggle.</p>
-        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</Link>.</p>
+        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank">discord server</a>.</p>
         <p>• Participants and their teams should be registered on the CodeFest website.</p>
         <p>• Enigma'25 will start on 29th Jan at 12 PM IST.</p>
         <p>• The link to the competition will be shared via email to registered participants on 29th Jan at 12 PM IST.</p>
@@ -92,6 +94,7 @@ export default [
         "date": "28 Jan, 2025, 12 PM IST",
         "last_date_reg": "24 Jan, 2025, 11:59 PM IST",
         "image_desk_path": "/vistas_desk.svg",
+        "max_members": 3,
         "overview": `
         <p>• Vista'24 will be a computer vision competition for participants to show their skills in exploring various exploits in the realm of computer vision.</p>
         <p>• A team of a maximum of 3 members is allowed.</p>
@@ -99,7 +102,7 @@ export default [
         "description": `
         <p>• It's a 6-day online live event, having challenges from different categories like image classification, object detection, image segmentation, etc.</p>
         <p>• We will be conducting it on Kaggle.</p>
-        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</Link>.</p>
+        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank">discord server</a>.</p>
         <p>• Participants and their teams should be registered on the CodeFest website.</p>
         <p>• Registration closes on 24th January at 11:59 PM IST.</p>
         <p>• Vista'24 will start on 28th Jan at 12 PM IST.</p>
@@ -133,6 +136,7 @@ export default [
         "date": "31 Jan, 2025, 12 PM IST - 3 Feb, 2025, 12 PM IST",
         "last_date_reg": "27 Jan, 2025, 11:59 PM IST",
         "image_desk_path": "/haxplore_desk.svg",
+        "max_members": 4,
         "overview": `
         <p>• HaXplore is the premier hackathon organized as part of Codefest, the annual departmental fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi.</p>
         <p>• It serves as a dynamic platform where innovative minds converge to showcase groundbreaking ideas, fostering collaboration and exploration of transformative solutions.</p>
@@ -213,6 +217,7 @@ export default [
         "name": "Manthan",
         "title": "Manthan",
         "date": "29 Jan, 2025, 8 PM IST",
+        "max_members": 1,
         "last_date_reg": "28 Jan, 2025, 11:59 PM IST",
         "image_desk_path": "/manthan_desk.svg",
         "overview": `
@@ -225,7 +230,6 @@ export default [
         <p>• Problems will be visible at the start of the contest. A contest link will be shared via email to registered participants.</p>
     `,
         "rules": `
-        <p><strong>General Rules:</strong></p>
         <ul>
             <li>Normal rules of Codechef contests apply.</li>
             <li>Each participant can only participate individually (team size: 1).</li>
@@ -233,7 +237,6 @@ export default [
         </ul>
     `,
         "scoring": `
-        <p><strong>Scoring:</strong></p>
         <ul>
             <li>The scoring will follow Codechef's standard scoring policies.</li>
         </ul>
@@ -245,5 +248,70 @@ export default [
     `,
         "contact": "For further queries about this event, please contact Jay Vinchi (+918530178569), Rudra Patel (+919898861976)"
     },
-
+    {
+        "id": "6",
+        "name": "Codewars",
+        "title": "Codewars",
+        "date": "4 Jan, 2025, 2 PM IST",
+        "last_date_reg": "4 Jan, 2025, 2 PM IST",
+        "image_desk_path": "/codewars_desk.png",
+        "max_members": 1,
+        "overview":
+            "<p>• Codewars will be a competitive programming contest (only for 1st and 2nd years) where participants are posed with problems of varying difficulties to be solved in a few hours.\
+            • In addition to traditional problem-solving challenges, the contest will include some questions that require a more active, out-of-the-box approach.</p>",
+        "description":
+            "<p>• Platform: HackerRank</p>\
+             <p>• Contest date: 4 Jan 2025</p>\
+             <p>• Contest duration: 3 hours, from 2 PM</p>\
+             <p>• It's a 3-hour contest, having two sections (usual CP questions, AprilFool's riddle-like questions).</p>\
+             <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>\
+             <p>• Participants have to register on the <a href='https://bit.ly/codewars25' target='_blank' class='text-blue-500 underline'>Hackerrank</a> and codefest website.</p>\
+             <p>• Problems will be visible at the start of the contest. The link to the contest will be shared via email to registered participants.</p>",
+        "rules":
+            "<ul>\
+                <li>Normal rules of HackerRank contests apply.</li>\
+                <li>It is an <span class='font-bold'>individual participation</span> event.</li>\
+             </ul>",
+        "scoring":
+            "<ul>\
+                <li>Normal scoring policies of HackerRank contests apply.</li>\
+             </ul>",
+        "prizes":
+            "<p><strong>Prizes:</strong></p>\
+            <p>• First year - Top 3 participants</p>\
+            <p>• Second Year - Best Sophomore</p>",
+        "howto":
+            "<p>• Sign up on <a href='https://bit.ly/codewars25' target='_blank' class='text-blue-500 underline'>Hackerrank</a>, and register on codefest website before the deadline.</p>",
+        "contact": "For further queries about this event, please contact Gaurav Dalvi (+918669193588), Rudra Patel (+919898861976)"
+    },
+    {
+        "id": "7",
+        "name": "Arithmetica",
+        "title": "Arithmetica",
+        "date": "5 Jan, 2025",
+        "last_date_reg": "5 Jan, 2025",
+        "image_desk_path": "/arithmetica_desk.png",
+        "max_members": 1,
+        "overview":
+            "<p>• Arithmetica is a strictly timed event (only for 1st and 2nd years), consisting of a series of questions based on numerical, verbal, non-verbal, spatial, mechanical and abstract reasoning.</p>\
+             <p>• Includes questions on topics such as algebra, geometry, probability, with a mix of mathematical puzzles, analytical reasoning, and applied math problems.</p>",
+        "description":
+            "<p>• Date: 5 Jan 2025</p>\
+             <p>• Duration: 60 mins (offline)</p>\
+             <p>• The event will be conducted with the format revealed at the time of the event.</p>\
+             <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>",
+        "rules":
+            "<ul>\
+                <li>The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</li>\
+                <li>It is an <strong>individual participation</strong> event so please refrain from discussing strategy and solutions during the event.</li>\
+             </ul>",
+        "scoring":
+            "<ul>\
+                <li>It will be revealed at the time of the event.</li>\
+             </ul>",
+        "prizes": "Prize details will be announced after the contest.",
+        "howto":
+            "<p>• Participants have to register on the CodeFest website and <a href='https://bit.ly/arithmetica25' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>",
+        "contact": "For further queries about this event, please contact Shubham Jain (+91 98322 41448), Yashvardhan (+91 9996008363)"
+    }
 ];

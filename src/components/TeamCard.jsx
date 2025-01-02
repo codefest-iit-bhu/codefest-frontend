@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./TeamCard.css";
 import axios from "../utils/axiosInstance";
 import toast from "react-hot-toast";
-import events from "../store/events2.js";
+import events from "../store/events.js";
 import Teamcardbg from "../backgrounds/team_card.jsx";
 
 const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
@@ -163,7 +163,7 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
           <p className="text-center">
             Code: <span className="highlight">{team.teamCode}</span>
           </p>
-          {team.event.maxMembers - members.length && (
+          {(
             <p className="text-center">
               Space Remaining:{" "}
               <span className="highlight">
@@ -173,7 +173,7 @@ const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user }) => {
           )}
 
           <div>
-            {members.length === 1 ? (
+            {members.length === 1 && (team.event.maxMembers - members.length > 0) ? (
               <p className="mt-5">Invite members by sharing code!!</p>
             ) : (
               <ul className="member-list ">

@@ -30,7 +30,7 @@ export default function DesktopEventsPage() {
                                 <img
                                     src={event.image_desk_path}
                                     alt={event.name}
-                                    className="w-[25vh]"
+                                    className={`w-40 rounded-full ${index % 2 === 0 ? 'ml-6' : 'mr-6'}`}
                                 />
                                 {
                                     index % 2 === 0 && (index !== events.length - 1) && <div className="w-1/3 border-dotted border-t-[6px] border-spacing-16 border-r-[6px] h-40 rounded-tr-full relative top-20">
