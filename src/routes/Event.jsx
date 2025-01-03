@@ -159,6 +159,13 @@ export const Event = () => {
             }
           </div>
 
+          {
+            event.registration_attention &&
+            <div className="mt-6 text-lg font-mono flex justify-center items-center">
+              <div dangerouslySetInnerHTML={{ __html: event.registration_attention }} />
+            </div>
+          }
+
           <div className="mt-6 text-lg font-mono">
             <div dangerouslySetInnerHTML={{ __html: event.overview }} />
           </div>

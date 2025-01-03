@@ -246,7 +246,7 @@ export default [
         <p>• Participants must register on the CodeFest website to participate.</p>
         <p>• Contestants must use the same username and email for both the CodeChef and CodeFest registrations.</p>
     `,
-        "contact": "For further queries about this event, please contact Jay Vinchi (+918530178569), Rudra Patel (+919898861976)"
+        "contact": "For further queries about this event, please contact Jay Vinchhi (+918530178569), Rudra Patel (+919898861976)"
     },
     {
         "id": "6",
@@ -256,6 +256,8 @@ export default [
         "last_date_reg": "4 Jan, 2025, 10 AM IST",
         "image_desk_path": "/codewars_desk.png",
         "max_members": 1,
+        "registration_attention":
+            "<p> And, register on <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a> (using same email on the website)</p>",
         "overview":
             "<p>• Codewars will be a competitive programming contest (only for 1st and 2nd years) where participants are posed with problems of varying difficulties to be solved in a few hours.\
             • In addition to traditional problem-solving challenges, the contest will include some questions that require a more active, out-of-the-box approach.</p>",
@@ -265,7 +267,7 @@ export default [
              <p>• Contest duration: 3 hours, from 10 AM</p>\
              <p>• It's a 3-hour contest, having two sections (usual CP questions, AprilFool's riddle-like questions).</p>\
              <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>\
-             <p>• Participants have to register on the <a href='https://bit.ly/codewars25' target='_blank' class='text-blue-500 underline'>Hackerrank</a> and codefest website.</p>\
+             <p>• Participants have to register on the <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a> and codefest website.</p>\
              <p>• Problems will be visible at the start of the contest. The link to the contest will be shared via email to registered participants.</p>",
         "rules":
             "<ul>\
@@ -281,7 +283,7 @@ export default [
             <p>• First year - Top 3 participants</p>\
             <p>• Second Year - Best Sophomore</p>",
         "howto":
-            "<p>• Sign up on <a href='https://bit.ly/codewars25' target='_blank' class='text-blue-500 underline'>Hackerrank</a>, and register on codefest website before the deadline.</p>",
+            "<p>• Sign up on <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a>, and register on codefest website before the deadline.</p>",
         "contact": "For further queries about this event, please contact Gaurav Dalvi (+918669193588), Rudra Patel (+919898861976)"
     },
     {
@@ -292,6 +294,8 @@ export default [
         "last_date_reg": "5 Jan, 2025",
         "image_desk_path": "/arithmetica_desk.png",
         "max_members": 1,
+        "registration_attention":
+            "<p> Attempt test <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> (using same email on the website)</p>",
         "overview":
             "<p>• Arithmetica is a strictly timed event (only for 1st and 2nd years), consisting of a series of questions based on numerical, verbal, non-verbal, spatial, mechanical and abstract reasoning.</p>\
              <p>• Includes questions on topics such as algebra, geometry, probability, with a mix of mathematical puzzles, analytical reasoning, and applied math problems.</p>",
@@ -311,7 +315,8 @@ export default [
              </ul>",
         "prizes": "Prize details will be announced after the contest.",
         "howto":
-            "<p>• Participants have to register on the CodeFest website and <a href='https://bit.ly/arithmetica25' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>",
+            "<p>• Participants have to register on the CodeFest website and <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>\
+            <p>• Attempt the event using the same email that is registered on the codefest website.",
         "contact": "For further queries about this event, please contact Shubham Jain (+91 98322 41448), Yashvardhan (+91 9996008363)"
     }
 ];
