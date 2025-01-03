@@ -7,7 +7,7 @@ const Timeline = ({ event }) => {
   return (
     <div className="timeline-container">
       <ol className="timeline">
-        {event && new Date() < new Date(event.last_date_reg.split(",").slice(0, 2).join(",")) && (
+        {event && (
           <li key={event.name} className="timeline-item">
             <Link to={`/event/${event.name}`} className="open-link">
               <EventCard
