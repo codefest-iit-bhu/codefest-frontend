@@ -5,7 +5,7 @@ const EventCard = ({ title, date, lastDateReg,img_src }) => {
   const hasEnded=new Date() > new Date(lastDateReg);
   // console.log(title," : ",new Date(lastDateReg))
   return (
-    <div className={`event-card hover:scale-105 transition-all bg-[url('${img_src}')] bg-contain duration-500 hover:bg-gray-900 z-[10] relative ${hasEnded?"pointer-events-none opacity-60":""}`}>
+    <div className={`event-card hover:scale-105 transition-all bg-[url('${img_src}')] bg-[rgba(20,11,41,1)] bg-contain duration-500 hover:bg-gray-900 z-[10] relative ${hasEnded?"pointer-events-none opacity-60":""}`}>
       <h1 className="event-title text-2xl font-bold sm:text-3xl">{title}</h1>
       <p className="event-date font-mono ">{date}</p>
       <hr className="divider" />
