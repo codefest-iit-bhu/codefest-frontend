@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import EventCard from "./EventCard";
 
 const Timeline = ({ event }) => {
-  console.log(event)
   return (
     <div className="timeline-container">
       <ol className="timeline">

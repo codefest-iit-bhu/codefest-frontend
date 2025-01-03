@@ -40,7 +40,6 @@ const CALeaderboard = () => {
                     </thead>
                     <tbody>
                         {leaderboard.map((entry, index) => {
-                            console.log(entry)
                             return (
                                 <tr
                                     key={index}
