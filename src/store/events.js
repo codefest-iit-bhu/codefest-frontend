@@ -4,7 +4,7 @@ export default [
         "name": "Capture the Flag",
         "title": "Capture the Flag",
         "date": "25 Jan, 2025, 12 PM IST",
-        "last_date_reg": "25 Jan, 2025",
+        "last_date_reg": "January 25, 2025 00:00:00",
         "image_desk_path": "/ctf_desk.svg",
         "max_members": 3,
         "overview": `
@@ -49,7 +49,7 @@ export default [
         "name": "Enigma",
         "title": "Enigma",
         "date": "29 Jan, 2025, 12 PM IST",
-        "last_date_reg": "28 Jan, 2025",
+        "last_date_reg": "January 28, 2025 00:00:00",
         "image_desk_path": "/enigma_desk.svg",
         "max_members": 3,
         "overview": `
@@ -92,7 +92,7 @@ export default [
         "name": "Vista",
         "title": "Vista",
         "date": "28 Jan, 2025, 12 PM IST",
-        "last_date_reg": "24 Jan, 2025, 11:59 PM IST",
+        "last_date_reg": "January 24, 2025 23:59:00",
         "image_desk_path": "/vistas_desk.svg",
         "max_members": 3,
         "overview": `
@@ -134,7 +134,7 @@ export default [
         "name": "HaXplore",
         "title": "HaXplore",
         "date": "31 Jan, 2025, 12 PM IST - 3 Feb, 2025, 12 PM IST",
-        "last_date_reg": "27 Jan, 2025, 11:59 PM IST",
+        "last_date_reg": "January 27, 2025 23:59:00",
         "image_desk_path": "/haxplore_desk.svg",
         "max_members": 4,
         "overview": `
@@ -218,7 +218,7 @@ export default [
         "title": "Manthan",
         "date": "29 Jan, 2025, 8 PM IST",
         "max_members": 1,
-        "last_date_reg": "28 Jan, 2025, 11:59 PM IST",
+        "last_date_reg": "January 28, 2025 23:59:00",
         "image_desk_path": "/manthan_desk.svg",
         "overview": `
         <p>• Manthan is a competitive programming contest open to all, where participants are challenged with problems of varying difficulties to be solved within a few hours.</p>
@@ -253,7 +253,7 @@ export default [
         "name": "Codewars",
         "title": "Codewars",
         "date": "4 Jan, 2025, 10 AM IST",
-        "last_date_reg": "4 Jan, 2025, 10 AM IST",
+        "last_date_reg": "January 4, 2025 10:00:00",
         "image_desk_path": "/codewars_desk.png",
         "max_members": 1,
         "registration_attention":
@@ -291,7 +291,7 @@ export default [
         "name": "Arithmetica",
         "title": "Arithmetica",
         "date": "5 Jan, 2025",
-        "last_date_reg": "5 Jan, 2025",
+        "last_date_reg": "January 5, 2025 00:00:00",
         "image_desk_path": "/arithmetica_desk.png",
         "max_members": 1,
         "registration_attention":

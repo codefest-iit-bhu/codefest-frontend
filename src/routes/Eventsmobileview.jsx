@@ -6,18 +6,20 @@ function VerticalLine() {
         <img
             src="/vertical_dotted_line.svg"
             alt="vertical_dotted_line"
-            className="w-[1%] ml-[12%] scale-150 sm:scale-100"
+            className="w-[1%] ml-[12%] scale-150 sm:scale-100 relative max-[768px]:left-[38%]"
         />
     );
 }
 
 export default function Eventsmobileview() {
     const eventDetails = [
-        { icon: "/ctf_icon.svg", alt: "CTF", index: 2 },
         { icon: "/vistas_icon.svg", alt: "Vistas", index: 0 },
         { icon: "/enigma_icon.svg", alt: "Enigma", index: 1 },
-        { icon: "/haxplore_icon.svg", alt: "Haxplore", index: 4 },
+        { icon: "/ctf_icon.svg", alt: "CTF", index: 2 },
         { icon: "/manthan_icon.svg", alt: "Manthan", index: 3 },
+        { icon: "/haxplore_icon.svg", alt: "Haxplore", index: 4 },
+        { icon: "/haxplore_icon.svg", alt: "Haxplore", index: 5 },
+        { icon: "/haxplore_icon.svg", alt: "Haxplore", index: 6 },
     ];
 
     return (
@@ -36,7 +38,7 @@ export default function Eventsmobileview() {
                             <img
                                 src={event.image_desk_path}
                                 alt={event.name}
-                                className="w-40 rounded-full mr-6"
+                                className="max-[768px]:hidden rounded-full mr-6"
                             />
                             <Timeline event={event} />
                         </div>
