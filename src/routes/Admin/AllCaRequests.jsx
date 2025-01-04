@@ -6,11 +6,18 @@ import { useUser } from "../../context/context";
 import axios from "../../utils/axiosInstance";
 import Navbar from "../../components/Navbar";
 import { CSVLink } from "react-csv"; // Import CSVLink
+import Search from "../../components/Search";
 
 const AllCaRequests = () => {
   const [requests, setRequests] = useState([]);
   const navigate = useNavigate();
   const { user } = useUser();
+  const [search, setSearch] = useState("");
+  const [status, setStatus] = useState("pending")
+
+  const filter = (req) => {
+    return (req.user.name.toLowerCase().includes(search.toLowerCase()) || req.institute.toLowerCase().includes(search.toLowerCase())) && (status === "all" || status === req.status)
+  }
 
   useEffect(() => {
     if (user.role !== "admin") {
@@ -70,7 +77,7 @@ const AllCaRequests = () => {
   // Prepare data for CSV export
   const csvHeaders = [
 
-    { label: "Name", key: "user"},
+    { label: "Name", key: "user" },
     { label: "Graduation Year", key: "graduation_year" },
     { label: "Contact Number", key: "contact_number" },
     { label: "WhatsApp Number", key: "whatsapp_number" },
@@ -80,7 +87,7 @@ const AllCaRequests = () => {
     { label: "Status", key: "status" },
   ];
 
-  const csvData = requests.map((request) => ({ 
+  const csvData = requests.map((request) => ({
     user: request.user.name || "N/A",
     graduation_year: request.graduation_year || "N/A",
     contact_number: request.contact_number || "N/A",
@@ -98,8 +105,23 @@ const AllCaRequests = () => {
       <Navbar />
       <div className="flex flex-col items-center min-h-screen p-4 bg-[#140B29]">
         <h1 className="text-4xl font-bold mb-10 text-white">All CA Requests</h1>
+        <div className="flex gap-3 items-center font-mono w-2/3 mb-5">
+          <label htmlFor="role">Status: </label>
+          <select name="status" id="status" value={status} onChange={e => setStatus(e.target.value)} className="p-3 rounded-lg text-black">
+            <option value="all">All</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+          </select>
+          <Search search={search} setSearch={setSearch} placeholder={"Search using name or institute"} />
+        </div>
+        <div>
+          <button className="bg-orange-500 px-3 py-2 text-white font-mono rounded-lg mb-6">
+            {requests.filter(filter).length} results
+          </button>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
-          {requests.map((request) => (
+          {requests.filter(filter).map((request) => (
             <CaCard
               key={request.user}
               request={request}
