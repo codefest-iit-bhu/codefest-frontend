@@ -78,6 +78,7 @@ const AllCaRequests = () => {
   const csvHeaders = [
 
     { label: "Name", key: "user" },
+    { label: "Institite", key: "institute" },
     { label: "Graduation Year", key: "graduation_year" },
     { label: "Contact Number", key: "contact_number" },
     { label: "WhatsApp Number", key: "whatsapp_number" },
@@ -87,8 +88,9 @@ const AllCaRequests = () => {
     { label: "Status", key: "status" },
   ];
 
-  const csvData = requests.map((request) => ({
+  const csvData = requests.filter(filter).map((request) => ({
     user: request.user.name || "N/A",
+    institute: request.institute || "N/A",
     graduation_year: request.graduation_year || "N/A",
     contact_number: request.contact_number || "N/A",
     whatsapp_number: request.whatsapp_number || "N/A",
@@ -98,7 +100,7 @@ const AllCaRequests = () => {
     status: request.status || "N/A",
   }));
 
-  const fileName = `CAReqTill${new Date().toISOString().split("T")[0]}.csv`;
+  const fileName = `CAReq_${status}_Till${new Date().toISOString().split("T")[0]}.csv`;
 
   return (
     <>
@@ -119,6 +121,14 @@ const AllCaRequests = () => {
           <button className="bg-orange-500 px-3 py-2 text-white font-mono rounded-lg mb-6">
             {requests.filter(filter).length} results
           </button>
+          <CSVLink
+            headers={csvHeaders}
+            data={csvData}
+            filename={fileName}
+            className="px-6 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 ml-3 font-mono"
+          >
+            Download CSV
+          </CSVLink>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
           {requests.filter(filter).map((request) => (
@@ -131,14 +141,7 @@ const AllCaRequests = () => {
           ))}
         </div>
         <div className="mt-10">
-          <CSVLink
-            headers={csvHeaders}
-            data={csvData}
-            filename={fileName}
-            className="px-6 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700"
-          >
-            Download CSV
-          </CSVLink>
+
         </div>
       </div>
     </>
