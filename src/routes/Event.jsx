@@ -22,6 +22,8 @@ export const Event = () => {
   const [browser, setBrowser] = useState("");
   const [registrations_open, setRegistrations_open] = useState(false);
   const { user } = useUser();
+  const hasEnded = new Date() > new Date(event.
+    last_date_reg);
 
   function detectBrowser() {
     const userAgent = navigator.userAgent.toLowerCase();
@@ -62,6 +64,7 @@ export const Event = () => {
     Scoring: event.scoring,
     "How to register": event.howto,
   };
+
 
   return (
     <>
@@ -107,7 +110,7 @@ export const Event = () => {
           </div>
 
           <div className="flex justify-center mt-3 space-x-3">
-            {registrations_open ?
+            {registrations_open && !hasEnded ?
               <>
                 {!isMember ?
                   <>
@@ -154,7 +157,7 @@ export const Event = () => {
                 }
               </> :
               <span className="py-2 px-4 border border-lime-400 text-lime-400 rounded-lg font-mono text-lg">
-                Registrations will begin {event.id === "7" ? "on 3rd Jan 12pm" : "soon"} !
+                {hasEnded ? "Registration Closed" : `Registrations will begin ${event.id === "7" ? "on 3rd Jan 12pm" : "soon"} !`}
               </span>
             }
           </div>
