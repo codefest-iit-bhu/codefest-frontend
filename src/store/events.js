@@ -307,7 +307,7 @@ export default [
              <p>• Includes questions on topics such as algebra, geometry, probability, with a mix of mathematical puzzles, analytical reasoning, and applied math problems.</p>",
     description:
       "<p>• Date: 5 Jan 2025</p>\
-             <p>• Duration: 60 mins (offline)</p>\
+             <p>• Duration: 60 mins (online)</p>\
              <p>• The event will be conducted with the format revealed at the time of the event.</p>\
              <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>",
     rules:
