@@ -13,10 +13,10 @@ const CaCard = ({ request, onApprove, onReject }) => {
       <p className="mb-1">
         <span className="font-semibold">Institute:</span> {request.institute}
       </p>
-      <p className="mb-1">
+      {/* <p className="mb-1">
         <span className="font-semibold">SoP:</span>{" "}
         {request.userDescription}
-      </p>
+      </p> */}
 
       {/* New Fields */}
       {[

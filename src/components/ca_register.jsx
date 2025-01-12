@@ -136,6 +136,7 @@ const CARegistration = () => {
               onChange={(e) =>
                 setFormData({ ...formData, [field.id]: e.target.value })
               }
+              placeholder={field.id === "ca_brought_by" ? "Referral Code or Name of the referrer" : ""}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black font-mono"
               required
             />
@@ -186,6 +187,16 @@ const CARegistration = () => {
                     </CopyToClipboard>
                   </div>
                   <p className="text-sm text-gray-700 mt-2">(Share this link with new users (10 points) for signing up and make referred members participate in codefest events (2 points))</p>
+                  <p className="flex gap-2 mt-2 items-center">
+                    <span className="font-bold">Referral Code:</span><span>{referralLink.split("=")[1]}</span>
+                    <CopyToClipboard text={referralLink.split("=")[1]}
+                      onCopy={() => toast.success("Copied")}>
+                      <button className="cursor-pointer py-1 px-2 bg-orange-500 text-white rounded-lg">Copy</button>
+                    </CopyToClipboard>
+                  </p>
+                  <p className="text-sm text-gray-700 mt-2">
+                    (Share this referral code with a CA, inform them to paste this code in Referred By field and you get 30 points on their request approval)
+                  </p>
                 </div>
               }
               {userRequest.status === "rejected" && (
