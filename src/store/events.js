@@ -91,7 +91,7 @@ export default [
     id: "3",
     name: "Vista",
     title: "Vista",
-    date: "26 Jan, 2025, 12 PM IST",
+    date: "26 Jan, 2025, 6 PM IST",
     last_date_reg: "January 24, 2025 23:59:00",
     image_desk_path: "/vistas_desk.svg",
     max_members: 3,
