@@ -17,12 +17,10 @@ export default [
         <p>• It's a 36-hour online live event, having challenges from different categories like reverse engineering, forensics, web exploitation, cryptography, etc.</p>
         <p>• We will be conducting it on the CTFd platform.</p>
         <p>• Each category would have at least 3-4 challenges of difficulty ranging from Easy to Hard level.</p>
-        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank">discord server</a>.</p>
         <p>• Participants have to register on the CodeFest website.</p>
-        <p>• The registrations on the CTFd website will start on 20th Jan, at 12 PM IST.</p>
-        <p>• (Note that this registration has to be done after registering on the CodeFest website).</p>
-        <p>• The CTF event will start on 25th Jan.</p>
-        <p>• The link to the competition will be shared via email to registered participants on 20th Jan, at 12 PM IST.</p>
+        <p>• The CTF event will start on 25 Jan 18:00 and end on 27 Jan 6:00.</p>
+        <p>• The link to the competition will be shared via email to registered participants.</p>
+        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank">discord server</a>.</p>
     `,
     rules: `
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
