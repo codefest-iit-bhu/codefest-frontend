@@ -91,7 +91,7 @@ export default [
     id: "3",
     name: "Vista",
     title: "Vista",
-    date: "28 Jan, 2025, 12 PM IST",
+    date: "26 Jan, 2025, 12 PM IST",
     last_date_reg: "January 24, 2025 23:59:00",
     image_desk_path: "/vistas_desk.svg",
     max_members: 3,
@@ -100,14 +100,13 @@ export default [
         <p>• A team of a maximum of 3 members is allowed.</p>
     `,
     description: `
-        <p>• It's a 6-day online live event, having challenges from different categories like image classification, object detection, image segmentation, etc.</p>
-        <p>• We will be conducting it on Kaggle.</p>
-        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank">discord server</a>.</p>
+        <p>• It's a 5-day online live event, having challenges from different categories like image classification, object detection, image segmentation, etc.</p>
         <p>• Participants and their teams should be registered on the CodeFest website.</p>
+        <p>• Vista'24 will start on 26th Jan at 6 PM IST and end on 11:59 PM IST.</p>
         <p>• Registration closes on 24th January at 11:59 PM IST.</p>
-        <p>• Vista'24 will start on 28th Jan at 12 PM IST.</p>
-        <p>• The link to the competition will be shared via email to registered participants on 28th Jan at 12 PM IST.</p>
+        <p>• The link to the competition will be shared via email to registered participants.</p>
         <p>• Problem statements will be visible at the start of the competition.</p>
+        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank">discord server</a>.</p>
     `,
     rules: `
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
