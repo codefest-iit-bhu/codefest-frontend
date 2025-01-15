@@ -186,7 +186,7 @@ const CARegistration = () => {
                       <button className="cursor-pointer py-1 px-2 bg-orange-500 text-white rounded-lg">Copy</button>
                     </CopyToClipboard>
                   </div>
-                  <p className="text-sm text-gray-700 mt-2">(Share this link with new users (10 points) for signing up and make referred members participate in codefest events (2 points))</p>
+                  <p className="text-sm text-gray-700 mt-2">(Share this link with new users (10 points) for signing up and make referred members participate in codefest events (10 points))</p>
                   <p className="flex gap-2 mt-2 items-center">
                     <span className="font-bold">Referral Code:</span><span>{referralLink.split("=")[1]}</span>
                     <CopyToClipboard text={referralLink.split("=")[1]}

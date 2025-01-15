@@ -29,7 +29,7 @@ const CALeaderboard = () => {
             <Navbar />
             <main className="bg-[#140B29] flex flex-col items-center w-full min-h-[100vh] p-4">
                 <h1 className='font-bold font-mono text-4xl py-3'>CA Leaderboard</h1>
-                <p className='font-mono'><span className='font-bold'>Point System: </span>+30 for each CA referred, +10 for each user referred and +2 for participation of a referred member in an event. </p>
+                <p className='font-mono'><span className='font-bold'>Point System: </span>+30 for each CA referred, +10 for each user referred and +10 for participation of a referred member in an event. </p>
                 <table className="table-auto border border-gray-300 px-6 w-full md:px-0 md:w-3/4 mt-4">
                     <thead>
                         <tr className="text-left font-semibold">
