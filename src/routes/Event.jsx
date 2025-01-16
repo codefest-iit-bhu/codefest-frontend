@@ -63,6 +63,7 @@ export const Event = () => {
     Scoring: event.scoring,
     ...(event.submission && { Submission: event.submission }),
     "How to register": event.howto,
+    ...(event.prizes && { Prizes: event.prizes }),
   };
 
   return (
