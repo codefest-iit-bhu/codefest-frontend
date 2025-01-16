@@ -329,7 +329,7 @@ export default [
     id: "1",
     name: "Capture the Flag",
     title: "Capture the Flag",
-    date: "25 Jan, 2025, 12 PM IST",
+    date: "25 Jan, 2025, 6 PM IST",
     last_date_reg: "January 25, 2025 00:00:00",
     image_desk_path: "/ctf_desk.svg",
     max_members: 3,
@@ -340,13 +340,14 @@ export default [
     `,
     description: `
         <p>• Duration: 36 hrs</p>
+        <p>• Register your team on the <a href="https://unstop.com/hackathons/ctf-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361306" target="_blank"  style="color:#5865F2">Unstop Page.</a></p>
         <p>• It's a 36-hour online live event, having challenges from different categories like reverse engineering, forensics, web exploitation, cryptography, etc.</p>
         <p>• We will be conducting it on the CTFd platform.</p>
         <p>• Each category would have at least 3-4 challenges of difficulty ranging from Easy to Hard level.</p>
         <p>• Participants have to register on the CodeFest website.</p>
         <p>• The CTF event will start on 25 Jan 18:00 and end on 27 Jan 6:00.</p>
         <p>• The link to the competition will be shared via email to registered participants.</p>
-        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank">discord server</a>.</p>
+        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank"  style="color:#5865F2">discord server</a>.</p>
     `,
     rules: `
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
@@ -366,15 +367,22 @@ export default [
         <p>• The same username and email address should be used to register on CTFd and CodeFest website.</p>
         <p>• The prize is awarded to the entire team collectively.</p>
     `,
+    prizes: `
+        <ul>
+            <li>• Winner Team: ₹25,000</li>
+            <li>• First Runner-Up: ₹15,000</li>
+            <li>• Second Runner-Up: ₹10,000</li>
+        </ul>
+    `,
     contact:
-      "For further queries about this event, please contact Yuval Goyal (+919465973007)",
+      "For further queries about this event, please contact Chirag Garg (+918824120728)",
   },
   {
     id: "2",
     name: "Enigma",
     title: "Enigma",
-    date: "29 Jan, 2025, 12 PM IST",
-    last_date_reg: "January 28, 2025 00:00:00",
+    date: "31 Jan, 2025, 12 AM IST - 2 Feb, 2025, 11:59PM IST",
+    last_date_reg: "January 30, 2025 23:59:00",
     image_desk_path: "/enigma_desk.svg",
     max_members: 3,
     overview: `
@@ -387,8 +395,9 @@ export default [
         <p>• We will be conducting it on Kaggle.</p>
         <p>• For information related to challenges and announcements/queries, join the following <a style="color:#5865F2" href="https://discord.gg/6U3YmHenZw" target="_blank">discord server</a>.</p>
         <p>• Participants and their teams should be registered on the CodeFest website.</p>
-        <p>• Enigma'25 will start on 29th Jan at 12 PM IST.</p>
-        <p>• The link to the competition will be shared via email to registered participants on 29th Jan at 12 PM IST.</p>
+        <p>• Enigma'25 will start on 31st Jan at 12 AM IST.</p>
+        <p>• The link to the competition will be shared via email to registered participants on 31sh Jan at 12 AM IST.</p>
+        <p>• Register your team at the <a href="https://unstop.com/competitions/enigma-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1362855" style="color:#5865F2" target="_blank">Unstop Page</a>.</p>
     `,
     rules: `
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
@@ -410,6 +419,13 @@ export default [
         <p>• The same username and email address should be used to register on Kaggle and CodeFest website.</p>
         <p>• The prize is awarded to the entire team collectively.</p>
     `,
+    prizes: `
+        <ul>
+            <li>• Winner Team: ₹20,000</li>
+            <li>• First Runner-Up: ₹15,000</li>
+            <li>• Second Runner-Up: ₹10,000</li>
+        </ul>
+    `,
     contact:
       "For further queries about this event, please contact Prakhar Pratap Singh (+916266562632)",
   },
@@ -417,25 +433,25 @@ export default [
     id: "3",
     name: "Vista",
     title: "Vista",
-    date: "26 Jan, 2025, 6 PM IST",
-    last_date_reg: "January 24, 2025 23:59:00",
+    date: "26 Jan, 2025, 6 PM IST - 31 Feb, 2025, 11:59PM IST",
+    last_date_reg: "January 26, 2025 17:59:00",
     image_desk_path: "/vistas_desk.svg",
     max_members: 3,
     overview: `
-        <p>• Vista'24 will be a computer vision competition for participants to show their skills in exploring various exploits in the realm of computer vision.</p>
+        <p>• Vista'25 will be a computer vision competition for participants to show their skills in exploring various exploits in the realm of computer vision.</p>
         <p>• A team of a maximum of 3 members is allowed.</p>
     `,
     description: `
         <p>• It's a 5-day online live event, having challenges from different categories like image classification, object detection, image segmentation, etc.</p>
         <p>• Participants and their teams should be registered on the CodeFest website.</p>
-        <p>• Vista'24 will start on 26th Jan at 6 PM IST and end on 11:59 PM IST.</p>
-        <p>• Registration closes on 24th January at 11:59 PM IST.</p>
+        <p>• Vista'25 will start on 26th Jan at 6 PM IST and end on 31st Jan at 11:59 PM IST.</p>
         <p>• The link to the competition will be shared via email to registered participants.</p>
         <p>• Problem statements will be visible at the start of the competition.</p>
-        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank">discord server</a>.</p>
+        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank" style="color:#5865F2">discord server</a>.</p>
     `,
     rules: `
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
+        <p>• Register your team on the <a href="https://unstop.com/hackathons/vista-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361765" target="_blank" style="color:#5865F2">Unstop Page.</a></p>
         <p>• Please refrain from discussing strategy and solutions during the contest.</p>
         <p>• A team size of a maximum of 3 is allowed, which you can form after joining the competition individually.</p>
         <p>• Vista organizers' decisions are final.</p>
@@ -453,16 +469,23 @@ export default [
         <p>• The prize is awarded to the entire team collectively.</p>
     `,
     contact:
-      "For further queries about this event, please contact Bashwant (+919381429059)",
+      "For further queries about this event, please contact Bashwant (+919381429059) or Pragnitha(+917337289587) ",
+    prizes: `
+        <ul>
+            <li>• Winner Team: ₹20,000</li>
+            <li>• First Runner-Up: ₹15,000</li>
+            <li>• Second Runner-Up: ₹10,000</li>
+        </ul>
+    `,
   },
   {
     id: "4",
     name: "HaXplore",
     title: "HaXplore",
-    date: "31 Jan, 2025, 12 PM IST - 3 Feb, 2025, 12 PM IST",
-    last_date_reg: "January 27, 2025 23:59:00",
+    date: "31 Jan, 2025, 12 AM IST - 2 Feb, 2025, 11:59PM IST",
+    last_date_reg: "January 26, 2025 23:59:00",
     image_desk_path: "/haxplore_desk.svg",
-    max_members: 4,
+    max_members: 3,
     overview: `
          HaXplore stands as the premier hackathon organized as part of Codefest, the annual departmental fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi.</p>
          This esteemed event serves as a dynamic platform where innovative minds from diverse domains converge to articulate their groundbreaking ideas. </p>
@@ -478,17 +501,17 @@ export default [
         <p><strong>Registration and Team Formation:</strong></p>
         <ul>
             <li>• This hackathon is open to all college students from all over India</li>
-            <li>• Teams can consist of upto 4 members.</li>
-            <li>• Each participant must register individually on the Unstop Page and the Codefest website.</li>
-            <li>• Registration closes on 27 January 2025.</li>
+            <li>• Teams can consist of upto 3 members.</li>
+            <li>• Each participant must register individually on the <a href="https://unstop.com/hackathons/haxplore-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361248?lb=RR1x0PN4&utm_medium=Share&utm_source=shortUrl" target="_blank" style="color:#5865F2"">Unstop Page</a> and the Codefest website.</li>
+            <li>• Registration closes on 26 January 2025 11:59PM.</li>
             <li>• Teams must submit their details and confirm their participation before the deadline. Late registrations will not be entertained.</li>
         </ul>
         
         <p><strong>Prototype Submission and Presentation:</strong></p>
         <ul>
-            <li>• The hackathon will officially commence  on January 31st at 12:00 hours and conclude on February 3rd at 12:00 hours, themes will be announced on January 31st at 12:00 itself.</li>
+            <li>• The hackathon will officially commence  on January 31st at 12:00AM hours and conclude on February 2rd at 11:59PM , themes will be announced on January 31st at 12:00 AM itself.</li>
             <li>• Teams can work on developing a prototype based on their idea during this period.</li>
-            <li>• Teams must submit their final prototypes along with a presentation by 3rd February 12:00.</li>
+            <li>• Teams must submit their final prototypes along with a presentation by 2nd February 11:59PM.</li>
             <li>• Submissions will be judged based on creativity, functionality, and the impact of the solution.</li>
             <li>• Shortlisted teams will be called and required to present their prototype in front of the judges.</li>
         </ul>
@@ -534,14 +557,14 @@ export default [
     `,
     prizes: `
         <ul>
-            <li>• Winner Team: ₹30,000</li>
-            <li>• First Runner-Up: ₹20,000</li>
+            <li>• Winner Team: ₹25,000</li>
+            <li>• First Runner-Up: ₹15,000</li>
             <li>• Second Runner-Up: ₹10,000</li>
         </ul>
     `,
     howto: `
-        <p>• Teams must register individually on the Unstop Page and the Codefest website.</p>
-        <p>• After registering, participants can form teams of up to 4 members.</p>
+        <p>• Teams must register individually on the Unstop Page<a href="https://unstop.com/hackathons/haxplore-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361248?lb=RR1x0PN4&utm_medium=Share&utm_source=shortUrl" style="color:#5865F2 >Unstop Page</a> and the Codefest website.</p>
+        <p>• After registering, participants can form teams of up to 3 members.</p>
         <p>• Ensure GitHub repositories and all submissions adhere to the provided guidelines.</p>
     `,
     contact:
@@ -551,15 +574,15 @@ export default [
     id: "5",
     name: "Manthan",
     title: "Manthan",
-    date: "29 Jan, 2025, 8 PM IST",
+    date: "5 Feb, 2025, 8 PM IST",
     max_members: 1,
-    last_date_reg: "January 28, 2025 23:59:00",
+    last_date_reg: "February 5, 2025 19:59:00",
     image_desk_path: "/manthan_desk.svg",
     overview: `
         <p>• Manthan will be a competitive programming contest (open to all) where participants are posed with problems of varying difficulties to be solved in a few hours.</p>
     `,
     description: `
-        <p>• The contest will be hosted on CodeChef and is tentatively scheduled for January 29, 2025. The exact date will be announced later.</p>
+        <p>• The contest will be hosted on CodeChef and is scheduled for February 5, 2025.</p>
         <p>• The contest will run for 2 hours starting from 8 PM IST.</p>
         <p>• Problems will be visible at the start of the contest. A contest link will be shared via email to registered participants.</p>
     `,
@@ -579,6 +602,13 @@ export default [
     howto: `
         <p>• Participants must register on the CodeFest website to participate.</p>
         <p>• Contestants must use the same username and email for both the CodeChef and CodeFest registrations.</p>
+    `,
+    prizes: `
+        <ul>
+            <li>• Winner Team: ₹30,000</li>
+            <li>• First Runner-Up: ₹20,000</li>
+            <li>• Second Runner-Up: ₹10,000</li>
+        </ul>
     `,
     contact:
       "For further queries about this event, please contact Jay Vinchhi (+918530178569), Rudra Patel (+919898861976)",
@@ -657,3 +687,4 @@ export default [
       "For further queries about this event, please contact Shubham Jain (+91 98322 41448), Yashvardhan (+91 9996008363)",
   },
 ];
+
