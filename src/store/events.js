@@ -138,9 +138,11 @@ export default [
     image_desk_path: "/haxplore_desk.svg",
     max_members: 4,
     overview: `
-        <p>• HaXplore is the premier hackathon organized as part of Codefest, the annual departmental fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi.</p>
-        <p>• It serves as a dynamic platform where innovative minds converge to showcase groundbreaking ideas, fostering collaboration and exploration of transformative solutions.</p>
-    `,
+         HaXplore stands as the premier hackathon organized as part of Codefest, the annual departmental fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi.</p>
+         This esteemed event serves as a dynamic platform where innovative minds from diverse domains converge to articulate their groundbreaking ideas. </p>
+         Participants come together to not only showcase their creativity but also engage in spirited competition as they strive for excellence.</p>
+         HaXplore fosters an environment that encourages collaboration and the exploration of cutting-edge solutions, making it a hub for transformative technological endeavors.</p> 
+  `,
     description: `
         <p>• It's a 72-hour hackathon taking place from 31st Jan to 3rd Feb, 2025.</p>
         <p>• Teams will work on themes announced on 31st Jan at 12 PM IST and must develop and submit their prototypes by 3rd Feb at 12 PM IST.</p>
@@ -149,60 +151,66 @@ export default [
     rules: `
         <p><strong>Registration and Team Formation:</strong></p>
         <ul>
-            <li>Open to all college students across India.</li>
-            <li>Teams can consist of up to 4 members.</li>
-            <li>Each participant must register individually on the Unstop Page and Codefest website.</li>
-            <li>Registration opens on 5 Jan, 2025, and closes on 27 Jan, 2025.</li>
+            <li>• This hackathon is open to all college students from all over India</li>
+            <li>• Teams can consist of upto 4 members.</li>
+            <li>• Each participant must register individually on the Unstop Page and the Codefest website.</li>
+            <li>• Registration closes on 27 January 2025.</li>
+            <li>• Teams must submit their details and confirm their participation before the deadline. Late registrations will not be entertained.</li>
         </ul>
+        
         <p><strong>Prototype Submission and Presentation:</strong></p>
         <ul>
-            <li>Hackathon starts on 31st Jan at 12 PM IST and ends on 3rd Feb at 12 PM IST.</li>
-            <li>Final prototypes and presentations must be submitted by 3rd Feb, 12 PM IST.</li>
-            <li>Shortlisted teams will present their prototypes to the judges.</li>
+            <li>• The hackathon will officially commence  on January 31st at 12:00 hours and conclude on February 3rd at 12:00 hours, themes will be announced on January 31st at 12:00 itself.</li>
+            <li>• Teams can work on developing a prototype based on their idea during this period.</li>
+            <li>• Teams must submit their final prototypes along with a presentation by 3rd February 12:00.</li>
+            <li>• Submissions will be judged based on creativity, functionality, and the impact of the solution.</li>
+            <li>• Shortlisted teams will be called and required to present their prototype in front of the judges.</li>
         </ul>
         <p><strong>General Guidelines:</strong></p>
         <ul>
-            <li>Participants must maintain a high standard of ethics and professionalism.</li>
-            <li>Plagiarism or cheating will result in immediate disqualification.</li>
-            <li>The verdict of the judges will be final and binding.</li>
+            <li>• Participants must adhere to a high standard of ethics and professionalism.</li>
+            <li>• Plagiarism or any form of cheating is strictly prohibited and will lead to immediate disqualification.</li>
+            <li>• The verdict of the judges will be final and binding in case of any discrepancies.</li>
         </ul>
     `,
     submission: `
         <p><strong>GitHub Repository:</strong></p>
         <ul>
-            <li>Create a public GitHub repository after the hackathon begins.</li>
-            <li>Include regular commits and comprehensive project details.</li>
+            <li>• Participants must create a public GitHub repository for their project.</li>
+            <li>• The repository's creation date should be after the official announcement of the hackathon problem statements.</li>
+            <li>• The repository should consist of regular commits.</li>
         </ul>
         <p><strong>Documentation:</strong></p>
         <ul>
-            <li>Detail the problem statement, solution architecture, and implementation.</li>
+            <li>• Comprehensive documentation detailing the problem statement, solution architecture, and implementation details.</li>
         </ul>
         <p><strong>Code Quality:</strong></p>
         <ul>
-            <li>Ensure well-organized and commented code adhering to best practices.</li>
+            <li>• Well-organized and commented code for ease of understanding.</li>
+            <li>• Use of best practices in coding and adherence to coding standards.</li>
         </ul>
         <p><strong>Demonstration:</strong></p>
         <ul>
-            <li>Include a video demonstration and presentation showcasing functionality.</li>
-            <li>Provide clear instructions to run and test the project.</li>
-        </ul>
+            <li>• Include a video demonstration and presentation showcasing functionality.</li>
+            <li>• Provide clear instructions to run and test the project.</li>
+        </ul> 
     `,
     scoring: `
         <p><strong>Evaluation Criteria:</strong></p>
         <ul>
-            <li>Innovation and Creativity</li>
-            <li>Technical Complexity</li>
-            <li>Effective use of special technologies (bonus points)</li>
-            <li>User Experience</li>
-            <li>Documentation Quality</li>
-            <li>Code Quality</li>
+            <li>• Innovation and Creativity</li>
+            <li>• Technical Complexity</li>
+            <li>• Effective use of special technologies (bonus points)</li>
+            <li>• User Experience</li>
+            <li>• Documentation Quality</li>
+            <li>• Code Quality</li>
         </ul>
     `,
     prizes: `
         <ul>
-            <li>Winner Team: ₹30,000</li>
-            <li>First Runner-Up: ₹20,000</li>
-            <li>Second Runner-Up: ₹10,000</li>
+            <li>• Winner Team: ₹30,000</li>
+            <li>• First Runner-Up: ₹20,000</li>
+            <li>• Second Runner-Up: ₹10,000</li>
         </ul>
     `,
     howto: `
@@ -222,8 +230,7 @@ export default [
     last_date_reg: "January 28, 2025 23:59:00",
     image_desk_path: "/manthan_desk.svg",
     overview: `
-        <p>• Manthan is a competitive programming contest open to all, where participants are challenged with problems of varying difficulties to be solved within a few hours.</p>
-        <p>• Participants must be registered on the CodeFest website to be eligible for prizes. It is an individual participation event.</p>
+        <p>• Manthan will be a competitive programming contest (open to all) where participants are posed with problems of varying difficulties to be solved in a few hours.</p>
     `,
     description: `
         <p>• The contest will be hosted on Codechef and will take place in April. Exact dates will be announced later.</p>
