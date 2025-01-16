@@ -8,7 +8,7 @@ import { useUser } from "../context/context.jsx";
 import axios from "../utils/axiosInstance.js";
 import cloudLeft from "../assets/cloud-left.png";
 import cloudRight from "../assets/cloud-right.png";
-import ground from "../assets/bottom-part.png"
+import ground from "../assets/bottom-part.png";
 import Footer from "../components/Footer.jsx";
 
 export const Event = () => {
@@ -22,17 +22,16 @@ export const Event = () => {
   const [browser, setBrowser] = useState("");
   const [registrations_open, setRegistrations_open] = useState(false);
   const { user } = useUser();
-  const hasEnded = new Date() > new Date(event.
-    last_date_reg);
+  const hasEnded = new Date() > new Date(event.last_date_reg);
 
   function detectBrowser() {
     const userAgent = navigator.userAgent.toLowerCase();
-    if (userAgent.includes('chrome') && !userAgent.includes('edg')) {
-      return setBrowser('chrome')
-    } else if (userAgent.includes('firefox')) {
-      return setBrowser('firefox');
+    if (userAgent.includes("chrome") && !userAgent.includes("edg")) {
+      return setBrowser("chrome");
+    } else if (userAgent.includes("firefox")) {
+      return setBrowser("firefox");
     }
-    setBrowser('default');
+    setBrowser("default");
   }
 
   useEffect(() => {
@@ -49,7 +48,7 @@ export const Event = () => {
     async function getEvent() {
       const res = await axios.get(`/event/${event.id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      })
+      });
       setRegistrations_open(res.data.registrations_open);
     }
 
@@ -62,9 +61,9 @@ export const Event = () => {
     "Detailed Description": event.description,
     Rules: event.rules,
     Scoring: event.scoring,
+    ...(event.submission && { Submission: event.submission }),
     "How to register": event.howto,
   };
-
 
   return (
     <>
@@ -73,11 +72,7 @@ export const Event = () => {
         className={`flex flex-col md:flex-row items-center justify-evenly ${browser === "firefox" ? "bg-[#1E032C]" : "bg-[#140C27]"}`}
       >
         <div className="w-full md:w-2/3 rounded-md pt-4 backdrop-blur-[2px] px-6">
-          <div
-            className="text-center text-6xl text-lime-400"
-          >
-            {event.name}
-          </div>
+          <div className="text-center text-6xl text-lime-400">{event.name}</div>
           <div className="text-center text-lg mb-6 font-mono">{event.date}</div>
 
           <div className="relative mt-6 mb-6">
@@ -103,38 +98,39 @@ export const Event = () => {
           </div>
 
           <div className="text-2xl">
-            <span className="text-lime-400">
-              Registration Deadline:
-            </span>
+            <span className="text-lime-400">Registration Deadline:</span>
             <span className="font-mono"> {event.last_date_reg} </span>
           </div>
 
           <div className="flex justify-center mt-3 space-x-3">
-            {registrations_open && !hasEnded ?
+            {registrations_open && !hasEnded ? (
               <>
-                {!isMember ?
+                {!isMember ? (
                   <>
                     <button
                       className="bg-lime-600 text-white p-3 font-bold rounded-lg hover:bg-lime-700 transition-colors"
                       onClick={() => {
-                        if (!isAuthenticated) return window.location.href = "/login";
-                        setIsRegistrationModalOpen(true)
+                        if (!isAuthenticated)
+                          return (window.location.href = "/login");
+                        setIsRegistrationModalOpen(true);
                       }}
                     >
                       Register Now!
                     </button>
-                    {
-                      event.max_members > 1 && <button
+                    {event.max_members > 1 && (
+                      <button
                         className="bg-green-600 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
                         onClick={() => {
-                          if (!isAuthenticated) return window.location.href = "/login";
-                          setIsJoinTeamModalOpen(true)
+                          if (!isAuthenticated)
+                            return (window.location.href = "/login");
+                          setIsJoinTeamModalOpen(true);
                         }}
                       >
                         Join Team
                       </button>
-                    }
-                  </> :
+                    )}
+                  </>
+                ) : (
                   <Link
                     to={`/myTeams#${teamName}`}
                     className="bg-lime-600 text-white p-3 rounded-lg hover:bg-lime-700 transition-colors"
@@ -142,32 +138,33 @@ export const Event = () => {
                   >
                     My Team
                   </Link>
-
-                }
-
-              </> :
+                )}
+              </>
+            ) : (
               <span className="py-2 px-4 border border-lime-400 text-lime-400 rounded-lg font-mono text-lg">
-                {hasEnded ? "Registration Closed" : `Registrations will begin ${event.id === "7" ? "on 3rd Jan 12pm" : "soon"} !`}
+                {hasEnded
+                  ? "Registration Closed"
+                  : `Registrations will begin ${event.id === "7" ? "on 3rd Jan 12pm" : "soon"} !`}
               </span>
-            }
-            {
-              user && user.role === "admin" && <a href={`/event/teams/${event.id}`}>
-
-                <button
-                  className="bg-blue-500 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
-                >
+            )}
+            {user && user.role === "admin" && (
+              <a href={`/event/teams/${event.id}`}>
+                <button className="bg-blue-500 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors">
                   View Teams
                 </button>
               </a>
-            }
+            )}
           </div>
 
-          {
-            event.registration_attention &&
+          {event.registration_attention && (
             <div className="mt-6 text-lg font-mono flex justify-center items-center">
-              <div dangerouslySetInnerHTML={{ __html: event.registration_attention }} />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: event.registration_attention,
+                }}
+              />
             </div>
-          }
+          )}
 
           <div className="mt-6 text-lg font-mono">
             <div dangerouslySetInnerHTML={{ __html: event.overview }} />
@@ -186,12 +183,7 @@ export const Event = () => {
           </div>
 
           <div className="mt-6">
-            <img
-              src={ground}
-              alt=""
-              className="w-full h-auto"
-            />
-
+            <img src={ground} alt="" className="w-full h-auto" />
           </div>
         </div>
       </div>
