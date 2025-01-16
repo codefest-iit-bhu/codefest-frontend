@@ -49,9 +49,13 @@ const AllCaRequests = () => {
         },
       }
     );
+    const updatedRequest = response.data;
     if (response.status === 200) {
       toast.success("Request approved");
-      window.location.reload();
+      setRequests(prev => prev.map(req => {
+        if (req._id === id) return updatedRequest;
+        return req;
+      }))
     }
   };
 
@@ -68,9 +72,13 @@ const AllCaRequests = () => {
         },
       }
     );
+    const updatedRequest = response.data;
     if (response.status === 200) {
       toast.success("Request rejected");
-      window.location.reload();
+      setRequests(prev => prev.map(req => {
+        if (req._id === id) return updatedRequest;
+        return req;
+      }))
     }
   };
 

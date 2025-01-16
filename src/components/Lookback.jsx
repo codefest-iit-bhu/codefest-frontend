@@ -44,7 +44,7 @@ const PixelBox = ({ title, text, img_src }) => {
       >
         <img src={img_src} alt="" className="w-5 md:w-10 mb-2" />
         <div className="font-bold">{title}</div>
-        <div className="text-sm">{text}</div>
+        <div className="text-sm font-mono">{text}</div>
       </div>
     </>
   );

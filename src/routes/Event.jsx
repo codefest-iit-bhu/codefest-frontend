@@ -145,20 +145,20 @@ export const Event = () => {
 
                 }
 
-                {
-                  user && user.role === "admin" && <a href={`/event/teams/${event.id}`}>
-
-                    <button
-                      className="bg-blue-500 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
-                    >
-                      View Teams
-                    </button>
-                  </a>
-                }
               </> :
               <span className="py-2 px-4 border border-lime-400 text-lime-400 rounded-lg font-mono text-lg">
                 {hasEnded ? "Registration Closed" : `Registrations will begin ${event.id === "7" ? "on 3rd Jan 12pm" : "soon"} !`}
               </span>
+            }
+            {
+              user && user.role === "admin" && <a href={`/event/teams/${event.id}`}>
+
+                <button
+                  className="bg-blue-500 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors"
+                >
+                  View Teams
+                </button>
+              </a>
             }
           </div>
 
