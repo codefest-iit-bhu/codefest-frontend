@@ -382,7 +382,7 @@ export default [
     name: "Enigma",
     title: "Enigma",
     date: "31 Jan, 2025, 12 AM IST - 2 Feb, 2025, 11:59PM IST",
-    last_date_reg: "January 30, 2025 23:59:00",
+    last_date_reg: "January 29, 2025 23:59:00",
     image_desk_path: "/enigma_desk.svg",
     max_members: 3,
     overview: `
@@ -434,7 +434,7 @@ export default [
     name: "Vista",
     title: "Vista",
     date: "26 Jan, 2025, 6 PM IST - 31 Feb, 2025, 11:59PM IST",
-    last_date_reg: "January 26, 2025 17:59:00",
+    last_date_reg: "January 25, 2025 23:59:00",
     image_desk_path: "/vistas_desk.svg",
     max_members: 3,
     overview: `
@@ -483,7 +483,7 @@ export default [
     name: "HaXplore",
     title: "HaXplore",
     date: "31 Jan, 2025, 12 AM IST - 2 Feb, 2025, 11:59PM IST",
-    last_date_reg: "January 26, 2025 23:59:00",
+    last_date_reg: "January 29, 2025 23:59:00",
     image_desk_path: "/haxplore_desk.svg",
     max_members: 3,
     overview: `
@@ -576,7 +576,7 @@ export default [
     title: "Manthan",
     date: "5 Feb, 2025, 8 PM IST",
     max_members: 1,
-    last_date_reg: "February 5, 2025 19:59:00",
+    last_date_reg: "February 4, 2025 23:59:00",
     image_desk_path: "/manthan_desk.svg",
     overview: `
         <p>• Manthan will be a competitive programming contest (open to all) where participants are posed with problems of varying difficulties to be solved in a few hours.</p>

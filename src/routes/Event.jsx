@@ -156,6 +156,11 @@ export const Event = () => {
               </a>
             )}
           </div>
+          <div className="flex justify-center items-center">
+          <span className="text-lg mt-5 font-mono p-2 border-2 border-green-500 rounded-lg">
+            All the information will be communicated <a href="https://discord.gg/xQS6zWtY" target="_blank" className="underline text-blue-500">here</a>
+          </span>
+          </div>
 
           {event.registration_attention && (
             <div className="mt-6 text-lg font-mono flex justify-center items-center">
