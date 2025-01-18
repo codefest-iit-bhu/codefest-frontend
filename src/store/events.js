@@ -375,7 +375,7 @@ export default [
         </ul>
     `,
     contact:
-      "For further queries about this event, please contact Yuval Goyal ( +919465973007 )",
+      "For further queries about this event, please contact Yuval Goyal (+919465973007), Chirag Garg (+918824120728)",
   },
   {
     id: "2",
