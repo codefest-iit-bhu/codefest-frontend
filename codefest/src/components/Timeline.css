@@ -1,0 +1,26 @@
+.timeline-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.timeline-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.timeline {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.timeline-item {
+  margin-bottom: 30px;
+  width:76vw;
+}

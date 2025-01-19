@@ -1,0 +1,59 @@
+.teams-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+.team-card {
+  width: 90%;
+  max-width: 400px;
+  border: none;
+  padding: 1.5rem;
+  color: #2d3748;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  height: 100%;
+}
+
+.team-card h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.highlight {
+  font-weight: bold;
+}
+
+.member-list {
+  margin: 1rem 0;
+}
+
+.member-item {
+  font-size: 0.9rem;
+  padding-top: 0px;
+}
+
+.change-leader-dropdown {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+.error-message {
+  color: red;
+  margin-top: 1rem;
+}
+
+.team-card-background {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
