@@ -333,6 +333,7 @@ export default [
     last_date_reg: "January 25, 2025 00:00:00",
     image_desk_path: "/ctf_desk.svg",
     max_members: 3,
+    unstop: "https://unstop.com/hackathons/ctf-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361306",
     overview: `
         <p>• Capture the Flag (CTF) will be a cybersecurity competition for participants to show their skills in exploring various exploits in the realm of computer systems.</p>
         <p>• Problems will be visible at the start of the competition.</p>
@@ -385,6 +386,7 @@ export default [
     last_date_reg: "January 29, 2025 23:59:00",
     image_desk_path: "/enigma_desk.svg",
     max_members: 3,
+    unstop: "https://unstop.com/competitions/enigma-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1362855",
     overview: `
         <p>• Enigma is a thrilling machine-learning competition where we challenge the participants to showcase their prowess by designing a self-learning model that will provide efficient solutions to real-life problems.</p>
         <p>• Problem statements will be visible at the start of the competition.</p>
@@ -437,6 +439,7 @@ export default [
     last_date_reg: "January 25, 2025 23:59:00",
     image_desk_path: "/vistas_desk.svg",
     max_members: 3,
+    unstop: "https://unstop.com/hackathons/vista-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361765",
     overview: `
         <p>• Vista'25 will be a computer vision competition for participants to show their skills in exploring various exploits in the realm of computer vision.</p>
         <p>• A team of a maximum of 3 members is allowed.</p>
@@ -486,6 +489,7 @@ export default [
     last_date_reg: "January 29, 2025 23:59:00",
     image_desk_path: "/haxplore_desk.svg",
     max_members: 3,
+    unstop: "https://unstop.com/hackathons/haxplore-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361248?lb=RR1x0PN4&utm_medium=Share&utm_source=shortUrl",
     overview: `
          HaXplore stands as the premier hackathon organized as part of Codefest, the annual departmental fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi.</p>
          This esteemed event serves as a dynamic platform where innovative minds from diverse domains converge to articulate their groundbreaking ideas. </p>

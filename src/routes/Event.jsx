@@ -172,6 +172,12 @@ export const Event = () => {
             </div>
           )}
 
+          {
+            event.unstop &&
+            <div className="mt-6 text-lg font-mono font-bold text-green-500">
+              <p>It is mandatory to register on <a href={event.unstop} target="_blank" className="underline text-blue-500">unstop</a> too!</p>
+            </div>
+          }
           <div className="mt-6 text-lg font-mono">
             <div dangerouslySetInnerHTML={{ __html: event.overview }} />
           </div>
