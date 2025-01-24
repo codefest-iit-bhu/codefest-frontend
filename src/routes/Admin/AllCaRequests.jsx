@@ -94,9 +94,12 @@ const AllCaRequests = () => {
     { label: "Referred By", key: "ca_brought_by" },
     { label: "Referral Code", key: "referralCode" },
     { label: "Status", key: "status" },
+    { label: "Points", key: "points" },
   ];
 
-  const csvData = requests.filter(filter).map((request) => ({
+ const csvData = requests
+  .filter(filter)
+  .map((request) => ({
     user: request.user.name || "N/A",
     institute: request.institute || "N/A",
     graduation_year: request.graduation_year || "N/A",
@@ -106,9 +109,16 @@ const AllCaRequests = () => {
     ca_brought_by: request.ca_brought_by || "N/A",
     referralCode: request.referralCode || "N/A",
     status: request.status || "N/A",
-  }));
+    points: request.points || "N/A",
+  }))
+  .sort((a, b) => {
+    const pointsA = Number(a.points) || 0;
+    const pointsB = Number(b.points) || 0;
+    return pointsA - pointsB; 
+  });
 
-  const fileName = `CAReq_${status}_Till${new Date().toISOString().split("T")[0]}.csv`;
+const fileName = `CAReq_${status}_Till${new Date().toISOString().split("T")[0]}.csv`;
+
 
   return (
     <>
