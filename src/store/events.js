@@ -330,7 +330,7 @@ export default [
     name: "Capture the Flag",
     title: "Capture the Flag",
     date: "25 Jan, 2025, 6 PM IST",
-    last_date_reg: "January 25, 2025 00:00:00",
+    last_date_reg: "January 25, 2025 18:00:00",
     image_desk_path: "/ctf_desk.svg",
     max_members: 3,
     unstop: "https://unstop.com/hackathons/ctf-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361306",
