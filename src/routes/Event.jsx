@@ -158,7 +158,7 @@ export const Event = () => {
           </div>
           <div className="flex justify-center items-center">
           <span className="text-lg mt-5 font-mono p-2 border-2 border-green-500 rounded-lg">
-            All the information will be communicated <a href="https://discord.gg/xQS6zWtY" target="_blank" className="underline text-blue-500">here</a>
+            All the information will be communicated <a href="https://discord.gg/St3q2sCn" target="_blank" className="underline text-blue-500">here</a>
           </span>
           </div>
 
