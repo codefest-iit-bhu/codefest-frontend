@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
   const [teamName, setTeamName] = useState("");
   const [teamNameStatus, setTeamNameStatus] = useState("");
+  const [buttonLoading, setButtonLoading] = useState(false);
   const navigate = useNavigate();
 
   // Debounce utility function
@@ -32,8 +33,8 @@ const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
       { name, eventId: event.id },
       {
         headers: {
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
-        }
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
     );
 
@@ -57,6 +58,7 @@ const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
     e.preventDefault();
 
     if (teamNameStatus !== "available") return;
+    setButtonLoading(true);
 
     await axios.post(
       "/team/create",
@@ -66,12 +68,13 @@ const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
       },
       {
         headers: {
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
-        }
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
     );
 
-    toast.success("Team registered successfully")
+    toast.success("Team registered successfully");
+    setButtonLoading(false);
     return navigate("/myTeams");
   };
 
@@ -115,16 +118,43 @@ const TeamRegistrationModal = ({ isOpen, onClose, event }) => {
 
           <button
             type="submit"
-            disabled={teamNameStatus !== "available"}
+            disabled={teamNameStatus !== "available" || buttonLoading}
+            // onClick={() => {
+            //   setButtonLoading(true);
+            // }}
             className={`
-              w-full py-2 rounded-md text-black font-semibold
-              ${teamNameStatus === "available"
-                ? "bg-lime-600 hover:bg-lime-700"
-                : "bg-gray-400 cursor-not-allowed"
+              w-full py-2 rounded-md text-black font-semibold flex items-center justify-center
+              ${
+                teamNameStatus === "available" && !buttonLoading
+                  ? "bg-lime-600 hover:bg-lime-700"
+                  : "bg-gray-400 cursor-not-allowed"
               }
             `}
           >
-            Create Team
+            {buttonLoading ? (
+              <svg
+                className="animate-spin h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            ) : (
+              "Create Team"
+            )}
           </button>
 
           <button
