@@ -39,7 +39,7 @@ const CALeaderboard = () => {
       <main className="bg-[#140B29] flex flex-col items-center w-full min-h-[100vh] p-4">
         <h1 className="font-bold font-mono text-4xl py-3">CA Leaderboard</h1>
 
-        <section>
+        <section className="font-mono">
           <h3 className="text-xl text-lime-400 mb-2">Prizes for top CA's</h3>
           <ul>
             <li>
@@ -54,9 +54,12 @@ const CALeaderboard = () => {
           </ul>
         </section>
         <p className="font-mono mt-5 ">
-          <span className="font-bold text-l text-lime-400">Point System: </span>
-          +30 for each CA referred, +10 for each user referred and +10 for
+          <span className="font-bold text-l text-lime-400">Updated Point System: </span>
+          +60 for each CA referred, +20 for each user referred and +20 for
           participation of a referred member in an event.{" "}
+        </p>
+        <p className="font-mono mt-5 ">
+          <span className="font-bold text-l text-red-500">UNFAIR means</span>  (registering through fake emails etc) to get points will lead to <span className="font-bold text-l text-red-500">rejection of your CA position.</span>
         </p>
 
         {loading ? (
@@ -92,7 +95,7 @@ const CALeaderboard = () => {
             </tbody>
           </table>
         )}
-      </main>
+      </main >
     </>
   );
 };
