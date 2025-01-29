@@ -55,7 +55,7 @@ const CALeaderboard = () => {
         </section>
         <p className="font-mono mt-5 ">
           <span className="font-bold text-l text-lime-400">Updated Point System: </span>
-          +60 for each CA referred, +20 for each user referred and +20 for
+          +30 for each CA referred, +10 for each user referred and +15 for
           participation of a referred member in an event.{" "}
         </p>
         <p className="font-mono mt-5 ">
