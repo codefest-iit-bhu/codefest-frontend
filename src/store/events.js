@@ -408,7 +408,7 @@ export default [
         <p>• Enigma organizers' decisions are final.</p>
         <p>• Any machine learning models can be used.</p>
         <p>• Privately sharing code or data outside of teams is not permitted.</p>
-        <p>• A team can make 10 submissions per day.</p>
+        <p>• A team can make 5 submissions per day.</p>
     `,
         scoring: `
         <p>• The scoreboard will be present during the contest.</p>
