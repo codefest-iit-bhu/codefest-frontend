@@ -64,6 +64,11 @@ const BenefitsSection = () => {
               CA Leaderboard
             </button>
           </a>
+          <a href="/winzo_referral">
+            <button className="p-4 rounded-lg transition-all duration-500 hover:bg-gray-200 bg-white border-2 border-orange-500 text-orange-500 text-lg font-bold ml-5" onClick={() => window.location.href = "/ca-register"}>
+              Winzo Referral
+            </button>
+          </a>
           {
             user?.role === "admin" &&
             <a href="/allCaRequests">

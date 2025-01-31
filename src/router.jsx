@@ -19,6 +19,7 @@ import Layout from "./layout/Layout";
 import PageTitle from "./components/PageTitle";
 import CALeaderboard from "./routes/CALeaderboard";
 import AllTeams from "./routes/Admin/AllTeams";
+import Winzo_Referral from "./routes/Winzo_Referral";
 
 export const router = createBrowserRouter([
   {
@@ -98,6 +99,13 @@ export const router = createBrowserRouter([
         element: <>
           <PageTitle title="CA Leaderboard | Codefest IIT (BHU)" />
           <CALeaderboard />,
+        </>
+      },
+      {
+        path: "/winzo_referral",
+        element: <>
+          <PageTitle title="Winzo Referral | Codefest IIT (BHU)" />
+          <Winzo_Referral />,
         </>
       },
       {
