@@ -76,6 +76,12 @@ const BenefitsSection = () => {
               Winzo Referral
             </button>
           }
+          {
+            (caRequestExists || user?.role === "admin") &&
+            <button className="p-4 rounded-lg transition-all duration-500 hover:bg-green-600 bg-green-500 text-white text-lg font-bold ml-5" onClick={() => window.location.href = "/winzo_leaderboard"}>
+              Winzo Leaderboard
+            </button>
+          }
 
         </div>
       }

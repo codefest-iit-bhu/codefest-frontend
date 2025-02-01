@@ -19,6 +19,8 @@ import Layout from "./layout/Layout";
 import PageTitle from "./components/PageTitle";
 import CALeaderboard from "./routes/CALeaderboard";
 import AllTeams from "./routes/Admin/AllTeams";
+import UploadUsernames from "./routes/Admin/UploadUsernames";
+import WinzoLeaderboard from "./routes/WinzoLeaderboard";
 import WinzoReferrals from "./routes/WinzoReferrals";
 
 export const router = createBrowserRouter([
@@ -117,7 +119,25 @@ export const router = createBrowserRouter([
             <WinzoReferrals />
           </PrivateRoute>
         )
-      }
+      },
+      {
+        path: "/upload",
+        element: (
+          <PrivateRoute>
+            <PageTitle title="Upload Winzo usernames | Codefest IIT (BHU)" />
+            <UploadUsernames />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/winzo_leaderboard",
+        element: (
+          <PrivateRoute>
+            <PageTitle title="Winzo Leaderboard | Codefest IIT (BHU)" />
+            <WinzoLeaderboard />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {
