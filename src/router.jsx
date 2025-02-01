@@ -19,6 +19,7 @@ import Layout from "./layout/Layout";
 import PageTitle from "./components/PageTitle";
 import CALeaderboard from "./routes/CALeaderboard";
 import AllTeams from "./routes/Admin/AllTeams";
+import WinzoReferrals from "./routes/WinzoReferrals";
 
 export const router = createBrowserRouter([
   {
@@ -109,6 +110,14 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/winzo-referrals",
+        element: (
+          <PrivateRoute>
+            <WinzoReferrals />
+          </PrivateRoute>
+        )
+      }
     ],
   },
   {

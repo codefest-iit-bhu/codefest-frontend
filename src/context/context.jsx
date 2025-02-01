@@ -31,6 +31,7 @@ export const UserProvider = ({ children }) => {
               localStorage.removeItem("token");
               setUser({});
             }
+            console.log(user);
           } catch (error) {
             console.error("Error fetching user:", error);
             setUser({});

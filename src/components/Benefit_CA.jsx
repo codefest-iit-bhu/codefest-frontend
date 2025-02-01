@@ -70,6 +70,13 @@ const BenefitsSection = () => {
               <button className="p-4 rounded-lg bg-purple-500 hover:bg-purple-700 transition-all duration-500 text-white text-lg font-bold ml-5">Admin Panel</button>
             </a>
           }
+          {
+            caRequestExists &&
+            <button className="p-4 rounded-lg transition-all duration-500 hover:bg-orange-600 bg-orange-500 text-white text-lg font-bold ml-5" onClick={() => window.location.href = "/winzo-referrals"}>
+              Winzo Referral
+            </button>
+          }
+
         </div>
       }
 
