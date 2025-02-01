@@ -39,7 +39,7 @@ export default function WinzoReferrals() {
                         }
                     }
                 );
-                console.log(response.data);
+
                 setReferrals(response.data);
             } catch (error) {
                 console.error('Error fetching referrals:', error);
@@ -126,7 +126,7 @@ export default function WinzoReferrals() {
                 {loading ? (
                     <Loader />
                 ) : (
-                    <table className="table-auto border border-gray-300 px-6 w-full md:px-0 md:w-3/4 mt-4">
+                    <table className="table-auto border border-gray-300 px-6 w-fit md:px-0 md:w-3/4 mt-4">
                         <thead>
                             <tr className="text-left font-semibold">
                                 <th className="px-4 py-2 border-b">Serial No.</th>
@@ -142,21 +142,20 @@ export default function WinzoReferrals() {
                                         key={index}
                                         className={`font-mono ${index % 2 === 0 ? "bg-[#1a0e35]" : "bg-[#160b2f]"}`}
                                     >
-                                        <td className="px-4 py-2 border-b text-sm">{index + 1}</td>
-                                        <td className="px-4 py-2 border-b text-sm">{entry.name}</td>
-                                        <td className="px-4 py-2 border-b text-sm flex">
-                                            {entry.username}
-                                            <CopyToClipboard text={entry.username}
-                                                onCopy={() => toast.success("Copied")}
-                                            >
-                                                <button className="ml-2 cursor-pointer py-1 px-2 bg-orange-500 text-white rounded-lg flex items-center hover:bg-orange-600 transition duration-300">
-                                                    <FaCopy className="mr-1" /> Copy
-                                                </button>
-                                            </CopyToClipboard>
+                                        <td className="px-4 py-2 border-b text-sm  ">{index + 1}</td>
+                                        <td className="px-4 py-2 border-b text-sm  ">{entry.name}</td>
+                                        <td className="px-4 py-2 border-b text-sm ">
+                                            <div className='flex items-center'>
+                                                {entry.username}
+                                                <CopyToClipboard text={entry.username}
+                                                    onCopy={() => toast.success("Copied")}
+
+                                                >
+                                                    <FaCopy className="ml-2 cursor-pointer text-orange-500 hover:text-orange-600 transition duration-300" />
+                                                </CopyToClipboard>
+                                            </div>
                                         </td>
-
-
-                                        <td className="px-4 py-2 border-b text-sm">
+                                        <td className="px-4 py-2 border-b text-sm ">
                                             {entry.isVerified ? (
                                                 <span className="text-green-500">Verified</span>
                                             ) : (
