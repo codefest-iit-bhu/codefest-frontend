@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "../utils/axiosInstance";
 import { useUser } from "../context/context";
-import Login_Signup from "../backgrounds/Background";
+import Login_Signup from "../backgrounds/Login_Signup";
 import "../App.css";
 import GoogleLogo from "/google.svg";
 import ReturnHome from "../components/ReturnHome";

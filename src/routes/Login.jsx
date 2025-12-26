@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import axios from "../utils/axiosInstance";
 import { useUser } from "../context/context";
 import GoogleLogo from "/google.svg";
-import Background from "../backgrounds/Background";
+import Background from "../backgrounds/Login_Signup";
 import ReturnHome from "../components/ReturnHome";
 import EmailIcon from "../assets/icons/email.png";
 import PasswordIcon from "../assets/icons/password.png";
