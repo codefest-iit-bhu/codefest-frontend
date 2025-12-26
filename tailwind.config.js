@@ -15,6 +15,7 @@ export default {
         'robo-slab': ['Roboto Slab', 'serif'],
         pixel: ['"Press Start 2P"', 'sans-serif'],
         pixelifySans: ['Pixelify Sans', 'sans-serif'],
+        bree:['Bree Serif','serif'],
       },
     },
   },
