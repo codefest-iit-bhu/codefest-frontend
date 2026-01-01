@@ -4,28 +4,74 @@
   gap: 1rem;
   justify-content: center;
   padding: 2rem;
-  background-color: #1e1e1e;
-  color: #fff;
 }
 
 .team-card {
-  width: 90%;
-  max-width: 400px;
-  border: none;
-  padding: 1.5rem;
-  color: #2d3748;
-  position: relative;
-  overflow: hidden;
-  color: white;
-  height: 100%;
+  width:500px;
 }
 
-.team-card h3 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: white;
-  text-align: center;
+.team-card h2{
+  font-size:20px;
 }
+
+.team-card .RemText{
+  font-size:12px;
+}
+
+.team-card .memberlist{
+  font-size:9px;
+}
+
+.team-card .Buttons{
+  height:3rem;
+}
+
+.Time{
+  font-size:12px;
+}
+
+li{
+  padding-left:1rem;
+}
+
+.notice{
+  font-size: 1.875rem ;
+  line-height: 2.25rem ;
+}
+
+@media (max-width: 450px) {
+
+.team-card {
+  width:400px;
+}
+
+.team-card h2{
+  font-size:15px;
+}
+
+.team-card .RemText{
+  font-size:9px;
+}
+
+.team-card .memberlist{
+  font-size:8px;
+}
+
+.team-card .Buttons{
+  height:2.3rem;
+}
+
+.Time{
+  font-size:10px;
+}
+
+.notice{
+  font-size: 1.125rem ;
+  line-height: 1.75rem ;
+}
+
+}
+
 
 .highlight {
   font-weight: bold;

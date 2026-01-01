@@ -11,10 +11,8 @@ export default {
         }, // Replace with your actual vermilion color
       },
       fontFamily: {
-        quicksand: ['Quicksand', 'sans-serif'],
-        'robo-slab': ['Roboto Slab', 'serif'],
-        pixel: ['"Press Start 2P"', 'sans-serif'],
-        pixelifySans: ['Pixelify Sans', 'sans-serif'],
+        engagement:['Engagement','serif'],
+        alegreya:['Alegreya','serif'],
         bree:['Bree Serif','serif'],
       },
     },
