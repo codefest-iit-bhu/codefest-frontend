@@ -11,6 +11,9 @@ export default {
         }, // Replace with your actual vermilion color
       },
       fontFamily: {
+        rye: ['Rye', 'serif'],
+        'great-vibes': ['Great Vibes', 'cursive'],
+        'mate-sc': ['Mate SC', 'serif'],
         quicksand: ['Quicksand', 'sans-serif'],
         'robo-slab': ['Roboto Slab', 'serif'],
         pixel: ['"Press Start 2P"', 'sans-serif'],
