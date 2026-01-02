@@ -55,29 +55,34 @@ export default function Login() {
       return;
     }
   }, []);
-
   return (
     <>
-      <Background image_path={"/login_signup.jpg"} />
+      <Background />
       <ReturnHome />
 
-      <div className="flex flex-col items-center justify-center h-screen bg-cover bg-center">
-        <div className="bg-[rgba(42,42,39,0.88)] rounded-[20px] px-3 py-2.5 shadow-inner mt-6 relative border border-[#D4AF37]/40 w-[450px]">
+      <div className="min-h-screen flex flex-col items-center justify-center px-4">
+        <div
+          className="
+            w-full max-w-[450px]
+            bg-[rgba(42,42,39,0.88)]
+            rounded-[20px]
+            px-4 py-4
+            shadow-inner
+            border border-[#D4AF37]/40
+          "
+        >
 
           <div className="flex justify-center mb-6">
             <div className="inline-flex flex-col items-center">
-              <h1 className="text-3xl font-bold text-[#D4AF37] font-['Playfair_Display']">
+              <h1 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-['Playfair_Display']">
                 LOGIN
               </h1>
-              <div className="mt-1 h-[2px] w-[56px] bg-[#BFA76A] rounded-full"></div>
+              <div className="mt-1 h-[2px] w-[56px] bg-[#BFA76A] rounded-full" />
             </div>
           </div>
 
 
-
-
-          <div className="space-y-3">
-
+          <div className="space-y-4">
             <InputWithIcon
               icon={<img src={EmailIcon} alt="" className="w-4 h-4" />}
               placeholder="Email"
@@ -94,57 +99,63 @@ export default function Login() {
               value={credentials.password}
               onChange={handleCredentials}
             />
-            <div>
-              <Link
-                to="/signup"
-                className="block text-center text-md underline underline-offset-2
-               text-[#BFAF6F] font-['Playfair_Display']"
-              >
-                Don&apos;t have an account? Click here
-              </Link>
 
-            </div>
-
-
-
+            <Link
+              to="/signup"
+              className="
+                block text-center
+                text-sm sm:text-md
+                underline underline-offset-2
+                text-[#BFAF6F]
+                font-['Playfair_Display']
+              "
+            >
+              Don&apos;t have an account? Click here
+            </Link>
 
             <button
               onClick={handleLogin}
-              className="mx-auto block w-[220px] py-2 text-xl text-black 
-             bg-[#D4AF37] 
-             rounded-[20px] 
-             font-['Playfair_Display'] 
-             hover:bg-[#c9a634] 
-             transition-colors"
+              className="
+                w-full sm:w-[220px]
+                mx-auto block
+                py-3 sm:py-2
+                text-lg sm:text-xl
+                text-black
+                bg-[#D4AF37]
+                rounded-[20px]
+                font-['Playfair_Display']
+                hover:bg-[#c9a634]
+                transition-colors
+              "
             >
               LOGIN
             </button>
-
           </div>
         </div>
 
-        {/* GOOGLE LOGIN */}
-        <div className="mt-4">
-          <div className="mt-3">
-            <button
-              onClick={handleGoogleLogin}
-              className="mx-auto flex items-center justify-center w-[260px] py-2 px-4
-               bg-[#3A3A36]
-               border border-[#D4AF37]
-               rounded-[20px]
-               text-[#D4AF37]
-               font-['Playfair_Display']
-               hover:bg-[#2F2F2C]
-               transition-colors"
-            >
-              <img src={GoogleLogo} alt="Google Logo" className="w-5 h-5 mr-2" />
-              Sign in with Google
-            </button>
-          </div>
 
+        <div className="mt-4 w-full max-w-[450px]">
+          <button
+            onClick={handleGoogleLogin}
+            className="
+              w-full sm:w-[260px]
+              mx-auto
+              flex items-center justify-center
+              py-3 sm:py-2 px-4
+              bg-[#3A3A36]
+              border border-[#D4AF37]
+              rounded-[20px]
+              text-[#D4AF37]
+              font-['Playfair_Display']
+              hover:bg-[#2F2F2C]
+              transition-colors
+            "
+          >
+            <img src={GoogleLogo} alt="Google Logo" className="w-5 h-5 mr-2" />
+            Sign in with Google
+          </button>
         </div>
-      </div >
+      </div>
     </>
   );
-
 }
