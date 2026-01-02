@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Link from "./Link";
+import Linker from "./Link";
 import LogoutButton from "../components/LogoutButton";
 import { useUser } from "../context/context";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -16,80 +17,95 @@ function Navbar() {
 
   return (
     <>
-      <div className="h-12 flex lg:justify-evenly justify-end items-center absolute top-0 left-0 w-full bg-[#473737] z-[10]">
-        <nav className="hidden lg:flex text-white w-full h-full">
-          <div className="flex space-x-4 w-full">
-            <Link text="Main" href="/" />
-            <Link text="Events" href="/events" />
-            <Link text="CA" href="/CA" />
+      <div className="relative w-screen h-12 font-bree font-bold text-[#421F00]">
+          <img
+            src="/Navbar/NavBackground.png"
+            alt="NavBackground"
+            className="absolute inset-0 w-full h-full object-cover z-10"
+          />
+          <nav className="hidden lg:flex w-full h-full absolute z-10 justify-between items-center">
+            <img
+              src="/Navbar/NavStart.png"
+              alt="NavStart"
+              className="w-auto h-auto relative right-4"
+            />
+            <Linker text="Main" href="/" />
+            <Linker text="Events" href="/events" />
+            <Linker text="CA" href="/CA" />
             {isAuthenticated ? (
               <>
-                <Link text="My Teams" href="/myTeams" />
-                <LogoutButton />
+                <Linker text="My Teams" href="/myTeams" />
+                <div className="bg-[url('../Navbar/NavButton.png')] w-[91px] h-[24px] font-semibold text-center"><LogoutButton/></div>
               </>
             ) : (
-              <Link text="Login/Register" href="/login" />
+              <button
+                className="w-[105px] h-[30px] text-center"
+                style={{
+                  backgroundImage: "url('../Navbar/Navbutton2.svg')",
+                  backgroundSize: "100% 100%",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <Link to={"/login"}>Login/Signup</Link>
+              </button>
             )}
-          </div>
-        </nav>
 
-        <div className="lg:hidden flex items-center pr-6">
-          {/* <Link text="Home" href="/" /> */}
-          <button
-            className="h-[1.5rem] w-fit flex items-center justify-center font-bold text-2xl text-white"
-            onClick={toggleSidebar}
+            <img
+              src="../Navbar/NavEnd.png"
+              alt="NavEnd"
+              className="w-auto h-auto relative left-4"
+            />
+          </nav>
+
+
+          <div className="lg:hidden flex justify-end items-center pr-6 relative z-20 h-12">
+            <button
+              className="h-[50%] w-[25vw] font-bold text-xl text-[#421F00] flex items-center justify-center"
+              onClick={toggleSidebar}
+              style={{
+                  backgroundImage: "url('../Navbar/Navbutton2.svg')",
+                  backgroundSize: "100% 100%",
+                  backgroundRepeat: "no-repeat",
+                }}
+            >
+             Menu
+            </button>
+          </div>
+  
+          <div
+            className={`fixed top-0 left-0 h-full w-full bg-gray-800 bg-opacity-75 z-10 transition-opacity duration-300 ${
+              isSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+            onClick={closeSidebar}
+          ></div>
+  
+          <div
+            className={`fixed top-0 left-0 h-full w-72 bg-[#402605] text-white z-20 transition-transform duration-300 ${
+              isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
           >
-            [
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="white"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"
-              />
-            </svg>
-            ]
-          </button>
-        </div>
-
-        <div
-          className={`fixed top-0 left-0 h-full w-full bg-gray-800 bg-opacity-75 z-10 transition-opacity duration-300 ${isSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
-          onClick={closeSidebar}
-        ></div>
-
-        <div
-          className={`fixed top-0 left-0 h-full w-72 bg-gray-900 text-white z-20 transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
-        >
-          <div className="flex flex-col h-full p-4 space-y-4">
-            <div
-              className="h-[1.5rem] w-full flex items-center justify-center font-bold text-2xl text-gray-500 hover:bg-gray-400 hover:text-black transition-all duration-500"
-              onClick={closeSidebar}
-            >
-              [ Close ]
+            <div className="flex flex-col justify-between h-[100vh] p-4 space-y-4 items-stretch">
+              <div
+                className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5"
+                onClick={closeSidebar}
+              >
+                Close
+              </div>
+              <Link to="/" className="h-auto  w-auto flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">Main</Link>
+              <Link to="/events" className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">Events</Link>
+              <Link to="/CA" className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">CA</Link>
+              {isAuthenticated ? (
+                <>
+                  <Link to="/myTeams" className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">MyTeams</Link>
+                  <div className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-[#fc0d05] transition-all duration-500 p-5"><LogoutButton /></div>
+                </>
+              ) : (
+                <Link to="/login" className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">Login/Signup</Link>
+              )}
             </div>
-            <Link text="Main" href="/" />
-            <Link text="Events" href="/events" />
-            <Link text="CA" href="/CA" />
-            {isAuthenticated ? (
-              <>
-                <Link text="My Teams" href="/myTeams" />
-                <LogoutButton />
-              </>
-            ) : (
-              <Link text="Login/Register" href="/login" />
-            )}
           </div>
-        </div>
+        <div className="h-12"></div>
       </div>
-      <div className="block h-10"></div>
     </>
   );
 }
