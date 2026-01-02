@@ -1,19 +1,20 @@
-import BenefitsSection from "../components/Benefit_CA";
 import FAQ from "../components/FAQ";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Background from "../backgrounds/Background";
+import CaHero from "../components/CaHero";
+import Benefit_CA from "../components/Benefit_CA";
 
 export default function CA() {
   return (
     <>
-      <Navbar />
-      <div className="bg-[#140B29] w-screen flex flex-col items-center">
-        <BenefitsSection />
-      </div>
-      <div className="bg-[#140B29] ">
+      <div className="bg-[url('src/assets/CA_images/Capage.png')] bg-cover bg-center min-h-screen">
+        <Navbar />
+        <CaHero />
+        <Benefit_CA />
         <FAQ />
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }
