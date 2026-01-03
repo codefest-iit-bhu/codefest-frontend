@@ -72,10 +72,10 @@ export const router = createBrowserRouter([
       {
         path: "/ca-register",
         element: (
-          // <PrivateRoute>
-            // <PageTitle title="CA Registration | Codefest IIT (BHU)" />
+          <PrivateRoute>
+            <PageTitle title="CA Registration | Codefest IIT (BHU)" />
             <CARegistration />
-          // </PrivateRoute>
+          </PrivateRoute>
         ),
       },
       {
