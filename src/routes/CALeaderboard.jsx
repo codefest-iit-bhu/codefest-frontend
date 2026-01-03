@@ -110,7 +110,12 @@ const CALeaderboard = () => {
           <img 
             src={titleImg} 
             alt="Leaderboard" 
-            className="w-[55%] md:w-[30%] mt-2 mb-2 shrink-0 drop-shadow-lg"
+            // --- NEW CLASSES ADDED HERE ---
+            // transition-all duration-300: Makes the effect smooth.
+            // hover:scale-105: Slightly enlarges the title on hover for a "pop" effect.
+            // hover:drop-shadow-[...]: Replaces the standard shadow with a bright gold glow.
+            // cursor-pointer: Changes mouse cursor to indicate interactivity.
+            className="w-[55%] md:w-[30%] mt-2 mb-2 shrink-0 drop-shadow-lg transition-all duration-300 ease-in-out hover:drop-shadow-[0_0_25px_rgba(255,215,0,0.8)]"
           />
 
           {/* 2. REWARDS SECTION */}

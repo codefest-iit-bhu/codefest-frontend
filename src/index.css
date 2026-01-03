@@ -6,3 +6,35 @@ body {
   font-family: "Pixelify Sans Variable", system-ui;
 }
 
+/* --- GEAR ANIMATIONS --- */
+
+/* 1. Define the Spin (Clockwise) */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 2. Define the Reverse Spin (Counter-Clockwise) */
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* 3. Create the Classes to use in React */
+.animate-spin-slow {
+  /* Spins once every 20 seconds, forever, smoothly */
+  animation: spin-slow 20s linear infinite; 
+}
+
+.animate-spin-reverse {
+  /* Spins backwards once every 25 seconds */
+  animation: spin-reverse 25s linear infinite; 
+}
