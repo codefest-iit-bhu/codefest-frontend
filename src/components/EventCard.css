@@ -1,22 +1,26 @@
 .event-card {
   /* background-color: #000; */
-  border: 2px solid #c1a7ff;
-  border-radius: 12px;
-  padding: 3vh;
+  /* padding: 3vh; */
   text-align: center;
-  width: 70vw;
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .event-date {
-  font-size: 1.4rem;
+  font-size: 0.8rem;
+  transform: rotate(-7deg);
+  
 }
 
-.divider {
-  border: none;
-  height: 2px;
-  background-color: #f3ab55;
-  margin: 8px auto;
-  width: 90%;
+.event-title{
+  transform: rotate(-7deg);
+  
+}
+
+.deadline{
+  transform: rotate(-7deg);
+  
 }
 
 @media (min-width: 768px) {
@@ -24,3 +28,5 @@
     width: 30vw;
   }
 }
+
+
