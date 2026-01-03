@@ -24,7 +24,7 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col justify-center items-center gap-0 -mt-24 sm:-mt-32 md:-mt-40">
-          <a href="/home" className="relative w-fit h-fit -mb-14 sm:-mb-16 md:-mb-18">
+          <a href="/home" className="relative w-fit h-fit -mb-8 sm:-mb-16 md:-mb-18">
             <img
               src="/red_btn.svg"
               alt="Explore"
@@ -38,7 +38,7 @@ export default function Home() {
           </a>
           {
             !isAuthenticated &&
-            <Link to="/login" className="relative w-fit h-fit -mb-16 sm:-mb-20 md:-mb-24">
+            <Link to="/login" className="relative w-fit h-fit -mb-8 sm:-mb-20 md:-mb-24">
               <img
                 src="/red_btn.svg"
                 alt="Register / Login"
