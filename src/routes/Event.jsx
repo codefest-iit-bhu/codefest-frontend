@@ -12,19 +12,42 @@ import ground from "../assets/bottom-part.png";
 import Footer from "../components/Footer.jsx";
 import ArithmeticaEvent from "./ArithmeticaEvent.jsx";
 import CodewarsEvent from "./CodewarsEvent.jsx";
+import CaptureTheFlagEvent from "./CaptureTheFlagEvent.jsx";
+import VistaEvent from "./VistaEvent.jsx";
+import EnigmaEvent from "./EnigmaEvent.jsx";
+import HaXploreEvent from "./HaXploreEvent.jsx";
+import ManthanEvent from "./ManthanEvent.jsx";
 
 export const Event = () => {
   const { name } = useParams();
   const event = events.find((event) => event.name === name);
 
-  // If event is Arithmetica, render the custom component
   if (event && event.name === "Arithmetica") {
     return <ArithmeticaEvent event={event} />;
   }
 
-  // If event is Codewars, render the custom component
   if (event && event.name === "Codewars") {
     return <CodewarsEvent event={event} />;
+  }
+
+  if (event && event.name === "Capture the Flag") {
+    return <CaptureTheFlagEvent event={event} />;
+  }
+
+  if (event && event.name === "Vista") {
+    return <VistaEvent event={event} />;
+  }
+
+  if (event && event.name === "Enigma") {
+    return <EnigmaEvent event={event} />;
+  }
+
+  if (event && event.name === "HaXplore") {
+    return <HaXploreEvent event={event} />;
+  }
+
+  if (event && event.name === "Manthan") {
+    return <ManthanEvent event={event} />;
   }
 
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
