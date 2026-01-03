@@ -80,7 +80,7 @@ export default function Home() {
                         p-6
                         overflow-y-auto no-scrollbar
                      ">
-                         <div className="text-[#3e2723] text-left font-bold font-body-serif text-sm md:text-xl italic leading-loose md:leading-[3.5rem] tracking-wide">
+                         <div className="text-[#3e2723] text-left font-bold font-body-serif text-xs md:text-lg italic leading-relaxed md:leading-loose tracking-wide">
                              <Whoarewe />
                          </div>
                      </div>
