@@ -38,3 +38,13 @@ body {
   /* Spins backwards once every 25 seconds */
   animation: spin-reverse 25s linear infinite; 
 }
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
