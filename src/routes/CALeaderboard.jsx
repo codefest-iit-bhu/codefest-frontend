@@ -4,11 +4,11 @@ import Navbar from "../components/Navbar";
 import Loader from "../components/Loader";
 
 // --- ASSETS ---
-import spaceBg from "../assets/space-bg.png";
-import parchmentBg from "../assets/parchment-gears.png";
-import titleImg from "../assets/title.png";
-import singleGear from "../assets/gear-single.png";
-import clusterGear from "../assets/gear-cluster.png";
+import spaceBg from "../assets/ca-leaderboard/space-bg.png";
+import parchmentBg from "../assets/ca-leaderboard/parchment-gears.png";
+import titleImg from "../assets/ca-leaderboard/title.png";
+import singleGear from "../assets/ca-leaderboard/gear-single.png";
+import clusterGear from "../assets/ca-leaderboard/gear-cluster.png";
 
 // --- REUSABLE GEAR COMPONENT ---
 const Gear = ({ img, className, reverse = false, size = "w-24" }) => {
