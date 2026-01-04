@@ -10,24 +10,7 @@ import grabon from "../assets/Sponsors/grab-on.png";
 import hackerearth from "../assets/Sponsors/hackerearth.png";
 import hackerrank from "../assets/Sponsors/hackerrank.png";
 
-const SponsorLogo = ({ src, alt }) => (
-  <div className="w-[150px] h-[150px] md:w-[300px] md:h-[300px] relative hover:scale-[102%] transition-all duration-300">
-    <img
-      src="/previousSponsorsBox.svg"
-      alt=""
-      className="w-[150px] h-[150px] md:w-[300px] md:h-[300px] absolute z-[2]"
-    />
-    <div className="bg-white rounded-full absolute w-[125px] h-[125px] md:w-[249px] md:h-[249px] top-[13px] left-[13px] md:top-[25px] md:left-[25px] overflow-hidden flex items-center justify-center">
-      <img
-        src={src}
-        alt={alt}
-        className="w-[100px] h-[100px] md:w-[200px] md:h-[200px]"
-      />
-    </div>
-  </div>
-);
-
-const PreviousSponsors = () => {
+const PreviousSponsors = ({ frame }) => {
   const sponsors = [
     { src: aws, alt: "AWS logo" },
     { src: cisco, alt: "CISCO logo" },
@@ -42,20 +25,31 @@ const PreviousSponsors = () => {
   ];
 
   return (
-    <div className="sm:p-6 mb-10">
-      <div className="relative m-10">
-        <div className="text-5xl md:text-7xl p-10 relative text-white z-[1]">
-          PREVIOUS SPONSORS
+    <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-8 mb-10">
+      {sponsors.map((sponsor, index) => (
+        <div 
+          key={index} 
+          className="relative w-32 h-32 md:w-48 md:h-48 flex items-center justify-center hover:scale-110 transition-transform duration-300"
+        >
+          
+          {/* 1. THE SPONSOR CIRCLE FRAME */}
+          <img
+            src={frame}
+            alt="Sponsor Frame"
+            className="absolute inset-0 w-full h-full pointer-events-none drop-shadow-md z-20"
+          />
+
+          {/* 2. THE LOGO */}
+          <div className="w-[65%] h-[65%] bg-white rounded-full flex items-center justify-center overflow-hidden z-10 shadow-inner">
+            <img
+              src={sponsor.src}
+              alt={sponsor.alt}
+              className="w-[80%] object-contain"
+            />
+          </div>
+          
         </div>
-        <div className="text-5xl md:text-7xl p-10 absolute top-0 translate-x-[-3px] translate-y-[-3px] z-[0.5] text-gray-500">
-          PREVIOUS SPONSORS
-        </div>
-      </div>
-      <div className="flex flex-wrap justify-center gap-10">
-        {sponsors.map((sponsor, index) => (
-          <SponsorLogo key={index} src={sponsor.src} alt={sponsor.alt} />
-        ))}
-      </div>
+      ))}
     </div>
   );
 };

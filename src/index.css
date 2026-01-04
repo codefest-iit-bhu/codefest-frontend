@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Engagement&family=Namdhinggo:wght@400;500;600;700;800&family=Playball&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -47,4 +49,25 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Apply the font globally or use utility classes */
+.font-gatsby {
+  font-family: 'Cinzel Decorative', cursive;
+}
+.font-body-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+
+.font-engagement {
+  font-family: 'Engagement', cursive;
+}
+
+.font-playball {
+  font-family: 'Playball', cursive;
+}
+
+.font-namdhinggo {
+  font-family: 'Namdhinggo', serif;
 }

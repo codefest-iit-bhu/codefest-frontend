@@ -1,25 +1,42 @@
 import React from "react";
 
-const TestimonialCard = ({ testimonial }) => {
+const TestimonialCard = ({ testimonial, bg, circleFrame }) => {
   return (
-    <>
-      <div
-        className="w-[300px] h-[126px] md:w-[600px] md:h-[235px] relative flex-shrink-0 text-[12px] md:text-lg font-mono hover:scale-[102%] transition-all duration-500"
-        style={{
-          background: 'url("/testimonialBox.png")',
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
-        }}
-      >
-        <div className="w-[63px] h-[63px] top-[20px] left-[4px] md:w-[125px] md:h-[125px] md:top-[40px] md:left-[8px] absolute rounded-full overflow-hidden">
-          <img src={testimonial.imgSrc} alt="" />
-        </div>
-        <div className="absolute h-[60px] w-[190px] top-[20px] left-[75px] md:h-[120px] md:w-[380px] md:top-[40px] md:left-[150px] overflow-x-hidden overflow-y-scroll no-scrollbar text-black">
-          <p className="font-bold">{testimonial.name}</p>
-          {testimonial.msg}
+    <div 
+      className="relative w-full h-32 md:h-44 bg-no-repeat bg-center flex items-center px-4 md:px-6 py-2 transition-transform hover:scale-102 duration-300"
+      style={{ 
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "100% 100%" 
+      }}
+    >
+      {/* 1. IMAGE SECTION */}
+      <div className="relative w-20 h-20 md:w-28 md:h-28 shrink-0 ml-4 md:ml-8 mr-4 md:mr-8">
+        <img 
+          src={circleFrame} 
+          alt="frame" 
+          className="absolute inset-0 w-full h-full scale-110 pointer-events-none drop-shadow-md z-20" 
+        />
+        <div className="w-full h-full rounded-full overflow-hidden border border-[#3e2723] bg-gray-300 z-10">
+          <img 
+            src={testimonial.imgSrc} 
+            alt={testimonial.imgAlt} 
+            className="w-full h-full object-cover" 
+          />
         </div>
       </div>
-    </>
+
+      {/* 2. TEXT SECTION  */}
+      <div className="flex flex-col justify-center h-full overflow-hidden flex-1 pr-4">
+        <p className="text-[#3e2723] text-xs md:text-sm font-bold font-body-serif italic leading-snug line-clamp-3 md:line-clamp-4">
+          "{testimonial.msg}"
+        </p>
+        
+        <h3 className="mt-1 md:mt-2 text-[#5d4037] font-black uppercase text-[10px] md:text-xs tracking-widest font-gatsby">
+          — {testimonial.name}
+        </h3>
+      </div>
+
+    </div>
   );
 };
 
