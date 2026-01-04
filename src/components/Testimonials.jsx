@@ -13,7 +13,7 @@ const Testimonials = ({ bg, circleFrame }) => {
         name: "Gennady Korotkevich",
         imgAlt: "Tourist",
         imgSrc: touristImage,
-        msg: "Marathon had some good problems and it was prepared very well. I loved the idea of hosting Mahamania at Topcoder!",
+        msg: "Manthan had some good problems and it was prepared very well. I loved the idea of hosting Mahamania at Topcoder!",
       },
       {
         name: "Animesh Pathak",
