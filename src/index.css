@@ -1,7 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Engagement&family=Namdhinggo:wght@400;500;600;700;800&family=Playball&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   font-family: "Pixelify Sans Variable", system-ui;
+}
+
+/* --- GEAR ANIMATIONS --- */
+
+/* 1. Define the Spin (Clockwise) */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 2. Define the Reverse Spin (Counter-Clockwise) */
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* 3. Create the Classes to use in React */
+.animate-spin-slow {
+  /* Spins once every 20 seconds, forever, smoothly */
+  animation: spin-slow 20s linear infinite; 
+}
+
+.animate-spin-reverse {
+  /* Spins backwards once every 25 seconds */
+  animation: spin-reverse 25s linear infinite; 
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Apply the font globally or use utility classes */
+.font-gatsby {
+  font-family: 'Cinzel Decorative', cursive;
+}
+.font-body-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+
+.font-engagement {
+  font-family: 'Engagement', cursive;
+}
+
+.font-playball {
+  font-family: 'Playball', cursive;
+}
+
+.font-namdhinggo {
+  font-family: 'Namdhinggo', serif;
 }

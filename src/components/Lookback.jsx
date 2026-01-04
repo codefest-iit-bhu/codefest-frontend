@@ -1,63 +1,39 @@
-// Sample data array for dynamic rendering
+import React from "react";
+
 const lookbackData = [
-  {
-    id: 1,
-    imageSrc: "/Award.png",
-    label: "Prize Money",
-    value: "Rs 500,000",
-  },
-  {
-    id: 2,
-    imageSrc: "/Globe.png",
-    label: "Colleges",
-    value: "98",
-  },
-  {
-    id: 3,
-    imageSrc: "/Users.png",
-    label: "Participants",
-    value: "35,654",
-  },
-  {
-    id: 4,
-    imageSrc: "/TrendingUp.png",
-    label: "Unique Visitors",
-    value: "328,902",
-  },
-  {
-    id: 5,
-    imageSrc: "/Edit.png",
-    label: "Registrations",
-    value: "22,302",
-  },
+  { id: 1, label: "Prize Money", value: "₹ 5 Lakh" },
+  { id: 2, label: "Colleges", value: "98+" },
+  { id: 3, label: "Participants", value: "35k+" },
+  { id: 4, label: "Unique Visitors", value: "3 Lakh+" },
+  { id: 5, label: "Registrations", value: "22k+" },
 ];
 
-const PixelBox = ({ title, text, img_src }) => {
+const Lookback = ({ frame }) => {
   return (
-    <>
-      <div
-        className="h-[95px] w-[133px] md:h-[142px] md:w-[200px] text-black flex flex-col flex-shrink-0 justify-center items-center hover:scale-105 rounded-lg transition-all duration-300"
-        style={{
-          backgroundImage: "url('/pixelBox.png')",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <img src={img_src} alt="" className="w-5 md:w-10 mb-2" />
-        <div className="font-bold">{title}</div>
-        <div className="text-sm font-mono">{text}</div>
-      </div>
-    </>
-  );
-};
+    <div className="w-full flex flex-wrap justify-evenly gap-y-8 mt-6 px-0 md:px-10">
+      {lookbackData.map((data) => (
+        <div 
+          key={data.id} 
+          className="relative w-36 h-36 md:w-52 md:h-52 shrink-0 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300"
+        >
+          {/* Frame Image */}
+          <img 
+            src={frame} 
+            alt="frame" 
+            className="absolute inset-0 w-full h-full object-contain pointer-events-none drop-shadow-lg z-0" 
+          />
 
-const Lookback = () => {
-  return (
-    <div className="bg-[#140B29] mt-32 md:mt-28 lg:mt-8 w-screen mb-10">
-      <div className="text-5xl md:text-7xl p-10 z-[1]">LOOKBACK</div>
-      <div className="w-full flex justify-center gap-2 flex-wrap p-2">
-        {lookbackData.map((data) => <PixelBox title={data.label} text={data.value} img_src={data.imageSrc} key={data.id} />)}
-
-      </div>
+          {/* Content */}
+          <div className="relative z-10 flex flex-col items-center text-center px-4 pt-2">
+            <div className="text-lg md:text-3xl font-playball text-[#FFD700] drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+              {data.value}
+            </div>
+            <div className="text-[10px] md:text-sm font-playball uppercase tracking-wider text-white opacity-90 mt-1">
+              {data.label}
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

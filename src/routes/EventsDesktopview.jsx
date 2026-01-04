@@ -24,17 +24,16 @@ export default function DesktopEventsPage() {
                                     index % 2 === 0 && <Timeline event={event} />
                                 }
                                 {
-                                    index % 2 !== 0 && (index !== events.length - 1) && <div className="w-1/3 border-dotted border-t-[6px] border-l-[6px] h-40 rounded-tl-full relative top-20">
-                                    </div>
+                                    index % 2 !== 0 && (index !== events.length - 1) 
                                 }
-                                <img
+                                {/* <img
                                     src={event.image_desk_path}
                                     alt={event.name}
                                     className={`w-40 rounded-full ${index % 2 === 0 ? 'ml-6' : 'mr-6'}`}
-                                />
+                                /> */}
                                 {
-                                    index % 2 === 0 && (index !== events.length - 1) && <div className="w-1/3 border-dotted border-t-[6px] border-spacing-16 border-r-[6px] h-40 rounded-tr-full relative top-20">
-                                    </div>
+                                    index % 2 === 0 && (index !== events.length - 1)
+                                    
                                 }
                                 {
                                     index % 2 !== 0 && <Timeline event={event} />
@@ -45,14 +44,14 @@ export default function DesktopEventsPage() {
                 </div>
 
 
-                {/* Footer Design */}
+                {/* Footer Design
                 <div>
                     <img
                         src="/events_foot_design.svg"
                         alt="Events Footer Design"
                         className="w-[100vw]"
                     />
-                </div>
+                </div> */}
             </div>
         </>
     );

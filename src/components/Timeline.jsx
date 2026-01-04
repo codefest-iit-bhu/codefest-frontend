@@ -14,6 +14,7 @@ const Timeline = ({ event }) => {
                 date={event.date}
                 lastDateReg={event.last_date_reg}
                 img_src={event.image_desk_path}
+                img_bg_src={event.image_bg_path}
               />
             </Link>
           </li>

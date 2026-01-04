@@ -10,10 +10,46 @@ import cloudLeft from "../assets/cloud-left.png";
 import cloudRight from "../assets/cloud-right.png";
 import ground from "../assets/bottom-part.png";
 import Footer from "../components/Footer.jsx";
+import ArithmeticaEvent from "./ArithmeticaEvent.jsx";
+import CodewarsEvent from "./CodewarsEvent.jsx";
+import CaptureTheFlagEvent from "./CaptureTheFlagEvent.jsx";
+import VistaEvent from "./VistaEvent.jsx";
+import EnigmaEvent from "./EnigmaEvent.jsx";
+import HaXploreEvent from "./HaXploreEvent.jsx";
+import ManthanEvent from "./ManthanEvent.jsx";
 
 export const Event = () => {
   const { name } = useParams();
   const event = events.find((event) => event.name === name);
+
+  if (event && event.name === "Arithmetica") {
+    return <ArithmeticaEvent event={event} />;
+  }
+
+  if (event && event.name === "Codewars") {
+    return <CodewarsEvent event={event} />;
+  }
+
+  if (event && event.name === "Capture the Flag") {
+    return <CaptureTheFlagEvent event={event} />;
+  }
+
+  if (event && event.name === "Vista") {
+    return <VistaEvent event={event} />;
+  }
+
+  if (event && event.name === "Enigma") {
+    return <EnigmaEvent event={event} />;
+  }
+
+  if (event && event.name === "HaXplore") {
+    return <HaXploreEvent event={event} />;
+  }
+
+  if (event && event.name === "Manthan") {
+    return <ManthanEvent event={event} />;
+  }
+
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
   const [isJoinTeamModalOpen, setIsJoinTeamModalOpen] = useState(false);
   const { isAuthenticated } = useUser();
@@ -69,7 +105,8 @@ export const Event = () => {
   return (
     <>
       <Navbar />
-      <div
+    
+      {/* <div
         className={`flex flex-col md:flex-row items-center justify-evenly ${browser === "firefox" ? "bg-[#1E032C]" : "bg-[#140C27]"}`}
       >
         <div className="w-full md:w-2/3 rounded-md pt-4 backdrop-blur-[2px] px-6">
@@ -210,7 +247,7 @@ export const Event = () => {
       <JoinTeamModal
         isOpen={isJoinTeamModalOpen}
         onClose={() => setIsJoinTeamModalOpen(false)}
-      />
+      /> */}
     </>
   );
 };

@@ -35,11 +35,11 @@ export default function Eventsmobileview() {
                 {events.sort((a, b) => (new Date(a.date.split(",").slice(0, 2).join(","))) - (new Date(b.date.split(",").slice(0, 2).join(",")))).map((event, index) => (
                     <div key={event.name}>
                         <div className="flex">
-                            <img
+                            {/* <img
                                 src={event.image_desk_path}
                                 alt={event.name}
                                 className="max-[768px]:hidden rounded-full mr-6"
-                            />
+                            /> */}
                             <Timeline event={event} />
                         </div>
 
@@ -48,13 +48,13 @@ export default function Eventsmobileview() {
                     </div>
                 ))}
             </div>
-            <div>
+            {/* <div>
                 <img
                     src="/events_foot_design.svg"
                     alt="Events Footer Design"
                     className="w-[100vw] mt-[8vh]"
                 />
-            </div>
+            </div> */}
         </div>
     );
 }
