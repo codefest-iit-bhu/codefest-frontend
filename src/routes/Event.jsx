@@ -105,7 +105,7 @@ export const Event = () => {
   return (
     <>
       <Navbar />
-
+    
       {/* <div
         className={`flex flex-col md:flex-row items-center justify-evenly ${browser === "firefox" ? "bg-[#1E032C]" : "bg-[#140C27]"}`}
       >

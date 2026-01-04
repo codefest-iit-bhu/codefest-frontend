@@ -4,6 +4,7 @@ import TeamRegistrationModal from "../components/TeamRegistrationModel.jsx";
 import JoinTeamModal from "../components/JoinTeamModal.jsx";
 import { useUser } from "../context/context.jsx";
 import axios from "../utils/axiosInstance.js";
+import Footer from "../components/Footer.jsx";
 
 export const HaXploreEvent = ({ event }) => {
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
@@ -38,65 +39,72 @@ export const HaXploreEvent = ({ event }) => {
 
   return (
     <>
-      <Navbar />
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
 
-      <div className="relative w-full h-screen overflow-y-auto overflow-x-hidden">
-        <div
-          className="relative w-full"
-          style={{
-            backgroundImage: "url(/HaXplore.png)",
-            backgroundSize: "100% auto",
-            backgroundPosition: "top center",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: "#1a0a0a",
-          }}
-        >
-          <div className="w-full pt-[260%] sm:pt-[240%] md:pt-[200.14%]" />
+      {/* Page shell: poster scroll area + footer outside (footer won't move with poster background) */}
+      <div className="min-h-screen flex flex-col pt-12">
+        <div className="relative w-full flex-1 overflow-y-auto overflow-x-hidden">
+          <div
+            className="relative w-full"
+            style={{
+              backgroundImage: "url(/HaXplore.png)",
+              backgroundSize: "100% auto",
+              backgroundPosition: "top center",
+              backgroundRepeat: "no-repeat",
+              backgroundColor: "#1a0a0a",
+            }}
+          >
+            <div className="w-full pt-[260%] sm:pt-[240%] md:pt-[200.14%]" />
 
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="relative w-full h-full">
-              <div className="absolute inset-x-0 top-0 h-full mx-auto w-full max-w-[1600px] pointer-events-none">
-                <div className="relative w-full h-full pointer-events-none">
-                  <div
-                    className="absolute left-1/2 -translate-x-1/2 flex flex-row flex-nowrap items-center justify-center pointer-events-auto top-[11%] md:top-[13%]"
-                    style={{ gap: "clamp(0.4rem, 1.4vw, 1.15rem)" }}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (!isAuthenticated)
-                          return (window.location.href = "/login");
-                        setIsRegistrationModalOpen(true);
-                      }}
-                      className="group cursor-pointer focus:outline-none"
-                      style={{ width: "clamp(140px, 42vw, 450px)" }}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="relative w-full h-full">
+                <div className="absolute inset-x-0 top-0 h-full mx-auto w-full max-w-[1600px] pointer-events-none">
+                  <div className="relative w-full h-full pointer-events-none">
+                    <div
+                      className="absolute left-1/2 -translate-x-1/2 flex flex-row flex-nowrap items-center justify-center pointer-events-auto top-[11%] md:top-[13%]"
+                      style={{ gap: "clamp(0.4rem, 1.4vw, 1.15rem)" }}
                     >
-                      <img
-                        src="/event_register_btn.png"
-                        alt="Register now"
-                        className="block w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
-                      />
-                    </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (!isAuthenticated)
+                            return (window.location.href = "/login");
+                          setIsRegistrationModalOpen(true);
+                        }}
+                        className="group cursor-pointer focus:outline-none"
+                        style={{ width: "clamp(140px, 42vw, 450px)" }}
+                      >
+                        <img
+                          src="/event_register_btn.png"
+                          alt="Register now"
+                          className="block w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+                        />
+                      </button>
 
-                    <a
-                      href="https://discord.gg/St3q2sCn"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group cursor-pointer"
-                      style={{ width: "clamp(140px, 42vw, 450px)" }}
-                    >
-                      <img
-                        src="/further_details_btn.png"
-                        alt="Further details will be updated here"
-                        className="block w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
-                      />
-                    </a>
+                      <a
+                        href="https://discord.gg/St3q2sCn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group cursor-pointer"
+                        style={{ width: "clamp(140px, 42vw, 450px)" }}
+                      >
+                        <img
+                          src="/further_details_btn.png"
+                          alt="Further details will be updated here"
+                          className="block w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+                        />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <Footer />
       </div>
 
       <TeamRegistrationModal
