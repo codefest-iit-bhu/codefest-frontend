@@ -25,10 +25,10 @@ const Lookback = ({ frame }) => {
 
           {/* Content */}
           <div className="relative z-10 flex flex-col items-center text-center px-4 pt-2">
-            <div className="text-lg md:text-3xl font-bold font-gatsby text-[#FFD700] drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+            <div className="text-lg md:text-3xl font-playball text-[#FFD700] drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
               {data.value}
             </div>
-            <div className="text-[10px] md:text-sm font-semibold uppercase tracking-wider text-white opacity-90 mt-1 font-body-serif">
+            <div className="text-[10px] md:text-sm font-playball uppercase tracking-wider text-white opacity-90 mt-1">
               {data.label}
             </div>
           </div>
