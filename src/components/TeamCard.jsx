@@ -173,7 +173,7 @@ const TeamCard = ({
               {!all &&
               members.length === 1 &&
               team.event.maxMembers - members.length == 0 ? (
-                <p>Invite members by sharing code!!</p>
+                <p className="text-center">Invite members by sharing code!!</p>
               ) : (
                 <>
                   <h5 className="RemText">Members :</h5>
