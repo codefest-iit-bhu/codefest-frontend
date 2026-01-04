@@ -21,7 +21,7 @@ const Teams = () => {
       setTeams(response.data);
       setIsLoading(false);
     };
-
+    console.log(teams);
     fetchTeams();
   }, []);
 
@@ -38,9 +38,9 @@ const Teams = () => {
   };
 
   return (
-    <>
+    <div className="bg-black">
       <Navbar />
-      <div className="teams-container bg-purple-800 min-h-[95vh]">
+      <div className="teams-container bg-[url('/Teams/TeamsBackGround.png')] bg-no-repeat bg-cover bg-center min-h-[95vh]">
         {isLoading ? (
           <Loader />
         ) : teams && teams.length > 0 ? (
@@ -54,10 +54,10 @@ const Teams = () => {
             />
           ))
         ) : (
-          <div className="w-full text-xl font-mono flex justify-center items-center h-[90vh]">You have not registered for any event</div>
+          <div className="w-full notice text-lg font-bree flex justify-center items-center h-[90vh]">You have not registered for any event</div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./CARegistration.module.css";
 import axios from "../utils/axiosInstance";
 import toast from "react-hot-toast";
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const CARegistration = () => {
   const [formData, setFormData] = useState({
@@ -19,22 +19,32 @@ const CARegistration = () => {
 
   useEffect(() => {
     const fetchRequest = async () => {
-      const response = await axios.get("/ca/my", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-      setUserRequest(response.data);
-      setFormData({
-        institute: response.data.institute || "",
-        userDescription: response.data.userDescription || "",
-        graduation_year: response.data.graduation_year || "",
-        contact_number: response.data.contact_number || "",
-        whatsapp_number: response.data.whatsapp_number || "",
-        branch: response.data.branch || "",
-        ca_brought_by: response.data.ca_brought_by || "",
-      });
-      setReferralLink(window.location.origin + "/signup?referralCode=" + response.data.referralCode);
+      try {
+        const response = await axios.get("/ca/my", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        if (response.data) {
+          setUserRequest(response.data);
+          setFormData({
+            institute: response.data.institute || "",
+            userDescription: response.data.userDescription || "",
+            graduation_year: response.data.graduation_year || "",
+            contact_number: response.data.contact_number || "",
+            whatsapp_number: response.data.whatsapp_number || "",
+            branch: response.data.branch || "",
+            ca_brought_by: response.data.ca_brought_by || "",
+          });
+          setReferralLink(
+            window.location.origin +
+            "/signup?referralCode=" +
+            response.data.referralCode
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching request:", error);
+      }
     };
 
     fetchRequest();
@@ -42,181 +52,268 @@ const CARegistration = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (userRequest && Object.keys(userRequest).length > 0) {
-      handleUpdateStatus(userRequest._id);
-    } else {
-      const response = await axios.post("/ca", formData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-      setUserRequest(response.data);
-      toast.success("Request submitted successfully");
+    try {
+      if (userRequest && Object.keys(userRequest).length > 0) {
+        handleUpdateStatus(userRequest._id);
+      } else {
+        const response = await axios.post("/ca", formData, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        setUserRequest(response.data);
+        toast.success("Request submitted successfully");
+      }
+    } catch (error) {
+      toast.error("Error submitting request");
     }
   };
 
   const handleUpdateStatus = async (id) => {
-    const updatedRequest = await axios.patch(
-      `/ca/${id}`,
-      { ...formData, status: "pending" },
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
-    toast.success("Status updated");
-    setUserRequest(updatedRequest.data ? updatedRequest.data : {});
-    window.location.reload();
+    try {
+      const updatedRequest = await axios.patch(
+        `/ca/${id}`,
+        { ...formData, status: "pending" },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      toast.success("Status updated");
+      setUserRequest(updatedRequest.data ? updatedRequest.data : {});
+      window.location.reload();
+    } catch (error) {
+      toast.error("Error updating status");
+    }
   };
 
-  return (
-    <div
-      className={`${styles.container} font-pixelifySans bg-[rgba(20,11,41,1)] text-white p-8 rounded-lg`}
-    >
-      <h1 className="text-3xl font-bold">Campus Ambassador Registration</h1>
-      <p className="mt-2">Join us as a Campus Ambassador for CodeFest'25!</p>
+  // Custom Input Component for consistent styling
+  const CustomInput = ({
+    label,
+    id,
+    type,
+    value,
+    onChange,
+    required = true,
+    placeholder = "",
+    isTextArea = false,
+  }) => (
+    <div className="mb-6">
+      <label
+        htmlFor={id}
+        className="block text-xl md:text-2xl font-serif text-white mb-2 tracking-wide"
+      >
+        {label}
+      </label>
+      {isTextArea ? (
+        <textarea
+          id={id}
+          name={id}
+          value={value}
+          onChange={onChange}
+          rows="3"
+          className="w-full bg-[#8B7D5B] rounded-2xl border-none px-4 py-3 text-white placeholder-gray-300 focus:ring-2 focus:ring-yellow-500 focus:outline-none transition-all duration-300 text-lg shadow-inner"
+        ></textarea>
+      ) : (
+        <input
+          type={type}
+          id={id}
+          name={id}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          required={required}
+          className="w-full bg-[#8B7D5B] rounded-full border-none h-12 px-6 text-white placeholder-gray-300 focus:ring-2 focus:ring-yellow-500 focus:outline-none transition-all duration-300 text-lg shadow-inner"
+        />
+      )}
+    </div>
+  );
 
-      {/* Registration Form */}
-      <form onSubmit={handleSubmit} className={styles.form}>
-        {/* Original Fields */}
-        <div className={styles.formGroup}>
-          <label htmlFor="institute" className="block text-lg font-medium">
-            Institute Name
-          </label>
-          <input
-            type="text"
+  return (
+    <div className="min-h-screen w-full bg-[url('/src/assets/CA_images/CArbg.png')] bg-cover bg-center bg-fixed bg-no-repeat overflow-x-hidden md:px-0 scrollbar-hide">
+      <div className="container mx-auto px-4 py-12 md:py-20 max-w-4xl relative z-10">
+        <div className="text-center mb-12">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-rye text-[#FFC107] drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] mb-4 tracking-wider">
+            CAMPUS AMBASSADOR REGISTRATION
+          </h1>
+          <p className="text-white text-lg md:text-xl font-serif italic opacity-90 tracking-widest">
+            Join us as a campus ambassador for codefest'26
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-2 md:space-y-4">
+          <CustomInput
+            label="Institute Name"
             id="institute"
-            name="institute"
+            type="text"
             value={formData.institute}
             onChange={(e) =>
               setFormData({ ...formData, institute: e.target.value })
             }
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black font-mono"
-            required
           />
-        </div>
 
-        <div className={styles.formGroup}>
-          <label
-            htmlFor="userDescription"
-            className="block text-lg font-medium"
-          >
-            Statement of Purpose
-          </label>
-          <textarea
+          <CustomInput
+            label="Statement of purpose"
             id="userDescription"
-            name="userDescription"
+            type="text"
+            isTextArea={true}
             value={formData.userDescription}
             onChange={(e) =>
               setFormData({ ...formData, userDescription: e.target.value })
             }
-            rows="4"
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black font-mono"
-          ></textarea>
-        </div>
+          />
 
-        {/* New Fields */}
-        {[
-          { label: "Graduation Year", id: "graduation_year", type: "number" },
-          { label: "Contact Number", id: "contact_number", type: "tel" },
-          { label: "WhatsApp Number", id: "whatsapp_number", type: "tel" },
-          { label: "Branch", id: "branch", type: "text" },
-          { label: "Referred By", id: "ca_brought_by", type: "text" },
-        ].map((field) => (
-          <div key={field.id} className={styles.formGroup}>
-            <label htmlFor={field.id} className="block text-lg font-medium">
-              {field.label}
-            </label>
-            <input
-              type={field.type}
-              id={field.id}
-              name={field.id}
-              value={formData[field.id]}
-              onChange={(e) =>
-                setFormData({ ...formData, [field.id]: e.target.value })
-              }
-              placeholder={field.id === "ca_brought_by" ? "Referral Code or Name of the referrer" : ""}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black font-mono"
-              required
-            />
+          <CustomInput
+            label="Graduation Year"
+            id="graduation_year"
+            type="number"
+            value={formData.graduation_year}
+            onChange={(e) =>
+              setFormData({ ...formData, graduation_year: e.target.value })
+            }
+          />
+
+          <CustomInput
+            label="Contact Number"
+            id="contact_number"
+            type="tel"
+            value={formData.contact_number}
+            onChange={(e) =>
+              setFormData({ ...formData, contact_number: e.target.value })
+            }
+          />
+
+          <CustomInput
+            label="Whatsapp Number"
+            id="whatsapp_number"
+            type="tel"
+            value={formData.whatsapp_number}
+            onChange={(e) =>
+              setFormData({ ...formData, whatsapp_number: e.target.value })
+            }
+          />
+
+          <CustomInput
+            label="Branch"
+            id="branch"
+            type="text"
+            value={formData.branch}
+            onChange={(e) =>
+              setFormData({ ...formData, branch: e.target.value })
+            }
+          />
+
+          <CustomInput
+            label="Referred By"
+            id="ca_brought_by"
+            type="text"
+            value={formData.ca_brought_by}
+            placeholder="Referral Code or Name of the referrer"
+            required={false}
+            onChange={(e) =>
+              setFormData({ ...formData, ca_brought_by: e.target.value })
+            }
+          />
+
+          <div className="flex justify-center mt-8 pt-4">
+            <button
+              type="submit"
+              className="bg-yellow-600/90 hover:bg-yellow-700 text-white font-rye text-xl py-3 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(234,179,8,0.5)] border-2 border-yellow-500/50"
+            >
+              {userRequest && Object.keys(userRequest).length > 0
+                ? "Update Request"
+                : "Submit Request"}
+            </button>
           </div>
-        ))}
+        </form>
 
-        <button
-          type="submit"
-          className="mt-4 bg-brown-600 text-white px-6 py-2 rounded-lg hover:bg-vermilion"
-        >
-          {userRequest && Object.keys(userRequest).length > 0
-            ? "Update Request"
-            : "Submit Request"}
-        </button>
-      </form>
-
-      {/* User Requests */}
-      <div className={styles.requests}>
-        <h2 className="mt-8 text-2xl font-semibold">Your Requests</h2>
-        {(userRequest && Object.keys(userRequest).length > 0) ? (
-          <div className={styles.requestList}>
-            <div key={userRequest._id} className={styles.requestItem}>
-              <p className="text-black font-mono">
-                <strong>Status: </strong>
+        {/* User Requests Section - Kept consistent with new theme but simple */}
+        {userRequest && Object.keys(userRequest).length > 0 && (
+          <div className="mt-16 bg-black/40 backdrop-blur-sm p-6 rounded-2xl border border-yellow-500/30">
+            <h2 className="text-2xl font-rye text-[#FFC107] mb-6 text-center">
+              Your Request Status
+            </h2>
+            <div className="bg-gray-800/80 p-6 rounded-xl border border-gray-700">
+              <p className="text-white text-lg mb-4">
+                <strong className="text-yellow-500">Status: </strong>
                 <span
-                  className={`
-                    ${userRequest.status === "approved"
-                      ? "text-green-600"
+                  className={`${userRequest.status === "approved"
+                      ? "text-green-400"
                       : userRequest.status === "rejected"
-                        ? "text-red-600"
-                        : "text-yellow-600"} font-mono`
-                  }
+                        ? "text-red-400"
+                        : "text-yellow-400"
+                    } font-bold uppercase tracking-wider`}
                 >
                   {userRequest.status}
                 </span>
               </p>
-              {
-                userRequest.status === "approved" &&
-                <div className="text-black font-mono">
-                  <div className="font-bold">Referral Link: </div>
-                  <div className="flex gap-2">
-                    <span className="w-3/4 py-1 px-2 border">
-                      {referralLink}
-                    </span>
-                    <CopyToClipboard text={referralLink}
-                      onCopy={() => toast.success("Copied")}>
-                      <button className="cursor-pointer py-1 px-2 bg-orange-500 text-white rounded-lg">Copy</button>
-                    </CopyToClipboard>
+
+              {userRequest.status === "approved" && (
+                <div className="space-y-4">
+                  <div>
+                    <div className="font-bold text-yellow-500 text-lg mb-2">
+                      Referral Link:
+                    </div>
+                    <div className="flex gap-2 items-center">
+                      <div className="flex-1 bg-gray-900/50 p-2 rounded text-gray-300 font-mono text-sm break-all border border-gray-600">
+                        {referralLink}
+                      </div>
+                      <CopyToClipboard
+                        text={referralLink}
+                        onCopy={() => toast.success("Copied")}
+                      >
+                        <button className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded transition-colors font-bold">
+                          Copy
+                        </button>
+                      </CopyToClipboard>
+                    </div>
                   </div>
-                  <p className="text-sm text-gray-700 mt-2">(Share this link with new users (10 points) for signing up and make referred members participate in codefest events (10 points))</p>
-                  <p className="flex gap-2 mt-2 items-center">
-                    <span className="font-bold">Referral Code:</span><span>{referralLink.split("=")[1]}</span>
-                    <CopyToClipboard text={referralLink.split("=")[1]}
-                      onCopy={() => toast.success("Copied")}>
-                      <button className="cursor-pointer py-1 px-2 bg-orange-500 text-white rounded-lg">Copy</button>
-                    </CopyToClipboard>
-                  </p>
-                  <p className="text-sm text-gray-700 mt-2">
-                    (Share this referral code with a CA, inform them to paste this code in Referred By field and you get 30 points on their request approval)
-                  </p>
+
+                  <div className="bg-blue-900/20 p-4 rounded border border-blue-500/30 text-sm text-gray-200">
+                    <p>
+                      Share this link to earn 10 points for signups and 10
+                      points for event participation!
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="flex gap-2 items-center text-lg">
+                      <span className="font-bold text-yellow-500">
+                        Referral Code:
+                      </span>
+                      <span className="font-mono text-white bg-gray-700 px-2 py-1 rounded">
+                        {referralLink.split("=")[1]}
+                      </span>
+                      <CopyToClipboard
+                        text={referralLink.split("=")[1]}
+                        onCopy={() => toast.success("Copied")}
+                      >
+                        <button className="bg-yellow-600 hover:bg-yellow-700 text-white text-sm px-3 py-1 rounded transition-colors font-bold ml-2">
+                          Copy
+                        </button>
+                      </CopyToClipboard>
+                    </div>
+                  </div>
                 </div>
-              }
+              )}
+
               {userRequest.status === "rejected" && (
-                <>
-                  <p className="text-black font-mono">
-                    <strong>Admin Message:</strong>{" "}
+                <div className="mt-4">
+                  <p className="text-white mb-4">
+                    <strong className="text-red-400">Admin Message:</strong>{" "}
                     {userRequest.adminMessage || "N/A"}
                   </p>
                   <button
                     onClick={() => handleUpdateStatus(userRequest._id)}
-                    className="mt-2 bg-yellow-500 font-bold text-white px-4 py-2 rounded-lg hover:bg-yellow-600"
+                    className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-6 py-2 rounded-lg transition-transform hover:scale-105"
                   >
                     Mark as Done
                   </button>
-                </>
+                </div>
               )}
             </div>
           </div>
-        ) : (
-          <p className="mt-4 font-mono">You have not submitted request yet.</p>
         )}
       </div>
     </div>

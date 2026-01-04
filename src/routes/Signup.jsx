@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import InputWithIcon from "../components/InputWithIcon";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "../utils/axiosInstance";
@@ -8,6 +9,10 @@ import "../App.css";
 import GoogleLogo from "/google.svg";
 import ReturnHome from "../components/ReturnHome";
 import Loader from "../components/Loader";
+import PersonIcon from "../assets/icons/person.png";
+import EmailIcon from "../assets/icons/email.png";
+import PasswordIcon from "../assets/icons/password.png";
+
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -70,121 +75,129 @@ export default function Signup() {
       return;
     }
   }, []);
-
   return (
     <>
       <Login_Signup />
       <ReturnHome />
-      {
-        loading ? <Loader /> :
-          <div className="flex flex-col items-center justify-center h-screen bg-cover bg-center">
-            <div className="relative bg-purple-900 p-6 rounded-2xl shadow-lg w-[450px]">
-              <div className="bg-gray-100 rounded-xl px-6 py-8 shadow-inner mt-6 relative">
-                <div className="absolute -top-4 left-4 flex space-x-2">
-                  <button
-                    onClick={() => {
-                      navigate("/login");
-                    }}
-                    className="relative px-4 py-1 font-bold text-black bg-gray-400 rounded-lg hover:bg-gray-500"
-                  >
-                    Login
-                  </button>
-                  <button
-                    onClick={() => {
-                      navigate("/signup");
-                    }}
-                    className="relative px-4 py-1 font-bold text-black bg-gray-100 rounded-lg"
-                  >
-                    Sign up
-                  </button>
-                </div>
-                <div className="space-y-6">
-                  <div className="flex items-center">
-                    <label className="block text-lg font-medium text-black mb-2 w-24">
-                      Name
-                    </label>
-                    <div className="pixel-corners--wrapper">
-                      <input
-                        type="text"
-                        name="username"
-                        placeholder="name"
-                        value={credentials.username}
-                        onChange={handleCredentials}
-                        className="bg-gray-300 block flex-1 px-3 py-2 border-2 border-black rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600 text-black pixel-corners"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex items-center">
-                    <label className="block text-lg font-medium text-black mb-2 w-24">
-                      E-mail
-                    </label>
-                    <div className="pixel-corners--wrapper">
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="email"
-                        value={credentials.email}
-                        onChange={handleCredentials}
-                        className="bg-gray-300 block flex-1 px-3 py-2 border-2 border-black rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600 text-black pixel-corners"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex items-center">
-                    <label className="block text-lg font-medium text-black mb-2 w-24">
-                      Password
-                    </label>
-                    <div className="pixel-corners--wrapper">
-                      <input
-                        type="password"
-                        name="password"
-                        placeholder="password"
-                        value={credentials.password}
-                        onChange={handleCredentials}
-                        className="bg-gray-300 block flex-1 px-3 py-2 border-2 border-black rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600 text-black pixel-corners"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex items-center">
-                    <label className="block text-lg font-medium text-black mb-2 w-24">
-                      Confirm Password
-                    </label>
-                    <div className="pixel-corners--wrapper">
-                      <input
-                        type="password"
-                        name="confirmPassword"
-                        placeholder="confirm password"
-                        value={credentials.confirmPassword}
-                        onChange={handleCredentials}
-                        className="bg-gray-300 block flex-1 px-3 py-2 border-2 border-black rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600 text-black pixel-corners"
-                      />
-                    </div>
-                  </div>
-                  <Link
-                    to={login_endpoint}
-                    className="text-blue-400 text-md underline underline-offset-2"
-                  >
-                    Already have an account? Click here
-                  </Link>
-                  <button
-                    onClick={handleSubmit}
-                    className="w-full py-2 text-xl text-black bg-orange-200 rounded-full border-2 border-black hover:bg-orange-400 pixel-corners"
-                  >
-                    SIGN UP
-                  </button>
-                </div>
+
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="min-h-screen flex flex-col items-center justify-center px-4">
+
+          <div
+            className="
+              w-full max-w-[450px]
+              bg-[rgba(42,42,39,0.88)]
+              rounded-[20px]
+              px-4 py-4
+              shadow-inner
+              border border-[#D4AF37]/40
+            "
+          >
+ 
+            <div className="flex justify-center mb-6">
+              <div className="inline-flex flex-col items-center">
+                <h1 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-['Playfair_Display']">
+                  SIGN UP
+                </h1>
+                <div className="mt-1 h-[2px] w-[56px] bg-[#BFA76A] rounded-full" />
               </div>
             </div>
-            <div className="mt-4">
-              <button
-                onClick={handleGoogleSignin}
-                className="bg-orange-200 flex items-center justify-center w-full py-2 px-4 text-black rounded-full border-2 border-black hover:bg-orange-400 pixel-corners"
+
+
+            <div className="space-y-4">
+              <InputWithIcon
+                icon={<img src={PersonIcon} alt="" className="w-4 h-4" />}
+                placeholder="Name"
+                name="username"
+                value={credentials.username}
+                onChange={handleCredentials}
+              />
+
+              <InputWithIcon
+                icon={<img src={EmailIcon} alt="" className="w-4 h-4" />}
+                placeholder="Email"
+                name="email"
+                value={credentials.email}
+                onChange={handleCredentials}
+              />
+
+              <InputWithIcon
+                icon={<img src={PasswordIcon} alt="" className="w-4 h-4" />}
+                placeholder="Password"
+                type="password"
+                name="password"
+                value={credentials.password}
+                onChange={handleCredentials}
+              />
+
+              <InputWithIcon
+                icon={<img src={PasswordIcon} alt="" className="w-4 h-4" />}
+                placeholder="Confirm Password"
+                type="password"
+                name="confirmPassword"
+                value={credentials.confirmPassword}
+                onChange={handleCredentials}
+              />
+
+              <Link
+                to={login_endpoint}
+                className="
+                  block text-center
+                  text-sm sm:text-md
+                  underline underline-offset-2
+                  text-[#BFAF6F]
+                  font-['Playfair_Display']
+                "
               >
-                <img src={GoogleLogo} alt="Google Logo" className="w-5 h-5 mr-2" />
-                Sign in with Google
+                Already have an account? Click here
+              </Link>
+
+              <button
+                onClick={handleSubmit}
+                className="
+                  w-full sm:w-[220px]
+                  mx-auto block
+                  py-3 sm:py-2
+                  text-lg sm:text-xl
+                  text-black
+                  bg-[#D4AF37]
+                  rounded-[20px]
+                  font-['Playfair_Display']
+                  hover:bg-[#c9a634]
+                  transition-colors
+                "
+              >
+                SIGN UP
               </button>
             </div>
           </div>
-      }
+
+
+          <div className="mt-4 w-full max-w-[450px]">
+            <button
+              onClick={handleGoogleSignin}
+              className="
+                w-full sm:w-[260px]
+                mx-auto
+                flex items-center justify-center
+                py-3 sm:py-2 px-4
+                bg-[#3A3A36]
+                border border-[#D4AF37]
+                rounded-[20px]
+                text-[#D4AF37]
+                font-['Playfair_Display']
+                hover:bg-[#2F2F2C]
+                transition-colors
+              "
+            >
+              <img src={GoogleLogo} alt="Google Logo" className="w-5 h-5 mr-2" />
+              Sign up with Google
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
