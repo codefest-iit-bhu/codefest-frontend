@@ -88,7 +88,7 @@ const CALeaderboard = () => {
           <img 
             src={titleImg} 
             alt="Leaderboard" 
-            className="w-[50%] md:w-[25%] mt-1 mb-1 shrink-0 drop-shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:drop-shadow-[0_0_25px_rgba(255,215,0,0.8)] cursor-pointer"
+            className="w-[50%] md:w-[25%] mt-1 mb-1 shrink-0 drop-shadow-lg transition-all duration-300 ease-in-out hover:drop-shadow-[0_0_25px_rgba(255,215,0,0.8)]"
           />
 
           {/* 2. REWARDS SECTION */}

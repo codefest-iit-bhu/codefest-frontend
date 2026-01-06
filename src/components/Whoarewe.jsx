@@ -8,17 +8,17 @@ const Whoarewe = () => {
       </p>
       <p>
         Being more diverse than ever,{" "}
-              <span className="font-semibold">CodeFest '25</span> boasts of a
-              plethora of events, ranging from competitive programming,
-              algorithms and application development to upcoming trends like
-              cryptography, machine learning, computer vision and cyber
-              security.
-            </p>
-            <p>
-              With problems being of varying difficulty levels, CodeFest
-              provides the perfect platform for fresh enthusiasts, as well as
-              the experienced ones, to code together and compete for ultimate
-              glory.
+        <span className="font-semibold">CodeFest '26</span> boasts of a
+        plethora of events, ranging from competitive programming,
+        algorithms and application development to upcoming trends like
+        cryptography, machine learning, computer vision and cyber
+        security.
+      </p>
+      <p>
+        With problems being of varying difficulty levels, CodeFest
+        provides the perfect platform for fresh enthusiasts, as well as
+        the experienced ones, to code together and compete for ultimate
+        glory.
       </p>
     </div>
   );
