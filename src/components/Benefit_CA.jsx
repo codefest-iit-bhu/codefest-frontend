@@ -105,6 +105,8 @@
 
 
 import React from 'react'
+import whyImg from "../assets/CA_images/why.webp"
+
 const tasks = [
   {
     start: "• A certificate of recognition, authenticated by the HoD",
@@ -135,7 +137,7 @@ const tasks = [
 const Benefit_CA = () => {
   return (
     <div className='relative flex flex-col items-center justify-center my-10 px-5 md:px-20'>
-      <img src="src/assets/CA_images/why.png" alt="" />
+      <img src={whyImg} alt="" />
     </div>
   )
 }

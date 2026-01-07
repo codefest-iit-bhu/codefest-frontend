@@ -3,6 +3,7 @@ import styles from "./CARegistration.module.css";
 import axios from "../utils/axiosInstance";
 import toast from "react-hot-toast";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import carBg from "../assets/CA_images/CArbg.webp";
 
 const CARegistration = () => {
   const [formData, setFormData] = useState({
@@ -131,7 +132,10 @@ const CARegistration = () => {
   );
 
   return (
-    <div className="min-h-screen w-full bg-[url('/src/assets/CA_images/CArbg.png')] bg-cover bg-center bg-fixed bg-no-repeat overflow-x-hidden md:px-0 scrollbar-hide">
+    <div
+      className="min-h-screen w-full bg-cover bg-center bg-fixed bg-no-repeat overflow-x-hidden md:px-0 scrollbar-hide"
+      style={{ backgroundImage: `url(${carBg})` }}
+    >
       <div className="container mx-auto px-4 py-12 md:py-20 max-w-4xl relative z-10">
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-rye text-[#FFC107] drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] mb-4 tracking-wider">
@@ -239,10 +243,10 @@ const CARegistration = () => {
                 <strong className="text-yellow-500">Status: </strong>
                 <span
                   className={`${userRequest.status === "approved"
-                      ? "text-green-400"
-                      : userRequest.status === "rejected"
-                        ? "text-red-400"
-                        : "text-yellow-400"
+                    ? "text-green-400"
+                    : userRequest.status === "rejected"
+                      ? "text-red-400"
+                      : "text-yellow-400"
                     } font-bold uppercase tracking-wider`}
                 >
                   {userRequest.status}

@@ -56,7 +56,7 @@ export const CaptureTheFlagEvent = ({ event }) => {
               backgroundColor: "#1a0a0a",
             }}
           >
-            <div className="w-full pt-[260%] sm:pt-[240%] md:pt-[200.14%]" />
+            <div className="w-full pt-[200.14%]" />
 
             <div className="absolute inset-0 pointer-events-none">
               <div className="relative w-full h-full">
