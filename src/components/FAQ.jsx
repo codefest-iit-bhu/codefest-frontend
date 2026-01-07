@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import faqImg from "../assets/CA_images/faq.png";
-import qbgImg from "../assets/CA_images/qbg.png";
+import faqImg from "../assets/CA_images/faq.webp";
+import qbgImg from "../assets/CA_images/qbg.webp";
 
 const FAQ = () => {
     const [activeIndex, setActiveIndex] = useState(null);
