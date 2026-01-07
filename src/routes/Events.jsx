@@ -23,7 +23,7 @@ export default function Events() {
   }, []);
 
   return (
-    <div className="bg-[url('/Events_bg.png')] bg-contain">
+    <div className="bg-[url('/Events_bg.webp')] bg-cover bg-center min-h-screen">
       <Navbar />
       {isMobile ? (
         <MobileEventsPage />
