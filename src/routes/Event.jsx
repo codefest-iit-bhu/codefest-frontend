@@ -6,9 +6,8 @@ import JoinTeamModal from "../components/JoinTeamModal.jsx"; // New import
 import events from "../store/events.js";
 import { useUser } from "../context/context.jsx";
 import axios from "../utils/axiosInstance.js";
-import cloudLeft from "../assets/cloud-left.png";
-import cloudRight from "../assets/cloud-right.png";
-import ground from "../assets/bottom-part.png";
+
+
 import Footer from "../components/Footer.jsx";
 import ArithmeticaEvent from "./ArithmeticaEvent.jsx";
 import CodewarsEvent from "./CodewarsEvent.jsx";

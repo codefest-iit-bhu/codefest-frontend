@@ -2,7 +2,7 @@ export default function Login_Signup() {
   return (
     <div className="absolute inset-0 -z-10">
       <img
-        src="/login_signup.jpg"
+        src="/login_signup.webp"
         alt="codefest background"
         className="
           h-full w-full object-cover

@@ -7,16 +7,16 @@ import PreviousSponsors from "../components/PreviousSponsors";
 import Footer from "../components/Footer";
 
 // Assets
-import bgImg from "../assets/home/home-bg.png";
-import crownImg from "../assets/home/crown.png";
-import maskImg from "../assets/home/mask.png";
-import heelsImg from "../assets/home/heels.png";
-import letterImg from "../assets/home/letter.png";
+import bgImg from "../assets/home/home-bg.webp";
+import crownImg from "../assets/home/crown.webp";
+import maskImg from "../assets/home/mask.webp";
+import heelsImg from "../assets/home/heels.webp";
+import letterImg from "../assets/home/letter.webp";
 
-import lookbackFrame from "../assets/home/lookback-frame.png";
-import testimonialBg from "../assets/home/testi-bg.png";
-import testimonialCircle from "../assets/home/testi-circle.png";
-import sponsorCircle from "../assets/home/sponsor-circle.png";
+import lookbackFrame from "../assets/home/lookback-frame.webp";
+import testimonialBg from "../assets/home/testi-bg.webp";
+import testimonialCircle from "../assets/home/testi-circle.webp";
+import sponsorCircle from "../assets/home/sponsor-circle.webp";
 
 export default function Home() {
   return (
