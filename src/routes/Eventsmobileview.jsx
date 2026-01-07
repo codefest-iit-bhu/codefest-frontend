@@ -44,7 +44,7 @@ export default function Eventsmobileview() {
                         </div>
 
                         {/* Render VerticalLine only if it's not the last event */}
-                        {index < eventDetails.length - 1 && <VerticalLine />}
+                        {/* {index < eventDetails.length - 1 && <VerticalLine />} */}
                     </div>
                 ))}
             </div>

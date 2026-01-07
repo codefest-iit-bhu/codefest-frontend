@@ -172,7 +172,7 @@ const TicketGenerator = ({
   const [imgObj, setImgObj] = useState(null);
 
   // Transformation / layout state (single origin for all text)
-  const [position, setPosition] = useState({ x: 0.20, y: 0.47 }); // normalized (0..1)
+  const [position, setPosition] = useState({ x: 0.15, y: 0.43 }); // normalized (0..1)
   const [rotation, setRotation] = useState(-10); // degrees, shared for all text
   const [imgScale, setImgScale] = useState(100); // percentage to scale image/canvas
 
@@ -180,26 +180,26 @@ const TicketGenerator = ({
   const defaultStyles = {
     title: {
       fontFamily: "Georgia, 'Times New Roman', serif",
-      fontSizePercent: 0.07, // relative to canvas height
+      fontSizePercent: 0.09, // relative to canvas height
       color: "#ffffff",
       fontWeight: "700",
-      lineSpacing: 1.1, // multiplier of line height (if multi-line)
+      lineSpacing: 1.3, // multiplier of line height (if multi-line)
       textAlign: "left",
     },
     date: {
       fontFamily: "'Courier New', monospace",
-      fontSizePercent: 0.035,
+      fontSizePercent: 0.038,
       color: "#fffbf0",
-      fontWeight: "400",
-      lineSpacing: 1.0,
+      fontWeight: "500",
+      lineSpacing: 1.3,
       textAlign: "left",
     },
     deadline: {
       fontFamily: "'Courier New', monospace",
-      fontSizePercent: 0.045,
+      fontSizePercent: 0.050,
       color: "#ffd166",
       fontWeight: "600",
-      lineSpacing: 1.0,
+      lineSpacing: 1.3,
       textAlign: "left",
     },
     reg: {

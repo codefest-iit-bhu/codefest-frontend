@@ -3,8 +3,8 @@
 //     id: "1",
 //     name: "Capture the Flag",
 //     title: "Capture the Flag",
-//     date: "25 Jan, 2025, 12 PM IST",
-//     last_date_reg: "January 25, 2025 00:00:00",
+//     date: "25 Jan, 2026, 12 PM IST",
+//     last_date_reg: "January 25, 2026 00:00:00",
 //     image_desk_path: "/ctf_desk.svg",
 //     max_members: 3,
 //     overview: `
@@ -47,8 +47,8 @@
 //     id: "2",
 //     name: "Enigma",
 //     title: "Enigma",
-//     date: "29 Jan, 2025, 12 PM IST",
-//     last_date_reg: "January 28, 2025 00:00:00",
+//     date: "29 Jan, 2026, 12 PM IST",
+//     last_date_reg: "January 28, 2026 00:00:00",
 //     image_desk_path: "/enigma_desk.svg",
 //     max_members: 3,
 //     overview: `
@@ -91,8 +91,8 @@
 //     id: "3",
 //     name: "Vista",
 //     title: "Vista",
-//     date: "26 Jan, 2025, 6 PM IST",
-//     last_date_reg: "January 24, 2025 23:59:00",
+//     date: "26 Jan, 2026, 6 PM IST",
+//     last_date_reg: "January 24, 2026 23:59:00",
 //     image_desk_path: "/vistas_desk.svg",
 //     max_members: 3,
 //     overview: `
@@ -133,8 +133,8 @@
 //     id: "4",
 //     name: "HaXplore",
 //     title: "HaXplore",
-//     date: "31 Jan, 2025, 12 PM IST - 3 Feb, 2025, 12 PM IST",
-//     last_date_reg: "January 27, 2025 23:59:00",
+//     date: "31 Jan, 2026, 12 PM IST - 3 Feb, 2026, 12 PM IST",
+//     last_date_reg: "January 27, 2026 23:59:00",
 //     image_desk_path: "/haxplore_desk.svg",
 //     max_members: 4,
 //     overview: `
@@ -142,7 +142,7 @@
 //         <p>• It serves as a dynamic platform where innovative minds converge to showcase groundbreaking ideas, fostering collaboration and exploration of transformative solutions.</p>
 //     `,
 //     description: `
-//         <p>• It's a 72-hour hackathon taking place from 31st Jan to 3rd Feb, 2025.</p>
+//         <p>• It's a 72-hour hackathon taking place from 31st Jan to 3rd Feb, 2026.</p>
 //         <p>• Teams will work on themes announced on 31st Jan at 12 PM IST and must develop and submit their prototypes by 3rd Feb at 12 PM IST.</p>
 //         <p>• Participants are required to submit their GitHub repositories, documentation, code quality, and video demonstrations for evaluation.</p>
 //     `,
@@ -152,7 +152,7 @@
 //             <li>Open to all college students across India.</li>
 //             <li>Teams can consist of up to 4 members.</li>
 //             <li>Each participant must register individually on the Unstop Page and Codefest website.</li>
-//             <li>Registration opens on 5 Jan, 2025, and closes on 27 Jan, 2025.</li>
+//             <li>Registration opens on 5 Jan, 2026, and closes on 27 Jan, 2026.</li>
 //         </ul>
 //         <p><strong>Prototype Submission and Presentation:</strong></p>
 //         <ul>
@@ -217,9 +217,9 @@
 //     id: "5",
 //     name: "Manthan",
 //     title: "Manthan",
-//     date: "29 Jan, 2025, 8 PM IST",
+//     date: "29 Jan, 2026, 8 PM IST",
 //     max_members: 1,
-//     last_date_reg: "January 28, 2025 23:59:00",
+//     last_date_reg: "January 28, 2026 23:59:00",
 //     image_desk_path: "/manthan_desk.svg",
 //     overview: `
 //         <p>• Manthan is a competitive programming contest open to all, where participants are challenged with problems of varying difficulties to be solved within a few hours.</p>
@@ -254,8 +254,8 @@
 //     id: "6",
 //     name: "Codewars",
 //     title: "Codewars",
-//     date: "4 Jan, 2025, 10 AM IST",
-//     last_date_reg: "January 4, 2025 10:00:00",
+//     date: "4 Jan, 2026, 10 AM IST",
+//     last_date_reg: "January 4, 2026 10:00:00",
 //     image_desk_path: "/codewars_desk.png",
 //     max_members: 1,
 //     registration_attention:
@@ -265,7 +265,7 @@
 //             • In addition to traditional problem-solving challenges, the contest will include some questions that require a more active, out-of-the-box approach.</p>",
 //     description:
 //       "<p>• Platform: HackerRank</p>\
-//              <p>• Contest date: 4 Jan 2025</p>\
+//              <p>• Contest date: 4 Jan 2026</p>\
 //              <p>• Contest duration: 3 hours, from 10 AM</p>\
 //              <p>• It's a 3-hour contest, having two sections (usual CP questions, AprilFool's riddle-like questions).</p>\
 //              <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>\
@@ -293,8 +293,8 @@
 //     id: "7",
 //     name: "Arithmetica",
 //     title: "Arithmetica",
-//     date: "5 Jan, 2025",
-//     last_date_reg: "January 5, 2025 13:30:00",
+//     date: "5 Jan, 2026",
+//     last_date_reg: "January 5, 2026 13:30:00",
 //     image_desk_path: "/arithmetica_desk.png",
 //     max_members: 1,
 //     registration_attention:
@@ -303,7 +303,7 @@
 //       "<p>• Arithmetica is a strictly timed event (only for 1st and 2nd years), consisting of a series of questions based on numerical, verbal, non-verbal, spatial, mechanical and abstract reasoning.</p>\
 //              <p>• Includes questions on topics such as algebra, geometry, probability, with a mix of mathematical puzzles, analytical reasoning, and applied math problems.</p>",
 //     description:
-//       "<p>• Date: 5 Jan 2025</p>\
+//       "<p>• Date: 5 Jan 2026</p>\
 //              <p>• Duration: 60 mins (online)</p>\
 //              <p>• The event will be conducted with the format revealed at the time of the event.</p>\
 //              <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>",
@@ -329,9 +329,9 @@ export default [
         id: "1",
         name: "Capture the Flag",
         title: "Capture the Flag",
-        date: "25 Jan, 2025, 6 PM IST",
+        date: "25 Jan, 2026, 6 PM IST",
         image_bg_path: "/CTF_bg.png",
-        last_date_reg: "January 27, 2025 06:30:00",
+        last_date_reg: "January 27, 2026 06:30:00",
         image_desk_path: "/ctf_desk.svg",
         max_members: 3,
         unstop: "https://unstop.com/hackathons/ctf-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361306",
@@ -383,9 +383,9 @@ export default [
         id: "2",
         name: "Enigma",
         title: "Enigma",
-        date: "31 Jan, 2025, 12 AM IST - 2 Feb, 2025, 11:59PM IST",
+        date: "31 Jan, 2026, 12 AM IST - 2 Feb, 2026, 11:59PM IST",
         image_bg_path: "/Enigma_bg.png",
-        last_date_reg: "January 30, 2025 23:59:00",
+        last_date_reg: "January 30, 2026 23:59:00",
         image_desk_path: "/enigma_desk.svg",
         max_members: 3,
         unstop: "https://unstop.com/competitions/enigma-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1362855",
@@ -437,9 +437,9 @@ export default [
         id: "3",
         name: "Vista",
         title: "Vista",
-        date: "26 Jan, 2025, 6 PM IST - 31 Feb, 2025, 11:59PM IST",
+        date: "26 Jan, 2026, 6 PM IST - 31 Feb, 2026, 11:59PM IST",
         image_bg_path: "/Vista_bg.png",
-        last_date_reg: "January 25, 2025 23:59:00",
+        last_date_reg: "January 25, 2026 23:59:00",
         image_desk_path: "/vistas_desk.svg",
         max_members: 3,
         unstop: "https://unstop.com/hackathons/vista-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361765",
@@ -488,9 +488,9 @@ export default [
         id: "4",
         name: "HaXplore",
         title: "HaXplore",
-        date: "31 Jan, 2025, 12 AM IST - 2 Feb, 2025, 11:59PM IST",
+        date: "31 Jan, 2026, 12 AM IST - 2 Feb, 2026, 11:59PM IST",
         image_bg_path: "/Haxplore_bg.png",
-        last_date_reg: "January 30, 2025 23:59:00",
+        last_date_reg: "January 30, 2026 23:59:00",
         image_desk_path: "/haxplore_desk.svg",
         max_members: 3,
         unstop: "https://unstop.com/hackathons/haxplore-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361248?lb=RR1x0PN4&utm_medium=Share&utm_source=shortUrl",
@@ -501,7 +501,7 @@ export default [
          HaXplore fosters an environment that encourages collaboration and the exploration of cutting-edge solutions, making it a hub for transformative technological endeavors.</p> 
   `,
         description: `
-        <p>• It's a 72-hour hackathon taking place from 31st Jan to 3rd Feb, 2025.</p>
+        <p>• It's a 72-hour hackathon taking place from 31st Jan to 3rd Feb, 2026.</p>
         <p>• Teams will work on themes announced on 31st Jan at 12 PM IST and must develop and submit their prototypes by 3rd Feb at 12 PM IST.</p>
         <p>• Participants are required to submit their GitHub repositories, documentation, code quality, and video demonstrations for evaluation.</p>
     `,
@@ -511,7 +511,7 @@ export default [
             <li>• This hackathon is open to all college students from all over India</li>
             <li>• Teams can consist of upto 3 members.</li>
             <li>• Each participant must register individually on the <a href="https://unstop.com/hackathons/haxplore-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361248?lb=RR1x0PN4&utm_medium=Share&utm_source=shortUrl" target="_blank" style="color:#5865F2"">Unstop Page</a> and the Codefest website.</li>
-            <li>• Registration closes on 26 January 2025 11:59PM.</li>
+            <li>• Registration closes on 26 January 2026 11:59PM.</li>
             <li>• Teams must submit their details and confirm their participation before the deadline. Late registrations will not be entertained.</li>
         </ul>
         
@@ -582,16 +582,16 @@ export default [
         id: "5",
         name: "Manthan",
         title: "Manthan",
-        date: "5 Feb, 2025, 8 PM IST",
+        date: "5 Feb, 2026, 8 PM IST",
         image_bg_path: "/Manthan_bg.png",
         max_members: 1,
-        last_date_reg: "February 4, 2025 23:59:00",
+        last_date_reg: "February 4, 2026 23:59:00",
         image_desk_path: "/manthan_desk.svg",
         overview: `
         <p>• Manthan will be a competitive programming contest (open to all) where participants are posed with problems of varying difficulties to be solved in a few hours.</p>
     `,
         description: `
-        <p>• The contest will be hosted on CodeChef and is scheduled for February 5, 2025.</p>
+        <p>• The contest will be hosted on CodeChef and is scheduled for February 5, 2026.</p>
         <p>• The contest will run for 2 hours starting from 8 PM IST.</p>
         <p>• Problems will be visible at the start of the contest. A contest link will be shared via email to registered participants.</p>
     `,
@@ -626,9 +626,9 @@ export default [
         id: "6",
         name: "Codewars",
         title: "Codewars",
-        date: "4 Jan, 2025, 10 AM IST",
+        date: "5 Jan, 2026, 10 AM IST",
         image_bg_path: "/Codewars_bg.png",
-        last_date_reg: "January 4, 2025 10:00:00",
+        last_date_reg: "January 5, 2026 10:00:00",
         image_desk_path: "/codewars_desk.png",
         max_members: 1,
         registration_attention:
@@ -638,7 +638,7 @@ export default [
             • In addition to traditional problem-solving challenges, the contest will include some questions that require a more active, out-of-the-box approach.</p>",
         description:
             "<p>• Platform: HackerRank</p>\
-             <p>• Contest date: 4 Jan 2025</p>\
+             <p>• Contest date: 4 Jan 2026</p>\
              <p>• Contest duration: 3 hours, from 10 AM</p>\
              <p>• It's a 3-hour contest, having two sections (usual CP questions, AprilFool's riddle-like questions).</p>\
              <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>\
@@ -666,9 +666,9 @@ export default [
         id: "7",
         name: "Arithmetica",
         title: "Arithmetica",
-        date: "5 Jan, 2025",
+        date: "5 Jan, 2026",
         image_bg_path: "/Arithmetica_bg.png",
-        last_date_reg: "January 5, 2025 13:30:00",
+        last_date_reg: "January 5, 2026 13:30:00",
         image_desk_path: "/arithmetica_desk.png",
         max_members: 1,
         registration_attention:
@@ -677,7 +677,7 @@ export default [
             "<p>• Arithmetica is a strictly timed event (only for 1st and 2nd years), consisting of a series of questions based on numerical, verbal, non-verbal, spatial, mechanical and abstract reasoning.</p>\
              <p>• Includes questions on topics such as algebra, geometry, probability, with a mix of mathematical puzzles, analytical reasoning, and applied math problems.</p>",
         description:
-            "<p>• Date: 5 Jan 2025</p>\
+            "<p>• Date: 5 Jan 2026</p>\
              <p>• Duration: 60 mins (online)</p>\
              <p>• The event will be conducted with the format revealed at the time of the event.</p>\
              <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>",
