@@ -48,10 +48,10 @@ export const router = createBrowserRouter([
         path: "/event/:name",
         element: <Event />,
       },
-      {
-        path: "/CA",
-        element: <CA />,
-      },
+      // {
+      //   path: "/CA",
+      //   element: <CA />,
+      // },
       {
         path: "/login",
         element: <Login />,
@@ -69,24 +69,24 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "/ca-register",
-        element: (
-          <PrivateRoute>
-            <PageTitle title="CA Registration | Codefest IIT (BHU)" />
-            <CARegistration />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/allCaRequests",
-        element: (
-          <PrivateRoute>
-            <PageTitle title="All CA Requests | Codefest IIT (BHU)" />
-            <AllCaRequests />
-          </PrivateRoute>
-        ),
-      },
+      // {
+      //   path: "/ca-register",
+      //   element: (
+      //     <PrivateRoute>
+      //       <PageTitle title="CA Registration | Codefest IIT (BHU)" />
+      //       <CARegistration />
+      //     </PrivateRoute>
+      //   ),
+      // },
+      // {
+      //   path: "/allCaRequests",
+      //   element: (
+      //     <PrivateRoute>
+      //       <PageTitle title="All CA Requests | Codefest IIT (BHU)" />
+      //       <AllCaRequests />
+      //     </PrivateRoute>
+      //   ),
+      // },
       {
         path: "/allUsers",
         element: (
@@ -96,13 +96,13 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "/ca_leaderboard",
-        element: <>
-          <PageTitle title="CA Leaderboard | Codefest IIT (BHU)" />
-          <CALeaderboard />,
-        </>
-      },
+      // {
+      //   path: "/ca_leaderboard",
+      //   element: <>
+      //     <PageTitle title="CA Leaderboard | Codefest IIT (BHU)" />
+      //     <CALeaderboard />,
+      //   </>
+      // },
       {
         path: "/event/teams/:eventId",
         element: (
