@@ -32,19 +32,20 @@ const PreviousSponsors = ({ frame }) => {
           className="relative w-32 h-32 md:w-48 md:h-48 flex items-center justify-center hover:scale-110 transition-transform duration-300"
         >
           
-          {/* 1. THE SPONSOR CIRCLE FRAME */}
+          {/* FRAME */}
           <img
             src={frame}
             alt="Sponsor Frame"
             className="absolute inset-0 w-full h-full pointer-events-none drop-shadow-md z-20"
           />
 
-          {/* 2. THE LOGO */}
-          <div className="w-[65%] h-[65%] bg-white rounded-full flex items-center justify-center overflow-hidden z-10 shadow-inner">
+          {/* LOGO CONTAINER (Reduced size to prevent overflow) */}
+          {/* Changed from w-[65%] to w-[55%] to keep it safely inside the frame circle */}
+          <div className="w-[55%] h-[55%] bg-white rounded-full flex items-center justify-center overflow-hidden z-10 shadow-inner">
             <img
               src={sponsor.src}
               alt={sponsor.alt}
-              className="w-[80%] object-contain"
+              className="w-[85%] object-contain"
             />
           </div>
           
