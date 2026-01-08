@@ -50,7 +50,7 @@ const TicketGenerator = ({
     },
     date: {
       fontFamily: "'Courier New', monospace",
-      fontSizePercent: 0.038,
+      fontSizePercent: 0.07,
       color: "#fffbf0",
       fontWeight: "500",
       lineSpacing: 1.3,

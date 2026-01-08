@@ -24,7 +24,7 @@ const SetPasswordRoute = () => {
 
   return (
     <>
-      <Background image_path={"/login_signup.svg"} />
+      <Background image_path={"/login_signup.webp"} />
       <div className="set-password-page">
         <SetPassword onSubmit={handleSetPassword} />
       </div>

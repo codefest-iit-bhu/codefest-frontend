@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Whoarewe from "../components/Whoarewe";
 import Lookback from "../components/Lookback";
@@ -11,6 +11,7 @@ import bgImg from "../assets/home/home-bg.webp";
 import crownImg from "../assets/home/crown.webp";
 import maskImg from "../assets/home/mask.webp";
 import heelsImg from "../assets/home/heels.webp";
+import arrowImg from "../assets/home/arrow.webp";
 import letterImg from "../assets/home/letter.webp";
 
 import lookbackFrame from "../assets/home/lookback-frame.webp";
@@ -18,7 +19,23 @@ import testimonialBg from "../assets/home/testi-bg.webp";
 import testimonialCircle from "../assets/home/testi-circle.webp";
 import sponsorCircle from "../assets/home/sponsor-circle.webp";
 
+
+
 export default function Home() {
+
+  const [showScrollArrow, setShowScrollArrow] = useState(true);
+
+  //SCROLL HANDLER FUNCTION
+  const handleScroll = (e) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.target;
+    // If we are within 10px of the bottom, hide the arrow
+    if (scrollTop + clientHeight >= scrollHeight - 10) {
+      setShowScrollArrow(false);
+    } else {
+      setShowScrollArrow(true);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -84,26 +101,27 @@ export default function Home() {
                           overflow-hidden
                         ">
 
-                    {/* SCROLLABLE TEXT with Safety BG 
-                        FIX: Removed 'md:bg-transparent'. 
-                        Now uses bg-[#dcd0b9]/80 on ALL screen sizes.
-                        This ensures text is readable even if it floats off the parchment image.
-                    */}
-                    <div className="w-full h-full overflow-y-auto no-scrollbar pb-10 px-4 rounded-lg shadow-sm backdrop-blur-[1px]">
+
+                    {/* SCROLLABLE TEXT */}
+                    <div
+                      className="w-full h-full overflow-y-auto no-scrollbar pb-10 px-4 rounded-lg shadow-sm backdrop-blur-[1px]"
+                      onScroll={handleScroll}
+                    >
                       <div className="w-full !text-left text-[#3e2723] font-playball text-xs md:text-xl italic leading-relaxed md:leading-loose tracking-wide">
                         <Whoarewe />
                       </div>
                     </div>
 
-                    {/* SCROLL INDICATION */}
-                    <div className="absolute bottom-2 left-0 w-full flex justify-center items-end pointer-events-none">
-                      <span className="
-                        text-[10px] md:text-xs uppercase font-bold text-[#3e2723] 
-                        animate-bounce tracking-widest 
-                        bg-[#dcd0b9] px-3 py-1 rounded-full shadow-sm border border-[#3e2723]/10
-   ">
-                        Scroll ↓
-                      </span>
+                    {/* 5. DYNAMIC ARROW INDICATOR */}
+                    <div
+                      className={`absolute bottom-1 right-1 transition-opacity duration-300 pointer-events-none ${showScrollArrow ? "opacity-70" : "opacity-0"
+                        }`}
+                    >
+                      <img
+                        src={arrowImg}
+                        alt="Scroll Down"
+                        className="w-8 md:w-12 animate-bounce opacity-80 drop-shadow-sm"
+                      />
                     </div>
 
                   </div>

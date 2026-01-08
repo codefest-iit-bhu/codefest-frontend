@@ -16,6 +16,8 @@ import VistaEvent from "./VistaEvent.jsx";
 import EnigmaEvent from "./EnigmaEvent.jsx";
 import HaXploreEvent from "./HaXploreEvent.jsx";
 import ManthanEvent from "./ManthanEvent.jsx";
+import VisionquestEvent from "./VisionquestEvent.jsx";
+import LanguagequestEvent from "./LanguagequestEvent.jsx";
 
 export const Event = () => {
   const { name } = useParams();
@@ -23,6 +25,14 @@ export const Event = () => {
 
   if (event && event.name === "Arithmetica") {
     return <ArithmeticaEvent event={event} />;
+  }
+
+  if (event && event.name === "Vision Quest") {
+    return <VisionquestEvent event={event} />;
+  }
+
+  if (event && event.name === "NLP Track") {
+    return <LanguagequestEvent event={event} />;
   }
 
   if (event && event.name === "Codewars") {
