@@ -1,10 +1,10 @@
 
 export default [
     {
-        id: "2",
+        id: "1",
         name: "Vision Quest",
         title: "Vision Quest",
-        date: "10 Jan, 2026",
+        date: "9 to 11 Jan, 2026",
         image_bg_path: "/Vision_quest.webp",
         last_date_reg: "January 10, 2026 11:59:59",
         image_desk_path: "/ctf_desk.svg",
@@ -112,7 +112,7 @@ export default [
         id: "3",
         name: "NLP Track",
         title: "NLP Track",
-        date: "11 Jan, 2026",
+        date: "11 to 13 Jan, 2026",
         image_bg_path: "/Language_quest.webp",
         last_date_reg: "January 11, 2026 11:59:59",
         image_desk_path: "/vistas_desk.svg",
@@ -298,12 +298,12 @@ export default [
 //             "For further queries about this event, please contact Jay Vinchhi (+918530178569), Rudra Patel (+919898861976)",
 //     },
     {
-        id: "6",
+        id: "2",
         name: "Codewars",
         title: "Codewars",
-        date: "10 Jan, 2026",
+        date: "9 Jan, 2026",
         image_bg_path: "/Codewars_tic.webp",
-        last_date_reg: "January 10, 2026 11:59:59",
+        last_date_reg: "January 9, 2026 20:00:00",
         image_desk_path: "/codewars_desk.png",
         max_members: 1,
         registration_attention:
@@ -338,7 +338,7 @@ export default [
             "For further queries about this event, please contact Gaurav Dalvi (+918669193588), Rudra Patel (+919898861976)",
     },
     {
-        id: "7",
+        id: "4",
         name: "Arithmetica",
         title: "Arithmetica",
         date: "11 Jan, 2026",
