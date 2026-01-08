@@ -59,7 +59,7 @@ export const ArithmeticaEvent = ({ event }) => {
           <div
             className="relative w-full"
             style={{
-              backgroundImage: "url(/Arithmetica.png)",
+              backgroundImage: "url(/Arithmetica.webp)",
               backgroundSize: "100% auto",
               backgroundPosition: "top center",
               backgroundRepeat: "no-repeat",
