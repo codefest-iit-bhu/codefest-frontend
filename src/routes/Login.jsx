@@ -60,7 +60,7 @@ export default function Login() {
       <Background />
       <ReturnHome />
 
-      <div className="min-h-screen flex flex-col items-center justify-center px-4">
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 font-bree">
         <div
           className="
             w-full max-w-[450px]
@@ -74,7 +74,7 @@ export default function Login() {
 
           <div className="flex justify-center mb-6">
             <div className="inline-flex flex-col items-center">
-              <h1 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-['Playfair_Display']">
+              <h1 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-bree">
                 LOGIN
               </h1>
               <div className="mt-1 h-[2px] w-[56px] bg-[#BFA76A] rounded-full" />
@@ -107,7 +107,7 @@ export default function Login() {
                 text-sm sm:text-md
                 underline underline-offset-2
                 text-[#BFAF6F]
-                font-['Playfair_Display']
+                font-bree
               "
             >
               Don&apos;t have an account? Click here
@@ -123,7 +123,7 @@ export default function Login() {
                 text-black
                 bg-[#D4AF37]
                 rounded-[20px]
-                font-['Playfair_Display']
+                font-bree
                 hover:bg-[#c9a634]
                 transition-colors
               "
@@ -146,7 +146,7 @@ export default function Login() {
               border border-[#D4AF37]
               rounded-[20px]
               text-[#D4AF37]
-              font-['Playfair_Display']
+              font-bree
               hover:bg-[#2F2F2C]
               transition-colors
             "
