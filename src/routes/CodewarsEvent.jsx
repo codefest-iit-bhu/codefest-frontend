@@ -49,7 +49,7 @@ export const CodewarsEvent = ({ event }) => {
           <div
             className="relative w-full"
             style={{
-              backgroundImage: "url(/Codewars.png)",
+              backgroundImage: "url(/Codewars.webp)",
               backgroundSize: "100% auto",
               backgroundPosition: "top center",
               backgroundRepeat: "no-repeat",
