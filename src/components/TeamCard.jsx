@@ -169,11 +169,16 @@ const TeamCard = ({
              {team.event.maxMembers > 1 ? (
               <div>
               <p>Code : {team.teamCode}</p>
+              <p>Space Remaining : {team.event.maxMembers - members.length}</p>
+             </div>
+            ) : null}
               {/* <p>Space Remaining : {team.event.maxMembers - members.length}</p> */}
             </div>
             {/* <div className=" w-[70%]">
               {!all &&
               members.length === 1 &&
+              team.event.maxMembers - members.length == 0 && team.event.maxMembers > 1 ? (
+                <p className="text-center">Invite members by sharing code!!</p>
               team.event.maxMembers - members.length == 0 ? (
                 // <p className="text-center">Invite members by sharing code!!</p>
                 <div className="h-5"></div>
