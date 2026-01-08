@@ -66,25 +66,41 @@ export const LanguagequestEvent = ({ event }) => {
                       className="absolute left-1/2 -translate-x-1/2 flex flex-row flex-nowrap items-center justify-center pointer-events-auto top-[11%] md:top-[13%]"
                       style={{ gap: "clamp(0.4rem, 1.4vw, 1.15rem)" }}
                     >
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (!isAuthenticated)
-                            return (window.location.href = "/login");
-                          setIsRegistrationModalOpen(true);
-                        }}
-                        className="group cursor-pointer focus:outline-none"
-                        style={{ width: "clamp(140px, 42vw, 450px)" }}
-                      >
-                        <img
-                          src="/event_register_btn.png"
-                          alt="Register now"
-                          className="block w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
-                        />
-                      </button>
+                      {isMember ? (
+                        <a
+                          href="https://chat.whatsapp.com/KadLYA17sFLIL80DCuOuut"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group cursor-pointer focus:outline-none"
+                          style={{ width: "clamp(140px, 42vw, 450px)" }}
+                        >
+                          <img
+                            src="/whatsapp.png"
+                            alt="Join whatsapp"
+                            className="block w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+                          />
+                        </a>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (!isAuthenticated)
+                              return (window.location.href = "/login");
+                            setIsRegistrationModalOpen(true);
+                          }}
+                          className="group cursor-pointer focus:outline-none"
+                          style={{ width: "clamp(140px, 42vw, 450px)" }}
+                        >
+                          <img
+                            src="/event_register_btn.png"
+                            alt="Register now"
+                            className="block w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+                          />
+                        </button>
+                      )}
 
                       <a
-                        href=" https://chat.whatsapp.com/KadLYA17sFLIL80DCuOuut"
+                        href="https://www.kaggle.com/competitions/language-challenge/overview"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group cursor-pointer"
