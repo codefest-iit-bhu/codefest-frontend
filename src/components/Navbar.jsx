@@ -84,23 +84,23 @@ function Navbar() {
               isSidebarOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-            <div className="flex flex-col justify-between h-[100vh] p-4 space-y-4 items-stretch">
+            <div className="flex flex-col justify-around h-[90vh] p-4 space-y-4 items-stretch overscroll-none">
               <div
-                className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5"
+                className="h-[10%] w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5"
                 onClick={closeSidebar}
               >
                 Close
               </div>
-              <Link to="/" className="h-auto  w-auto flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">Main</Link>
-              <Link to="/events" className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">Events</Link>
+              <Link to="/" className="h-[10%]  w-auto flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">Main</Link>
+              <Link to="/events" className="h-[10%] w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">Events</Link>
               {/* <Link to="/CA" className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">CA</Link> */}
               {isAuthenticated ? (
                 <>
-                  <Link to="/myTeams" className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">MyTeams</Link>
+                  <Link to="/myTeams" className="h-[10%] w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">MyTeams</Link>
                   <div className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-[#fc0d05] transition-all duration-500 p-5"><LogoutButton /></div>
                 </>
               ) : (
-                <Link to="/login" className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">Login/Signup</Link>
+                <Link to="/login" className="h-[10%] w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">Login/Signup</Link>
               )}
             </div>
           </div>
