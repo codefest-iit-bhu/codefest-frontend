@@ -278,8 +278,6 @@ export const ArithmeticaEvent = ({ event }) => {
         isOpen={isJoinTeamModalOpen}
         onClose={() => setIsJoinTeamModalOpen(false)}
       />
-
-      <Footer />
     </>
   );
 };
