@@ -1,9 +1,4 @@
-User-agent: Googlebot
-Disallow: 
-User-agent: googlebot-image
-Disallow: 
-User-agent: googlebot-mobile
-Disallow: 
 User-agent: *
-Disallow: 
-Disallow: /admin
+Allow: /
+
+Sitemap: https://codefest-frontend-pt7get8dr-codefests-projects.vercel.app/sitemap.xml
