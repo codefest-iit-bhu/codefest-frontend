@@ -40,7 +40,7 @@ const Teams = () => {
   return (
     <div className="bg-black">
       <Navbar />
-      <div className="teams-container bg-[url('/Teams/TeamsBackGround.png')] bg-no-repeat bg-cover bg-center min-h-[95vh]">
+      <div className="teams-container bg-[url('/Teams/TeamsBackGround.webp')] bg-no-repeat bg-cover bg-center min-h-[95vh]">
         {isLoading ? (
           <Loader />
         ) : teams && teams.length > 0 ? (
