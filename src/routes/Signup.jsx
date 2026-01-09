@@ -83,7 +83,16 @@ export default function Signup() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="min-h-screen flex flex-col items-center justify-center px-4">
+        <div className="min-h-screen flex flex-col items-center justify-center px-4 font-bree">
+
+
+          <div className="w-full max-w-[450px] mb-4">
+            <div className="bg-gradient-to-r from-[#2A2A27] via-[#3A3A36] to-[#2A2A27] border border-[#D4AF37]/60 rounded-[16px] px-5 py-3 shadow-lg flex flex-col items-center">
+              <span className="text-[#D4AF37] text-base sm:text-lg font-medium font-bree text-center">
+                Prefer quick sign up? <span className="underline decoration-[#D4AF37] underline-offset-4">Use Google</span>!
+              </span>
+            </div>
+          </div>
 
           <div
             className="
@@ -95,10 +104,10 @@ export default function Signup() {
               border border-[#D4AF37]/40
             "
           >
- 
+
             <div className="flex justify-center mb-6">
               <div className="inline-flex flex-col items-center">
-                <h1 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-['Playfair_Display']">
+                <h1 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-bree">
                   SIGN UP
                 </h1>
                 <div className="mt-1 h-[2px] w-[56px] bg-[#BFA76A] rounded-full" />
@@ -148,7 +157,7 @@ export default function Signup() {
                   text-sm sm:text-md
                   underline underline-offset-2
                   text-[#BFAF6F]
-                  font-['Playfair_Display']
+                  font-bree
                 "
               >
                 Already have an account? Click here
@@ -164,7 +173,7 @@ export default function Signup() {
                   text-black
                   bg-[#D4AF37]
                   rounded-[20px]
-                  font-['Playfair_Display']
+                  font-bree
                   hover:bg-[#c9a634]
                   transition-colors
                 "
@@ -187,7 +196,7 @@ export default function Signup() {
                 border border-[#D4AF37]
                 rounded-[20px]
                 text-[#D4AF37]
-                font-['Playfair_Display']
+                font-bree
                 hover:bg-[#2F2F2C]
                 transition-colors
               "
