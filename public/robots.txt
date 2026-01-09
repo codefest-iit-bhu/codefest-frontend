@@ -1,4 +1,11 @@
+User-agent: Googlebot
+Disallow: 
+User-agent: googlebot-image
+Disallow: 
+User-agent: googlebot-mobile
+Disallow: 
 User-agent: *
-Allow: /
+Disallow: 
+Disallow: /admin
 
-Sitemap: https://codefest-frontend-pt7get8dr-codefests-projects.vercel.app/sitemap.xml
+Sitemap: https://www.codefest-iitbhu.co.in/sitemap.xml

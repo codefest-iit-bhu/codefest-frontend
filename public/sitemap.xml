@@ -7,61 +7,61 @@
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 
   <url>
-    <loc>https://codefest-frontend-pt7get8dr-codefests-projects.vercel.app/</loc>
+    <loc>https://www.codefest-iitbhu.co.in/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://codefest-frontend-pt7get8dr-codefests-projects.vercel.app/home</loc>
+    <loc>https://www.codefest-iitbhu.co.in/home</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://codefest-frontend-pt7get8dr-codefests-projects.vercel.app/events</loc>
+    <loc>https://www.codefest-iitbhu.co.in/events</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://codefest-frontend-pt7get8dr-codefests-projects.vercel.app/CA</loc>
+    <loc>https://www.codefest-iitbhu.co.in/CA</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://codefest-frontend-pt7get8dr-codefests-projects.vercel.app/login</loc>
+    <loc>https://www.codefest-iitbhu.co.in/login</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://codefest-frontend-pt7get8dr-codefests-projects.vercel.app/signup</loc>
+    <loc>https://www.codefest-iitbhu.co.in/signup</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://codefest-frontend-pt7get8dr-codefests-projects.vercel.app/myTeams</loc>
+    <loc>https://www.codefest-iitbhu.co.in/myTeams</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://codefest-frontend-pt7get8dr-codefests-projects.vercel.app/ca-register</loc>
+    <loc>https://www.codefest-iitbhu.co.in/ca-register</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://codefest-frontend-pt7get8dr-codefests-projects.vercel.app/allCaRequests</loc>
+    <loc>https://www.codefest-iitbhu.co.in/allCaRequests</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://codefest-frontend-pt7get8dr-codefests-projects.vercel.app/allUsers</loc>
+    <loc>https://www.codefest-iitbhu.co.in/allUsers</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
