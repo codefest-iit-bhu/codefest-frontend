@@ -58,7 +58,7 @@ export const CodewarsEvent = ({ event }) => {
           >
             <div className="w-full pt-[200.14%]" />
 
-            <div className="absolute inset-0 pointer-events-none">
+            {<div className="absolute inset-0 pointer-events-none">
               <div className="relative w-full h-full">
                 <div className="absolute inset-x-0 top-0 h-full mx-auto w-full max-w-[1600px] pointer-events-none">
                   <div className="relative w-full h-full pointer-events-none">
@@ -66,7 +66,7 @@ export const CodewarsEvent = ({ event }) => {
                       className="absolute left-1/2 -translate-x-1/2 flex flex-row flex-nowrap items-center justify-center pointer-events-auto top-[11%] md:top-[13%]"
                       style={{ gap: "clamp(0.4rem, 1.4vw, 1.15rem)" }}
                     >
-                      {isMember ? (
+                      {/* {isMember ? (
                         <a
                           href="https://chat.whatsapp.com/LvztuPLkXuD0XZdEinZ6AO"
                           target="_blank"
@@ -91,13 +91,14 @@ export const CodewarsEvent = ({ event }) => {
                           className="group cursor-pointer focus:outline-none"
                           style={{ width: "clamp(140px, 42vw, 450px)" }}
                         >
+                        
                           <img
                             src="/event_register_btn.png"
                             alt="Register now"
                             className="block w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
                           />
                         </button>
-                      )}
+                      )} */}
 
                       <a
                         href="https://www.hackerrank.com/codewars-26"
@@ -116,7 +117,7 @@ export const CodewarsEvent = ({ event }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>}
           </div>
         </div>
 
