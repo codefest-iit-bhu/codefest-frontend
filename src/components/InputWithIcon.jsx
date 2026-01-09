@@ -27,9 +27,11 @@ export default function InputWithIcon({
           rounded-[20px]
           text-white placeholder-white
           text-sm sm:text-base
-          font-['Noto_Sans_Georgian']
+          font-bree
           focus:outline-none
-          focus:ring-2 focus:ring-purple-600
+          focus:ring-2 focus:ring-[#D4AF37]
+          focus:border-[#D4AF37]
+          transition-colors
         "
       />
     </div>

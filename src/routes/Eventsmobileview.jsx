@@ -23,38 +23,45 @@ export default function Eventsmobileview() {
     ];
 
     return (
-        <div className="relative flex flex-col justify-center items-center">
-            <div>
-                <img
-                    src="/events_heading.svg"
-                    alt="Events"
-                    className="relative p-[8vh] mx-auto"
-                />
-            </div>
-            <div>
-                {events.sort((a, b) => (new Date(a.date.split(",").slice(0, 2).join(","))) - (new Date(b.date.split(",").slice(0, 2).join(",")))).map((event, index) => (
-                    <div key={event.name}>
-                        <div className="flex">
-                            {/* <img
+      <div className="relative flex flex-col justify-center items-center">
+        <div>
+          <img
+            src="/events_heading.svg"
+            alt="Events"
+            className="relative p-[8vh] mx-auto"
+          />
+        </div>
+        <div>
+          {events
+            .sort(
+              (a, b) =>
+                new Date(a.date.split(",").slice(0, 2).join(",")) -
+                new Date(b.date.split(",").slice(0, 2).join(","))
+            )
+            .filter((event) => event.id !== "6" && event.id !== "7")
+            .map((event, index) => (
+              <div key={event.name}>
+                <div className="flex">
+                  {/* <img
                                 src={event.image_desk_path}
                                 alt={event.name}
                                 className="max-[768px]:hidden rounded-full mr-6"
                             /> */}
-                            <Timeline event={event} />
-                        </div>
+                  <Timeline event={event} />
+                </div>
 
-                        {/* Render VerticalLine only if it's not the last event */}
-                        {/* {index < eventDetails.length - 1 && <VerticalLine />} */}
-                    </div>
-                ))}
-            </div>
-            {/* <div>
+                {/* Render VerticalLine only if it's not the last event */}
+                {/* {index < eventDetails.length - 1 && <VerticalLine />} */}
+              </div>
+            ))}
+        </div>
+        {/* <div>
                 <img
                     src="/events_foot_design.svg"
                     alt="Events Footer Design"
                     className="w-[100vw] mt-[8vh]"
                 />
             </div> */}
-        </div>
+      </div>
     );
 }
