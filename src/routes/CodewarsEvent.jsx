@@ -100,7 +100,7 @@ export const CodewarsEvent = ({ event }) => {
                       )}
 
                       <a
-                        href="https://www.hackerrank.com/codewars26"
+                        href="https://www.hackerrank.com/codewars-26"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group cursor-pointer"
