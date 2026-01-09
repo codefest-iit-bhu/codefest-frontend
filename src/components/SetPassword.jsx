@@ -51,6 +51,7 @@ const SetPassword = ({ onSubmit }) => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <InputWithIcon
             icon={<img src={PasswordIcon} alt="" className="w-4 h-4" />}
+            type="password"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -59,6 +60,7 @@ const SetPassword = ({ onSubmit }) => {
 
           <InputWithIcon
             icon={<img src={PasswordIcon} alt="" className="w-4 h-4" />}
+            type="password"
             name="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
