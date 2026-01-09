@@ -37,72 +37,75 @@ export default function VerifyEmail() {
   };
 
   return (
-    <>
+  <>
+    <Login_Signup />
 
-      <Login_Signup />
-      <div className="min-h-screen flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div
+        className="
+          w-full max-w-[420px]
+          bg-[rgba(42,42,39,0.88)]
+          rounded-[20px]
+          px-4 py-6
+          shadow-inner
+          border border-[#D4AF37]/40
+          flex flex-col items-center
+        "
+      >
 
+        <div className="flex flex-col items-center mb-6">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-['Playfair_Display']">
+            Email Verification
+          </h1>
+          <div className="mt-1 h-[2px] w-[56px] bg-[#BFA76A] rounded-full" />
+        </div>
 
-        <div
-          className="
-              w-full max-w-[450px]
-              bg-[rgba(42,42,39,0.88)]
-              rounded-[20px]
-              px-4 py-4
-              shadow-inner
-              border border-[#D4AF37]/40
-            "
-        >
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex flex-col items-center">
-              <h1 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-['Playfair_Display']">
-                Email Verification
-              </h1>
-              <div className="mt-1 h-[2px] w-[56px] bg-[#BFA76A] rounded-full" />
-            </div>
-          </div>
-          <div className="ml-4">
-            If you don't find OTP, please check in spam.
-          </div>
+ 
+        <p className="text-center text-sm text-gray-300 mb-5">
+          If you don&apos;t find OTP, please check in spam.
+        </p>
+
+        <div className="flex justify-center mb-6">
           <PinInput
             length={6}
             focus
             type="numeric"
-            inputMode="text"
-            onChange={(value) => setOtp(value)}
-            onComplete={(value) => setOtp(value)}
-            style={{ padding: '10px' }}
+            inputMode="numeric"
+            onChange={setOtp}
+            onComplete={setOtp}
+            containerStyle={{
+              display: 'flex',
+              gap: '8px',
+            }}
             inputStyle={{
-              borderColor: 'gray',
-              borderRadius: '5px',
-              margin: '5px',
-              width: '50px',
-              height: '50px',
+              width: '44px',
+              height: '44px',
+              borderRadius: '6px',
+              border: '1px solid gray',
               textAlign: 'center',
-              textDecorationColor: 'black'
+              fontSize: '16px',
             }}
           />
-          <button
-            onClick={handleSubmit}
-            className="
-                  w-full sm:w-[220px]
-                  mx-auto block
-                  py-3 sm:py-2
-                  text-lg sm:text-xl
-                  text-black
-                  bg-[#D4AF37]
-                  rounded-[20px]
-                  font-['Playfair_Display']
-                  hover:bg-[#c9a634]
-                  transition-colors
-                "
-          >
-            Verify
-          </button>
-
-
         </div>
+
+        <button
+          onClick={handleSubmit}
+          className="
+            w-full sm:w-[220px]
+            py-3 sm:py-2
+            text-lg sm:text-xl
+            text-black
+            bg-[#D4AF37]
+            rounded-[20px]
+            font-['Playfair_Display']
+            hover:bg-[#c9a634]
+            transition-colors
+          "
+        >
+          Verify
+        </button>
       </div>
+    </div>
 
 
 
