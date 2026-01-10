@@ -100,7 +100,7 @@ export const VisionquestEvent = ({ event }) => {
                       )}
 
                       <a
-                        href="https://www.kaggle.com/competitions/visionquest"
+                        href="https://docs.google.com/document/d/1dxECWTUPwEAqB5bG1lmVBrcVxnf02lNuHl-S-U3YTDs/edit?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group cursor-pointer"
