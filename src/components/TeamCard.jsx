@@ -239,13 +239,15 @@ const TeamCard = ({
                       </button>
                     )} */}
 
-                  {canUnregister &&  <button
+                  {canUnregister ?  <button
                         className="hover:scale-110 transition-all duration-500 relative bottom-[30px]"
                         onClick={handleDeleteTeam}
                         disabled={isProcessing}
                       >
                         <img src="/Teams/UnregisterBtn.webp" className="h-[70px]" />
-                      </button>}
+                      </button>
+                      :
+                      <p>Thanks for participating!</p>}
                   </>
                 ) : (
                   <button
