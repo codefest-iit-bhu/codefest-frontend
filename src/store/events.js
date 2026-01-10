@@ -308,7 +308,7 @@ export default [
     date: "10 Jan, 2026",
     image_bg_path: "/Codewars_tic.webp",
     last_date_reg: "January 10, 2026 18:00:00",
-    deadline: "2026-01-11T12:00:00+05:30",
+    deadline: "2026-01-10T18:00:00+05:30",
     image_desk_path: "/codewars_desk.png",
     max_members: 1,
     registration_attention:
