@@ -16,21 +16,22 @@ const TeamCard = ({
   const [members, setMembers] = useState(team.members);
   const [isChangeLeaderModalOpen, setIsChangeLeaderModalOpen] = useState(false);
   const [selectedNewLeader, setSelectedNewLeader] = useState("");
-  
+ // console.log(team.event);
   const eventName = events.find(
     (event) => event.id === team.event.eventId
   ).name;
 
   const eventDeadline = new Date(events.find((event)=> event.id===team.event.eventId).deadline);
   //const canUnregister= new Date() < eventDeadline;
-  // console.log(eventDeadline);
-  // console.log(new Date());
-  // console.log(canUnregister);
+  
   // const eventDeadline = new Date(event.deadline);
   const now = new Date();
 
   const canUnregister = now < eventDeadline;
 
+  // console.log(eventDeadline);
+  // console.log(new Date());
+  // console.log(canUnregister);
   const isLeader = team.teamLeader === user._id;
   useEffect(() => {}, [team.teamLeader]);
 
@@ -239,13 +240,15 @@ const TeamCard = ({
                       </button>
                     )} */}
 
-                  {canUnregister &&  <button
+                  {canUnregister ?  <button
                         className="hover:scale-110 transition-all duration-500 relative bottom-[30px]"
                         onClick={handleDeleteTeam}
                         disabled={isProcessing}
                       >
                         <img src="/Teams/UnregisterBtn.webp" className="h-[70px]" />
-                      </button>}
+                      </button>
+                      :
+                      <p>Thanks for participating!</p>}
                   </>
                 ) : (
                   <button

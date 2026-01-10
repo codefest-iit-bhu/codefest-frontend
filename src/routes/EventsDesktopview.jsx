@@ -80,7 +80,7 @@ export default function DesktopEventsPage() {
                 .filter((event) => event.id !== "6" && event.id !== "7")
                 .map((event, index) => {
                   const isLeft = index % 2 === 0;
-                  console.log(event);
+                  //console.log(event);
 
                   return (
                     <div
