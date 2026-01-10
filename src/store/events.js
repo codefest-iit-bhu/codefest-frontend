@@ -6,6 +6,7 @@ export default [
     title: "Vision Quest",
     date: "10 to 12 Jan, 2026",
     image_bg_path: "/Vision_quest.webp",
+    deadline: "2026-01-12T18:00:00+05:30",
     last_date_reg: "January 12, 2026 18:00:00",
     image_desk_path: "/ctf_desk.svg",
     max_members: 1,
@@ -115,6 +116,7 @@ export default [
     title: "NLP Track",
     date: "11 to 13 Jan, 2026",
     image_bg_path: "/Language_quest.webp",
+    deadline: "2026-01-11T12:00:00+05:30",
     last_date_reg: "January 11, 2026 11:59:59",
     image_desk_path: "/vistas_desk.svg",
     max_members: 1,
@@ -306,6 +308,7 @@ export default [
     date: "9 Jan, 2026",
     image_bg_path: "/Codewars_tic.webp",
     last_date_reg: "January 9, 2026 20:00:00",
+    deadline: "2026-01-10T18:00:00+05:30",
     image_desk_path: "/codewars_desk.png",
     max_members: 1,
     registration_attention:
@@ -346,6 +349,7 @@ export default [
     date: "11 Jan, 2026",
     image_bg_path: "/Arithmetica_bg.webp",
     last_date_reg: "January 11, 2026 11:59:59",
+    deadline: "2026-01-11T12:00:00+05:30",
     image_desk_path: "/arithmetica_desk.png",
     max_members: 1,
     registration_attention:

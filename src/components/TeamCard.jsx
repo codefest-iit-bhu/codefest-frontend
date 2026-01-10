@@ -16,10 +16,20 @@ const TeamCard = ({
   const [members, setMembers] = useState(team.members);
   const [isChangeLeaderModalOpen, setIsChangeLeaderModalOpen] = useState(false);
   const [selectedNewLeader, setSelectedNewLeader] = useState("");
-
+  
   const eventName = events.find(
     (event) => event.id === team.event.eventId
   ).name;
+
+  const eventDeadline = new Date(events.find((event)=> event.id===team.event.eventId).deadline);
+  //const canUnregister= new Date() < eventDeadline;
+  // console.log(eventDeadline);
+  // console.log(new Date());
+  // console.log(canUnregister);
+  // const eventDeadline = new Date(event.deadline);
+  const now = new Date();
+
+  const canUnregister = now < eventDeadline;
 
   const isLeader = team.teamLeader === user._id;
   useEffect(() => {}, [team.teamLeader]);
@@ -169,7 +179,7 @@ const TeamCard = ({
              {team.event.maxMembers > 1 ? (
               <div>
               <p>Code : {team.teamCode}</p>
-              <p>Space Remaining : {team.event.maxMembers - members.length}</p>
+              {/* <p>Space Remaining : {team.event.maxMembers - members.length}</p> */}
              </div>
             ) : null}
               {/* <p>Space Remaining : {team.event.maxMembers - members.length}</p> */}
@@ -211,7 +221,7 @@ const TeamCard = ({
               )}
             </div> */}
 
-            {!all && (
+            {!all &&  (
               <div className="w-[70%] Buttons flex justify-around mt-[50px]">
                 { true ? ( 
                   // team.teamLeader === user._id
@@ -229,13 +239,13 @@ const TeamCard = ({
                       </button>
                     )} */}
 
-                    <button
-                      className="hover:scale-110 transition-all duration-500 relative bottom-[30px]"
-                      onClick={handleDeleteTeam}
-                      disabled={isProcessing}
-                    >
-                      <img src="/Teams/UnregisterBtn.webp" className="h-[70px]" />
-                    </button>
+                  {canUnregister &&  <button
+                        className="hover:scale-110 transition-all duration-500 relative bottom-[30px]"
+                        onClick={handleDeleteTeam}
+                        disabled={isProcessing}
+                      >
+                        <img src="/Teams/UnregisterBtn.webp" className="h-[70px]" />
+                      </button>}
                   </>
                 ) : (
                   <button
