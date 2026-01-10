@@ -21,7 +21,7 @@ const Teams = () => {
       setTeams(response.data);
       setIsLoading(false);
     };
-    console.log(teams);
+    //console.log(teams);
     fetchTeams();
   }, []);
 

@@ -15,7 +15,7 @@ const AllTeams = () => {
   const [search, setSearch] = useState("");
 
   const teamFilter = (team) => {
-    console.log(team.members);
+    //console.log(team.members);
     return team.members.some(member => member.user.name.toLowerCase().includes(search.toLowerCase())) || team.teamCode.toLowerCase().includes(search.toLowerCase()) || team.teamName.toLowerCase().includes(search.toLowerCase())
   }
 
