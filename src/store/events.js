@@ -4,9 +4,9 @@ export default [
     id: "1",
     name: "Vision Quest",
     title: "Vision Quest",
-    date: "9 to 11 Jan, 2026",
+    date: "10 to 12 Jan, 2026",
     image_bg_path: "/Vision_quest.webp",
-    last_date_reg: "January 10, 2026 11:59:59",
+    last_date_reg: "January 12, 2026 18:00:00",
     image_desk_path: "/ctf_desk.svg",
     max_members: 1,
     unstop:
