@@ -58,7 +58,7 @@ export const CodewarsEvent = ({ event }) => {
           >
             <div className="w-full pt-[200.14%]" />
 
-            <div className="absolute inset-0 pointer-events-none">
+            {<div className="absolute inset-0 pointer-events-none">
               <div className="relative w-full h-full">
                 <div className="absolute inset-x-0 top-0 h-full mx-auto w-full max-w-[1600px] pointer-events-none">
                   <div className="relative w-full h-full pointer-events-none">
@@ -91,6 +91,7 @@ export const CodewarsEvent = ({ event }) => {
                           className="group cursor-pointer focus:outline-none"
                           style={{ width: "clamp(140px, 42vw, 450px)" }}
                         >
+                        
                           <img
                             src="/event_register_btn.png"
                             alt="Register now"
@@ -100,7 +101,7 @@ export const CodewarsEvent = ({ event }) => {
                       )}
 
                       <a
-                        href="https://www.hackerrank.com/codewars26"
+                        href="https://www.hackerrank.com/codewars-26"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group cursor-pointer"
@@ -116,7 +117,7 @@ export const CodewarsEvent = ({ event }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>}
           </div>
         </div>
 

@@ -7,3 +7,5 @@ Disallow:
 User-agent: *
 Disallow: 
 Disallow: /admin
+
+Sitemap: https://www.codefest-iitbhu.co.in/sitemap.xml

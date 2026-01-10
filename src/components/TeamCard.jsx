@@ -16,11 +16,22 @@ const TeamCard = ({
   const [members, setMembers] = useState(team.members);
   const [isChangeLeaderModalOpen, setIsChangeLeaderModalOpen] = useState(false);
   const [selectedNewLeader, setSelectedNewLeader] = useState("");
-
+ // console.log(team.event);
   const eventName = events.find(
     (event) => event.id === team.event.eventId
   ).name;
 
+  const eventDeadline = new Date(events.find((event)=> event.id===team.event.eventId).deadline);
+  //const canUnregister= new Date() < eventDeadline;
+  
+  // const eventDeadline = new Date(event.deadline);
+  const now = new Date();
+
+  const canUnregister = now < eventDeadline;
+
+  // console.log(eventDeadline);
+  // console.log(new Date());
+  // console.log(canUnregister);
   const isLeader = team.teamLeader === user._id;
   useEffect(() => {}, [team.teamLeader]);
 
@@ -158,9 +169,9 @@ const TeamCard = ({
       )}
 
       <div className="relative team-card text-[#AA3608] font-bree text-ellipsis">
-        <img src="/Teams/Scroll.png" className="w-full" />
+        <img src="/Teams/Scroll.webp" className="w-full" />
         <div className="absolute inset-0 h-full flex flex-col justify-end items-center">
-          <div className="w-[80%] flex-col flex justify-start items-center h-[90%]">
+          <div className="w-[80%] flex-col flex justify-start items-center h-[90%] mt-[35px]">
             <h2 className="font-alegreya font-bold truncate w-[140px] text-center">
               {team.teamName}
             </h2>
@@ -169,15 +180,19 @@ const TeamCard = ({
              {team.event.maxMembers > 1 ? (
               <div>
               <p>Code : {team.teamCode}</p>
-              <p>Space Remaining : {team.event.maxMembers - members.length}</p>
+              {/* <p>Space Remaining : {team.event.maxMembers - members.length}</p> */}
              </div>
             ) : null}
+              {/* <p>Space Remaining : {team.event.maxMembers - members.length}</p> */}
             </div>
-            <div className=" w-[70%]">
+            {/* <div className=" w-[70%]">
               {!all &&
               members.length === 1 &&
               team.event.maxMembers - members.length == 0 && team.event.maxMembers > 1 ? (
                 <p className="text-center">Invite members by sharing code!!</p>
+              team.event.maxMembers - members.length == 0 ? (
+                // <p className="text-center">Invite members by sharing code!!</p>
+                <div className="h-5"></div>
               ) : (
                 <>
                   <h5 className="RemText">Members :</h5>
@@ -205,13 +220,14 @@ const TeamCard = ({
                   </ul>
                 </>
               )}
-            </div>
+            </div> */}
 
-            {!all && (
-              <div className="w-[70%] Buttons flex justify-around">
-                {team.teamLeader === user._id ? (
+            {!all &&  (
+              <div className="w-[70%] Buttons flex justify-around mt-[50px]">
+                { true ? ( 
+                  // team.teamLeader === user._id
                   <>
-                    {members.length > 1 && (
+                    {/* {members.length > 1 && (
                       <button
                         className="hover:scale-110 transition-all duration-500"
                         onClick={() => setIsChangeLeaderModalOpen(true)}
@@ -222,15 +238,17 @@ const TeamCard = ({
                           className="h-full"
                         />
                       </button>
-                    )}
+                    )} */}
 
-                    <button
-                      className="hover:scale-110 transition-all duration-500"
-                      onClick={handleDeleteTeam}
-                      disabled={isProcessing}
-                    >
-                      <img src="/Teams/DeleteTeam.png" className="h-full" />
-                    </button>
+                  {canUnregister ?  <button
+                        className="hover:scale-110 transition-all duration-500 relative bottom-[30px]"
+                        onClick={handleDeleteTeam}
+                        disabled={isProcessing}
+                      >
+                        <img src="/Teams/UnregisterBtn.webp" className="h-[70px]" />
+                      </button>
+                      :
+                      <p>Thanks for participating!</p>}
                   </>
                 ) : (
                   <button

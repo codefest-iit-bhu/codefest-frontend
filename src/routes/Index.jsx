@@ -25,44 +25,45 @@ export default function Home() {
 
   return (
     <>
-      {isMobile ? <Background image_path={"/Home/LandingPageMobile.webp"} /> : <Background image_path={"/Home/Landing_page.webp"} />}
+      {isMobile ? (
+        <Background image_path={"/Home/LandingPageMobile.webp"} />
+      ) : (
+        <Background image_path={"/Home/Landing_page.webp"} />
+      )}
       <div className="overscroll-none w-screen h-screen flex flex-col justify-center items-center overflow-hidden px-6 sm:px-10">
         <div className="relative w-[98vw] max-w-[820px] sm:w-[520px] md:w-[620px] lg:w-[720px] ">
           <img
-            src="/Codefest_logo_26.svg"
+            src="/Home/CodefestLogo.webp"
             alt="Codefest'26 logo"
-            className="w-full h-auto"
-          />
-
-          <img
-            src="/codefest_text.svg"
-            alt="Codefest'26"
-            className="absolute inset-0 m-auto -translate-y-[45%] w-[62%] sm:w-[66%] md:w-[66%] lg:w-[64%] h-auto"
+            className="w-full"
           />
         </div>
 
-        <div className="flex flex-col justify-center items-center gap-0 -mt-24 sm:-mt-32 md:-mt-40">
-          <a
-            href="/home"
-            className="w-[65vw] sm:w-[300px] md:w-[360px] h-auto hover:scale-105 transition-all duration-300 mt-24 relative z-30"
-          >
+        {/* <div className="flex flex-col justify-center items-center gap-0 -mt-24 sm:-mt-32 md:-mt-40"> */}
+        <div className="flex items-center">
+          <Link to="/home" className="h-auto">
             <img
               src="/Home/ExploreBtn.webp"
               alt="Explore"
-              className=""
+              className="w-[65vw] sm:w-[300px] md:w-[360px] h-auto hover:scale-105 transition-all duration-300 mt-10 mb-10 relative z-30"
             />
-          </a>
-          {
-            !isAuthenticated &&
-            <Link to="/login" className="relative w-fit h-fit -mb-8 sm:-mb-20 md:-mb-24">
+          </Link>
+        </div>
+        <div>
+          {!isAuthenticated && (
+            <Link
+              to="/login"
+              className="relative w-fit h-fit -mb-8 sm:-mb-20 md:-mb-24"
+            >
               <img
                 src="/Home/Signup.webp"
                 alt="Register / Login"
                 className="w-[50vw] sm:w-[230px] md:w-[280px] h-auto hover:scale-105 transition-all duration-300"
               />
             </Link>
-          }
-          {/* <a href="/CA" className="relative w-fit h-fit">
+          )}
+        </div>
+        {/* <a href="/CA" className="relative w-fit h-fit">
             <img
               src="/red_btn.svg"
               alt="Campus Ambassdor"
@@ -74,7 +75,7 @@ export default function Home() {
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-auto pointer-events-none"
             />
           </a> */}
-        </div>
+        {/* </div> */}
       </div>
     </>
   );
