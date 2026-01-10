@@ -348,8 +348,8 @@ export default [
     title: "Arithmetica",
     date: "11 Jan, 2026",
     image_bg_path: "/Arithmetica_bg.webp",
-    last_date_reg: "January 11, 2026 11:59:59",
-    deadline: "2026-01-11T12:00:00+05:30",
+    last_date_reg: "January 11, 2026 15:59:59",
+    deadline: "2026-01-11T15:59:59+05:30",
     image_desk_path: "/arithmetica_desk.png",
     max_members: 1,
     registration_attention:
