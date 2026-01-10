@@ -308,11 +308,11 @@ export default [
     date: "10 Jan, 2026",
     image_bg_path: "/Codewars_tic.webp",
     last_date_reg: "January 10, 2026 18:00:00",
-    deadline: "2026-01-10T18:00:00+05:30",
+    deadline: "2026-01-11T12:00:00+05:30",
     image_desk_path: "/codewars_desk.png",
     max_members: 1,
     registration_attention:
-      "<p> And, register on <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a> (using same email on the website)</p>",
+      "<p> And, register on <a href='https://www.hackerrank.com/codewars-26' target='_blank' class='text-blue-500 underline'>Hackerrank</a> (using same email on the website)</p>",
     overview:
       "<p>• Codewars will be a competitive programming contest (only for 1st and 2nd years) where participants are posed with problems of varying difficulties to be solved in a few hours.\
             • In addition to traditional problem-solving challenges, the contest will include some questions that require a more active, out-of-the-box approach.</p>",
@@ -378,80 +378,80 @@ export default [
     contact:
       "For further queries about this event, please contact Shubham Jain (+91 98322 41448), Yashvardhan (+91 9996008363)",
   },
-  {
-    id: "6",
-    name: "Codewars",
-    title: "Codewars",
-    date: "9 Jan, 2026",
-    image_bg_path: "/Codewars_tic.webp",
-    last_date_reg: "January 9, 2026 20:00:00",
-    image_desk_path: "/codewars_desk.png",
-    max_members: 1,
-    registration_attention:
-      "<p> And, register on <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a> (using same email on the website)</p>",
-    overview:
-      "<p>• Codewars will be a competitive programming contest (only for 1st and 2nd years) where participants are posed with problems of varying difficulties to be solved in a few hours.\
-            • In addition to traditional problem-solving challenges, the contest will include some questions that require a more active, out-of-the-box approach.</p>",
-    description:
-      "<p>• Platform: HackerRank</p>\
-             <p>• Contest date: 4 Jan 2026</p>\
-             <p>• Contest duration: 3 hours, from 10 AM</p>\
-             <p>• It's a 3-hour contest, having two sections (usual CP questions, AprilFool's riddle-like questions).</p>\
-             <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>\
-             <p>• Participants have to register on the <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a> and codefest website.</p>\
-             <p>• Problems will be visible at the start of the contest. The link to the contest will be shared via email to registered participants.</p>",
-    rules:
-      "<ul>\
-                <li>Normal rules of HackerRank contests apply.</li>\
-                <li>It is an <span class='font-bold'>individual participation</span> event.</li>\
-             </ul>",
-    scoring:
-      "<ul>\
-                <li>Normal scoring policies of HackerRank contests apply.</li>\
-             </ul>",
-    prizes:
-      "<p><strong>Prizes:</strong></p>\
-            <p>• First year - Top 3 participants</p>\
-            <p>• Second Year - Best Sophomore</p>",
-    howto:
-      "<p>• Sign up on <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a>, and register on codefest website before the deadline.</p>",
-    contact:
-      "For further queries about this event, please contact Gaurav Dalvi (+918669193588), Rudra Patel (+919898861976)",
-  },
-  {
-    id: "7",
-    name: "Arithmetica",
-    title: "Arithmetica",
-    date: "11 Jan, 2026",
-    image_bg_path: "/Arithmetica_bg.webp",
-    last_date_reg: "January 11, 2026 11:59:59",
-    image_desk_path: "/arithmetica_desk.png",
-    max_members: 1,
-    registration_attention:
-      "<p> Attempt test <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> (using same email on the website)</p>",
-    overview:
-      "<p>• Arithmetica is a strictly timed event (only for 1st and 2nd years), consisting of a series of questions based on numerical, verbal, non-verbal, spatial, mechanical and abstract reasoning.</p>\
-             <p>• Includes questions on topics such as algebra, geometry, probability, with a mix of mathematical puzzles, analytical reasoning, and applied math problems.</p>",
-    description:
-      "<p>• Date: 5 Jan 2026</p>\
-             <p>• Duration: 60 mins (online)</p>\
-             <p>• The event will be conducted with the format revealed at the time of the event.</p>\
-             <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>",
-    rules:
-      "<ul>\
-                <li>The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</li>\
-                <li>It is an <strong>individual participation</strong> event so please refrain from discussing strategy and solutions during the event.</li>\
-             </ul>",
-    scoring:
-      "<ul>\
-                <li>It will be revealed at the time of the event.</li>\
-             </ul>",
-    prizes: "Prize details will be announced after the contest.",
-    howto:
-      "<p>• Participants have to register on the CodeFest website and <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>\
-            <p>• Attempt the event using the same email that is registered on the codefest website.",
-    contact:
-      "For further queries about this event, please contact Shubham Jain (+91 98322 41448), Yashvardhan (+91 9996008363)",
-  },
+  // {
+  //   id: "6",
+  //   name: "Codewars",
+  //   title: "Codewars",
+  //   date: "9 Jan, 2026",
+  //   image_bg_path: "/Codewars_tic.webp",
+  //   last_date_reg: "January 9, 2026 20:00:00",
+  //   image_desk_path: "/codewars_desk.png",
+  //   max_members: 1,
+  //   registration_attention:
+  //     "<p> And, register on <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a> (using same email on the website)</p>",
+  //   overview:
+  //     "<p>• Codewars will be a competitive programming contest (only for 1st and 2nd years) where participants are posed with problems of varying difficulties to be solved in a few hours.\
+  //           • In addition to traditional problem-solving challenges, the contest will include some questions that require a more active, out-of-the-box approach.</p>",
+  //   description:
+  //     "<p>• Platform: HackerRank</p>\
+  //            <p>• Contest date: 4 Jan 2026</p>\
+  //            <p>• Contest duration: 3 hours, from 10 AM</p>\
+  //            <p>• It's a 3-hour contest, having two sections (usual CP questions, AprilFool's riddle-like questions).</p>\
+  //            <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>\
+  //            <p>• Participants have to register on the <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a> and codefest website.</p>\
+  //            <p>• Problems will be visible at the start of the contest. The link to the contest will be shared via email to registered participants.</p>",
+  //   rules:
+  //     "<ul>\
+  //               <li>Normal rules of HackerRank contests apply.</li>\
+  //               <li>It is an <span class='font-bold'>individual participation</span> event.</li>\
+  //            </ul>",
+  //   scoring:
+  //     "<ul>\
+  //               <li>Normal scoring policies of HackerRank contests apply.</li>\
+  //            </ul>",
+  //   prizes:
+  //     "<p><strong>Prizes:</strong></p>\
+  //           <p>• First year - Top 3 participants</p>\
+  //           <p>• Second Year - Best Sophomore</p>",
+  //   howto:
+  //     "<p>• Sign up on <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a>, and register on codefest website before the deadline.</p>",
+  //   contact:
+  //     "For further queries about this event, please contact Gaurav Dalvi (+918669193588), Rudra Patel (+919898861976)",
+  // },
+  // {
+  //   id: "7",
+  //   name: "Arithmetica",
+  //   title: "Arithmetica",
+  //   date: "11 Jan, 2026",
+  //   image_bg_path: "/Arithmetica_bg.webp",
+  //   last_date_reg: "January 11, 2026 11:59:59",
+  //   image_desk_path: "/arithmetica_desk.png",
+  //   max_members: 1,
+  //   registration_attention:
+  //     "<p> Attempt test <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> (using same email on the website)</p>",
+  //   overview:
+  //     "<p>• Arithmetica is a strictly timed event (only for 1st and 2nd years), consisting of a series of questions based on numerical, verbal, non-verbal, spatial, mechanical and abstract reasoning.</p>\
+  //            <p>• Includes questions on topics such as algebra, geometry, probability, with a mix of mathematical puzzles, analytical reasoning, and applied math problems.</p>",
+  //   description:
+  //     "<p>• Date: 5 Jan 2026</p>\
+  //            <p>• Duration: 60 mins (online)</p>\
+  //            <p>• The event will be conducted with the format revealed at the time of the event.</p>\
+  //            <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>",
+  //   rules:
+  //     "<ul>\
+  //               <li>The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</li>\
+  //               <li>It is an <strong>individual participation</strong> event so please refrain from discussing strategy and solutions during the event.</li>\
+  //            </ul>",
+  //   scoring:
+  //     "<ul>\
+  //               <li>It will be revealed at the time of the event.</li>\
+  //            </ul>",
+  //   prizes: "Prize details will be announced after the contest.",
+  //   howto:
+  //     "<p>• Participants have to register on the CodeFest website and <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>\
+  //           <p>• Attempt the event using the same email that is registered on the codefest website.",
+  //   contact:
+  //     "For further queries about this event, please contact Shubham Jain (+91 98322 41448), Yashvardhan (+91 9996008363)",
+  // },
 ];
 
