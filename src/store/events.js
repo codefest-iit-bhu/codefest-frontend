@@ -6,8 +6,8 @@ export default [
     title: "Vision Quest",
     date: "10 to 12 Jan, 2026",
     image_bg_path: "/Vision_quest.webp",
-    deadline: "2026-01-12T18:00:00+05:30",
-    last_date_reg: "January 12, 2026 18:00:00",
+    deadline: "2026-01-11T10:00:00+05:30",
+    last_date_reg: "January 11, 2026 10:00:00",
     image_desk_path: "/ctf_desk.svg",
     max_members: 1,
     unstop:
