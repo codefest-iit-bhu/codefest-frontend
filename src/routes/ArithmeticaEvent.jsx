@@ -27,6 +27,16 @@ export const ArithmeticaEvent = ({ event }) => {
       }
     }
 
+    async function getIsMemberOld(){
+      const res = await axios.get(`/event/is_member/4`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      setIsMember(res.data.isMember);
+      if (res.data.isMember) {
+        setTeamName(res.data.teamName);
+      }
+    }
+
     async function getEvent() {
       const res = await axios.get(`/event/${event.id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
