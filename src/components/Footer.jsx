@@ -23,11 +23,11 @@ const Footer = () => {
                   Main
                 </a>
               </li>
-              {/* <li>
-                                <a href="/CA" className="hover:text-gray-400 transition">
-                                    Campus Ambassador
-                                </a>
-                            </li> */}
+              <li>
+                <a href="/CA" className="hover:text-gray-400 transition">
+                  CA
+                </a>
+              </li>
               <li>
                 {isAuthenticated ? (
                   <a href="/myTeams" className="hover:text-gray-400 transition">
@@ -50,11 +50,14 @@ const Footer = () => {
                   Home
                 </a>
               </li>
-              {/* <li>
-                                <a href="/ca-register" className="hover:text-gray-400 transition">
-                                    CA Registration
-                                </a>
-                            </li> */}
+              <li>
+                <a
+                  href="/ca-register"
+                  className="hover:text-gray-400 transition"
+                >
+                  CA Registration
+                </a>
+              </li>
               <li>
                 <a href="/events" className="hover:text-gray-400 transition">
                   Events
