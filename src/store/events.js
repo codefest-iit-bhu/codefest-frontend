@@ -24,13 +24,13 @@ export default [
     max_members: 1,
     unstop:
       "https://unstop.com/hackathons/ctf-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361306",
-    overview: `
+    overview: \`
         <p>• Capture the Flag (CTF) will be a cybersecurity competition for participants to show their skills in exploring various exploits in the realm of computer systems.</p>
         <p>• Problems will be visible at the start of the competition.</p>
         <p>• A team of a maximum of 3 members is allowed.</p>
-    `,
-    description: `
-    description: `
+    \`,
+    description: \`
+    description: \`
         <p>• Duration: 36 hrs</p>
         <p>• Register your team on the <a href="https://unstop.com/hackathons/ctf-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361306" target="_blank"  style="color:#5865F2">Unstop Page.</a></p>
         <p>• It's a 36-hour online live event, having challenges from different categories like reverse engineering, forensics, web exploitation, cryptography, etc.</p>
@@ -40,38 +40,41 @@ export default [
         <p>• The CTF event will start on 25 Jan 18:00 and end on 27 Jan 6:00.</p>
         <p>• The link to the competition will be shared via email to registered participants.</p>
         <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank"  style="color:#5865F2">discord server</a>.</p>
-    `,
-    rules: `
-    rules: `
+    \`
+    \`,
+    rules: \`
+    rules: \`
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
         <p>• Please refrain from discussing strategy and solutions during the contest.</p>
         <p>• A team size of a maximum of 3 is allowed.</p>
         <p>• CTF organizers' decisions are final.</p>
         <p>• The person could have an unlimited number of submissions in most cases, but brute-forcing a server would be penalized and would result in an IP ban and discarding the team from the contest.</p>
         <p>• Refrain from using automated tools like burp suite, SQL map, or fuzzing in finding solutions until and unless specifically mentioned in the challenge.</p>
-    `,
-    scoring: `
-    scoring: `
+    \`
+    \`,
+    scoring: \`
+    scoring: \`
         <p>• The scoreboard will be present during the contest.</p>
         <p>• Scoring will be based on dynamic scoring.</p>
         <p>• Teams are ranked by score. If two or more teams achieve the same score, then the tie will be broken by the total time taken to submit the last solution, resulting in a higher score.</p>
-    `,
-    howto: `
-    howto: `
+    \` \`,
+    howto: \`
+    howto:\` 
         <p>• To register as a team, first, each individual must register for the competition independently. Once registered, there will be an option available to merge into a team on CTFd. You can merge with up to three members to form your team.</p>
         <p>• The same username and email address should be used to register on CTFd and CodeFest website.</p>
         <p>• The prize is awarded to the entire team collectively.</p>
-    `,
-    prizes: `
-    prizes: `
+    \` \`,
+    prizes: \`
+    prizes: \`
         <ul>
             <li>• Winner Team: ₹25,000</li>
             <li>• First Runner-Up: ₹15,000</li>
             <li>• Second Runner-Up: ₹10,000</li>
         </ul>
-    `,
+    \`\`,
     contact:
       "For further queries about this event, please contact Yuval Goyal (+919465973007), Chirag Garg (+918824120728)",
+      `
   },
   // {
   //     id: "1",
@@ -139,7 +142,7 @@ export default [
     max_members: 1,
     unstop:
       "https://unstop.com/hackathons/vista-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361765",
-    overview: `
+    overview: 'Some text',
     contact:
       "For further queries about this event, please contact Yuval Goyal (+919465973007), Chirag Garg (+918824120728)",
   },
@@ -214,16 +217,16 @@ export default [
         <p>• A team of a maximum of 3 members is allowed.</p>
     `,
     description: `
-    description: `
+    description: \`
         <p>• It's a 5-day online live event, having challenges from different categories like image classification, object detection, image segmentation, etc.</p>
         <p>• Participants and their teams should be registered on the CodeFest website.</p>
         <p>• Vista'25 will start on 26th Jan at 6 PM IST and end on 31st Jan at 11:59 PM IST.</p>
         <p>• The link to the competition will be shared via email to registered participants.</p>
         <p>• Problem statements will be visible at the start of the competition.</p>
         <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw" target="_blank" style="color:#5865F2">discord server</a>.</p>
-    `,
+    \` `,
     rules: `
-    rules: `
+    rules: \`
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
         <p>• Register your team on the <a href="https://unstop.com/hackathons/vista-codefest25-indian-institute-of-technology-iit-bhu-varanasi-1361765" target="_blank" style="color:#5865F2">Unstop Page.</a></p>
         <p>• Please refrain from discussing strategy and solutions during the contest.</p>
@@ -231,31 +234,31 @@ export default [
         <p>• Vista organizers' decisions are final.</p>
         <p>• CNN, Deep Learning, or Machine Learning models can be used.</p>
         <p>• Privately sharing code or data outside of teams is not permitted.</p>
-    `,
+   \` `,
     scoring: `
-    scoring: `
+    scoring: \`
         <p>• The scoreboard will be present during the contest.</p>
         <p>• Scoring will be based on dynamic scoring.</p>
         <p>• Teams are ranked by score. If two or more teams achieve the same score, the tie will be broken by considering the submission time of the file; earlier submissions will be placed higher.</p>
-    `,
+    \` `,
     howto: `
-    howto: `
+    howto: \`
         <p>• To register as a team, first, each individual must register for the competition independently. Once registered, there will be an option available to merge into a team on Kaggle. You can merge with up to three members to form your team.</p>
         <p>• The same username and email address should be used to register on Kaggle and CodeFest website.</p>
         <p>• The prize is awarded to the entire team collectively.</p>
-    `,
+    \` `,
     contact:
       "For further queries about this event, please contact Bashwant (+919381429059) or Pragnitha(+917337289587) ",
     prizes: `
     contact:
       "For further queries about this event, please contact Bashwant (+919381429059) or Pragnitha(+917337289587) ",
-    prizes: `
+    prizes: \`
         <ul>
             <li>• Winner Team: ₹20,000</li>
             <li>• First Runner-Up: ₹15,000</li>
             <li>• Second Runner-Up: ₹10,000</li>
         </ul>
-    `,
+    \` `,
   },
   //     {
   //         id: "4",
@@ -380,7 +383,7 @@ export default [
   //             <li>The scoring will follow Codechef's standard scoring policies.</li>
   //         </ul>
   //     `,
-  },
+  // },
   //     {
   //         id: "4",
   //         name: "HaXplore",
@@ -519,21 +522,21 @@ export default [
   //         contact:
   //             "For further queries about this event, please contact Jay Vinchhi (+918530178569), Rudra Patel (+919898861976)",
   //     },
-  {
-    id: "2",
-    name: "Codewars",
-    title: "Codewars",
-    date: "10 Jan, 2026",
-    image_bg_path: "/Codewars_tic.webp",
-    last_date_reg: "January 10, 2026 18:00:00",
-    deadline: "2026-01-10T18:00:00+05:30",
-    image_desk_path: "/codewars_desk.png",
-    max_members: 1,
-    registration_attention:
-      "<p> And, register on <a href='https://www.hackerrank.com/codewars-26' target='_blank' class='text-blue-500 underline'>Hackerrank</a> (using same email on the website)</p>",
-    overview:
-      "<p>• Codewars will be a competitive programming contest (only for 1st and 2nd years) where participants are posed with problems of varying difficulties to be solved in a few hours.\
-  //         howto: `
+  // {
+  //   id: "2",
+  //   name: "Codewars",
+  //   title: "Codewars",
+  //   date: "10 Jan, 2026",
+  //   image_bg_path: "/Codewars_tic.webp",
+  //   last_date_reg: "January 10, 2026 18:00:00",
+  //   deadline: "2026-01-10T18:00:00+05:30",
+  //   image_desk_path: "/codewars_desk.png",
+  //   max_members: 1,
+  //   registration_attention:
+  //     "<p> And, register on <a href='https://www.hackerrank.com/codewars-26' target='_blank' class='text-blue-500 underline'>Hackerrank</a> (using same email on the website)</p>",
+  //   overview:
+  //     "<p>• Codewars will be a competitive programming contest (only for 1st and 2nd years) where participants are posed with problems of varying difficulties to be solved in a few hours.\
+  // //         howto: `
   //         <p>• Participants must register on the CodeFest website to participate.</p>
   //         <p>• Contestants must use the same username and email for both the CodeChef and CodeFest registrations.</p>
   //     `,
@@ -563,58 +566,40 @@ export default [
       "<p>• Codewars will be a competitive programming contest (only for 1st and 2nd years) where participants are posed with problems of varying difficulties to be solved in a few hours.\
             • In addition to traditional problem-solving challenges, the contest will include some questions that require a more active, out-of-the-box approach.</p>",
     description:
-      "<p>• Platform: HackerRank</p>\
-    description:
-      "<p>• Platform: HackerRank</p>\
+      `<p>• Platform: HackerRank</p>\
+    description : \`<p>• Platform: HackerRank</p>\
              <p>• Contest date: 4 Jan 2026</p>\
              <p>• Contest duration: 3 hours, from 10 AM</p>\
              <p>• It's a 3-hour contest, having two sections (usual CP questions, AprilFool's riddle-like questions).</p>\
              <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>\
              <p>• Participants have to register on the <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a> and codefest website.</p>\
-             <p>• Problems will be visible at the start of the contest. The link to the contest will be shared via email to registered participants.</p>",
+             <p>• Problems will be visible at the start of the contest. The link to the contest will be shared via email to registered participants.</p>
+      \` `,
     rules:
-      "<ul>\
+      `<ul>\
     rules:
       "<ul>\
                 <li>Normal rules of HackerRank contests apply.</li>\
                 <li>It is an <span class='font-bold'>individual participation</span> event.</li>\
-             </ul>",
+             </ul>`,
     scoring:
-      "<ul>\
+      `<ul>\
     scoring:
       "<ul>\
                 <li>Normal scoring policies of HackerRank contests apply.</li>\
-             </ul>",
+             </ul>`,
     prizes:
-      "<p><strong>Prizes:</strong></p>\
+      `<p><strong>Prizes:</strong></p>\
     prizes:
       "<p><strong>Prizes:</strong></p>\
             <p>• First year - Top 3 participants</p>\
-            <p>• Second Year - Best Sophomore</p>",
+            <p>• Second Year - Best Sophomore</p>`,
     howto:
       "<p>• Sign up on <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a>, and register on codefest website before the deadline.</p>",
     contact:
       "For further queries about this event, please contact Gaurav Dalvi (+918669193588), Rudra Patel (+919898861976)",
   },
-  {
-    id: "4",
-    name: "Arithmetica",
-    title: "Arithmetica",
-    date: "11 Jan, 2026",
-    image_bg_path: "/Arithmetica_bg.webp",
-    last_date_reg: "January 11, 2026 15:59:59",
-    deadline: "2026-01-11T15:59:59+05:30",
-    image_desk_path: "/arithmetica_desk.png",
-    max_members: 1,
-    registration_attention:
-      "<p> Attempt test <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> (using same email on the website)</p>",
-    overview:
-      "<p>• Arithmetica is a strictly timed event (only for 1st and 2nd years), consisting of a series of questions based on numerical, verbal, non-verbal, spatial, mechanical and abstract reasoning.</p>\
-    howto:
-      "<p>• Sign up on <a href='https://www.hackerrank.com/codewars-25' target='_blank' class='text-blue-500 underline'>Hackerrank</a>, and register on codefest website before the deadline.</p>",
-    contact:
-      "For further queries about this event, please contact Gaurav Dalvi (+918669193588), Rudra Patel (+919898861976)",
-  },
+
   {
     id: "4",
     name: "Arithmetica",
@@ -631,28 +616,25 @@ export default [
       "<p>• Arithmetica is a strictly timed event (only for 1st and 2nd years), consisting of a series of questions based on numerical, verbal, non-verbal, spatial, mechanical and abstract reasoning.</p>\
              <p>• Includes questions on topics such as algebra, geometry, probability, with a mix of mathematical puzzles, analytical reasoning, and applied math problems.</p>",
     description:
-      "<p>• Date: 5 Jan 2026</p>\
+      `<p>• Date: 5 Jan 2026</p>\
     description:
       "<p>• Date: 5 Jan 2026</p>\
              <p>• Duration: 60 mins (online)</p>\
              <p>• The event will be conducted with the format revealed at the time of the event.</p>\
-             <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>",
+             <p>• For information related to the contest and announcements/queries, join the following <a href='https://discord.gg/6U3YmHenZw' target='_blank' class='text-blue-500 underline'>discord server</a>.</p>`,
     rules:
-      "<ul>\
+      `<ul>\
     rules:
       "<ul>\
                 <li>The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</li>\
                 <li>It is an <strong>individual participation</strong> event so please refrain from discussing strategy and solutions during the event.</li>\
-             </ul>",
+             </ul>`,
     scoring:
-      "<ul>\
+      `<ul>\
     scoring:
       "<ul>\
                 <li>It will be revealed at the time of the event.</li>\
-             </ul>",
-    prizes: "Prize details will be announced after the contest.",
-    howto:
-      "<p>• Participants have to register on the CodeFest website and <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>\
+             </ul>" `,
     prizes: "Prize details will be announced after the contest.",
     howto:
       "<p>• Participants have to register on the CodeFest website and <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>\

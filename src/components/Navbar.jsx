@@ -35,13 +35,13 @@ function Navbar() {
             {isAuthenticated ? (
               <>
                 <Linker text="My Teams" href="/myTeams" />
-                <div className="bg-[url('../Navbar/NavButton.png')] w-[91px] h-[24px] font-semibold text-center"><LogoutButton/></div>
+                <div className="bg-[url('/Navbar/NavButton.png')] w-[91px] h-[24px] font-semibold text-center"><LogoutButton/></div>
               </>
             ) : (
               <button
                 className="w-[105px] h-[30px] text-center"
                 style={{
-                  backgroundImage: "url('../Navbar/Navbutton2.svg')",
+                  backgroundImage: "url('/Navbar/Navbutton2.svg')",
                   backgroundSize: "100% 100%",
                   backgroundRepeat: "no-repeat",
                 }}
@@ -63,7 +63,7 @@ function Navbar() {
               className="h-[50%] w-[25vw] font-bold text-xl text-[#421F00] flex items-center justify-center"
               onClick={toggleSidebar}
               style={{
-                  backgroundImage: "url('../Navbar/Navbutton2.svg')",
+                  backgroundImage: "url('/Navbar/Navbutton2.svg')",
                   backgroundSize: "100% 100%",
                   backgroundRepeat: "no-repeat",
                 }}
