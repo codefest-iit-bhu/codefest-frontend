@@ -45,9 +45,21 @@ export default function Home() {
             <img
               src="/Home/ExploreBtn.webp"
               alt="Explore"
-              className="w-[65vw] sm:w-[300px] md:w-[360px] h-auto hover:scale-105 transition-all duration-300 mt-10 mb-10 relative z-30"
+              className="w-[65vw] sm:w-[300px] md:w-[390px] h-auto hover:scale-105 transition-all duration-300 mt-5 mb-5  relative z-30"
             />
           </Link>
+        </div>
+        <div>
+            <Link
+              to="/CA"
+              className="relative w-fit h-fit -mb-8 sm:-mb-20 md:-mb-24"
+            >
+              <img
+                src="/Home/CABtn.webp"
+                alt="CA"
+                className="w-[58vw] sm:w-[260px] md:w-[320px] h-auto hover:scale-105 transition-all duration-300 mb-5"
+              />
+            </Link>
         </div>
         <div>
           {!isAuthenticated && (
@@ -58,24 +70,11 @@ export default function Home() {
               <img
                 src="/Home/Signup.webp"
                 alt="Register / Login"
-                className="w-[50vw] sm:w-[230px] md:w-[280px] h-auto hover:scale-105 transition-all duration-300"
+                className="w-[55vw] sm:w-[230px] md:w-[270px] h-auto hover:scale-105 transition-all duration-300"
               />
             </Link>
           )}
         </div>
-        {/* <a href="/CA" className="relative w-fit h-fit">
-            <img
-              src="/red_btn.svg"
-              alt="Campus Ambassdor"
-              className="w-[260px] sm:w-[340px] md:w-[380px] h-auto hover:scale-105 transition-all duration-300"
-            />
-            <img
-              src="/CA.svg"
-              alt="Campus Ambassador Text"
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-auto pointer-events-none"
-            />
-          </a> */}
-        {/* </div> */}
       </div>
     </>
   );

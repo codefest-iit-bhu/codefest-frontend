@@ -31,7 +31,7 @@ function Navbar() {
             />
             <Linker text="Main" href="/" />
             <Linker text="Events" href="/events" />
-            {/* <Linker text="CA" href="/CA" /> */}
+            <Linker text="CA" href="/CA" />
             {isAuthenticated ? (
               <>
                 <Linker text="My Teams" href="/myTeams" />
@@ -93,7 +93,7 @@ function Navbar() {
               </div>
               <Link to="/" className="h-[10%]  w-auto flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">Main</Link>
               <Link to="/events" className="h-[10%] w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">Events</Link>
-              {/* <Link to="/CA" className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">CA</Link> */}
+              <Link to="/CA" className="h-auto w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">CA</Link>
               {isAuthenticated ? (
                 <>
                   <Link to="/myTeams" className="h-[10%] w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5">MyTeams</Link>
