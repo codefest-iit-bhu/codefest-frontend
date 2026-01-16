@@ -5,6 +5,48 @@ import toast from "react-hot-toast";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import carBg from "../assets/CA_images/CArbg.webp";
 
+// Custom Input Component for consistent styling
+const CustomInput = ({
+  label,
+  id,
+  type,
+  value,
+  onChange,
+  required = true,
+  placeholder = "",
+  isTextArea = false,
+}) => (
+  <div className="mb-6">
+    <label
+      htmlFor={id}
+      className="block text-xl md:text-2xl font-serif text-white mb-2 tracking-wide"
+    >
+      {label}
+    </label>
+    {isTextArea ? (
+      <textarea
+        id={id}
+        name={id}
+        value={value}
+        onChange={onChange}
+        rows="3"
+        className="w-full bg-[#8B7D5B] rounded-2xl border-none px-4 py-3 text-white placeholder-gray-300 focus:ring-2 focus:ring-yellow-500 focus:outline-none transition-all duration-300 text-lg shadow-inner"
+      ></textarea>
+    ) : (
+      <input
+        type={type}
+        id={id}
+        name={id}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        required={required}
+        className="w-full bg-[#8B7D5B] rounded-full border-none h-12 px-6 text-white placeholder-gray-300 focus:ring-2 focus:ring-yellow-500 focus:outline-none transition-all duration-300 text-lg shadow-inner"
+      />
+    )}
+  </div>
+);
+
 const CARegistration = () => {
   const [formData, setFormData] = useState({
     institute: "",
@@ -89,47 +131,7 @@ const CARegistration = () => {
     }
   };
 
-  // Custom Input Component for consistent styling
-  const CustomInput = ({
-    label,
-    id,
-    type,
-    value,
-    onChange,
-    required = true,
-    placeholder = "",
-    isTextArea = false,
-  }) => (
-    <div className="mb-6">
-      <label
-        htmlFor={id}
-        className="block text-xl md:text-2xl font-serif text-white mb-2 tracking-wide"
-      >
-        {label}
-      </label>
-      {isTextArea ? (
-        <textarea
-          id={id}
-          name={id}
-          value={value}
-          onChange={onChange}
-          rows="3"
-          className="w-full bg-[#8B7D5B] rounded-2xl border-none px-4 py-3 text-white placeholder-gray-300 focus:ring-2 focus:ring-yellow-500 focus:outline-none transition-all duration-300 text-lg shadow-inner"
-        ></textarea>
-      ) : (
-        <input
-          type={type}
-          id={id}
-          name={id}
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder}
-          required={required}
-          className="w-full bg-[#8B7D5B] rounded-full border-none h-12 px-6 text-white placeholder-gray-300 focus:ring-2 focus:ring-yellow-500 focus:outline-none transition-all duration-300 text-lg shadow-inner"
-        />
-      )}
-    </div>
-  );
+
 
   return (
     <div
