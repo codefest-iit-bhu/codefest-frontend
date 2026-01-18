@@ -42,26 +42,11 @@ export default function Eventsmobileview() {
             .map((event, index) => (
               <div key={event.name}>
                 <div className="flex">
-                  {/* <img
-                                src={event.image_desk_path}
-                                alt={event.name}
-                                className="max-[768px]:hidden rounded-full mr-6"
-                            /> */}
                   <Timeline event={event} />
                 </div>
-
-                {/* Render VerticalLine only if it's not the last event */}
-                {/* {index < eventDetails.length - 1 && <VerticalLine />} */}
               </div>
             ))}
         </div>
-        {/* <div>
-                <img
-                    src="/events_foot_design.svg"
-                    alt="Events Footer Design"
-                    className="w-[100vw] mt-[8vh]"
-                />
-            </div> */}
       </div>
     );
 }
