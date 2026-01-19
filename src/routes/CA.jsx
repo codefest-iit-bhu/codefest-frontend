@@ -15,6 +15,7 @@ export default function CA() {
       >
         <Navbar />
         <CaHero />
+        
         <Benefit_CA />
         <FAQ />
         <Footer />

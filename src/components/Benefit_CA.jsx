@@ -139,6 +139,7 @@ const Benefit_CA = () => {
     <div className='relative flex flex-col items-center justify-center my-10 px-5 md:px-20'>
       <img src={whyImg} alt="" />
     </div>
+    
   )
 }
 
