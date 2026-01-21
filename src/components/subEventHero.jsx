@@ -104,7 +104,7 @@ const SubEventHero = ({ eventId }) => {
     const event = events.find((e) => e.id === eventId);
     const { isAuthenticated, user } = useUser();
     const navigate = useNavigate();
-    console.log(event.max_members);
+   // console.log(event.max_members);
 
     const [fontLoaded, setFontLoaded] = useState(false);
     const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
