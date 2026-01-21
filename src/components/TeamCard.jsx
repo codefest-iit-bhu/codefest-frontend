@@ -256,7 +256,7 @@ const TeamCard = ({
             </h2>
 
             {/* Team Info */}
-            <div className="RemText">
+            <div className="RemText text-center">
               <p>Event: {eventName}</p>
               {isTeamEvent && <p>Code: {team.teamCode}</p>}
               <p>Space Remaining: {spaceRemaining}</p>
