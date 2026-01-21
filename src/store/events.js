@@ -3,7 +3,7 @@ export default [
     id: "1",
     name: "Vision Quest",
     title: "Vision Quest",
-    
+
     date: "10 to 12 Jan, 2026",
     image_bg_path: "/Vision_quest.webp",
     deadline: "2026-01-11T10:00:00+05:30",
@@ -274,7 +274,7 @@ export default [
     howto:
       "<p>• Participants have to register on the CodeFest website and <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>\
              <p>• Attempt the event using the same email that is registered on the codefest website.",
-    contact: [{ name: "Bhav Khurana ", phone: "+917087341267" }],
+    contact: [{ name: "Ayush Kumar", phone: "+91 96930 40897" }],
   },
   {
     id: "6",
@@ -328,7 +328,7 @@ export default [
     howto:
       "<p>• Participants have to register on the CodeFest website before the deadline.</p>\
              <p>• Attempt the event using the same email that is registered on the codefest website.",
-    contact: [{ name: "Harsh Kumar", phone: "+91 8102213997" }],
+    contact: [{ name: "Ayush Kumar", phone: "+91 96930 40897" }],
   },
   {
     id: "7",
@@ -377,7 +377,7 @@ export default [
     howto:
       "<p>• Participants have to register on the CodeFest website and <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>\
              <p>• Attempt the event using the same email that is registered on the codefest website.",
-    contact: [{ name: "Soumyadeep Das", phone: "+91 9569946415" }],
+    contact: [{ name: "Ayush Kumar", phone: "+91 96930 40897" }],
   },
   {
     id: "8",
@@ -419,7 +419,7 @@ export default [
     howto:
       "<p>• Participants have to register on the CodeFest website and <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>\
              <p>• Attempt the event using the same email that is registered on the codefest website.",
-    contact: [{ name: "Kushagra", phone: "+91 9566204257" }],
+    contact: [{ name: "Ayush Kumar", phone: "+91 96930 40897" }],
   },
 
   {
@@ -471,6 +471,6 @@ export default [
     howto:
       "<p>• Participants have to register on the CodeFest website before the deadline.</p>\
              <p>• Attempt the event using the same email that is registered on the codefest website.",
-    contact: [{ name: "Ayush Barot", phone: "+91 9909764364" }],
+    contact: [{ name: "Ayush Kumar", phone: "+91 96930 40897" }],
   },
 ];
