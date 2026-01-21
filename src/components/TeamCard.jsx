@@ -135,40 +135,107 @@ const TeamCard = ({
     <div>
       {/* Change Leader Modal */}
       {!all && isChangeLeaderModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl w-96 text-black">
-            <h2 className="text-xl font-bold mb-4">Change Team Leader</h2>
-            <select
-              className="w-full p-2 border rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={selectedNewLeader}
-              onChange={(e) => setSelectedNewLeader(e.target.value)}
-              disabled={isProcessing}
-            >
-              <option value="">Select New Leader</option>
-              {eligibleMembers.map((member) => (
-                <option key={member.user._id} value={member.user._id}>
-                  {member.user.name}
-                </option>
-              ))}
-            </select>
-            <div className="flex justify-end gap-2">
+        <div
+          className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+          onClick={() => {
+            setIsChangeLeaderModalOpen(false);
+            setSelectedNewLeader("");
+          }}
+        >
+          <div
+            className="relative w-full max-w-[450px] px-4"
+            onClick={(e) => e.stopPropagation()}
+            style={{ zIndex: 100 }}
+          >
+            <div className="bg-[rgba(42,42,39,0.88)] rounded-[20px] px-4 py-4 shadow-inner border border-[#D4AF37]/40 relative">
               <button
+                type="button"
                 onClick={() => {
                   setIsChangeLeaderModalOpen(false);
                   setSelectedNewLeader("");
                 }}
-                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-400 transition-all duration-300"
-                disabled={isProcessing}
+                className="absolute top-3 right-3 text-[#D4AF37] hover:text-red-500 text-2xl font-bold transition-colors duration-200"
+                aria-label="Close modal"
               >
-                Cancel
+                ×
               </button>
-              <button
-                onClick={handleChangeLeader}
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                disabled={!selectedNewLeader || isProcessing}
-              >
-                {isProcessing ? "Changing..." : "Change Leader"}
-              </button>
+
+              <div className="flex justify-center mb-6">
+                <div className="inline-flex flex-col items-center">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-bree">
+                    CHANGE LEADER
+                  </h2>
+                  <div className="mt-1 h-[2px] w-[56px] bg-[#BFA76A] rounded-full" />
+                  <span className="text-base text-[#BFAF6F] mt-2">
+                    Select a new team leader
+                  </span>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <select
+                  className="w-full p-3 border border-[#D4AF37]/40 rounded-[12px] bg-[#3A3A36] text-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37] font-bree disabled:opacity-50"
+                  value={selectedNewLeader}
+                  onChange={(e) => setSelectedNewLeader(e.target.value)}
+                  disabled={isProcessing}
+                >
+                  <option value="" className="bg-[#3A3A36] text-[#D4AF37]">
+                    Select New Leader
+                  </option>
+                  {eligibleMembers.map((member) => (
+                    <option
+                      key={member.user._id}
+                      value={member.user._id}
+                      className="bg-[#3A3A36] text-[#D4AF37]"
+                    >
+                      {member.user.name}
+                    </option>
+                  ))}
+                </select>
+
+                <button
+                  onClick={handleChangeLeader}
+                  disabled={!selectedNewLeader || isProcessing}
+                  className="w-full py-3 rounded-[20px] font-bree text-lg text-black bg-[#D4AF37] hover:bg-[#c9a634] transition-colors font-semibold flex items-center justify-center mt-2 disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
+                >
+                  {isProcessing ? (
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                  ) : (
+                    "Change Leader"
+                  )}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsChangeLeaderModalOpen(false);
+                    setSelectedNewLeader("");
+                  }}
+                  className="w-full py-3 rounded-[20px] border border-[#D4AF37]/40 mt-2 bg-[#3A3A36] text-[#D4AF37] font-bree font-semibold hover:bg-[#2F2F2C] transition-colors disabled:opacity-50"
+                  disabled={isProcessing}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
         </div>
