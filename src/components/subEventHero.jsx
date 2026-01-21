@@ -237,7 +237,7 @@ const SubEventHero = ({ eventId }) => {
               {
                 text: isMember
                   ? "You are already registered for the event"
-                  : "Register now here",
+                  : "Create New Team",
                 color: "#FFC107",
               },
             ]}
