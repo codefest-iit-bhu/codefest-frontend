@@ -442,10 +442,8 @@ export default [
     description: `
         <p>• It's a 5-day online live event, having challenges from different categories like image classification, object detection, image segmentation etc.</p>
         <p>• We will be conducting it on Kaggle.</p>
-        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</Link>.</p>
         <p>• Participants and their teams should be registered on the codefest website.</p>
-        <p>• Vista'24 will start on 24th March.</p>
-        <p>• The link to the competition will be shared via email to registered participants on 24th March at 12 PM IST.</p>
+        <p>• The link to the competition will be shared via email to registered participants.</p>
         `,
     rules: `
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
