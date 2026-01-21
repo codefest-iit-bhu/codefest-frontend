@@ -83,7 +83,7 @@ const ContactCard = ({ name, phone, text }) => {
     }, [name, phone, text]);
 
     return (
-        <div className="flex justify-center items-center transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-out">
+        <div className="flex justify-center items-center">
             <canvas
                 ref={canvasRef}
                 className="w-full max-w-md h-auto drop-shadow-2xl"

@@ -187,7 +187,7 @@ export default [
       "For further queries about this event, please contact Shubham Jain (+91 98322 41448), Yashvardhan (+91 9996008363)",
   },
 
-  {
+{
     id: "5",
     name: "HaXplore",
     title: "HaXplore",
@@ -201,81 +201,60 @@ export default [
     further_details: "https://discord.gg/6U3YmHenZw",
     overview: `
         <p>HaXplore stands as the premier hackathon organized as part of Codefest, the annual departmental fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi. This esteemed event serves as a dynamic platform where innovative minds from diverse domains converge to articulate their groundbreaking ideas. Participants come together to not only showcase their creativity but also engage in spirited competition as they strive for excellence. HaXplore fosters an environment that encourages collaboration and the exploration of cutting-edge solutions, making it a hub for transformative technological endeavors.</p>`,
-    description: `<p><b>From March 29th through April 1st</b>, the annual 72-Hour Hackathon will take place. This hackathon is a weekend-long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a tight 72-hour time constraint. By the deadline at the end of the day on March 3rd, teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
+    description: `
+        <p> From 31 Jan, the annual 72-Hour Hackathon will take place. This hackathon is a weekend-long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a tight 72-hour time constraint. By the deadline at the end of the day on April 1st, teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
+        `,
+    registration_and_team: `
+        <p>• Teams can consist of up to 3 members.</p>
+        <p>• Each participant must register individually on the Unstop Page and the CodeFest website. Please use the same email ID to register.</p>
+        <p>• Teams must submit their details and confirm their participation before the deadline. Late registrations will not be entertained.</p>
+        `,
+    prototype_submission: `
+        <p>• The hackathon will officially commence on 31st of January 2026 at 12:00 hours and conclude on February 3 at 12:00 hours.</p>
+        <p>• Themes will be emailed to registered participants on January 31st at 12:00 itself.</p>
+        <p>• Teams can work on developing a prototype based on their idea during this period.</p>
+        <p>• Teams must submit their final prototypes along with a presentation by 1st April EoD.</p>
+        <p>• Submissions will be judged based on creativity, functionality, and the impact of the solution.</p>
+        <p>• Shortlisted teams will be called and required to present their prototype in front of the judges (online meet).</p>
         `,
     rules: `
-        <ol>
-        <li><b>Registration and Team Formation</b>
-        <ul>
-        <li>Teams can consist of upto 3 members.</li>
-        <li>Each participant must register individually on the Unstop Page and the CodeFest website. Please use the same email ID to register.</li>
-        <li>Teams must submit their details and confirm their participation before the deadline. Late registrations will not be entertained.</li>
-        </ul>
-        </li>
-        <li><b>Prototype Submission and Presentation</b>
-        <ul>
-        <li>The hackathon will officially commence  on March 29th at 12:00 hours and conclude on April 1st at 12:00 hours.</li>
-        <li>Themes will be emailed to registered participants on March 29th at 12:00 itself.</li>
-        <li>Teams can work on developing a prototype based on their idea during this period.</li>
-        <li>Teams must submit their final prototypes along with a presentation by 1st April EoD.</li>
-        <li>Submissions will be judged based on creativity, functionality, and the impact of the solution.</li>
-        <li>Shortlisted teams will be called and required to present their prototype in front of the judges (online meet).</li>
-        </ul>
-        </li>
-        <li><b>General Guidelines</b>
-        <ul>
-        <li>Participants must adhere to a high standard of ethics and professionalism.</li>
-        <li>Plagiarism or any form of cheating is strictly prohibited and will lead to immediate disqualification.</li>
-        <li>The verdict of the judges will be final and binding in case of any discrepancies.</li>
-        </ul>
-        </li>
-        </ol>`,
-    submission: `<ol>
-        <li><b>GitHub Repository:</b>
-        <ul>
-        <li>Participants must create a public GitHub repository for their project.</li>
-        <li>The repository's creation date should be after the official announcement of the hackathon problem statements.</li>
-        <li>The repository should consist of regular commits.</li>
-        </ul>
-        </li>
-        <li><b>Documentation:</b>
-        <ul>
-        <li>Comprehensive documentation detailing the problem statement, solution architecture, and implementation details.</li>
-        </ul>
-        </li>
-        <li><b>Code Quality:</b>
-        <ul>
-        <li>Well-organized and commented code for ease of understanding.</li>
-        <li>Use of best practices in coding and adherence to coding standards.</li>
-        </ul>
-        </li>
-        <li><b>Demonstration:</b>
-        <ul>
-        <li>A video demonstration along with a presentation showcasing the functionality of the developed solution.</li>
-        <li>Provide clear instructions on how to run and test the project.</li>
-        </ul>
-        </li>
-        <li><b>Evaluation Criteria:</b>
-        <ul>
-        <li>Innovation and Creativity.</li>
-        <li>Technical Complexity.</li>
-        <li>Effective use of special technologies for bonus points.</li>
-        <li>User Experience.</li>
-        <li>Documentation Quality.</li>
-        <li>Code Quality.</li>
-        </ul>
-        </li>
-        </ol>`,
+        <p>• Participants must adhere to a high standard of ethics and professionalism.</p>
+        <p>• Plagiarism or any form of cheating is strictly prohibited and will lead to immediate disqualification.</p>
+        <p>• The verdict of the judges will be final and binding in case of any discrepancies.</p>
+        `,
+    github_repository: `
+        <p>• Participants must create a public GitHub repository for their project.</p>
+        <p>• The repository's creation date should be after the official announcement of the hackathon problem statements.</p>
+        <p>• The repository should consist of regular commits.</p>
+        `,
+    documentation: `
+        <p>• Comprehensive documentation detailing the problem statement, solution architecture, and implementation details.</p>
+        `,
+    code_quality: `
+        <p>• Well-organized and commented code for ease of understanding.</p>
+        <p>• Use of best practices in coding and adherence to coding standards.</p>
+        `,
+    demonstration: `
+        <p>• A video demonstration along with a presentation showcasing the functionality of the developed solution.</p>
+        <p>• Provide clear instructions on how to run and test the project.</p>
+        `,
+    evaluation_criteria: `
+        <p>• Innovation and Creativity.</p>
+        <p>• Technical Complexity.</p>
+        <p>• Effective use of special technologies for bonus points.</p>
+        <p>• User Experience.</p>
+        <p>• Documentation Quality.</p>
+        <p>• Code Quality.</p>
+        `,
     prizes: [
       { rank: "1st", description: "Top 3 Participants", subText: "YEAR" },
       { rank: "2nd", description: "Best Sophomore", subText: "YEAR" },
-      { rank: "3rd", description: "Best Freshman", subText: "YEAR" },
     ],
     howto:
-      "<p>• Participants have to register on the CodeFest website and <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>\
-             <p>• Attempt the event using the same email that is registered on the codefest website.",
+      "<p>• Participants have to register on the CodeFest website before the deadline.</p>\
+             <p>• Attempt the event using the same email that is registered on the codefest website.</p>",
     contact: [{ name: "Ayush Kumar", phone: "+91 96930 40897" }],
-  },
+},
   {
     id: "6",
     name: "Enigma",
@@ -323,7 +302,6 @@ export default [
     prizes: [
       { rank: "1st", description: "Top 3 Participants", subText: "YEAR" },
       { rank: "2nd", description: "Best Sophomore", subText: "YEAR" },
-      { rank: "3rd", description: "Best Freshman", subText: "YEAR" },
     ],
     howto:
       "<p>• Participants have to register on the CodeFest website before the deadline.</p>\
@@ -352,9 +330,7 @@ export default [
         <p>• It's a 36-hour online live event, having challenges from different categories like reverse engineering, forensics, web exploration, cryptography, etc.</p>
         <p>• We will be conducting it on the CTFd platform. Link will be shared later.</p>
         <p>• Each category would have at least 3-4 challenges of difficulty ranging from Easy to Hard level.</p>
-        <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</Link></p>
         <p>• Participants have to register on the CodeFest website</p>
-        <p>• The CTF event will start on 30 January.</p>
         `,
     rules: `
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any a situation of malpractice arises.</p>
@@ -372,10 +348,9 @@ export default [
     prizes: [
       { rank: "1st", description: "Top 3 Participants", subText: "YEAR" },
       { rank: "2nd", description: "Best Sophomore", subText: "YEAR" },
-      { rank: "3rd", description: "Best Freshman", subText: "YEAR" },
     ],
     howto:
-      "<p>• Participants have to register on the CodeFest website and <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>\
+      "<p>• Participants have to register on the CodeFest website before the deadline.</p>\
              <p>• Attempt the event using the same email that is registered on the codefest website.",
     contact: [{ name: "Ayush Kumar", phone: "+91 96930 40897" }],
   },
@@ -397,9 +372,7 @@ export default [
         `,
     description: `
         <p>• Platform: Codechef</p>
-        <p>• Contest date: Will be conducted in April. Exact dates will be announced later.</p>
         <p>• Contest duration: 2 hours, from 8 PM.</p>
-        <p>• For information related to the contest and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</Link></p>
         <p>• Participants have to register on the CodeFest website</p>
         <p>• Problems will be visible at the start of the contest. Contest link will be emailed to registered participants.</p>
         `,
@@ -414,10 +387,9 @@ export default [
     prizes: [
       { rank: "1st", description: "Top 3 Participants", subText: "YEAR" },
       { rank: "2nd", description: "Best Sophomore", subText: "YEAR" },
-      { rank: "3rd", description: "Best Freshman", subText: "YEAR" },
     ],
     howto:
-      "<p>• Participants have to register on the CodeFest website and <a href='https://assessments.programmingpathshala.com/assessment/01JGNEBG8BWR13AVR5H4321QRC' target='_blank' class='text-blue-500 underline'>here</a> before the deadline.</p>\
+      "<p>• Participants have to register on the CodeFest websit before the deadline.</p>\
              <p>• Attempt the event using the same email that is registered on the codefest website.",
     contact: [{ name: "Ayush Kumar", phone: "+91 96930 40897" }],
   },
@@ -441,7 +413,6 @@ export default [
         `,
     description: `
         <p>• It's a 5-day online live event, having challenges from different categories like image classification, object detection, image segmentation etc.</p>
-        <p>• We will be conducting it on Kaggle.</p>
         <p>• Participants and their teams should be registered on the codefest website.</p>
         <p>• The link to the competition will be shared via email to registered participants.</p>
         `,
@@ -466,7 +437,6 @@ export default [
     prizes: [
       { rank: "1st", description: "Top 3 Participants", subText: "YEAR" },
       { rank: "2nd", description: "Best Sophomore", subText: "YEAR" },
-      { rank: "3rd", description: "Best Freshman", subText: "YEAR" },
     ],
     howto:
       "<p>• Participants have to register on the CodeFest website before the deadline.</p>\

@@ -127,13 +127,13 @@ const PrizeCard = ({ rank, subRank, description }) => {
 
     return (
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 p-4">
-            <div className="flex justify-center items-center drop-shadow-xl hover:scale-105 transition-transform duration-300">
+            <div className="flex justify-center items-center drop-shadow-xl">
                 <canvas
                     ref={circleCanvasRef}
                     className="w-32 h-32 md:w-40 md:h-40 object-contain"
                 />
             </div>
-            <div className="flex justify-center items-center drop-shadow-xl hover:scale-105 transition-transform duration-300">
+            <div className="flex justify-center items-center drop-shadow-xl">
                 <canvas
                     ref={squareCanvasRef}
                     className="w-64 h-32 md:w-[320px] md:h-[150px] object-contain"
