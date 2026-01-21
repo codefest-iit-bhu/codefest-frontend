@@ -16,7 +16,7 @@ const OverviewBg = ({ eventId }) => {
             >
                 <div className="w-[70%] h-[60%] overflow-y-auto custom-scrollbar flex">
                     <div
-                        className="m-auto font-mate-sc text-black text-center text-sm md:text-lg lg:text-xl font-bold leading-relaxed tracking-wide w-full"
+                        className="m-auto font-aladin text-black text-center text-sm md:text-lg lg:text-xl leading-relaxed tracking-wide w-full"
                         dangerouslySetInnerHTML={{ __html: event.overview }}
                     />
                 </div>

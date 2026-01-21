@@ -59,7 +59,7 @@ const PrizeCard = ({ rank, subRank, description }) => {
             // Draw Rank Text (Centered)
             if (subRank) {
                 // If subRank exists, draw both (e.g., "1st" and "YEAR")
-                circleCtx.font = "bold 60px 'Mate SC'";
+                circleCtx.font = "bold 40px 'Mate SC'";
                 circleCtx.fillText(rank, size / 2, size / 2 - 15);
 
                 circleCtx.font = "bold 30px 'Mate SC'";
@@ -86,7 +86,7 @@ const PrizeCard = ({ rank, subRank, description }) => {
             squareCtx.drawImage(squareImg, 0, 0, width, height);
 
             // Text Styles
-            squareCtx.font = "40px 'Mate SC'"; // Slightly smaller for description
+            squareCtx.font = "40px 'Aladin'"; // Slightly smaller for description
             squareCtx.fillStyle = "black";
             // squareCtx.fillStyle = "#3e2723"; // Dark brown fallback if black is too harsh
             squareCtx.textAlign = "center";
@@ -126,7 +126,7 @@ const PrizeCard = ({ rank, subRank, description }) => {
     }, [rank, subRank, description]);
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 p-4">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <div className="flex justify-center items-center drop-shadow-xl">
                 <canvas
                     ref={circleCanvasRef}

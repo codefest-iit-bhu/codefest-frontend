@@ -23,8 +23,8 @@ const SubEventDescription = ({ eventId }) => {
         canvas.height = img.height;
         ctx.drawImage(img, 0, 0);
 
-        const labelFont = "bold 24px 'Mate SC', serif";
-        const valueFont = "bold 20px 'Mate SC', serif";
+        const labelFont = "32px 'Aladin', serif";
+        const valueFont = "28px 'Aladin', serif";
         const labelColor = "#800000";
         const valueColor = "#000000";
 
@@ -156,7 +156,7 @@ const SubEventDescription = ({ eventId }) => {
     .map(
       (section) => `
             <div class="mb-6">
-                <h3 class="text-xl font-bold text-[#800000] text-center">${section.title}</h3>
+                <h3 class="text-xl text-[#800000] ">${section.title}</h3>
                 <div>${formatText(event[section.key])}</div>
             </div>
         `
@@ -206,7 +206,7 @@ const SubEventDescription = ({ eventId }) => {
             {/* Content Area */}
             <div className="absolute top-[14%] bottom-[14%] left-[14%] right-[10%] overflow-y-auto custom-scrollbar pr-4 text-justify">
               <div
-                className="font-mate-sc text-[#3e2723] text-l md:text-l font-semibold leading-relaxed"
+                className="font-aladin text-[#3e2723] text-l md:text-l leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: sections }}
               />
             </div>
