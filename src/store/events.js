@@ -385,9 +385,9 @@ export default [
     title: "Manthan",
     duration: "2 hours",
     max_members: 1,
-    date: "28 Jan, 2026",
-    last_date_reg: "28 jan, 2026",
-    deadline: "2026-01-28T19:59:59+05:30",
+    date: "4 Feb, 2026",
+    last_date_reg: "4 Feb, 2026",
+    deadline: "2026-02-04T19:59:59+05:30",
     image_desk_path: "/Manthan_bg.webp",
     further_details: "https://discord.gg/St3q2sCn",
     overview: `
