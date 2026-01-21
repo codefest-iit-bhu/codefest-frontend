@@ -202,7 +202,7 @@ export default [
     overview: `
         <p>HaXplore stands as the premier hackathon organized as part of Codefest, the annual departmental fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi. This esteemed event serves as a dynamic platform where innovative minds from diverse domains converge to articulate their groundbreaking ideas. Participants come together to not only showcase their creativity but also engage in spirited competition as they strive for excellence. HaXplore fosters an environment that encourages collaboration and the exploration of cutting-edge solutions, making it a hub for transformative technological endeavors.</p>`,
     description: `
-        <p> From 31 Jan, the annual 72-Hour Hackathon will take place. This hackathon is a weekend-long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a tight 72-hour time constraint. By the deadline at the end of the day on April 1st, teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
+        <p> From 31 Jan, the annual 72-Hour Hackathon will take place. This hackathon is a weekend-long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a tight 72-hour time constraint. By the deadline at the end of the day on 3 Feb, teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
         `,
     registration_and_team: `
         <p>• Teams can consist of up to 3 members.</p>
@@ -210,10 +210,10 @@ export default [
         <p>• Teams must submit their details and confirm their participation before the deadline. Late registrations will not be entertained.</p>
         `,
     prototype_submission: `
-        <p>• The hackathon will officially commence on 31st of January 2026 at 12:00 hours and conclude on February 3 at 12:00 hours.</p>
+        <p>• The hackathon will officially commence on 31st of January 2026 at 12:00 hours and conclude on February 3 at 00:00 hours.</p>
         <p>• Themes will be emailed to registered participants on January 31st at 12:00 itself.</p>
         <p>• Teams can work on developing a prototype based on their idea during this period.</p>
-        <p>• Teams must submit their final prototypes along with a presentation by 1st April EoD.</p>
+        <p>• Teams must submit their final prototypes along with a presentation by 3rd Feb.</p>
         <p>• Submissions will be judged based on creativity, functionality, and the impact of the solution.</p>
         <p>• Shortlisted teams will be called and required to present their prototype in front of the judges (online meet).</p>
         `,

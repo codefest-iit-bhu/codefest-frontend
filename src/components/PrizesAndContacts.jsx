@@ -51,9 +51,7 @@ const PrizesAndContacts = ({ eventId }) => {
           {prizes.map((prize, index) => (
             <div
               key={index}
-              className={`w-full ${
-                index % 2 !== 0 ? "lg:ml-8 xl:ml-20" : ""
-              }`}
+              className={`w-full`}
             >
               <PrizeCard
                 rank={prize.rank}
