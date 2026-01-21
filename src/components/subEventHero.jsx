@@ -104,6 +104,7 @@ const SubEventHero = ({ eventId }) => {
     const event = events.find((e) => e.id === eventId);
     const { isAuthenticated, user } = useUser();
     const navigate = useNavigate();
+    console.log(event.max_members);
 
     const [fontLoaded, setFontLoaded] = useState(false);
     const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
@@ -176,9 +177,11 @@ const SubEventHero = ({ eventId }) => {
         if (isMember) {
             // Already a member, maybe redirect to team or show message
             // For now, mirroring Arithmetica, maybe open WhatsApp or do nothing
-            if (event.unstop) window.open(event.unstop, "_blank");
+            // if (event.unstop) window.open(event.unstop, "_blank");
+            // return;
             return;
         }
+
 
         if (!isAuthenticated) {
             navigate("/login");
@@ -189,62 +192,99 @@ const SubEventHero = ({ eventId }) => {
         setIsRegistrationModalOpen(true);
     };
 
+    const handleJoinClick =()=>{
+        if (isMember) {
+          // Already a member, maybe redirect to team or show message
+          // For now, mirroring Arithmetica, maybe open WhatsApp or do nothing
+          if (event.unstop) window.open(event.unstop, "_blank");
+          return;
+        }
+
+        if (!isAuthenticated) {
+          navigate("/login");
+          return;
+        }
+
+        // Logic for opening modal
+        setIsJoinTeamModalOpen(true);
+    }
+
     return (
-        <div className="flex flex-col items-center justify-center w-full py-12 space-y-12 md:gap-12">
-            {/* Title */}
-            <h1 className="text-4xl md:text-6xl font-rye text-[#FFC107] text-center drop-shadow-lg tracking-wider">
-                {event.title}
-            </h1>
+      <div className="flex flex-col items-center justify-center w-full py-12 space-y-12 md:gap-12">
+        {/* Title */}
+        <h1 className="text-4xl md:text-6xl font-rye text-[#FFC107] text-center drop-shadow-lg tracking-wider">
+          {event.title}
+        </h1>
 
-            {/* Deadline Banner */}
-            <BannerCanvas
-                baseFontSize={32}
-                segments={[
-                    { text: "Registration Deadline: ", color: "#FFC107" },
-                    { text: deadlineText, color: "white" },
-                ]}
-                className="w-[90%] md:w-[600px]"
-            />
+        {/* Deadline Banner */}
+        <BannerCanvas
+          baseFontSize={32}
+          segments={[
+            { text: "Registration Deadline: ", color: "#FFC107" },
+            { text: deadlineText, color: "white" },
+          ]}
+          className="w-[90%] md:w-[600px]"
+        />
 
-            {/* Buttons */}
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-center w-full px-4">
-                {/* Register Button - Logic applied */}
-                {/* Visuals: usage of BannerCanvas */}
-                <BannerCanvas
-                    baseFontSize={24}
-                    onClick={handleRegisterClick}
-                    segments={[{ text: isMember ? "Joined (Click for details)" : "Register now here", color: "#FFC107" }]}
-                    className="w-[300px]"
-                />
+        {/* Buttons */}
+        <div className="flex flex-col md:flex-row gap-4 items-center justify-center w-full px-4">
+          {/* Register Button - Logic applied */}
+          {/* Visuals: usage of BannerCanvas */}
+          <BannerCanvas
+            baseFontSize={24}
+            onClick={handleRegisterClick}
+            segments={[
+              {
+                text: isMember
+                  ? "You are already registered for the event"
+                  : "Register now here",
+                color: "#FFC107",
+              },
+            ]}
+            className="w-[300px]"
+          />
+        { event.max_members>1 && <BannerCanvas
+            baseFontSize={24}
+            onClick={handleJoinClick}
+            segments={[
+              {
+                text: isMember
+                  ? "Click here for more details"
+                  : "Join a team",
+                color: "#FFC107",
+              },
+            ]}
+            className="w-[300px]"
+          />}
 
-                {/* Further Details Button */}
-                <BannerCanvas
-                    baseFontSize={35}
-                    onClick={() => {
-                        if (event.further_details) {
-                            window.open(event.further_details, "_blank");
-                        }
-                    }}
-                    segments={[
-                        { text: "Further details will be updated ", color: "#FFC107" },
-                        { text: "here", color: "#FFC107" },
-                    ]}
-                    className="w-[350px]"
-                />
-            </div>
-
-            {/* Modals */}
-            <TeamRegistrationModal
-                isOpen={isRegistrationModalOpen}
-                onClose={() => setIsRegistrationModalOpen(false)}
-                event={event}
-            />
-
-            <JoinTeamModal
-                isOpen={isJoinTeamModalOpen}
-                onClose={() => setIsJoinTeamModalOpen(false)}
-            />
+          {/* Further Details Button */}
+          {/* <BannerCanvas
+            baseFontSize={35}
+            onClick={() => {
+              if (event.further_details) {
+                window.open(event.further_details, "_blank");
+              }
+            }}
+            segments={[
+              { text: "Further details will be updated ", color: "#FFC107" },
+              { text: "here", color: "#FFC107" },
+            ]}
+            className="w-[350px]"
+          /> */}
         </div>
+
+        {/* Modals */}
+        <TeamRegistrationModal
+          isOpen={isRegistrationModalOpen}
+          onClose={() => setIsRegistrationModalOpen(false)}
+          event={event}
+        />
+        
+        <JoinTeamModal
+          isOpen={isJoinTeamModalOpen}
+          onClose={() => setIsJoinTeamModalOpen(false)}
+        />
+      </div>
     );
 };
 
