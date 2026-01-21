@@ -20,7 +20,9 @@ export default {
         pixelifySans: ['Pixelify Sans', 'sans-serif'],
         engagement:['Engagement','serif'],
         alegreya:['Alegreya','serif'],
+        'alex-brush':['Alex Brush','serif'],
         bree:['Bree Serif','serif'],
+        aladin:['Aladin','serif']
       },
     },
   },
