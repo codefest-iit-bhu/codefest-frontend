@@ -77,7 +77,6 @@ export default function DesktopEventsPage() {
 
             <div className="flex flex-col gap-8 md:gap-0">
               {sortedEvents
-                .filter((event) => event.id !== "6" && event.id !== "7")
                 .map((event, index) => {
                   const isLeft = index % 2 === 0;
                   //console.log(event);

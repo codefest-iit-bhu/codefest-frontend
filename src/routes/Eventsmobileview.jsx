@@ -38,7 +38,6 @@ export default function Eventsmobileview() {
                 new Date(a.date.split(",").slice(0, 2).join(",")) -
                 new Date(b.date.split(",").slice(0, 2).join(","))
             )
-            .filter((event) => event.id !== "6" && event.id !== "7")
             .map((event, index) => (
               <div key={event.name}>
                 <div className="flex">
