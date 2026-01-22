@@ -126,8 +126,23 @@ const PrizeCard = ({ rank, subRank, description }) => {
     }, [rank, subRank, description]);
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+        <div className="flex flex-row items-center justify-center gap-0 md:gap-4">
+        {rank==="2nd" ? 
+        <>
+             <div className="flex justify-center items-center drop-shadow-xl">
+                <canvas
+                    ref={squareCanvasRef}
+                    className="w-72 h-32 md:w-[320px] md:h-[150px] object-contain"
+                />
+            </div>
             <div className="flex justify-center items-center drop-shadow-xl">
+                <canvas
+                    ref={circleCanvasRef}
+                    className="w-32 h-32 md:w-40 md:h-40 object-contain"
+                />
+            </div>
+        </> : <>
+<div className="flex justify-center items-center drop-shadow-xl">
                 <canvas
                     ref={circleCanvasRef}
                     className="w-32 h-32 md:w-40 md:h-40 object-contain"
@@ -139,6 +154,9 @@ const PrizeCard = ({ rank, subRank, description }) => {
                     className="w-72 h-32 md:w-[320px] md:h-[150px] object-contain"
                 />
             </div>
+        </>  }
+       
+            
         </div>
     );
 };
