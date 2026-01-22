@@ -262,7 +262,7 @@ export default [
     title: "Enigma",
     max_members: 3,
     duration: "3 days",
-    date: "31 Jan 2026",
+    date: "31 Jan, 2026",
     unstop: "https://unstop.com/hackathons/enigma-iit-bhu-1625255",
     last_date_reg: "31 Jan, 2026",
     deadline: "2026-01-31T00:00:00+05:30",
