@@ -130,8 +130,13 @@ const CARegistration = () => {
       toast.error("Error updating status");
     }
   };
-
-
+  
+  const showRequestButton =
+    !userRequest ||
+    Object.keys(userRequest).length === 0 ||
+    userRequest.status === "pending" ||
+    userRequest.status === "rejected";
+    
 
   return (
     <div
@@ -148,12 +153,18 @@ const CARegistration = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-2 md:space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className={`space-y-2 md:space-y-4 ${
+            !showRequestButton ? "pointer-events-none opacity-80" : ""
+          }`}
+        >
           <CustomInput
             label="Institute Name"
             id="institute"
             type="text"
             value={formData.institute}
+            disabled={!showRequestButton}
             onChange={(e) =>
               setFormData({ ...formData, institute: e.target.value })
             }
@@ -165,6 +176,7 @@ const CARegistration = () => {
             type="text"
             isTextArea={true}
             value={formData.userDescription}
+            disabled={!showRequestButton}
             onChange={(e) =>
               setFormData({ ...formData, userDescription: e.target.value })
             }
@@ -175,6 +187,7 @@ const CARegistration = () => {
             id="graduation_year"
             type="number"
             value={formData.graduation_year}
+            disabled={!showRequestButton}
             onChange={(e) =>
               setFormData({ ...formData, graduation_year: e.target.value })
             }
@@ -185,6 +198,7 @@ const CARegistration = () => {
             id="contact_number"
             type="tel"
             value={formData.contact_number}
+            disabled={!showRequestButton}
             onChange={(e) =>
               setFormData({ ...formData, contact_number: e.target.value })
             }
@@ -195,6 +209,7 @@ const CARegistration = () => {
             id="whatsapp_number"
             type="tel"
             value={formData.whatsapp_number}
+            disabled={!showRequestButton}
             onChange={(e) =>
               setFormData({ ...formData, whatsapp_number: e.target.value })
             }
@@ -205,6 +220,7 @@ const CARegistration = () => {
             id="branch"
             type="text"
             value={formData.branch}
+            disabled={!showRequestButton}
             onChange={(e) =>
               setFormData({ ...formData, branch: e.target.value })
             }
@@ -217,21 +233,24 @@ const CARegistration = () => {
             value={formData.ca_brought_by}
             placeholder="Referral Code or Name of the referrer"
             required={false}
+            disabled={!showRequestButton}
             onChange={(e) =>
               setFormData({ ...formData, ca_brought_by: e.target.value })
             }
           />
 
-          <div className="flex justify-center mt-8 pt-4">
-            <button
-              type="submit"
-              className="bg-yellow-600/90 hover:bg-yellow-700 text-white font-rye text-xl py-3 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(234,179,8,0.5)] border-2 border-yellow-500/50"
-            >
-              {userRequest && Object.keys(userRequest).length > 0
-                ? "Update Request"
-                : "Submit Request"}
-            </button>
-          </div>
+          {showRequestButton && (
+            <div className="flex justify-center mt-8 pt-4">
+              <button
+                type="submit"
+                className="bg-yellow-600/90 hover:bg-yellow-700 text-white font-rye text-xl py-3 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(234,179,8,0.5)] border-2 border-yellow-500/50"
+              >
+                {userRequest && Object.keys(userRequest).length > 0
+                  ? "Update Request"
+                  : "Submit Request"}
+              </button>
+            </div>
+          )}
         </form>
 
         {/* User Requests Section - Kept consistent with new theme but simple */}
@@ -244,12 +263,13 @@ const CARegistration = () => {
               <p className="text-white text-lg mb-4">
                 <strong className="text-yellow-500">Status: </strong>
                 <span
-                  className={`${userRequest.status === "approved"
-                    ? "text-green-400"
-                    : userRequest.status === "rejected"
+                  className={`${
+                    userRequest.status === "approved"
+                      ? "text-green-400"
+                      : userRequest.status === "rejected"
                       ? "text-red-400"
                       : "text-yellow-400"
-                    } font-bold uppercase tracking-wider`}
+                  } font-bold uppercase tracking-wider`}
                 >
                   {userRequest.status}
                 </span>
@@ -324,6 +344,7 @@ const CARegistration = () => {
       </div>
     </div>
   );
+
 };
 
 export default CARegistration;
