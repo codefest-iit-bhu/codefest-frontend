@@ -187,7 +187,7 @@ export default [
       "For further queries about this event, please contact Shubham Jain (+91 98322 41448), Yashvardhan (+91 9996008363)",
   },
 
-{
+  {
     id: "5",
     name: "HaXplore",
     title: "HaXplore",
@@ -247,14 +247,15 @@ export default [
         <p>• Code Quality.</p>
         `,
     prizes: [
-      { rank: "1st", description: "Top 3 Participants", subText: "YEAR" },
-      { rank: "2nd", description: "Best Sophomore", subText: "YEAR" },
+      { rank: "1st", description: "Winner Team ₹15,000", subText: "Rank" },
+      { rank: "2nd", description: "First Runner-Up ₹10,000", subText: "Rank" },
+      { rank: "3rd", description: "Second Runner-Up ₹5,000", subText: "Rank" },
     ],
     howto:
       "<p>• Participants have to register on the CodeFest website before the deadline.</p>\
              <p>• Attempt the event using the same email that is registered on the codefest website.</p>",
     contact: [{ name: "Ayush Kumar", phone: "+91 96930 40897" }],
-},
+  },
   {
     id: "6",
     name: "Enigma",
@@ -300,8 +301,9 @@ export default [
         <p>• The prize is awarded to the entire team collectively.</p>
         `,
     prizes: [
-      { rank: "1st", description: "Top 3 Participants", subText: "YEAR" },
-      { rank: "2nd", description: "Best Sophomore", subText: "YEAR" },
+      { rank: "1st", description: "Winner Team ₹10,000", subText: "Rank" },
+      { rank: "2nd", description: "First Runner-Up ₹7000", subText: "Rank" },
+      { rank: "3rd", description: "Second Runner-Up ₹3000", subText: "Rank" },
     ],
     howto:
       "<p>• Participants have to register on the CodeFest website before the deadline.</p>\
@@ -346,8 +348,9 @@ export default [
         <p>• Teams are ranked by score. If two or more teams achieve the same score, then the tie will be broken by the total time taken to submit the last solution, resulting in a higher score.</p>
         `,
     prizes: [
-      { rank: "1st", description: "Top 3 Participants", subText: "YEAR" },
-      { rank: "2nd", description: "Best Sophomore", subText: "YEAR" },
+      { rank: "1st", description: "Winner Team ₹10,000", subText: "Rank" },
+      { rank: "2nd", description: "First Runner-Up ₹7000", subText: "Rank" },
+      { rank: "3rd", description: "Second Runner-Up ₹3000", subText: "Rank" },
     ],
     howto:
       "<p>• Participants have to register on the CodeFest website before the deadline.</p>\
@@ -385,8 +388,9 @@ export default [
         <p>• Normal scoring policies of Codechef contests apply.</p>
         `,
     prizes: [
-      { rank: "1st", description: "Top 3 Participants", subText: "YEAR" },
-      { rank: "2nd", description: "Best Sophomore", subText: "YEAR" },
+      { rank: "1st", description: "Winner Team ₹25,000", subText: "Rank" },
+      { rank: "2nd", description: "First Runner-Up ₹15,000", subText: "Rank" },
+      { rank: "3rd", description: "Second Runner-Up ₹10,000", subText: "Rank" },
     ],
     howto:
       "<p>• Participants have to register on the CodeFest websit before the deadline.</p>\
@@ -435,8 +439,9 @@ export default [
         <p>• The prize is awarded to the entire team collectively.</p>
         `,
     prizes: [
-      { rank: "1st", description: "Top 3 Participants", subText: "YEAR" },
-      { rank: "2nd", description: "Best Sophomore", subText: "YEAR" },
+      { rank: "1st", description: "Winner Team ₹10,000", subText: "Rank" },
+      { rank: "2nd", description: "First Runner-Up ₹7000", subText: "Rank" },
+      { rank: "3rd", description: "Second Runner-Up ₹3000", subText: "Rank" },
     ],
     howto:
       "<p>• Participants have to register on the CodeFest website before the deadline.</p>\

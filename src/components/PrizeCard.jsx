@@ -77,8 +77,8 @@ const PrizeCard = ({ rank, subRank, description }) => {
         squareImg.src = "/squareBg.png";
 
         squareImg.onload = () => {
-            const width = 450;
-            const height = 200;
+            const width = 500;
+            const height = 250;
             squareCanvas.width = width;
             squareCanvas.height = height;
 
@@ -136,7 +136,7 @@ const PrizeCard = ({ rank, subRank, description }) => {
             <div className="flex justify-center items-center drop-shadow-xl">
                 <canvas
                     ref={squareCanvasRef}
-                    className="w-64 h-32 md:w-[320px] md:h-[150px] object-contain"
+                    className="w-72 h-32 md:w-[320px] md:h-[150px] object-contain"
                 />
             </div>
         </div>

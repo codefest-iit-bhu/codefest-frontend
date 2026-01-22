@@ -76,7 +76,7 @@ const ContactCard = ({ name, phone, text }) => {
             nextY += 40;
 
             // 3. Draw Phone
-            ctx.font = "bold 22px 'Mate SC'";
+            ctx.font = "bold 22px 'Aladin'";
             ctx.fillStyle = "#FFD700"; // Gold for Phone
             ctx.fillText(`(${phone})`, centerX, nextY);
         };
