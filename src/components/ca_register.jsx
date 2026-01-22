@@ -4,6 +4,7 @@ import axios from "../utils/axiosInstance";
 import toast from "react-hot-toast";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import carBg from "../assets/CA_images/CArbg.webp";
+import Spinner from "./Spinner";
 
 // Custom Input Component for consistent styling
 const CustomInput = ({
@@ -131,7 +132,7 @@ const CARegistration = () => {
       );
       toast.success("Status updated");
       setUserRequest(updatedRequest.data ? updatedRequest.data : {});
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       toast.error("Error updating status");
     }
@@ -253,13 +254,7 @@ const CARegistration = () => {
                 className="bg-yellow-600/90 hover:bg-yellow-700 text-white font-rye text-xl py-3 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(234,179,8,0.5)] border-2 border-yellow-500/50 disabled:opacity-50 disabled:cursor-not-allowed" // ADD disabled styles
               >
                 {isSubmitting ? ( // ADD THIS CONDITIONAL
-                  <span className="flex items-center gap-2">
-                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                    </svg>
-                    Submitting...
-                  </span>
+                  <Spinner/>
                 ) : (
                   userRequest && Object.keys(userRequest).length > 0
                     ? "Update Request"
