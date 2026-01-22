@@ -15,6 +15,7 @@ const CustomInput = ({
   required = true,
   placeholder = "",
   isTextArea = false,
+  disabled = false, 
 }) => (
   <div className="mb-6">
     <label
@@ -93,11 +94,14 @@ const CARegistration = () => {
     fetchRequest();
   }, []);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true); // ADD THIS LINE
     try {
       if (userRequest && Object.keys(userRequest).length > 0) {
-        handleUpdateStatus(userRequest._id);
+        await handleUpdateStatus(userRequest._id); // ADD 'await' HERE
       } else {
         const response = await axios.post("/ca", formData, {
           headers: {
@@ -109,6 +113,8 @@ const CARegistration = () => {
       }
     } catch (error) {
       toast.error("Error submitting request");
+    } finally {
+      setIsSubmitting(false); // ADD THIS LINE
     }
   };
 
@@ -164,7 +170,7 @@ const CARegistration = () => {
             id="institute"
             type="text"
             value={formData.institute}
-            disabled={!showRequestButton}
+            disabled={!showRequestButton || isSubmitting}
             onChange={(e) =>
               setFormData({ ...formData, institute: e.target.value })
             }
@@ -176,7 +182,7 @@ const CARegistration = () => {
             type="text"
             isTextArea={true}
             value={formData.userDescription}
-            disabled={!showRequestButton}
+            disabled={!showRequestButton || isSubmitting}
             onChange={(e) =>
               setFormData({ ...formData, userDescription: e.target.value })
             }
@@ -187,7 +193,7 @@ const CARegistration = () => {
             id="graduation_year"
             type="number"
             value={formData.graduation_year}
-            disabled={!showRequestButton}
+            disabled={!showRequestButton || isSubmitting}
             onChange={(e) =>
               setFormData({ ...formData, graduation_year: e.target.value })
             }
@@ -198,7 +204,7 @@ const CARegistration = () => {
             id="contact_number"
             type="tel"
             value={formData.contact_number}
-            disabled={!showRequestButton}
+            disabled={!showRequestButton || isSubmitting}
             onChange={(e) =>
               setFormData({ ...formData, contact_number: e.target.value })
             }
@@ -209,7 +215,7 @@ const CARegistration = () => {
             id="whatsapp_number"
             type="tel"
             value={formData.whatsapp_number}
-            disabled={!showRequestButton}
+            disabled={!showRequestButton || isSubmitting}
             onChange={(e) =>
               setFormData({ ...formData, whatsapp_number: e.target.value })
             }
@@ -220,7 +226,7 @@ const CARegistration = () => {
             id="branch"
             type="text"
             value={formData.branch}
-            disabled={!showRequestButton}
+            disabled={!showRequestButton || isSubmitting}
             onChange={(e) =>
               setFormData({ ...formData, branch: e.target.value })
             }
@@ -233,7 +239,7 @@ const CARegistration = () => {
             value={formData.ca_brought_by}
             placeholder="Referral Code or Name of the referrer"
             required={false}
-            disabled={!showRequestButton}
+            disabled={!showRequestButton || isSubmitting}
             onChange={(e) =>
               setFormData({ ...formData, ca_brought_by: e.target.value })
             }
@@ -243,11 +249,22 @@ const CARegistration = () => {
             <div className="flex justify-center mt-8 pt-4">
               <button
                 type="submit"
-                className="bg-yellow-600/90 hover:bg-yellow-700 text-white font-rye text-xl py-3 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(234,179,8,0.5)] border-2 border-yellow-500/50"
+                disabled={isSubmitting} // ADD THIS LINE
+                className="bg-yellow-600/90 hover:bg-yellow-700 text-white font-rye text-xl py-3 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(234,179,8,0.5)] border-2 border-yellow-500/50 disabled:opacity-50 disabled:cursor-not-allowed" // ADD disabled styles
               >
-                {userRequest && Object.keys(userRequest).length > 0
-                  ? "Update Request"
-                  : "Submit Request"}
+                {isSubmitting ? ( // ADD THIS CONDITIONAL
+                  <span className="flex items-center gap-2">
+                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                    Submitting...
+                  </span>
+                ) : (
+                  userRequest && Object.keys(userRequest).length > 0
+                    ? "Update Request"
+                    : "Submit Request"
+                )}
               </button>
             </div>
           )}
