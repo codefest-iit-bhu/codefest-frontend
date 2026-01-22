@@ -99,10 +99,10 @@ const CARegistration = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true); // ADD THIS LINE
+    setIsSubmitting(true); 
     try {
       if (userRequest && Object.keys(userRequest).length > 0) {
-        await handleUpdateStatus(userRequest._id); // ADD 'await' HERE
+        await handleUpdateStatus(userRequest._id);
       } else {
         const response = await axios.post("/ca", formData, {
           headers: {
@@ -115,7 +115,7 @@ const CARegistration = () => {
     } catch (error) {
       toast.error("Error submitting request");
     } finally {
-      setIsSubmitting(false); // ADD THIS LINE
+      setIsSubmitting(false);
     }
   };
 
@@ -130,7 +130,7 @@ const CARegistration = () => {
           },
         }
       );
-      toast.success("Status updated");
+      toast.success("Details updated");
       setUserRequest(updatedRequest.data ? updatedRequest.data : {});
       // window.location.reload();
     } catch (error) {
@@ -250,10 +250,10 @@ const CARegistration = () => {
             <div className="flex justify-center mt-8 pt-4">
               <button
                 type="submit"
-                disabled={isSubmitting} // ADD THIS LINE
-                className="bg-yellow-600/90 hover:bg-yellow-700 text-white font-rye text-xl py-3 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(234,179,8,0.5)] border-2 border-yellow-500/50 disabled:opacity-50 disabled:cursor-not-allowed" // ADD disabled styles
+                disabled={isSubmitting}
+                className="bg-yellow-600/90 hover:bg-yellow-700 text-white font-rye text-xl py-3 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(234,179,8,0.5)] border-2 border-yellow-500/50 disabled:opacity-50 disabled:cursor-not-allowed" 
               >
-                {isSubmitting ? ( // ADD THIS CONDITIONAL
+                {isSubmitting ? (
                   <Spinner/>
                 ) : (
                   userRequest && Object.keys(userRequest).length > 0
