@@ -234,11 +234,11 @@ const CARegistration = () => {
           />
 
           <CustomInput
-            label="Referred By"
+            label="Referred By (Enter their referral code)"
             id="ca_brought_by"
             type="text"
             value={formData.ca_brought_by}
-            placeholder="Referral Code or Name of the referrer"
+            placeholder="Referral Code"
             required={false}
             disabled={!showRequestButton || isSubmitting}
             onChange={(e) =>

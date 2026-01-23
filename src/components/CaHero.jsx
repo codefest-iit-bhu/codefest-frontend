@@ -11,7 +11,7 @@ const CaHero = () => {
       <div className="ca-hero flex flex-col items-center justify-center p-4 md:p-8 text-[#fbea8c]">
         <div className="text-center my-4 md:my-8 relative w-full max-w-md md:max-w-xl duration-300 hover:scale-105">
           <img src={redBtn} alt="" className="w-full drop-shadow-lg" />
-          <h1 className="absolute inset-0 flex items-center justify-center text-white font-bold text-xl md:text-3xl tracking-wider pt-2">
+          <h1 className="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl md:text-4xl tracking-wider pt-2">
             <span className="px-10 md:px-0 text-[#fbea8c] font-great-vibes">
               Be a Campus Ambassador
             </span>
@@ -24,7 +24,7 @@ const CaHero = () => {
             className="relative group w-64 md:w-72 transition-transform duration-300 hover:scale-105"
           >
             <img src={redBtn} alt="" className="w-full drop-shadow-md" />
-            <div className="absolute inset-0 flex items-center justify-center text-[#fbea8c] font-bold text-lg md:text-xl pt-1 font-great-vibes">
+            <div className="absolute inset-0 flex items-center justify-center text-[#fbea8c] font-bold text-2xl md:text-3xl pt-1 font-great-vibes">
               Register Now
             </div>
           </Link>
@@ -33,7 +33,7 @@ const CaHero = () => {
             className="relative group w-64 md:w-72 transition-transform duration-300 hover:scale-105"
           >
             <img src={blueBtn} alt="" className="w-full drop-shadow-md" />
-            <div className="absolute inset-0 flex items-center justify-center text-[#fbea8c] font-bold text-lg md:text-xl pt-1 font-great-vibes">
+            <div className="absolute inset-0 flex items-center justify-center text-[#fbea8c] font-bold text-2xl md:text-3xl pt-1 font-great-vibes">
               Leaderboard
             </div>
           </Link>
@@ -53,7 +53,7 @@ const CaHero = () => {
         </div>
 
         <div className="flex flex-row items-center justify-center mt-12 md:mt-16 animate-pulse gap-6">
-          <span className="text-3xl md:text-5xl lg:text-7xl text-white font-pixelifySans drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] text-center font-great-vibes">
+          <span className="text-5xl md:text-7xl lg:text-9xl text-white font-ingrid-darling drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] text-center font-great-vibes">
             Did you ask why?
           </span>
           <span className="flex items-center">
