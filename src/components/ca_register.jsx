@@ -346,7 +346,7 @@ const CARegistration = () => {
                     onClick={() => handleUpdateStatus(userRequest._id)}
                     className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-6 py-2 rounded-lg transition-transform hover:scale-105"
                   >
-                    Mark as Done
+                    Re-apply
                   </button>
                 </div>
               )}
