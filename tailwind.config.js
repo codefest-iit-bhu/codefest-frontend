@@ -22,7 +22,8 @@ export default {
         alegreya:['Alegreya','serif'],
         'alex-brush':['Alex Brush','serif'],
         bree:['Bree Serif','serif'],
-        aladin:['Aladin','serif']
+        aladin:['Aladin','serif'],
+        'ingrid-darling':['Ingrid Darling','serif']
       },
     },
   },
