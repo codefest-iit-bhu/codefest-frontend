@@ -310,7 +310,7 @@ const CARegistration = () => {
 
                   <div className="bg-blue-900/20 p-4 rounded border border-blue-500/30 text-sm text-gray-200">
                     <p>
-                      Share this link to earn 10 points for signups and 10
+                      Share this link to earn 20 points for signups and 10
                       points for event participation!
                     </p>
                   </div>
@@ -346,7 +346,7 @@ const CARegistration = () => {
                     onClick={() => handleUpdateStatus(userRequest._id)}
                     className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-6 py-2 rounded-lg transition-transform hover:scale-105"
                   >
-                    Mark as Done
+                    Re-apply
                   </button>
                 </div>
               )}
