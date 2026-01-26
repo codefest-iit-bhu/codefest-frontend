@@ -405,7 +405,7 @@ export default [
     title: "Vista",
     unstop: "https://unstop.com/hackathons/vista-2026-iit-varanasi-1623682",
     duration: "5 days",
-    date: "TBA",
+    date: "30 Jan, 2026",
     last_date_reg: "30 Jan, 2026",
     deadline: "2026-01-30T18:00:00+05:30",
     image_desk_path: "/Vista_bg.webp",
