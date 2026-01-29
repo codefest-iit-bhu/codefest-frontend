@@ -9,11 +9,12 @@ function StockGameAdmin() {
   const [showAllGames, setShowAllGames] = useState(false);
   const [leaderboard, setLeaderboard] = useState([]);
   const [selectedGameId, setSelectedGameId] = useState(null);
+  const [selectedGameStatus, setSelectedGameStatus] = useState(null);
 
   // Form state for creating game
   const [formData, setFormData] = useState({
     initialBalance: 100000,
-    roundDuration: 30, // 30 seconds for testing
+    roundDuration: 30,
     totalRounds: 10,
     scheduledStartTime: "",
     stocks: Array(10)
@@ -29,7 +30,15 @@ function StockGameAdmin() {
   useEffect(() => {
     fetchActiveGames();
     fetchAllGames();
-  }, []);
+    const interval = setInterval(() => {
+      fetchActiveGames();
+      fetchAllGames();
+      if (selectedGameId) {
+        fetchLeaderboard(selectedGameId, true);
+      }
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [selectedGameId]);
 
   const fetchActiveGames = async () => {
     try {
@@ -55,7 +64,7 @@ function StockGameAdmin() {
     }
   };
 
-  const fetchLeaderboard = async (gameId) => {
+  const fetchLeaderboard = async (gameId, silent = false) => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.get(`/stockGame/leaderboard/${gameId}`, {
@@ -63,9 +72,15 @@ function StockGameAdmin() {
       });
       setLeaderboard(res.data.leaderboard);
       setSelectedGameId(gameId);
+      setSelectedGameStatus(res.data.gameStatus);
+      if (!silent) {
+        toast.success("Leaderboard loaded");
+      }
     } catch (error) {
       console.error("Error fetching leaderboard:", error);
-      toast.error("Failed to fetch leaderboard");
+      if (!silent) {
+        toast.error("Failed to fetch leaderboard");
+      }
     }
   };
 
@@ -85,7 +100,6 @@ function StockGameAdmin() {
     try {
       const token = localStorage.getItem("token");
 
-      // Validate scheduled start time if provided
       if (formData.scheduledStartTime) {
         const scheduledTime = new Date(formData.scheduledStartTime);
         if (scheduledTime <= new Date()) {
@@ -98,13 +112,9 @@ function StockGameAdmin() {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      if (formData.scheduledStartTime) {
-        toast.success(
-          `Game created! Will start automatically at ${new Date(formData.scheduledStartTime).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}`
-        );
-      } else {
-        toast.success("Game created successfully!");
-      }
+      toast.success(
+        `Game created! Scheduled for ${new Date(formData.scheduledStartTime).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}`
+      );
 
       setShowCreateForm(false);
       fetchActiveGames();
@@ -130,7 +140,7 @@ function StockGameAdmin() {
       fetchAllGames();
     } catch (error) {
       console.error("Error starting game:", error);
-      toast.error("Failed to start game");
+      toast.error(error.response?.data?.error || "Failed to start game");
     }
   };
 
@@ -147,6 +157,9 @@ function StockGameAdmin() {
       toast.success(res.data.message);
       fetchActiveGames();
       fetchAllGames();
+      if (selectedGameId === gameId) {
+        fetchLeaderboard(gameId, true);
+      }
     } catch (error) {
       console.error("Error advancing round:", error);
       toast.error("Failed to advance round");
@@ -225,12 +238,26 @@ function StockGameAdmin() {
     toast.success("Sample data loaded!");
   };
 
-  const formatDateTimeLocal = (date) => {
-    if (!date) return "";
-    const d = new Date(date);
-    const offset = d.getTimezoneOffset();
-    const localDate = new Date(d.getTime() - offset * 60 * 1000);
-    return localDate.toISOString().slice(0, 16);
+  const getStatusBadge = (game) => {
+    if (game.status === "finished") {
+      return (
+        <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-600">
+          Finished
+        </span>
+      );
+    }
+    if (game.status === "active") {
+      return (
+        <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-600 animate-pulse">
+          LIVE
+        </span>
+      );
+    }
+    return (
+      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-600">
+        Scheduled
+      </span>
+    );
   };
 
   return (
@@ -314,7 +341,7 @@ function StockGameAdmin() {
               </div>
               <div>
                 <label className="block text-sm mb-2">
-                  Scheduled Start (IST) - Optional
+                  Scheduled Start (IST) - Required
                 </label>
                 <input
                   type="datetime-local"
@@ -326,6 +353,7 @@ function StockGameAdmin() {
                     })
                   }
                   className="w-full bg-gray-700 rounded px-4 py-2"
+                  required
                 />
               </div>
             </div>
@@ -370,7 +398,7 @@ function StockGameAdmin() {
                   </div>
                   <div>
                     <label className="text-sm text-gray-300 mb-2 block">
-                      Percent Changes (10 years)
+                      Percent Changes (10 rounds)
                     </label>
                     <div className="grid grid-cols-5 gap-2">
                       {stock.percentChanges.map((change, changeIndex) => (
@@ -387,7 +415,7 @@ function StockGameAdmin() {
                             )
                           }
                           className="bg-gray-600 rounded px-2 py-1 text-sm"
-                          placeholder={`Y${changeIndex}`}
+                          placeholder={`R${changeIndex}`}
                         />
                       ))}
                     </div>
@@ -405,71 +433,71 @@ function StockGameAdmin() {
           </div>
         )}
 
-        {/* Active Games */}
+        {/* Active/Scheduled Games */}
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
-          <h2 className="text-2xl font-bold mb-4">Active Games</h2>
+          <h2 className="text-2xl font-bold mb-4">Active & Scheduled Games</h2>
           {games.length === 0 ? (
-            <p className="text-gray-400">No active games</p>
+            <p className="text-gray-400">No active or scheduled games</p>
           ) : (
             <div className="space-y-4">
               {games.map((game) => (
-                <div key={game._id} className="bg-gray-700 rounded-lg p-4">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="font-bold">Game ID: {game._id}</p>
-                      <p className="text-sm text-gray-300">
-                        Round {game.currentRound} of {game.totalRounds - 1}
-                      </p>
-                      <p className="text-sm text-gray-300">
-                        Status:{" "}
-                        {game.isActive
-                          ? "Active"
-                          : game.scheduledStartTime &&
-                              new Date(game.scheduledStartTime) > new Date()
-                            ? "Scheduled"
-                            : game.currentRound >= game.totalRounds - 1
-                              ? "Finished"
-                              : "Inactive"}
-                      </p>
-                      {game.scheduledStartTime &&
-                        !game.isActive &&
-                        new Date(game.scheduledStartTime) > new Date() && (
-                          <p className="text-sm text-yellow-400">
-                            Starts:{" "}
+                <div
+                  key={game._id}
+                  className="bg-gray-700 rounded-lg p-4 border-l-4 border-blue-500"
+                >
+                  <div className="flex justify-between items-center flex-wrap gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <p className="font-bold text-lg">
+                          Game #{game._id.slice(-8)}
+                        </p>
+                        {getStatusBadge(game)}
+                      </div>
+                      <div className="text-sm text-gray-300 space-y-1">
+                        {game.status === "scheduled" && (
+                          <p className="text-yellow-400">
+                            📅 Starts:{" "}
                             {new Date(game.scheduledStartTime).toLocaleString(
                               "en-IN",
                               { timeZone: "Asia/Kolkata" }
                             )}
                           </p>
                         )}
-                      {game.scheduledStartTime &&
-                        !game.isActive &&
-                        new Date(game.scheduledStartTime) <= new Date() && (
-                          <p className="text-sm text-red-400">
-                            Should have started - Click "Start Now"
+                        {game.status === "active" && (
+                          <p>
+                            🎮 Round {game.currentRound + 1 } of{" "}
+                            {game.totalRounds}
                           </p>
                         )}
+                        <p>
+                          ⏱️ {game.roundDuration}s per round | 💰 $
+                          {game.initialBalance.toLocaleString()}
+                        </p>
+                      </div>
                     </div>
                     <div className="flex gap-2">
-                      {!game.isActive && (
-                        <button
-                          onClick={() => startGame(game._id)}
-                          className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg"
-                        >
-                          Start Now
-                        </button>
-                      )}
-                      {game.isActive && (
+                      {game.status === "scheduled" &&
+                        new Date(game.scheduledStartTime) <= new Date() && (
+                          <button
+                            onClick={() => startGame(game._id)}
+                            className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg font-semibold"
+                          >
+                            Start Game
+                          </button>
+                        )}
+                      {game.status === "active" && (
                         <button
                           onClick={() => advanceRound(game._id)}
-                          className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg"
+                          className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-semibold"
                         >
-                          Next Round
+                          {game.currentRound >= game.totalRounds - 1
+                            ? "End Game"
+                            : "Next Round"}
                         </button>
                       )}
                       <button
                         onClick={() => fetchLeaderboard(game._id)}
-                        className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg"
+                        className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg font-semibold"
                       >
                         Leaderboard
                       </button>
@@ -481,7 +509,7 @@ function StockGameAdmin() {
           )}
         </div>
 
-        {/* All Games (Including Finished) */}
+        {/* All Games Table */}
         {showAllGames && (
           <div className="bg-gray-800 rounded-lg p-6 mb-6">
             <h2 className="text-2xl font-bold mb-4">All Games</h2>
@@ -502,16 +530,10 @@ function StockGameAdmin() {
                   <tbody>
                     {allGames.map((game) => (
                       <tr key={game._id} className="border-b border-gray-700">
-                        <td className="py-3 px-4 text-sm">{game._id}</td>
-                        <td className="py-3 px-4">
-                          <span
-                            className={`px-2 py-1 rounded text-xs ${
-                              game.isActive ? "bg-green-600" : "bg-gray-600"
-                            }`}
-                          >
-                            {game.isActive ? "Active" : "Finished"}
-                          </span>
+                        <td className="py-3 px-4 text-sm">
+                          #{game._id.slice(-8)}
                         </td>
+                        <td className="py-3 px-4">{getStatusBadge(game)}</td>
                         <td className="py-3 px-4">
                           {game.currentRound} / {game.totalRounds - 1}
                         </td>
@@ -523,7 +545,7 @@ function StockGameAdmin() {
                             onClick={() => fetchLeaderboard(game._id)}
                             className="bg-purple-600 hover:bg-purple-700 px-3 py-1 rounded text-sm"
                           >
-                            View Leaderboard
+                            View
                           </button>
                         </td>
                       </tr>
@@ -535,19 +557,30 @@ function StockGameAdmin() {
           </div>
         )}
 
-        {/* Leaderboard */}
+        {/* Live Leaderboard */}
         {selectedGameId && leaderboard.length > 0 && (
           <div className="bg-gray-800 rounded-lg p-6">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold">Leaderboard</h2>
+              <div>
+                <h2 className="text-2xl font-bold">
+                  {selectedGameStatus === "active"
+                    ? "Live Leaderboard 🔴"
+                    : "Final Leaderboard"}
+                </h2>
+                <p className="text-sm text-gray-400">
+                  {selectedGameStatus === "active"
+                    ? "Updates every 3 seconds"
+                    : "Game has ended"}
+                </p>
+              </div>
               <button
                 onClick={() => {
                   setLeaderboard([]);
                   setSelectedGameId(null);
                 }}
-                className="text-gray-400 hover:text-white"
+                className="text-gray-400 hover:text-white text-xl"
               >
-                Close
+                ✕ Close
               </button>
             </div>
             <div className="overflow-x-auto">
@@ -557,16 +590,19 @@ function StockGameAdmin() {
                     <th className="text-left py-3 px-4">Rank</th>
                     <th className="text-left py-3 px-4">Player</th>
                     <th className="text-left py-3 px-4">Email</th>
-                    <th className="text-right py-3 px-4">Final Score</th>
+                    <th className="text-right py-3 px-4">Score</th>
                     <th className="text-right py-3 px-4">Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {leaderboard.map((player, index) => (
-                    <tr key={player._id} className="border-b border-gray-700">
+                    <tr
+                      key={player._id}
+                      className="border-b border-gray-700 hover:bg-gray-700"
+                    >
                       <td className="py-3 px-4">
                         <span
-                          className={`font-bold ${
+                          className={`font-bold text-lg ${
                             index === 0
                               ? "text-yellow-400"
                               : index === 1
@@ -577,15 +613,18 @@ function StockGameAdmin() {
                           }`}
                         >
                           {index + 1}
+                          {index === 0 && " 🏆"}
+                          {index === 1 && " 🥈"}
+                          {index === 2 && " 🥉"}
                         </span>
                       </td>
                       <td className="py-3 px-4">
                         {player.user?.name || "N/A"}
                       </td>
-                      <td className="py-3 px-4">
+                      <td className="py-3 px-4 text-sm text-gray-400">
                         {player.user?.email || "N/A"}
                       </td>
-                      <td className="py-3 px-4 text-right font-bold">
+                      <td className="py-3 px-4 text-right font-bold text-green-400 text-lg">
                         ${player.finalScore?.toLocaleString() || 0}
                       </td>
                       <td className="py-3 px-4 text-right">

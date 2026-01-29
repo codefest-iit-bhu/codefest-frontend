@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Linker from "./Link";
 import LogoutButton from "../components/LogoutButton";
 import { useUser } from "../context/context";
 import { Link } from "react-router-dom";
-import axios from "../utils/axiosInstance";
 
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { isAuthenticated, user } = useUser();
-  const [activeGameId, setActiveGameId] = useState(null);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -17,29 +15,6 @@ function Navbar() {
   const closeSidebar = () => {
     setIsSidebarOpen(false);
   };
-
-  // Fetch active game ID for user link
-  useEffect(() => {
-    const fetchActiveGame = async () => {
-      if (isAuthenticated) {
-        try {
-          const token = localStorage.getItem("token");
-          const res = await axios.get("/stockGame/active", {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          if (res.data.games && res.data.games.length > 0) {
-            setActiveGameId(res.data.games[0]._id);
-          }
-        } catch (error) {
-          console.error("Error fetching active game:", error);
-        }
-      }
-    };
-    fetchActiveGame();
-    // Refresh every 30 seconds to check for new games
-    const interval = setInterval(fetchActiveGame, 30000);
-    return () => clearInterval(interval);
-  }, [isAuthenticated]);
 
   return (
     <>
@@ -61,14 +36,7 @@ function Navbar() {
           {isAuthenticated ? (
             <>
               <Linker text="My Teams" href="/myTeams" />
-
-              {/* Stock Game Link - Shows for all authenticated users */}
-              {activeGameId && (
-                <Linker
-                  text="Stock Game"
-                  href={`/stock-game/${activeGameId}`}
-                />
-              )}
+              <Linker text="Games" href="/games" />
 
               {/* Admin Only - Stock Game Admin */}
               {user?.role === "admin" && (
@@ -159,15 +127,12 @@ function Navbar() {
                   MyTeams
                 </Link>
 
-                {/* Stock Game Link - Shows for all authenticated users */}
-                {activeGameId && (
-                  <Link
-                    to={`/stock-game/${activeGameId}`}
-                    className="h-[10%] w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5"
-                  >
-                    Stock Game
-                  </Link>
-                )}
+                <Link
+                  to="/games"
+                  className="h-[10%] w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5"
+                >
+                  Games
+                </Link>
 
                 {/* Admin Only - Stock Game Admin */}
                 {user?.role === "admin" && (

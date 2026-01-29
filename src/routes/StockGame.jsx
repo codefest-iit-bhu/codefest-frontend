@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "../utils/axiosInstance";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function StockGame() {
   const { gameId } = useParams();
+  const navigate = useNavigate();
   const [gameState, setGameState] = useState(null);
   const [stocks, setStocks] = useState([]);
   const [playerGame, setPlayerGame] = useState(null);
@@ -13,20 +14,20 @@ function StockGame() {
   const [units, setUnits] = useState("");
   const [transactionType, setTransactionType] = useState("buy");
   const [timeRemaining, setTimeRemaining] = useState(0);
-  const [myGames, setMyGames] = useState([]);
-  const [showHistory, setShowHistory] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
     if (gameId) {
       fetchGameState();
-      const interval = setInterval(fetchGameState, 5000); // Refresh every 5 seconds
+      fetchLeaderboard();
+      const interval = setInterval(() => {
+        fetchGameState();
+        fetchLeaderboard();
+      }, 5000); // Refresh every 5 seconds
       return () => clearInterval(interval);
     }
   }, [gameId]);
-
-  useEffect(() => {
-    fetchMyGames();
-  }, []);
 
   useEffect(() => {
     if (gameState && gameState.timeRemaining > 0) {
@@ -59,15 +60,15 @@ function StockGame() {
     }
   };
 
-  const fetchMyGames = async () => {
+  const fetchLeaderboard = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("/stockGame/my-games", {
+      const res = await axios.get(`/stockGame/leaderboard/${gameId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setMyGames(res.data.games);
+      setLeaderboard(res.data.leaderboard);
     } catch (error) {
-      console.error("Error fetching my games:", error);
+      console.error("Error fetching leaderboard:", error);
     }
   };
 
@@ -92,6 +93,11 @@ function StockGame() {
   const handleTransaction = async () => {
     if (!selectedStock || !units || units <= 0) {
       toast.error("Please select a stock and enter valid units");
+      return;
+    }
+
+    if (timeRemaining <= 0) {
+      toast.error("Time expired for this round");
       return;
     }
 
@@ -121,6 +127,7 @@ function StockGame() {
       setUnits("");
       setSelectedStock(null);
       fetchGameState();
+      fetchLeaderboard();
     } catch (error) {
       console.error("Error in transaction:", error);
       toast.error(error.response?.data?.error || "Transaction failed");
@@ -152,6 +159,13 @@ function StockGame() {
     return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
 
+  const getMyRank = () => {
+    const myIndex = leaderboard.findIndex(
+      (player) => player.user?._id === playerGame?.user
+    );
+    return myIndex !== -1 ? myIndex + 1 : "-";
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-900">
@@ -160,77 +174,77 @@ function StockGame() {
     );
   }
 
+  // Game not joined yet
   if (!playerGame) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 to-indigo-900">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 to-indigo-900 p-6">
         <div className="bg-white p-8 rounded-lg shadow-2xl text-center max-w-md">
           <h1 className="text-3xl font-bold mb-4 text-gray-800">
             Stock Trading Game
           </h1>
-          <p className="text-gray-600 mb-6">
-            Join the game to start trading stocks!
-          </p>
-          <button
-            onClick={joinGame}
-            className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors mb-4"
-          >
-            Join Game
-          </button>
 
-          {/* Show game history button */}
-          {myGames.length > 0 && (
-            <div className="mt-6 pt-6 border-t border-gray-300">
+          {gameState?.status === "scheduled" && (
+            <>
+              <p className="text-gray-600 mb-2">
+                Game is scheduled to start at:
+              </p>
+              <p className="text-xl font-bold text-blue-600 mb-6">
+                {new Date(gameState.scheduledStartTime).toLocaleString(
+                  "en-IN",
+                  {
+                    timeZone: "Asia/Kolkata",
+                  }
+                )}
+              </p>
+              <p className="text-gray-500 text-sm">
+                You cannot join yet. Please wait for the scheduled time.
+              </p>
+            </>
+          )}
+
+          {gameState?.status === "active" && (
+            <>
+              <p className="text-gray-600 mb-6">
+                The game is active! Join now to start trading stocks.
+              </p>
               <button
-                onClick={() => setShowHistory(!showHistory)}
-                className="text-blue-600 hover:text-blue-700 font-semibold"
+                onClick={joinGame}
+                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
-                {showHistory ? "Hide" : "View"} My Game History (
-                {myGames.length})
+                Join Game
               </button>
-            </div>
+            </>
+          )}
+
+          {gameState?.status === "finished" && (
+            <>
+              <p className="text-gray-600 mb-6">This game has finished.</p>
+              <button
+                onClick={() => setShowLeaderboard(true)}
+                className="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
+              >
+                View Leaderboard
+              </button>
+            </>
           )}
         </div>
 
-        {/* Game History Modal */}
-        {showHistory && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        {/* Leaderboard Modal */}
+        {showLeaderboard && (
+          <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-lg p-6 max-w-4xl w-full max-h-[80vh] overflow-y-auto">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold text-gray-800">
-                  My Game History
+                  Final Leaderboard
                 </h2>
                 <button
-                  onClick={() => setShowHistory(false)}
-                  className="text-gray-500 hover:text-gray-700"
+                  onClick={() => setShowLeaderboard(false)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl"
                 >
                   ✕
                 </button>
               </div>
-              <div className="space-y-3">
-                {myGames.map((game) => (
-                  <div key={game._id} className="bg-gray-100 rounded-lg p-4">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <p className="font-bold text-gray-800">
-                          Game: {game.gameConfig?._id?.slice(-8)}
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          Final Score: ${game.finalScore?.toLocaleString() || 0}
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          Status: {game.isActive ? "In Progress" : "Completed"}
-                        </p>
-                      </div>
-                      <Link
-                        to={`/stock-game/${game.gameConfig?._id}`}
-                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                      >
-                        View Details
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <LeaderboardTable leaderboard={leaderboard} />
             </div>
           </div>
         )}
@@ -238,7 +252,8 @@ function StockGame() {
     );
   }
 
-  if (!gameState?.isActive) {
+  // Game finished
+  if (gameState?.status === "finished") {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 p-6">
         <div className="max-w-4xl mx-auto">
@@ -246,16 +261,64 @@ function StockGame() {
             <h1 className="text-3xl font-bold mb-4 text-gray-800">
               Game Ended
             </h1>
-            <p className="text-gray-600 mb-2">Final Score</p>
-            <p className="text-4xl font-bold text-green-600">
+            <p className="text-gray-600 mb-2">Your Final Score</p>
+            <p className="text-4xl font-bold text-green-600 mb-4">
               ${playerGame.finalScore?.toLocaleString() || getTotalValue()}
             </p>
+            <div className="flex gap-4 justify-center">
+              <button
+                onClick={() => navigate("/games")}
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700"
+              >
+                Back to Games
+              </button>
+              <button
+                onClick={() => setShowLeaderboard(true)}
+                className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700"
+              >
+                View Leaderboard
+              </button>
+            </div>
           </div>
+
+          {/* Final Portfolio */}
+          <div className="bg-white rounded-lg p-6 shadow-xl mb-6">
+            {" "}
+            <h2 className="text-2xl font-bold text-gray-800">
+              Left balance: ${playerGame.balance}
+            </h2>
+          </div>
+
+          {playerGame.portfolio && playerGame.portfolio.length > 0 && (
+            <div className="bg-white rounded-lg p-6 shadow-xl mb-6">
+              <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                Final Portfolio
+              </h2>
+              <div className="space-y-2">
+                {playerGame.portfolio.map((holding) => (
+                  <div
+                    key={holding.stock}
+                    className="bg-gray-100 rounded p-3 flex justify-between items-center"
+                  >
+                    <div>
+                      <p className="font-bold text-gray-800">{holding.stock}</p>
+                      <p className="text-sm text-gray-600">
+                        {holding.units} units @ ${holding.averagePrice}
+                      </p>
+                    </div>
+                    <p className="font-bold text-gray-800">
+                      ${(holding.units * holding.averagePrice).toFixed(2)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Transaction History */}
           {playerGame.transactionHistory &&
             playerGame.transactionHistory.length > 0 && (
-              <div className="bg-white rounded-lg p-6 shadow-xl mb-6">
+              <div className="bg-white rounded-lg p-6 shadow-xl">
                 <h2 className="text-2xl font-bold mb-4 text-gray-800">
                   Transaction History
                 </h2>
@@ -319,38 +382,35 @@ function StockGame() {
                 </div>
               </div>
             )}
-
-          {/* Final Portfolio */}
-          {playerGame.portfolio && playerGame.portfolio.length > 0 && (
-            <div className="bg-white rounded-lg p-6 shadow-xl">
-              <h2 className="text-2xl font-bold mb-4 text-gray-800">
-                Final Portfolio
-              </h2>
-              <div className="space-y-2">
-                {playerGame.portfolio.map((holding) => (
-                  <div
-                    key={holding.stock}
-                    className="bg-gray-100 rounded p-3 flex justify-between items-center"
-                  >
-                    <div>
-                      <p className="font-bold text-gray-800">{holding.stock}</p>
-                      <p className="text-sm text-gray-600">
-                        {holding.units} units @ ${holding.averagePrice}
-                      </p>
-                    </div>
-                    <p className="font-bold text-gray-800">
-                      ${(holding.units * holding.averagePrice).toFixed(2)}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
+
+        {/* Leaderboard Modal */}
+        {showLeaderboard && (
+          <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-lg p-6 max-w-4xl w-full max-h-[80vh] overflow-y-auto">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  Final Leaderboard
+                </h2>
+                <button
+                  onClick={() => setShowLeaderboard(false)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                >
+                  ✕
+                </button>
+              </div>
+              <LeaderboardTable
+                leaderboard={leaderboard}
+                currentUserId={playerGame?.user}
+              />
+            </div>
+          </div>
+        )}
       </div>
     );
   }
 
+  // Active game
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6">
       {/* Header */}
@@ -360,19 +420,34 @@ function StockGame() {
             <div>
               <h1 className="text-3xl font-bold">Stock Trading Game</h1>
               <p className="text-purple-200">
-                Year {gameState.currentRound} of {gameState.totalRounds - 1}
+                Round {gameState.currentRound+1} of {gameState.totalRounds}
               </p>
             </div>
             <div className="text-center">
               <p className="text-sm text-purple-200">Time Remaining</p>
-              <p className="text-4xl font-bold">{formatTime(timeRemaining)}</p>
+              <p
+                className={`text-4xl font-bold ${
+                  timeRemaining <= 10 ? "text-red-300 animate-pulse" : ""
+                }`}
+              >
+                {formatTime(timeRemaining)}
+              </p>
+              {timeRemaining <= 0 && (
+                <p className="text-sm text-red-300 mt-1">
+                  Waiting for next round...
+                </p>
+              )}
             </div>
-            <button
-              onClick={() => setShowHistory(!showHistory)}
-              className="bg-white text-purple-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100"
-            >
-              My Games
-            </button>
+            <div className="text-center">
+              <p className="text-sm text-purple-200">Your Rank</p>
+              <p className="text-2xl font-bold"># {getMyRank()}</p>
+              <button
+                onClick={() => setShowLeaderboard(true)}
+                className="mt-2 bg-white text-purple-600 px-4 py-1 rounded text-sm font-semibold hover:bg-gray-100"
+              >
+                View Full Leaderboard
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -467,8 +542,8 @@ function StockGame() {
                     selectedStock?.symbol === stock.symbol
                       ? "ring-2 ring-blue-500"
                       : ""
-                  }`}
-                  onClick={() => setSelectedStock(stock)}
+                  } ${timeRemaining <= 0 ? "opacity-50 cursor-not-allowed" : ""}`}
+                  onClick={() => timeRemaining > 0 && setSelectedStock(stock)}
                 >
                   <div className="flex justify-between items-start">
                     <div>
@@ -497,7 +572,12 @@ function StockGame() {
           {/* Transaction Section */}
           <div className="bg-gray-800 rounded-lg p-6 shadow-xl">
             <h2 className="text-2xl font-bold mb-4">Make a Transaction</h2>
-            {selectedStock ? (
+            {timeRemaining <= 0 && (
+              <div className="bg-red-600 text-white p-3 rounded-lg mb-4 text-center">
+                Trading closed for this round. Waiting for admin to advance...
+              </div>
+            )}
+            {selectedStock && timeRemaining > 0 ? (
               <div>
                 <div className="mb-4 bg-gray-700 rounded-lg p-4">
                   <p className="text-gray-300">Selected Stock</p>
@@ -563,55 +643,96 @@ function StockGame() {
               </div>
             ) : (
               <p className="text-gray-400 text-center py-8">
-                Select a stock to start trading
+                {timeRemaining <= 0
+                  ? "Trading closed for this round"
+                  : "Select a stock to start trading"}
               </p>
             )}
           </div>
         </div>
       </div>
 
-      {/* Game History Modal */}
-      {showHistory && (
+      {/* Leaderboard Modal */}
+      {showLeaderboard && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
           <div className="bg-gray-800 rounded-lg p-6 max-w-4xl w-full max-h-[80vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold">My Game History</h2>
+              <h2 className="text-2xl font-bold">Live Leaderboard</h2>
               <button
-                onClick={() => setShowHistory(false)}
-                className="text-gray-400 hover:text-white"
+                onClick={() => setShowLeaderboard(false)}
+                className="text-gray-400 hover:text-white text-2xl"
               >
                 ✕
               </button>
             </div>
-            <div className="space-y-3">
-              {myGames.map((game) => (
-                <div key={game._id} className="bg-gray-700 rounded-lg p-4">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="font-bold">
-                        Game: {game.gameConfig?._id?.slice(-8)}
-                      </p>
-                      <p className="text-sm text-gray-300">
-                        Final Score: ${game.finalScore?.toLocaleString() || 0}
-                      </p>
-                      <p className="text-sm text-gray-300">
-                        Status: {game.isActive ? "In Progress" : "Completed"}
-                      </p>
-                    </div>
-                    <Link
-                      to={`/stock-game/${game.gameConfig?._id}`}
-                      onClick={() => setShowHistory(false)}
-                      className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                    >
-                      View
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <LeaderboardTable
+              leaderboard={leaderboard}
+              currentUserId={playerGame?.user}
+            />
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+// Leaderboard Table Component
+function LeaderboardTable({ leaderboard, currentUserId }) {
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full bg-black">
+        <thead>
+          <tr className="border-b border-gray-600">
+            <th className="text-left py-3 px-4">Rank</th>
+            <th className="text-left py-3 px-4">Player</th>
+            <th className="text-left py-3 px-4">Email</th>
+            <th className="text-right py-3 px-4">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {leaderboard.map((player, index) => (
+            <tr
+              key={player._id}
+              className={`border-b border-gray-600 ${
+                player.user?._id === currentUserId
+                  ? "bg-blue-900 bg-opacity-30"
+                  : ""
+              }`}
+            >
+              <td className="py-3 px-4">
+                <span
+                  className={`font-bold ${
+                    index === 0
+                      ? "text-yellow-400 text-xl"
+                      : index === 1
+                        ? "text-gray-300 text-lg"
+                        : index === 2
+                          ? "text-orange-400 text-lg"
+                          : ""
+                  }`}
+                >
+                  {index + 1}
+                  {index === 0 && " 🏆"}
+                  {index === 1 && " 🥈"}
+                  {index === 2 && " 🥉"}
+                </span>
+              </td>
+              <td className="py-3 px-4">
+                {player.user?._id === currentUserId && (
+                  <span className="text-blue-400 font-bold">(You) </span>
+                )}
+                {player.user?.name || "N/A"}
+              </td>
+              <td className="py-3 px-4 text-sm text-gray-400">
+                {player.user?.email || "N/A"}
+              </td>
+              <td className="py-3 px-4 text-right font-bold text-green-400">
+                ${player.finalScore?.toLocaleString() || 0}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
