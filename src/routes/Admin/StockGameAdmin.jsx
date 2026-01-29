@@ -23,7 +23,7 @@ function StockGameAdmin() {
         name: "",
         symbol: "",
         initialPrice: 100,
-        percentChanges: Array(10).fill(0),
+        finalPrices: Array(10).fill(100),
       })),
   });
 
@@ -90,9 +90,9 @@ function StockGameAdmin() {
     setFormData({ ...formData, stocks: newStocks });
   };
 
-  const handlePercentChange = (stockIndex, changeIndex, value) => {
+  const handleFinalPriceChange = (stockIndex, priceIndex, value) => {
     const newStocks = [...formData.stocks];
-    newStocks[stockIndex].percentChanges[changeIndex] = parseFloat(value) || 0;
+    newStocks[stockIndex].finalPrices[priceIndex] = parseFloat(value) || 0;
     setFormData({ ...formData, stocks: newStocks });
   };
 
@@ -144,11 +144,11 @@ function StockGameAdmin() {
     }
   };
 
-  const advanceRound = async (gameId) => {
+  const endRound = async (gameId) => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        `/stockGame/advance/${gameId}`,
+        `/stockGame/end-round/${gameId}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -161,8 +161,30 @@ function StockGameAdmin() {
         fetchLeaderboard(gameId, true);
       }
     } catch (error) {
-      console.error("Error advancing round:", error);
-      toast.error("Failed to advance round");
+      console.error("Error ending round:", error);
+      toast.error(error.response?.data?.error || "Failed to end round");
+    }
+  };
+
+  const startNextRound = async (gameId) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await axios.post(
+        `/stockGame/start-next-round/${gameId}`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      toast.success(res.data.message);
+      fetchActiveGames();
+      fetchAllGames();
+      if (selectedGameId === gameId) {
+        fetchLeaderboard(gameId, true);
+      }
+    } catch (error) {
+      console.error("Error starting next round:", error);
+      toast.error(error.response?.data?.error || "Failed to start next round");
     }
   };
 
@@ -177,61 +199,91 @@ function StockGameAdmin() {
           name: "Tech Corp",
           symbol: "TECH",
           initialPrice: 150,
-          percentChanges: [5, -3, 8, 2, -5, 10, 3, -2, 6, 4],
+          finalPrices: [
+            157.5, 152.78, 165, 168.3, 159.89, 175.87, 181.15, 177.52, 188.17,
+            195.7,
+          ],
         },
         {
           name: "Finance Inc",
           symbol: "FIN",
           initialPrice: 200,
-          percentChanges: [3, 4, -2, 5, 8, -3, 2, 6, -4, 7],
+          finalPrices: [
+            206, 214.24, 209.95, 220.45, 238.09, 230.94, 235.56, 249.69, 239.7,
+            256.48,
+          ],
         },
         {
           name: "Energy Co",
           symbol: "ENRG",
           initialPrice: 80,
-          percentChanges: [10, -5, 12, -8, 15, 5, -10, 8, 3, 6],
+          finalPrices: [
+            88, 83.6, 93.63, 86.14, 99.06, 103.97, 93.57, 101.05, 104.08,
+            110.32,
+          ],
         },
         {
           name: "Health Plus",
           symbol: "HLTH",
           initialPrice: 120,
-          percentChanges: [2, 6, -1, 4, 3, 8, -2, 5, 7, 2],
+          finalPrices: [
+            122.4, 129.74, 128.44, 133.58, 137.59, 148.6, 145.62, 152.9, 163.6,
+            166.87,
+          ],
         },
         {
           name: "Retail Giant",
           symbol: "RETL",
           initialPrice: 95,
-          percentChanges: [-2, 5, 3, -4, 8, 6, -3, 4, 9, 2],
+          finalPrices: [
+            93.1, 97.76, 100.69, 96.66, 104.39, 110.66, 107.34, 111.63, 121.68,
+            124.31,
+          ],
         },
         {
           name: "Auto Motors",
           symbol: "AUTO",
           initialPrice: 175,
-          percentChanges: [4, -6, 7, 5, -3, 10, 2, -4, 8, 3],
+          finalPrices: [
+            182, 171.08, 182.85, 192, 186.24, 204.86, 208.96, 200.6, 216.65,
+            223.15,
+          ],
         },
         {
           name: "Food Chain",
           symbol: "FOOD",
           initialPrice: 110,
-          percentChanges: [3, 4, 2, -3, 6, 5, 4, -2, 7, 3],
+          finalPrices: [
+            113.3, 117.83, 120.19, 116.58, 123.58, 129.76, 134.95, 132.25,
+            141.41, 145.65,
+          ],
         },
         {
           name: "Travel Air",
           symbol: "TRVL",
           initialPrice: 130,
-          percentChanges: [-5, 10, -3, 8, 12, -6, 5, 9, -4, 6],
+          finalPrices: [
+            123.5, 135.85, 131.77, 142.31, 159.39, 149.83, 157.32, 171.48,
+            164.62, 174.5,
+          ],
         },
         {
           name: "Media Net",
           symbol: "MDIA",
           initialPrice: 145,
-          percentChanges: [6, 3, -4, 7, 5, 8, -2, 4, 6, 9],
+          finalPrices: [
+            153.7, 158.11, 151.78, 162.4, 170.52, 184.16, 180.48, 187.7, 198.96,
+            216.87,
+          ],
         },
         {
           name: "Pharma Lab",
           symbol: "PHRM",
           initialPrice: 220,
-          percentChanges: [8, -2, 5, 6, -4, 9, 3, 7, -3, 10],
+          finalPrices: [
+            237.6, 232.85, 244.49, 259.16, 248.79, 271.18, 279.52, 299.08,
+            290.11, 319.12,
+          ],
         },
       ],
     });
@@ -258,6 +310,30 @@ function StockGameAdmin() {
         Scheduled
       </span>
     );
+  };
+
+  const getRoundStatusBadge = (game) => {
+    if (game.status !== "active") return null;
+
+    if (game.roundStatus === "active") {
+      return (
+        <span className="px-2 py-1 rounded text-xs font-semibold bg-blue-500 text-white">
+          🔵 Trading Active
+        </span>
+      );
+    } else if (game.roundStatus === "ended") {
+      return (
+        <span className="px-2 py-1 rounded text-xs font-semibold bg-orange-500 text-white">
+          ⏸️ Round Ended
+        </span>
+      );
+    } else {
+      return (
+        <span className="px-2 py-1 rounded text-xs font-semibold bg-purple-500 text-white">
+          ⏳ Waiting
+        </span>
+      );
+    }
   };
 
   return (
@@ -398,24 +474,24 @@ function StockGameAdmin() {
                   </div>
                   <div>
                     <label className="text-sm text-gray-300 mb-2 block">
-                      Percent Changes (10 rounds)
+                      Final Prices (10 rounds)
                     </label>
                     <div className="grid grid-cols-5 gap-2">
-                      {stock.percentChanges.map((change, changeIndex) => (
+                      {stock.finalPrices.map((price, priceIndex) => (
                         <input
-                          key={changeIndex}
+                          key={priceIndex}
                           type="number"
-                          step="0.1"
-                          value={change}
+                          step="0.01"
+                          value={price}
                           onChange={(e) =>
-                            handlePercentChange(
+                            handleFinalPriceChange(
                               index,
-                              changeIndex,
+                              priceIndex,
                               e.target.value
                             )
                           }
                           className="bg-gray-600 rounded px-2 py-1 text-sm"
-                          placeholder={`R${changeIndex}`}
+                          placeholder={`R${priceIndex + 1}`}
                         />
                       ))}
                     </div>
@@ -452,6 +528,7 @@ function StockGameAdmin() {
                           Game #{game._id.slice(-8)}
                         </p>
                         {getStatusBadge(game)}
+                        {getRoundStatusBadge(game)}
                       </div>
                       <div className="text-sm text-gray-300 space-y-1">
                         {game.status === "scheduled" && (
@@ -465,7 +542,7 @@ function StockGameAdmin() {
                         )}
                         {game.status === "active" && (
                           <p>
-                            🎮 Round {game.currentRound + 1 } of{" "}
+                            🎮 Round {game.currentRound + 1} of{" "}
                             {game.totalRounds}
                           </p>
                         )}
@@ -475,7 +552,7 @@ function StockGameAdmin() {
                         </p>
                       </div>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex-wrap">
                       {game.status === "scheduled" &&
                         new Date(game.scheduledStartTime) <= new Date() && (
                           <button
@@ -485,16 +562,26 @@ function StockGameAdmin() {
                             Start Game
                           </button>
                         )}
-                      {game.status === "active" && (
-                        <button
-                          onClick={() => advanceRound(game._id)}
-                          className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-semibold"
-                        >
-                          {game.currentRound >= game.totalRounds - 1
-                            ? "End Game"
-                            : "Next Round"}
-                        </button>
-                      )}
+                      {game.status === "active" &&
+                        game.roundStatus === "active" && (
+                          <button
+                            onClick={() => endRound(game._id)}
+                            className="bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg font-semibold"
+                          >
+                            End Round
+                          </button>
+                        )}
+                      {game.status === "active" &&
+                        game.roundStatus === "ended" && (
+                          <button
+                            onClick={() => startNextRound(game._id)}
+                            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-semibold"
+                          >
+                            {game.currentRound >= game.totalRounds - 1
+                              ? "End Game"
+                              : "Start Next Round"}
+                          </button>
+                        )}
                       <button
                         onClick={() => fetchLeaderboard(game._id)}
                         className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg font-semibold"
@@ -522,6 +609,7 @@ function StockGameAdmin() {
                     <tr className="border-b border-gray-700">
                       <th className="text-left py-3 px-4">Game ID</th>
                       <th className="text-left py-3 px-4">Status</th>
+                      <th className="text-left py-3 px-4">Round Status</th>
                       <th className="text-left py-3 px-4">Round</th>
                       <th className="text-left py-3 px-4">Created</th>
                       <th className="text-left py-3 px-4">Actions</th>
@@ -534,6 +622,9 @@ function StockGameAdmin() {
                           #{game._id.slice(-8)}
                         </td>
                         <td className="py-3 px-4">{getStatusBadge(game)}</td>
+                        <td className="py-3 px-4">
+                          {getRoundStatusBadge(game)}
+                        </td>
                         <td className="py-3 px-4">
                           {game.currentRound} / {game.totalRounds - 1}
                         </td>
