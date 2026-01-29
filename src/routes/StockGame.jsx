@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../utils/axiosInstance";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function StockGame() {
@@ -13,6 +13,8 @@ function StockGame() {
   const [units, setUnits] = useState("");
   const [transactionType, setTransactionType] = useState("buy");
   const [timeRemaining, setTimeRemaining] = useState(0);
+  const [myGames, setMyGames] = useState([]);
+  const [showHistory, setShowHistory] = useState(false);
 
   useEffect(() => {
     if (gameId) {
@@ -21,6 +23,10 @@ function StockGame() {
       return () => clearInterval(interval);
     }
   }, [gameId]);
+
+  useEffect(() => {
+    fetchMyGames();
+  }, []);
 
   useEffect(() => {
     if (gameState && gameState.timeRemaining > 0) {
@@ -53,6 +59,18 @@ function StockGame() {
     }
   };
 
+  const fetchMyGames = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await axios.get("/stockGame/my-games", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setMyGames(res.data.games);
+    } catch (error) {
+      console.error("Error fetching my games:", error);
+    }
+  };
+
   const joinGame = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -67,6 +85,7 @@ function StockGame() {
       fetchGameState();
     } catch (error) {
       console.error("Error joining game:", error);
+      toast.error(error.response?.data?.error || "Failed to join game");
     }
   };
 
@@ -104,6 +123,7 @@ function StockGame() {
       fetchGameState();
     } catch (error) {
       console.error("Error in transaction:", error);
+      toast.error(error.response?.data?.error || "Transaction failed");
     }
   };
 
@@ -134,8 +154,8 @@ function StockGame() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-2xl font-bold">Loading game...</div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-900">
+        <div className="text-2xl font-bold text-white">Loading game...</div>
       </div>
     );
   }
@@ -143,31 +163,189 @@ function StockGame() {
   if (!playerGame) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 to-indigo-900">
-        <div className="bg-white p-8 rounded-lg shadow-2xl text-center">
-          <h1 className="text-3xl font-bold mb-4">Stock Trading Game</h1>
+        <div className="bg-white p-8 rounded-lg shadow-2xl text-center max-w-md">
+          <h1 className="text-3xl font-bold mb-4 text-gray-800">
+            Stock Trading Game
+          </h1>
           <p className="text-gray-600 mb-6">
             Join the game to start trading stocks!
           </p>
           <button
             onClick={joinGame}
-            className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors mb-4"
           >
             Join Game
           </button>
+
+          {/* Show game history button */}
+          {myGames.length > 0 && (
+            <div className="mt-6 pt-6 border-t border-gray-300">
+              <button
+                onClick={() => setShowHistory(!showHistory)}
+                className="text-blue-600 hover:text-blue-700 font-semibold"
+              >
+                {showHistory ? "Hide" : "View"} My Game History (
+                {myGames.length})
+              </button>
+            </div>
+          )}
         </div>
+
+        {/* Game History Modal */}
+        {showHistory && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-lg p-6 max-w-4xl w-full max-h-[80vh] overflow-y-auto">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  My Game History
+                </h2>
+                <button
+                  onClick={() => setShowHistory(false)}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  ✕
+                </button>
+              </div>
+              <div className="space-y-3">
+                {myGames.map((game) => (
+                  <div key={game._id} className="bg-gray-100 rounded-lg p-4">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className="font-bold text-gray-800">
+                          Game: {game.gameConfig?._id?.slice(-8)}
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Final Score: ${game.finalScore?.toLocaleString() || 0}
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Status: {game.isActive ? "In Progress" : "Completed"}
+                        </p>
+                      </div>
+                      <Link
+                        to={`/stock-game/${game.gameConfig?._id}`}
+                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                      >
+                        View Details
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
 
   if (!gameState?.isActive) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
-        <div className="bg-white p-8 rounded-lg shadow-2xl text-center">
-          <h1 className="text-3xl font-bold mb-4">Game Ended</h1>
-          <p className="text-gray-600 mb-2">Final Score</p>
-          <p className="text-4xl font-bold text-green-600">
-            ${playerGame.finalScore?.toLocaleString() || getTotalValue()}
-          </p>
+      <div className="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 p-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white p-8 rounded-lg shadow-2xl text-center mb-6">
+            <h1 className="text-3xl font-bold mb-4 text-gray-800">
+              Game Ended
+            </h1>
+            <p className="text-gray-600 mb-2">Final Score</p>
+            <p className="text-4xl font-bold text-green-600">
+              ${playerGame.finalScore?.toLocaleString() || getTotalValue()}
+            </p>
+          </div>
+
+          {/* Transaction History */}
+          {playerGame.transactionHistory &&
+            playerGame.transactionHistory.length > 0 && (
+              <div className="bg-white rounded-lg p-6 shadow-xl mb-6">
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                  Transaction History
+                </h2>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-gray-300">
+                        <th className="text-left py-2 px-3 text-gray-700">
+                          Round
+                        </th>
+                        <th className="text-left py-2 px-3 text-gray-700">
+                          Type
+                        </th>
+                        <th className="text-left py-2 px-3 text-gray-700">
+                          Stock
+                        </th>
+                        <th className="text-right py-2 px-3 text-gray-700">
+                          Units
+                        </th>
+                        <th className="text-right py-2 px-3 text-gray-700">
+                          Price
+                        </th>
+                        <th className="text-right py-2 px-3 text-gray-700">
+                          Total
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {playerGame.transactionHistory.map((tx, idx) => (
+                        <tr key={idx} className="border-b border-gray-200">
+                          <td className="py-2 px-3 text-gray-800">
+                            {tx.round}
+                          </td>
+                          <td className="py-2 px-3">
+                            <span
+                              className={`px-2 py-1 rounded text-xs ${
+                                tx.type === "buy"
+                                  ? "bg-green-100 text-green-800"
+                                  : "bg-red-100 text-red-800"
+                              }`}
+                            >
+                              {tx.type.toUpperCase()}
+                            </span>
+                          </td>
+                          <td className="py-2 px-3 font-semibold text-gray-800">
+                            {tx.stock}
+                          </td>
+                          <td className="py-2 px-3 text-right text-gray-800">
+                            {tx.units}
+                          </td>
+                          <td className="py-2 px-3 text-right text-gray-800">
+                            ${tx.price}
+                          </td>
+                          <td className="py-2 px-3 text-right font-semibold text-gray-800">
+                            ${(tx.units * tx.price).toFixed(2)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+          {/* Final Portfolio */}
+          {playerGame.portfolio && playerGame.portfolio.length > 0 && (
+            <div className="bg-white rounded-lg p-6 shadow-xl">
+              <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                Final Portfolio
+              </h2>
+              <div className="space-y-2">
+                {playerGame.portfolio.map((holding) => (
+                  <div
+                    key={holding.stock}
+                    className="bg-gray-100 rounded p-3 flex justify-between items-center"
+                  >
+                    <div>
+                      <p className="font-bold text-gray-800">{holding.stock}</p>
+                      <p className="text-sm text-gray-600">
+                        {holding.units} units @ ${holding.averagePrice}
+                      </p>
+                    </div>
+                    <p className="font-bold text-gray-800">
+                      ${(holding.units * holding.averagePrice).toFixed(2)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -189,6 +367,12 @@ function StockGame() {
               <p className="text-sm text-purple-200">Time Remaining</p>
               <p className="text-4xl font-bold">{formatTime(timeRemaining)}</p>
             </div>
+            <button
+              onClick={() => setShowHistory(!showHistory)}
+              className="bg-white text-purple-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100"
+            >
+              My Games
+            </button>
           </div>
         </div>
       </div>
@@ -385,6 +569,49 @@ function StockGame() {
           </div>
         </div>
       </div>
+
+      {/* Game History Modal */}
+      {showHistory && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-800 rounded-lg p-6 max-w-4xl w-full max-h-[80vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold">My Game History</h2>
+              <button
+                onClick={() => setShowHistory(false)}
+                className="text-gray-400 hover:text-white"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="space-y-3">
+              {myGames.map((game) => (
+                <div key={game._id} className="bg-gray-700 rounded-lg p-4">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="font-bold">
+                        Game: {game.gameConfig?._id?.slice(-8)}
+                      </p>
+                      <p className="text-sm text-gray-300">
+                        Final Score: ${game.finalScore?.toLocaleString() || 0}
+                      </p>
+                      <p className="text-sm text-gray-300">
+                        Status: {game.isActive ? "In Progress" : "Completed"}
+                      </p>
+                    </div>
+                    <Link
+                      to={`/stock-game/${game.gameConfig?._id}`}
+                      onClick={() => setShowHistory(false)}
+                      className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                    >
+                      View
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
