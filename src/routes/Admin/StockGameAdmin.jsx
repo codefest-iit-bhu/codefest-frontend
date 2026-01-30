@@ -15,7 +15,7 @@ function StockGameAdmin() {
   const [formData, setFormData] = useState({
     initialBalance: 100000,
     roundDuration: 30,
-    totalRounds: 10,
+    totalRounds: 13,
     scheduledStartTime: "",
     stocks: Array(10)
       .fill(null)
@@ -23,7 +23,7 @@ function StockGameAdmin() {
         name: "",
         symbol: "",
         initialPrice: 100,
-        finalPrices: Array(10).fill(100),
+        finalPrices: Array(13).fill(100),
       })),
   });
 
@@ -192,7 +192,7 @@ function StockGameAdmin() {
     setFormData({
       initialBalance: 100000,
       roundDuration: 30,
-      totalRounds: 10,
+      totalRounds: 13,
       scheduledStartTime: "",
       stocks: [
         {
@@ -201,7 +201,7 @@ function StockGameAdmin() {
           initialPrice: 150,
           finalPrices: [
             157.5, 152.78, 165, 168.3, 159.89, 175.87, 181.15, 177.52, 188.17,
-            195.7,
+            195.7, 203.49, 198.15, 211.32,
           ],
         },
         {
@@ -210,7 +210,7 @@ function StockGameAdmin() {
           initialPrice: 200,
           finalPrices: [
             206, 214.24, 209.95, 220.45, 238.09, 230.94, 235.56, 249.69, 239.7,
-            256.48,
+            256.48, 268.31, 273.89, 287.45,
           ],
         },
         {
@@ -219,7 +219,7 @@ function StockGameAdmin() {
           initialPrice: 80,
           finalPrices: [
             88, 83.6, 93.63, 86.14, 99.06, 103.97, 93.57, 101.05, 104.08,
-            110.32,
+            110.32, 116.84, 108.21, 120.45,
           ],
         },
         {
@@ -228,7 +228,7 @@ function StockGameAdmin() {
           initialPrice: 120,
           finalPrices: [
             122.4, 129.74, 128.44, 133.58, 137.59, 148.6, 145.62, 152.9, 163.6,
-            166.87,
+            166.87, 175.21, 181.97, 189.34,
           ],
         },
         {
@@ -237,7 +237,7 @@ function StockGameAdmin() {
           initialPrice: 95,
           finalPrices: [
             93.1, 97.76, 100.69, 96.66, 104.39, 110.66, 107.34, 111.63, 121.68,
-            124.31,
+            124.31, 130.53, 127.41, 135.89,
           ],
         },
         {
@@ -246,7 +246,7 @@ function StockGameAdmin() {
           initialPrice: 175,
           finalPrices: [
             182, 171.08, 182.85, 192, 186.24, 204.86, 208.96, 200.6, 216.65,
-            223.15,
+            223.15, 234.31, 227.84, 245.67,
           ],
         },
         {
@@ -255,7 +255,7 @@ function StockGameAdmin() {
           initialPrice: 110,
           finalPrices: [
             113.3, 117.83, 120.19, 116.58, 123.58, 129.76, 134.95, 132.25,
-            141.41, 145.65,
+            141.41, 145.65, 152.93, 149.29, 158.45,
           ],
         },
         {
@@ -264,7 +264,7 @@ function StockGameAdmin() {
           initialPrice: 130,
           finalPrices: [
             123.5, 135.85, 131.77, 142.31, 159.39, 149.83, 157.32, 171.48,
-            164.62, 174.5,
+            164.62, 174.5, 183.23, 178.15, 191.87,
           ],
         },
         {
@@ -273,7 +273,7 @@ function StockGameAdmin() {
           initialPrice: 145,
           finalPrices: [
             153.7, 158.11, 151.78, 162.4, 170.52, 184.16, 180.48, 187.7, 198.96,
-            216.87,
+            216.87, 228.71, 235.49, 251.23,
           ],
         },
         {
@@ -282,7 +282,7 @@ function StockGameAdmin() {
           initialPrice: 220,
           finalPrices: [
             237.6, 232.85, 244.49, 259.16, 248.79, 271.18, 279.52, 299.08,
-            290.11, 319.12,
+            290.11, 319.12, 335.57, 327.39, 351.28,
           ],
         },
       ],
@@ -474,7 +474,7 @@ function StockGameAdmin() {
                   </div>
                   <div>
                     <label className="text-sm text-gray-300 mb-2 block">
-                      Final Prices (10 rounds)
+                      Final Prices (13 rounds)
                     </label>
                     <div className="grid grid-cols-5 gap-2">
                       {stock.finalPrices.map((price, priceIndex) => (
