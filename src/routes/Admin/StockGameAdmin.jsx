@@ -30,14 +30,14 @@ function StockGameAdmin() {
   useEffect(() => {
     fetchActiveGames();
     fetchAllGames();
-    const interval = setInterval(() => {
-      fetchActiveGames();
-      fetchAllGames();
-      if (selectedGameId) {
-        fetchLeaderboard(selectedGameId, true);
-      }
-    }, 3000);
-    return () => clearInterval(interval);
+    // const interval = setInterval(() => {
+    //   fetchActiveGames();
+    //   fetchAllGames();
+    //   if (selectedGameId) {
+    //     fetchLeaderboard(selectedGameId, true);
+    //   }
+    // }, 3000);
+    //return () => clearInterval(interval);
   }, [selectedGameId]);
 
   const fetchActiveGames = async () => {
