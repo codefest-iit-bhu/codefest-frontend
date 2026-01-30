@@ -31,8 +31,8 @@ function GamesList() {
       });
 
       const allGames = activeRes.data.games;
-      console.log(myGamesRes.data.games);
-      console.log(allGames)
+      // console.log(myGamesRes.data.games);
+      // console.log(allGames)
       const myGameIds = myGamesRes.data.games.map((g) => g.gameConfig?._id);
 
       // Categorize games
