@@ -21,11 +21,12 @@ function StockGame() {
     if (gameId) {
       fetchGameState();
       fetchLeaderboard();
-      const interval = setInterval(() => {
-        fetchGameState();
-        fetchLeaderboard();
-      }, 5000); // Refresh every 5 seconds
-      return () => clearInterval(interval);
+    
+      // const interval = setInterval(() => {
+      //   fetchGameState();
+      //   fetchLeaderboard();
+      // }, 5000); // Refresh every 5 seconds
+      // return () => clearInterval(interval);
     }
   }, [gameId]);
 
