@@ -1,4 +1,3 @@
-
 import { createBrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/context";
 import Index from "./routes/Index";
@@ -23,6 +22,9 @@ import AllTeams from "./routes/Admin/AllTeams";
 import UploadUsernames from "./routes/Admin/UploadUsernames";
 import WinzoLeaderboard from "./routes/WinzoLeaderboard";
 import WinzoReferrals from "./routes/WinzoReferrals";
+import StockGame from "./routes/StockGame";
+import StockGameAdmin from "./routes/Admin/StockGameAdmin";
+import GamesList from "./routes/GamesList";
 
 export const router = createBrowserRouter([
   {
@@ -99,10 +101,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/ca_leaderboard",
-        element: <>
-          <PageTitle title="CA Leaderboard | Codefest IIT (BHU)" />
-          <CALeaderboard />,
-        </>
+        element: (
+          <>
+            <PageTitle title="CA Leaderboard | Codefest IIT (BHU)" />
+            <CALeaderboard />,
+          </>
+        ),
       },
       {
         path: "/event/teams/:eventId",
@@ -119,7 +123,7 @@ export const router = createBrowserRouter([
           <PrivateRoute>
             <WinzoReferrals />
           </PrivateRoute>
-        )
+        ),
       },
       {
         path: "/upload",
@@ -139,6 +143,33 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/games",
+        element: (
+          <PrivateRoute>
+            <PageTitle title="Stock Trading Games | Codefest IIT (BHU)" />
+            <GamesList />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/stock-game/:gameId",
+        element: (
+          <PrivateRoute>
+            <PageTitle title="Stock Trading Game | Codefest IIT (BHU)" />
+            <StockGame />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/stock-game-admin",
+        element: (
+          <PrivateRoute>
+            <PageTitle title="Stock Game Admin | Codefest IIT (BHU)" />
+            <StockGameAdmin />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {
@@ -152,5 +183,5 @@ export const router = createBrowserRouter([
   {
     path: "/backend_redirect",
     element: <BackendRedirection />,
-  }
+  },
 ]);
