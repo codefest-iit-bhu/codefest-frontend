@@ -30,7 +30,11 @@ function StockGame() {
   }, [gameId]);
 
   useEffect(() => {
-    if (gameState && gameState.timeRemaining > 0) {
+    if (
+      gameState &&
+      gameState.roundStatus === "active" &&
+      gameState.timeRemaining > 0
+    ) {
       const timer = setInterval(() => {
         setTimeRemaining((prev) => Math.max(0, prev - 1));
       }, 1000);
@@ -51,7 +55,19 @@ function StockGame() {
         headers: { Authorization: `Bearer ${token}` },
       });
       setGameState(res.data.gameConfig);
-      setStocks(res.data.stocks);
+
+      // Calculate percent changes from prices
+      const stocksWithChanges = res.data.stocks.map((stock) => {
+        const percentChange =
+          ((stock.currentPrice - stock.previousPrice) / stock.previousPrice) *
+          100;
+        return {
+          ...stock,
+          change: parseFloat(percentChange.toFixed(2)),
+        };
+      });
+
+      setStocks(stocksWithChanges);
       setPlayerGame(res.data.playerGame);
       setLoading(false);
     } catch (error) {
@@ -93,6 +109,11 @@ function StockGame() {
   const handleTransaction = async () => {
     if (!selectedStock || !units || units <= 0) {
       toast.error("Please select a stock and enter valid units");
+      return;
+    }
+
+    if (gameState.roundStatus !== "active") {
+      toast.error("Trading is not available right now");
       return;
     }
 
@@ -164,6 +185,21 @@ function StockGame() {
       (player) => player.user?._id === playerGame?.user
     );
     return myIndex !== -1 ? myIndex + 1 : "-";
+  };
+
+  const getRoundStatusMessage = () => {
+    if (!gameState) return "";
+
+    if (gameState.roundStatus === "ended") {
+      return "Round has ended. Waiting for admin to start next round...";
+    } else if (gameState.roundStatus === "waiting") {
+      return "Waiting for round to begin...";
+    }
+    return "";
+  };
+
+  const canTrade = () => {
+    return gameState?.roundStatus === "active" && timeRemaining > 0;
   };
 
   if (loading) {
@@ -252,190 +288,7 @@ function StockGame() {
     );
   }
 
-  // Game finished - Show final state with stocks but no trading
-  if (gameState?.status === "finished") {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6">
-        {/* Header - Game Ended */}
-        <div className="max-w-7xl mx-auto mb-6">
-          <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-lg p-6 shadow-xl">
-            <div className="flex justify-between items-center flex-wrap gap-4">
-              <div>
-                <h1 className="text-3xl font-bold">Game Ended</h1>
-                <p className="text-red-200">
-                  Final Results - Round {gameState.totalRounds}
-                </p>
-              </div>
-              <div className="text-center">
-                <p className="text-sm text-red-200">Your Final Score</p>
-                <p className="text-4xl font-bold">
-                  ${playerGame.finalScore?.toLocaleString() || getTotalValue()}
-                </p>
-              </div>
-              <div className="text-center">
-                <p className="text-sm text-red-200">Your Final Rank</p>
-                <p className="text-2xl font-bold"># {getMyRank()}</p>
-                <button
-                  onClick={() => setShowLeaderboard(true)}
-                  className="mt-2 bg-white text-red-600 px-4 py-1 rounded text-sm font-semibold hover:bg-gray-100"
-                >
-                  View Full Leaderboard
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Portfolio Section */}
-          <div className="lg:col-span-1">
-            <div className="bg-gray-800 rounded-lg p-6 shadow-xl mb-6">
-              <h2 className="text-2xl font-bold mb-4">Final Portfolio</h2>
-              <div className="space-y-3">
-                <div className="bg-green-600 rounded-lg p-4">
-                  <p className="text-sm text-green-100">Cash Balance</p>
-                  <p className="text-2xl font-bold">
-                    ${playerGame.balance.toLocaleString()}
-                  </p>
-                </div>
-                <div className="bg-blue-600 rounded-lg p-4">
-                  <p className="text-sm text-blue-100">Portfolio Value</p>
-                  <p className="text-2xl font-bold">
-                    ${parseFloat(getPortfolioValue()).toLocaleString()}
-                  </p>
-                </div>
-                <div className="bg-purple-600 rounded-lg p-4">
-                  <p className="text-sm text-purple-100">Total Value</p>
-                  <p className="text-2xl font-bold">
-                    ${parseFloat(getTotalValue()).toLocaleString()}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Holdings */}
-            <div className="bg-gray-800 rounded-lg p-6 shadow-xl">
-              <h2 className="text-xl font-bold mb-4">Your Final Holdings</h2>
-              {playerGame.portfolio.length === 0 ? (
-                <p className="text-gray-400">No stocks owned</p>
-              ) : (
-                <div className="space-y-2">
-                  {playerGame.portfolio.map((holding) => {
-                    const stock = stocks.find(
-                      (s) => s.symbol === holding.stock
-                    );
-                    return (
-                      <div
-                        key={holding.stock}
-                        className="bg-gray-700 rounded p-3"
-                      >
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <p className="font-bold">{holding.stock}</p>
-                            <p className="text-sm text-gray-300">
-                              {holding.units} units
-                            </p>
-                          </div>
-                          {stock && (
-                            <div className="text-right">
-                              <p className="font-bold">
-                                $
-                                {(holding.units * stock.currentPrice).toFixed(
-                                  2
-                                )}
-                              </p>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Final Stock Prices Section */}
-          <div className="lg:col-span-2">
-            <div className="bg-gray-800 rounded-lg p-6 shadow-xl mb-6">
-              <h2 className="text-2xl font-bold mb-4">Final Stock Prices</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {stocks.map((stock) => (
-                  <div
-                    key={stock.symbol}
-                    className="bg-gray-700 rounded-lg p-4 opacity-90"
-                  >
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="text-xl font-bold">{stock.symbol}</h3>
-                        <p className="text-sm text-gray-300">{stock.name}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-2xl font-bold">
-                          ${stock.currentPrice.toFixed(2)}
-                        </p>
-                        <p
-                          className={`text-sm ${
-                            stock.change >= 0
-                              ? "text-green-400"
-                              : "text-red-400"
-                          }`}
-                        >
-                          Last Round: {stock.change >= 0 ? "+" : ""}
-                          {stock.change.toFixed(2)}%
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="bg-gray-800 rounded-lg p-6 shadow-xl">
-              <div className="flex gap-4 justify-center">
-                <button
-                  onClick={() => navigate("/games")}
-                  className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-colors"
-                >
-                  Back to Games
-                </button>
-                <button
-                  onClick={() => setShowLeaderboard(true)}
-                  className="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-lg font-semibold transition-colors"
-                >
-                  View Full Leaderboard
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Leaderboard Modal */}
-        {showLeaderboard && (
-          <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-            <div className="bg-gray-800 rounded-lg p-6 max-w-4xl w-full max-h-[80vh] overflow-y-auto">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold">Final Leaderboard</h2>
-                <button
-                  onClick={() => setShowLeaderboard(false)}
-                  className="text-gray-400 hover:text-white text-2xl"
-                >
-                  ✕
-                </button>
-              </div>
-              <LeaderboardTable
-                leaderboard={leaderboard}
-                currentUserId={playerGame?.user}
-              />
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  // Active game
+  // Active or Finished game - same UI
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6">
       {/* Header */}
@@ -447,22 +300,62 @@ function StockGame() {
               <p className="text-purple-200">
                 Round {gameState.currentRound + 1} of {gameState.totalRounds}
               </p>
-            </div>
-            <div className="text-center">
-              <p className="text-sm text-purple-200">Time Remaining</p>
-              <p
-                className={`text-4xl font-bold ${
-                  timeRemaining <= 10 ? "text-red-300 animate-pulse" : ""
-                }`}
-              >
-                {formatTime(timeRemaining)}
-              </p>
-              {timeRemaining <= 0 && (
-                <p className="text-sm text-red-300 mt-1">
-                  Waiting for next round...
-                </p>
+              {gameState.status === "finished" ? (
+                <p className="text-yellow-300 font-bold mt-1">🏁 Game Ended</p>
+              ) : (
+                gameState.roundStatus && (
+                  <p className="text-sm text-purple-200 mt-1">
+                    {gameState.roundStatus === "active" && "🔵 Trading Active"}
+                    {gameState.roundStatus === "ended" && "⏸️ Round Ended"}
+                    {gameState.roundStatus === "waiting" && "⏳ Waiting"}
+                  </p>
+                )
               )}
             </div>
+
+            {gameState.status === "finished" ? (
+              <div className="text-center">
+                <p className="text-sm text-purple-200">Your Final Score</p>
+                <p className="text-4xl font-bold text-yellow-300">
+                  ${playerGame.finalScore?.toLocaleString() || getTotalValue()}
+                </p>
+                <button
+                  onClick={() => navigate("/games")}
+                  className="mt-3 bg-white text-purple-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100"
+                >
+                  Back to Games List
+                </button>
+              </div>
+            ) : (
+              <div className="text-center">
+                <p className="text-sm text-purple-200">
+                  {gameState.roundStatus === "active"
+                    ? "Time Remaining"
+                    : "Round Status"}
+                </p>
+                {gameState.roundStatus === "active" ? (
+                  <>
+                    <p
+                      className={`text-4xl font-bold ${
+                        timeRemaining <= 10 ? "text-red-300 animate-pulse" : ""
+                      }`}
+                    >
+                      {formatTime(timeRemaining)}
+                    </p>
+                    {timeRemaining <= 0 && (
+                      <p className="text-sm text-red-300 mt-1">
+                        Waiting for admin to end round...
+                      </p>
+                    )}
+                  </>
+                ) : (
+                  <p className="text-xl font-bold text-yellow-300 mt-2">
+                    {getRoundStatusMessage()}
+                  </p>
+                )}
+              </div>
+            )}
+
             <div className="text-center">
               <p className="text-sm text-purple-200">Your Rank</p>
               <p className="text-2xl font-bold"># {getMyRank()}</p>
@@ -470,7 +363,7 @@ function StockGame() {
                 onClick={() => setShowLeaderboard(true)}
                 className="mt-2 bg-white text-purple-600 px-4 py-1 rounded text-sm font-semibold hover:bg-gray-100"
               >
-                View Full Leaderboard
+                View Leaderboard
               </button>
             </div>
           </div>
@@ -522,13 +415,27 @@ function StockGame() {
                         <div>
                           <p className="font-bold">{holding.stock}</p>
                           <p className="text-sm text-gray-300">
-                            {holding.units} units
+                            {holding.units} units @ ${holding.purchasePrice}
                           </p>
                         </div>
                         {stock && (
                           <div className="text-right">
                             <p className="font-bold">
                               ${(holding.units * stock.currentPrice).toFixed(2)}
+                            </p>
+                            <p
+                              className={`text-sm ${
+                                stock.currentPrice > holding.purchasePrice
+                                  ? "text-green-400"
+                                  : "text-red-400"
+                              }`}
+                            >
+                              {(
+                                ((stock.currentPrice - holding.purchasePrice) /
+                                  holding.purchasePrice) *
+                                100
+                              ).toFixed(2)}
+                              %
                             </p>
                           </div>
                         )}
@@ -544,17 +451,30 @@ function StockGame() {
         {/* Stocks Section */}
         <div className="lg:col-span-2">
           <div className="bg-gray-800 rounded-lg p-6 shadow-xl mb-6">
-            <h2 className="text-2xl font-bold mb-4">Available Stocks</h2>
+            <h2 className="text-2xl font-bold mb-4">
+              {gameState.status === "finished"
+                ? "Final Stock Prices"
+                : "Available Stocks"}
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {stocks.map((stock) => (
                 <div
                   key={stock.symbol}
-                  className={`bg-gray-700 rounded-lg p-4 cursor-pointer transition-all hover:bg-gray-600 ${
-                    selectedStock?.symbol === stock.symbol
+                  className={`bg-gray-700 rounded-lg p-4 ${
+                    gameState.status !== "finished" && canTrade()
+                      ? "cursor-pointer transition-all hover:bg-gray-600"
+                      : "opacity-75"
+                  } ${
+                    selectedStock?.symbol === stock.symbol &&
+                    gameState.status !== "finished"
                       ? "ring-2 ring-blue-500"
                       : ""
-                  } ${timeRemaining <= 0 ? "opacity-50 cursor-not-allowed" : ""}`}
-                  onClick={() => timeRemaining > 0 && setSelectedStock(stock)}
+                  }`}
+                  onClick={() =>
+                    gameState.status !== "finished" &&
+                    canTrade() &&
+                    setSelectedStock(stock)
+                  }
                 >
                   <div className="flex justify-between items-start">
                     <div>
@@ -580,86 +500,140 @@ function StockGame() {
             </div>
           </div>
 
-          {/* Transaction Section */}
-          <div className="bg-gray-800 rounded-lg p-6 shadow-xl">
-            <h2 className="text-2xl font-bold mb-4">Make a Transaction</h2>
-            {timeRemaining <= 0 && (
-              <div className="bg-red-600 text-white p-3 rounded-lg mb-4 text-center">
-                Trading closed for this round. Waiting for admin to advance...
+          {/* Transaction Section or Transaction History */}
+          {gameState.status === "finished" ? (
+            // Transaction History for finished game
+            playerGame.transactionHistory &&
+            playerGame.transactionHistory.length > 0 && (
+              <div className="bg-gray-800 rounded-lg p-6 shadow-xl">
+                <h2 className="text-2xl font-bold mb-4">Transaction History</h2>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-gray-700">
+                        <th className="text-left py-2 px-3">Round</th>
+                        <th className="text-left py-2 px-3">Type</th>
+                        <th className="text-left py-2 px-3">Stock</th>
+                        <th className="text-right py-2 px-3">Units</th>
+                        <th className="text-right py-2 px-3">Price</th>
+                        <th className="text-right py-2 px-3">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {playerGame.transactionHistory.map((tx, idx) => (
+                        <tr key={idx} className="border-b border-gray-700">
+                          <td className="py-2 px-3">{tx.round + 1}</td>
+                          <td className="py-2 px-3">
+                            <span
+                              className={`px-2 py-1 rounded text-xs ${
+                                tx.type === "buy"
+                                  ? "bg-green-600"
+                                  : "bg-red-600"
+                              }`}
+                            >
+                              {tx.type.toUpperCase()}
+                            </span>
+                          </td>
+                          <td className="py-2 px-3 font-semibold">
+                            {tx.stock}
+                          </td>
+                          <td className="py-2 px-3 text-right">{tx.units}</td>
+                          <td className="py-2 px-3 text-right">${tx.price}</td>
+                          <td className="py-2 px-3 text-right font-semibold">
+                            ${(tx.units * tx.price).toFixed(2)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            )}
-            {selectedStock && timeRemaining > 0 ? (
-              <div>
-                <div className="mb-4 bg-gray-700 rounded-lg p-4">
-                  <p className="text-gray-300">Selected Stock</p>
-                  <p className="text-2xl font-bold">
-                    {selectedStock.symbol} - $
-                    {selectedStock.currentPrice.toFixed(2)}
-                  </p>
+            )
+          ) : (
+            // Transaction Section for active game
+            <div className="bg-gray-800 rounded-lg p-6 shadow-xl">
+              <h2 className="text-2xl font-bold mb-4">Make a Transaction</h2>
+              {!canTrade() && (
+                <div className="bg-yellow-600 text-white p-3 rounded-lg mb-4 text-center">
+                  {getRoundStatusMessage() ||
+                    "Trading is currently unavailable"}
                 </div>
-
-                <div className="flex gap-4 mb-4">
-                  <button
-                    onClick={() => setTransactionType("buy")}
-                    className={`flex-1 py-3 rounded-lg font-semibold transition-colors ${
-                      transactionType === "buy"
-                        ? "bg-green-600 text-white"
-                        : "bg-gray-700 text-gray-300 hover:bg-gray-600"
-                    }`}
-                  >
-                    Buy
-                  </button>
-                  <button
-                    onClick={() => setTransactionType("sell")}
-                    className={`flex-1 py-3 rounded-lg font-semibold transition-colors ${
-                      transactionType === "sell"
-                        ? "bg-red-600 text-white"
-                        : "bg-gray-700 text-gray-300 hover:bg-gray-600"
-                    }`}
-                  >
-                    Sell
-                  </button>
-                </div>
-
-                <div className="mb-4">
-                  <label className="block text-sm text-gray-300 mb-2">
-                    Number of Units
-                  </label>
-                  <input
-                    type="number"
-                    value={units}
-                    onChange={(e) => setUnits(e.target.value)}
-                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter units"
-                    min="1"
-                  />
-                  {units > 0 && (
-                    <p className="text-sm text-gray-400 mt-2">
-                      Total: ${(units * selectedStock.currentPrice).toFixed(2)}
+              )}
+              {selectedStock && canTrade() ? (
+                <div>
+                  <div className="mb-4 bg-gray-700 rounded-lg p-4">
+                    <p className="text-gray-300">Selected Stock</p>
+                    <p className="text-2xl font-bold">
+                      {selectedStock.symbol} - $
+                      {selectedStock.currentPrice.toFixed(2)}
                     </p>
-                  )}
-                </div>
+                  </div>
 
-                <button
-                  onClick={handleTransaction}
-                  className={`w-full py-3 rounded-lg font-semibold transition-colors ${
-                    transactionType === "buy"
-                      ? "bg-green-600 hover:bg-green-700"
-                      : "bg-red-600 hover:bg-red-700"
-                  } text-white`}
-                >
-                  {transactionType === "buy" ? "Buy" : "Sell"} {units || 0}{" "}
-                  units
-                </button>
-              </div>
-            ) : (
-              <p className="text-gray-400 text-center py-8">
-                {timeRemaining <= 0
-                  ? "Trading closed for this round"
-                  : "Select a stock to start trading"}
-              </p>
-            )}
-          </div>
+                  <div className="flex gap-4 mb-4">
+                    <button
+                      onClick={() => setTransactionType("buy")}
+                      className={`flex-1 py-3 rounded-lg font-semibold transition-colors ${
+                        transactionType === "buy"
+                          ? "bg-green-600 text-white"
+                          : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                      }`}
+                    >
+                      Buy
+                    </button>
+                    <button
+                      onClick={() => setTransactionType("sell")}
+                      className={`flex-1 py-3 rounded-lg font-semibold transition-colors ${
+                        transactionType === "sell"
+                          ? "bg-red-600 text-white"
+                          : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                      }`}
+                    >
+                      Sell
+                    </button>
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm text-gray-300 mb-2">
+                      Number of Units
+                    </label>
+                    <input
+                      type="number"
+                      value={units}
+                      onChange={(e) => setUnits(e.target.value)}
+                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Enter units"
+                      min="1"
+                    />
+                    {units > 0 && (
+                      <p className="text-sm text-gray-400 mt-2">
+                        Total: $
+                        {(units * selectedStock.currentPrice).toFixed(2)}
+                      </p>
+                    )}
+                  </div>
+
+                  <button
+                    onClick={handleTransaction}
+                    className={`w-full py-3 rounded-lg font-semibold transition-colors ${
+                      transactionType === "buy"
+                        ? "bg-green-600 hover:bg-green-700"
+                        : "bg-red-600 hover:bg-red-700"
+                    } text-white`}
+                  >
+                    {transactionType === "buy" ? "Buy" : "Sell"} {units || 0}{" "}
+                    units
+                  </button>
+                </div>
+              ) : (
+                <p className="text-gray-400 text-center py-8">
+                  {!canTrade()
+                    ? getRoundStatusMessage() ||
+                      "Trading is currently unavailable"
+                    : "Select a stock to start trading"}
+                </p>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
@@ -668,7 +642,11 @@ function StockGame() {
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
           <div className="bg-gray-800 rounded-lg p-6 max-w-4xl w-full max-h-[80vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold">Live Leaderboard</h2>
+              <h2 className="text-2xl font-bold">
+                {gameState.status === "finished"
+                  ? "Final Leaderboard"
+                  : "Live Leaderboard"}
+              </h2>
               <button
                 onClick={() => setShowLeaderboard(false)}
                 className="text-gray-400 hover:text-white text-2xl"
@@ -691,7 +669,7 @@ function StockGame() {
 function LeaderboardTable({ leaderboard, currentUserId }) {
   return (
     <div className="overflow-x-auto">
-      <table className="w-full bg-black">
+      <table className="w-full">
         <thead>
           <tr className="border-b border-gray-600">
             <th className="text-left py-3 px-4">Rank</th>
