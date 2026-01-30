@@ -262,10 +262,10 @@ export default [
     title: "Enigma",
     max_members: 3,
     duration: "3 days",
-    date: "31 Jan, 2026",
+    date: "2 Feb, 2026",
     unstop: "https://unstop.com/hackathons/enigma-iit-bhu-1625255",
-    last_date_reg: "31 Jan, 2026",
-    deadline: "2026-01-31T00:00:00+05:30",
+    last_date_reg: "2 Feb, 2026",
+    deadline: "2026-02-02T00:00:00+05:30",
     image_desk_path: "/Enigma_bg.webp",
     further_details: "https://discord.gg/St3q2sCn",
     overview: `
@@ -317,10 +317,10 @@ export default [
     title: "Capture The Flag",
     unstop:
       "https://unstop.com/hackathons/capture-the-flag-codefest26-iit-bhu-1623679",
-    duration: "36 hours",
-    date: "30 Jan, 2026",
-    last_date_reg: "30 Jan, 2026",
-    deadline: "2026-01-30T17:59:59+05:30",
+    duration: "24 hours",
+    date: "2 Feb, 2026",
+    last_date_reg: "2 Feb, 2026",
+    deadline: "2026-02-02T17:59:59+05:30",
     image_desk_path: "/CTF_bg.webp",
     further_details: "https://discord.gg/St3q2sCn",
     overview: `
@@ -329,7 +329,7 @@ export default [
         <p>• A team of a maximum of 3 members is allowed.</p>
         `,
     description: `
-        <p>• It's a 36-hour online live event, having challenges from different categories like reverse engineering, forensics, web exploration, cryptography, etc.</p>
+        <p>• It's a 24-hour online live event, having challenges from different categories like reverse engineering, forensics, web exploration, cryptography, etc.</p>
         <p>• We will be conducting it on the CTFd platform. Link will be shared later.</p>
         <p>• Each category would have at least 3-4 challenges of difficulty ranging from Easy to Hard level.</p>
         <p>• Participants have to register on the CodeFest website</p>

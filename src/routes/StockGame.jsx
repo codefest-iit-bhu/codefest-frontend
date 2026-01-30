@@ -596,15 +596,39 @@ function StockGame() {
                     <label className="block text-sm text-gray-300 mb-2">
                       Number of Units
                     </label>
+
                     <input
                       type="number"
                       value={units}
-                      onChange={(e) => setUnits(e.target.value)}
+                      onChange={(e) => {
+                        const value = e.target.value;
+
+                        // Allow empty for backspace
+                        if (value === "") {
+                          setUnits("");
+                          return;
+                        }
+
+                        // Allow ONLY positive integers (>= 1)
+                        if (/^[1-9]\d*$/.test(value)) {
+                          setUnits(Number(value));
+                        }
+                      }}
+                      onWheel={(e) => e.target.blur()}
+                      onKeyDown={(e) => {
+                        if (["e", "E", "+", "-", "."].includes(e.key)) {
+                          e.preventDefault();
+                        }
+                      }}
+                      min="1"
+                      step="1"
+                      inputMode="numeric"
+                      pattern="[1-9][0-9]*"
                       className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter units"
-                      min="1"
                     />
-                    {units > 0 && (
+
+                    {units >= 1 && (
                       <p className="text-sm text-gray-400 mt-2">
                         Total: $
                         {(units * selectedStock.currentPrice).toFixed(2)}
