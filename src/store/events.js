@@ -193,16 +193,16 @@ export default [
     title: "HaXplore",
     max_members: 3,
     duration: "3 days",
-    date: "31 Jan, 2026",
+    date: "2 Feb, 2026",
     unstop: "https://unstop.com/hackathons/haxplore-codefest26-iit-bhu-1625832",
-    last_date_reg: "31 Jan, 2026",
-    deadline: "2026-01-31T00:00:00+05:30",
+    last_date_reg: "5 Feb, 2026",
+    deadline: "2026-02-05T00:00:00+05:30",
     image_desk_path: "/Haxplore_bg.webp",
     further_details: "https://discord.gg/6U3YmHenZw",
     overview: `
         <p>HaXplore stands as the premier hackathon organized as part of Codefest, the annual departmental fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi. This esteemed event serves as a dynamic platform where innovative minds from diverse domains converge to articulate their groundbreaking ideas. Participants come together to not only showcase their creativity but also engage in spirited competition as they strive for excellence. HaXplore fosters an environment that encourages collaboration and the exploration of cutting-edge solutions, making it a hub for transformative technological endeavors.</p>`,
     description: `
-        <p> From 31 Jan, the annual 72-Hour Hackathon will take place. This hackathon is a weekend-long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a tight 72-hour time constraint. By the deadline at the end of the day on 3 Feb, teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
+        <p> From 2 Feb, the annual 72-Hour Hackathon will take place. This hackathon is a weekend-long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a tight 72-hour time constraint. By the deadline at the end of the day on 3 Feb, teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
         `,
     registration_and_team: `
         <p>• Teams can consist of up to 3 members.</p>
@@ -210,10 +210,9 @@ export default [
         <p>• Teams must submit their details and confirm their participation before the deadline. Late registrations will not be entertained.</p>
         `,
     prototype_submission: `
-        <p>• The hackathon will officially commence on 31st of January 2026 at 12:00 hours and conclude on February 3 at 00:00 hours.</p>
-        <p>• Themes will be emailed to registered participants on January 31st at 12:00 itself.</p>
+        <p>• Themes will be emailed to registered participants on 2nd February at 12:00 itself.</p>
         <p>• Teams can work on developing a prototype based on their idea during this period.</p>
-        <p>• Teams must submit their final prototypes along with a presentation by 3rd Feb.</p>
+        <p>• Teams must submit their final prototypes along with a presentation by 5th Feb.</p>
         <p>• Submissions will be judged based on creativity, functionality, and the impact of the solution.</p>
         <p>• Shortlisted teams will be called and required to present their prototype in front of the judges (online meet).</p>
         `,
@@ -264,8 +263,8 @@ export default [
     duration: "3 days",
     date: "2 Feb, 2026",
     unstop: "https://unstop.com/hackathons/enigma-iit-bhu-1625255",
-    last_date_reg: "2 Feb, 2026",
-    deadline: "2026-02-02T00:00:00+05:30",
+    last_date_reg: "5 Feb, 2026",
+    deadline: "2026-02-05T00:00:00+05:30",
     image_desk_path: "/Enigma_bg.webp",
     further_details: "https://discord.gg/St3q2sCn",
     overview: `
@@ -278,7 +277,7 @@ export default [
         <p>• We will be conducting it on Kaggle.</p>
         <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</Link></p>
         <p>• Participants and their teams should be registered on the codefest website.</p>
-        <p>• The link to the competition will be shared via email to registered participants on 29th March at 12 PM IST.</p>
+        <p>• The link to the competition will be shared via email to registered participants on 2nd February at 12 PM IST.</p>
         `,
     rules: `
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
@@ -319,8 +318,8 @@ export default [
       "https://unstop.com/hackathons/capture-the-flag-codefest26-iit-bhu-1623679",
     duration: "24 hours",
     date: "2 Feb, 2026",
-    last_date_reg: "2 Feb, 2026",
-    deadline: "2026-02-02T17:59:59+05:30",
+    last_date_reg: "3 Feb, 2026",
+    deadline: "2026-02-03T17:59:59+05:30",
     image_desk_path: "/CTF_bg.webp",
     further_details: "https://discord.gg/St3q2sCn",
     overview: `
@@ -406,8 +405,8 @@ export default [
     unstop: "https://unstop.com/hackathons/vista-2026-iit-varanasi-1623682",
     duration: "5 days",
     date: "27 Jan, 2026",
-    last_date_reg: "31 Jan, 2026",
-    deadline: "2026-01-31T18:00:00+05:30",
+    last_date_reg: "1 Feb, 2026",
+    deadline: "2026-02-01T18:00:00+05:30",
     image_desk_path: "/Vista_bg.webp",
     further_details: "https://discord.gg/St3q2sCn",
     overview: `
