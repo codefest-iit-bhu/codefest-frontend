@@ -291,15 +291,15 @@ function StockGame() {
 
   // Active or Finished game - same UI
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6 ">
       {/* Header */}
-      <div className="max-w-7xl mx-auto mb-6">
+      <div className="max-w-7xl mx-auto mb-6 flex justify-center">
         <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg p-6 shadow-xl">
-          <div className="flex justify-between items-center flex-wrap gap-4">
+          <div className="flex justify-center items-center flex-wrap gap-4">
             <div>
               <h1 className="text-3xl font-bold">Stock Trading Game</h1>
               <p className="text-purple-200">
-                Round {gameState.currentRound + 1} of {gameState.totalRounds}
+                Round {Math.min(gameState.currentRound + 1,13)} of {gameState.totalRounds}
               </p>
               {gameState.status === "finished" ? (
                 <p className="text-yellow-300 font-bold mt-1">🏁 Game Ended</p>
@@ -416,7 +416,7 @@ function StockGame() {
                         <div>
                           <p className="font-bold">{holding.stock}</p>
                           <p className="text-sm text-gray-300">
-                            {holding.units} units @ ${holding.purchasePrice}
+                            {holding.units} units
                           </p>
                         </div>
                         {stock && (
@@ -457,7 +457,7 @@ function StockGame() {
                 ? "Final Stock Prices"
                 : "Available Stocks"}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               {stocks.map((stock) => (
                 <div
                   key={stock.symbol}
@@ -479,11 +479,11 @@ function StockGame() {
                 >
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="text-xl font-bold">{stock.symbol}</h3>
+                      <h3 className="text-m md:text-xl font-bold">{stock.symbol}</h3>
                       <p className="text-sm text-gray-300">{stock.name}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-2xl font-bold">
+                      <p className="text-l md:text-2xl font-bold">
                         ${stock.currentPrice.toFixed(2)}
                       </p>
                       <p
