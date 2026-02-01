@@ -21,12 +21,14 @@ const TicketGenerator = ({
   lastDateReg = "2026-01-20",
   img_src,
   img_bg_src,
+  deadline,
   styles = {}, // optional override
 }) => {
   const canvasRef = useRef(null);
 
   // compute registration status
-  const hasEnded = new Date() > new Date(lastDateReg);
+  console.log(deadline);
+  const hasEnded = new Date() > new Date(deadline);
   const regText = hasEnded ? "Registration Closed" : "";
 
   // image source state (allows upload/replace)
