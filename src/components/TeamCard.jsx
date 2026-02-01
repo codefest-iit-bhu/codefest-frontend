@@ -317,8 +317,8 @@ const TeamCard = ({
                         />
                       </button>
                     )}
-
-                    {canUnregister ? (
+{/* 
+                    {canUnregister ? ( */}
                       <button
                         className="hover:scale-110 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                         onClick={handleDeleteTeam}
@@ -331,11 +331,11 @@ const TeamCard = ({
                           alt="Delete Team"
                         />
                       </button>
-                    ) : (
+                    {/* ) : (
                       <p className="text-sm text-center">
                         Thanks for participating!
                       </p>
-                    )}
+                    )} */}
                   </>
                 ) : (
                   <button
