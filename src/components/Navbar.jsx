@@ -36,7 +36,7 @@ function Navbar() {
           {isAuthenticated ? (
             <>
               <Linker text="My Teams" href="/myTeams" />
-              <Linker text="Games" href="/games" />
+              {/* <Linker text="Games" href="/games" /> */}
 
               {/* Admin Only - Stock Game Admin */}
               {user?.role === "admin" && (
