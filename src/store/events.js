@@ -192,17 +192,17 @@ export default [
     name: "HaXplore",
     title: "HaXplore",
     max_members: 3,
-    duration: "3 days",
+    duration: "5 days",
     date: "2 Feb, 2026",
     unstop: "https://unstop.com/hackathons/haxplore-codefest26-iit-bhu-1625832",
-    last_date_reg: "5 Feb, 2026",
-    deadline: "2026-02-05T00:00:00+05:30",
+    last_date_reg: "8 Feb, 2026",
+    deadline: "2026-02-08T23:59:00+05:30",
     image_desk_path: "/Haxplore_bg.webp",
     further_details: "https://discord.gg/6U3YmHenZw",
     overview: `
         <p>HaXplore stands as the premier hackathon organized as part of Codefest, the annual departmental fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi. This esteemed event serves as a dynamic platform where innovative minds from diverse domains converge to articulate their groundbreaking ideas. Participants come together to not only showcase their creativity but also engage in spirited competition as they strive for excellence. HaXplore fosters an environment that encourages collaboration and the exploration of cutting-edge solutions, making it a hub for transformative technological endeavors.</p>`,
     description: `
-        <p> From 2 Feb, the annual 72-Hour Hackathon will take place. This hackathon is a weekend-long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a tight 72-hour time constraint. By the deadline at the end of the day on 3 Feb, teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
+        <p> From 2 Feb, the annual codefest Hackathon will take place. This hackathon is a week long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a time constraint. By the deadline teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
         `,
     registration_and_team: `
         <p>• Teams can consist of up to 3 members.</p>
@@ -210,9 +210,7 @@ export default [
         <p>• Teams must submit their details and confirm their participation before the deadline. Late registrations will not be entertained.</p>
         `,
     prototype_submission: `
-        <p>• Themes will be emailed to registered participants on 2nd February at 12:00 itself.</p>
         <p>• Teams can work on developing a prototype based on their idea during this period.</p>
-        <p>• Teams must submit their final prototypes along with a presentation by 5th Feb.</p>
         <p>• Submissions will be judged based on creativity, functionality, and the impact of the solution.</p>
         <p>• Shortlisted teams will be called and required to present their prototype in front of the judges (online meet).</p>
         `,
@@ -263,8 +261,8 @@ export default [
     duration: "3 days",
     date: "2 Feb, 2026",
     unstop: "https://unstop.com/hackathons/enigma-iit-bhu-1625255",
-    last_date_reg: "5 Feb, 2026",
-    deadline: "2026-02-05T00:00:00+05:30",
+    last_date_reg: "8 Feb, 2026",
+    deadline: "2026-02-08T23:59:00+05:30",
     image_desk_path: "/Enigma_bg.webp",
     further_details: "https://discord.gg/St3q2sCn",
     overview: `
@@ -329,9 +327,11 @@ export default [
         `,
     description: `
         <p>• It's a 24-hour online live event, having challenges from different categories like reverse engineering, forensics, web exploration, cryptography, etc.</p>
-        <p>• We will be conducting it on the CTFd platform. Link will be shared later.</p>
+        <p>• We will be conducting it on the CTFd platform. Link will be shared later on mail.</p>
         <p>• Each category would have at least 3-4 challenges of difficulty ranging from Easy to Hard level.</p>
-        <p>• Participants have to register on the CodeFest website</p>
+        <p>• Participants have to register on the CodeFest website and unstop compulsorily</p>
+        <p>• It would have 16 problems released in 4 waves. </p>
+        <p>• Join the <a href="https://discord.gg/saV2euJ4n">discord</a> for updates regarding CTF during the event.</p>
         `,
     rules: `
         <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any a situation of malpractice arises.</p>
@@ -364,7 +364,7 @@ export default [
     max_members: 1,
     date: "4 Feb, 2026",
     last_date_reg: "4 Feb, 2026",
-    deadline: "2026-02-04T19:59:59+05:30",
+    deadline: "2026-02-04T21:59:59+05:30",
     image_desk_path: "/Manthan_bg.webp",
     further_details: "https://discord.gg/St3q2sCn",
     overview: `
@@ -406,7 +406,7 @@ export default [
     duration: "5 days",
     date: "27 Jan, 2026",
     last_date_reg: "2 Feb, 2026",
-    deadline: "2026-02-02T18:00:00+05:30",
+    deadline: "2026-02-02T23:59:00+05:30",
     image_desk_path: "/Vista_bg.webp",
     further_details: "https://discord.gg/St3q2sCn",
     overview: `
