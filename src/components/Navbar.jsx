@@ -126,13 +126,13 @@ function Navbar() {
                 >
                   MyTeams
                 </Link>
-
+{/* 
                 <Link
                   to="/games"
                   className="h-[10%] w-full flex items-center justify-center font-bold text-2xl text-[#f0dd90] hover:bg-[#f0dd90] hover:text-black transition-all duration-500 p-5"
                 >
                   Games
-                </Link>
+                </Link> */}
 
                 {/* Admin Only - Stock Game Admin */}
                 {user?.role === "admin" && (
