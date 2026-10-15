@@ -7,12 +7,12 @@ import toast from "react-hot-toast";
 import axios from "../utils/axiosInstance";
 import PinInput from "react-pin-input";
 import Background from "../backgrounds/Background";
-import Login_Signup from "../backgrounds/Login_Signup";
 
 export default function VerifyEmail() {
   const navigate = useNavigate();
 
   const [otp, setOtp] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const urlSearchParams = new URLSearchParams(window.location.search);
@@ -37,79 +37,8 @@ export default function VerifyEmail() {
   };
 
   return (
-  <>
-    <Login_Signup />
-
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div
-        className="
-          w-full max-w-[420px]
-          bg-[rgba(42,42,39,0.88)]
-          rounded-[20px]
-          px-4 py-6
-          shadow-inner
-          border border-[#D4AF37]/40
-          flex flex-col items-center
-        "
-      >
-
-        <div className="flex flex-col items-center mb-6">
-          <h1 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-['Playfair_Display']">
-            Email Verification
-          </h1>
-          <div className="mt-1 h-[2px] w-[56px] bg-[#BFA76A] rounded-full" />
-        </div>
-
- 
-        <p className="text-center text-sm text-gray-300 mb-5">
-          If you don&apos;t find OTP, please check in spam.
-        </p>
-
-        <div className="flex justify-center mb-6">
-          <PinInput
-            length={6}
-            focus
-            type="numeric"
-            inputMode="numeric"
-            onChange={setOtp}
-            onComplete={setOtp}
-            containerStyle={{
-              display: 'flex',
-              gap: '8px',
-            }}
-            inputStyle={{
-              width: '44px',
-              height: '44px',
-              borderRadius: '6px',
-              border: '1px solid gray',
-              textAlign: 'center',
-              fontSize: '16px',
-            }}
-          />
-        </div>
-
-        <button
-          onClick={handleSubmit}
-          className="
-            w-full sm:w-[220px]
-            py-3 sm:py-2
-            text-lg sm:text-xl
-            text-black
-            bg-[#D4AF37]
-            rounded-[20px]
-            font-['Playfair_Display']
-            hover:bg-[#c9a634]
-            transition-colors
-          "
-        >
-          Verify
-        </button>
-      </div>
-    </div>
-
-
-
-      {/* <Login_Signup image_path={"/login_signup.webp"} />
+    <>
+      <Background image_path={"/login_signup.svg"} />
       <div className="w-[100vw] h-[100vh] flex justify-center items-center bg-gray-600">
         <div className="rounded-md flex flex-col items-center py-4 w-[500px] backdrop-blur-[2px]">
           <HeadingA text="Email Verification" size="2xl" />
@@ -134,7 +63,7 @@ export default function VerifyEmail() {
           />
           <AnimatedButton text="Verify >" onClick={handleSubmit} />
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
