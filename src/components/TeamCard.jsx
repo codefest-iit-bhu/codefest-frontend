@@ -1,55 +1,38 @@
-import { useState, useEffect } from "react";
-import axios from "../utils/axiosInstance.js";
+import React, { useState, useEffect } from "react";
+import "./TeamCard.css";
+import axios from "../utils/axiosInstance";
 import toast from "react-hot-toast";
 import events from "../store/events.js";
-import "./TeamCard.css";
+import Teamcardbg from "../backgrounds/team_card.jsx";
 
-const TeamCard = ({
-  team,
-  onTeamDelete,
-  onMemberUpdate,
-  user,
-  all = false,
-}) => {
+const TeamCard = ({ team, onTeamDelete, onMemberUpdate, user, all = false }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [members, setMembers] = useState(team.members);
   const [isChangeLeaderModalOpen, setIsChangeLeaderModalOpen] = useState(false);
   const [selectedNewLeader, setSelectedNewLeader] = useState("");
 
-  // Memoized event data
-  const currentEvent = events.find((event) => event.id === team.event.eventId);
-  const eventName = currentEvent?.name || "Unknown Event";
-  const eventDeadline = new Date(currentEvent?.deadline);
-  const eventDate = currentEvent?.date || "";
+  const eventName = events.find(
+    (event) => event.id === team.event.eventId
+  ).name;
 
-  const now = new Date();
-  const canUnregister = now < eventDeadline;
   const isLeader = team.teamLeader === user._id;
-  const isTeamEvent = team.event.maxMembers > 1;
-  const spaceRemaining = team.event.maxMembers - members.length;
-
-  useEffect(() => {
-    setMembers(team.members);
-  }, [team.members]);
+  useEffect(() => { }, [team.teamLeader]);
 
   const handleDeleteTeam = async () => {
-    if (!window.confirm("Do you want to delete the team?")) return;
-
-    setIsProcessing(true);
-    try {
-      await axios.delete("/team", {
-        data: { teamCode: team.teamCode },
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-      onTeamDelete(team.teamCode);
-      toast.success("Team deleted successfully.");
-    } catch (error) {
-      toast.error(error.response?.data?.message || "Failed to delete team");
-    } finally {
-      setIsProcessing(false);
+    const ans = window.confirm("Do you want to delete the team?");
+    if (!ans) {
+      return;
     }
+    setIsProcessing(true);
+    await axios.delete("/team", {
+      data: { teamCode: team.teamCode },
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    onTeamDelete(team.teamCode);
+    toast.success("Team deleted successfully.");
+    setIsProcessing(false);
   };
 
   const handleChangeLeader = async () => {
@@ -75,293 +58,188 @@ const TeamCard = ({
       toast.success("Leader changed successfully.");
       team.teamLeader = selectedNewLeader;
       setIsChangeLeaderModalOpen(false);
-      setSelectedNewLeader("");
     } catch (error) {
-      toast.error(error.response?.data?.message || "Failed to change leader");
+      toast.error("Failed to change leader");
     } finally {
       setIsProcessing(false);
     }
   };
 
   const handleLeaveTeam = async () => {
-    if (!window.confirm("Do you want to leave this team?")) return;
-
-    setIsProcessing(true);
-    try {
-      await axios.delete("/member", {
-        data: { userId: user._id, teamId: team._id },
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-      toast.success("Team left successfully.");
-      window.location.reload();
-    } catch (error) {
-      toast.error(error.response?.data?.message || "Failed to leave team");
-      setIsProcessing(false);
+    //leave team logic
+    const ans = window.confirm("Do you want to leave this team?");
+    if (!ans) {
+      return;
     }
+    const memberId = user._id;
+    setIsProcessing(true);
+    await axios.delete("/member", {
+      data: { userId: memberId, teamId: team._id },
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    toast.success("Team left successfully.");
+    setIsProcessing(false);
+    window.location.reload();
+    return;
   };
 
   const handleRemoveMember = async (memberId) => {
-    if (!window.confirm("Do you want to remove this member?")) return;
-
-    setIsProcessing(true);
-    try {
-      await axios.delete("/member", {
-        data: { userId: memberId, teamId: team._id },
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-      const updatedMembers = members.filter(
-        (member) => member.user._id !== memberId
-      );
-      setMembers(updatedMembers);
-      onMemberUpdate(team.teamCode, updatedMembers);
-      toast.success("Member removed successfully.");
-    } catch (error) {
-      toast.error(error.response?.data?.message || "Failed to remove member");
-    } finally {
-      setIsProcessing(false);
+    const ans = window.confirm("Do you want to delete this member?");
+    if (!ans) {
+      return;
     }
+    setIsProcessing(true);
+    await axios.delete("/member", {
+      data: { userId: memberId, teamId: team._id },
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    const updatedMembers = members.filter(
+      (member) => member.user._id !== memberId
+    );
+    setMembers(updatedMembers);
+    onMemberUpdate(team.teamCode, updatedMembers);
+    toast.success("Member removed successfully.");
+    setIsProcessing(false);
   };
 
-  const eligibleMembers = members.filter(
-    (member) =>
-      member.user._id !== user._id && member.user._id !== team.teamLeader
-  );
-
   return (
-    <div>
+    <>
       {/* Change Leader Modal */}
       {!all && isChangeLeaderModalOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
-          onClick={() => {
-            setIsChangeLeaderModalOpen(false);
-            setSelectedNewLeader("");
-          }}
-        >
-          <div
-            className="relative w-full max-w-[450px] px-4"
-            onClick={(e) => e.stopPropagation()}
-            style={{ zIndex: 100 }}
-          >
-            <div className="bg-[rgba(42,42,39,0.88)] rounded-[20px] px-4 py-4 shadow-inner border border-[#D4AF37]/40 relative">
-              <button
-                type="button"
-                onClick={() => {
-                  setIsChangeLeaderModalOpen(false);
-                  setSelectedNewLeader("");
-                }}
-                className="absolute top-3 right-3 text-[#D4AF37] hover:text-red-500 text-2xl font-bold transition-colors duration-200"
-                aria-label="Close modal"
-              >
-                ×
-              </button>
-
-              <div className="flex justify-center mb-6">
-                <div className="inline-flex flex-col items-center">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-bree">
-                    CHANGE LEADER
-                  </h2>
-                  <div className="mt-1 h-[2px] w-[56px] bg-[#BFA76A] rounded-full" />
-                  <span className="text-base text-[#BFAF6F] mt-2">
-                    Select a new team leader
-                  </span>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <select
-                  className="w-full p-3 border border-[#D4AF37]/40 rounded-[12px] bg-[#3A3A36] text-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37] font-bree disabled:opacity-50"
-                  value={selectedNewLeader}
-                  onChange={(e) => setSelectedNewLeader(e.target.value)}
-                  disabled={isProcessing}
-                >
-                  <option value="" className="bg-[#3A3A36] text-[#D4AF37]">
-                    Select New Leader
-                  </option>
-                  {eligibleMembers.map((member) => (
-                    <option
-                      key={member.user._id}
-                      value={member.user._id}
-                      className="bg-[#3A3A36] text-[#D4AF37]"
-                    >
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-xl w-96 text-black">
+            <h2 className="text-xl font-bold mb-4">Change Team Leader</h2>
+            <select
+              className="w-full p-2 border rounded mb-4"
+              value={selectedNewLeader}
+              onChange={(e) => setSelectedNewLeader(e.target.value)}
+            >
+              <option value="">Select New Leader</option>
+              {members.map((member) => {
+                // Exclude current leader and current user from selection
+                if (
+                  member.user._id !== user._id &&
+                  member.user._id !== team.teamLeader
+                ) {
+                  return (
+                    <option key={member.user._id} value={member.user._id}>
                       {member.user.name}
                     </option>
-                  ))}
-                </select>
-
-                <button
-                  onClick={handleChangeLeader}
-                  disabled={!selectedNewLeader || isProcessing}
-                  className="w-full py-3 rounded-[20px] font-bree text-lg text-black bg-[#D4AF37] hover:bg-[#c9a634] transition-colors font-semibold flex items-center justify-center mt-2 disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
-                >
-                  {isProcessing ? (
-                    <svg
-                      className="animate-spin h-5 w-5 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                  ) : (
-                    "Change Leader"
-                  )}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsChangeLeaderModalOpen(false);
-                    setSelectedNewLeader("");
-                  }}
-                  className="w-full py-3 rounded-[20px] border border-[#D4AF37]/40 mt-2 bg-[#3A3A36] text-[#D4AF37] font-bree font-semibold hover:bg-[#2F2F2C] transition-colors disabled:opacity-50"
-                  disabled={isProcessing}
-                >
-                  Cancel
-                </button>
-              </div>
+                  );
+                }
+                return null;
+              })}
+            </select>
+            <div className="flex justify-end space-x-2">
+              <button
+                onClick={() => setIsChangeLeaderModalOpen(false)}
+                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-400 transition-all cursor-pointer duration-500"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleChangeLeader}
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer transition-all duration-500"
+                disabled={!selectedNewLeader || isProcessing}
+              >
+                Change Leader
+              </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Team Card */}
-      <div className="relative team-card text-[#AA3608] font-bree">
-        <img
-          src="/Teams/Scroll.webp"
-          className="w-full"
-          alt="Team card background"
-        />
-        <div className="absolute inset-0 h-full flex flex-col justify-end items-center">
-          <div className="w-[80%] flex flex-col justify-start items-center h-[90%] mt-[35px]">
-            {/* Team Name */}
-            <h2 className="font-alegreya font-bold truncate w-[100px] text-center">
-              {team.teamName}
-            </h2>
+      <div className="team-card font-mono" id={team.teamName}>
+        <Teamcardbg />
+        <div className="team-card">
+          <h3 className="team-name">{team.teamName}</h3>
+          <p className="text-center">
+            Event: <span className="font-bold">{eventName}</span>{" "}
+          </p>
+          <p className="text-center">
+            Code: <span className="highlight">{team.teamCode}</span>
+          </p>
+          {(
+            <p className="text-center">
+              Space Remaining:{" "}
+              <span className="highlight">
+                {team.event.maxMembers - members.length}
+              </span>
+            </p>
+          )}
 
-            {/* Team Info */}
-            <div className="RemText text-center">
-              <p>Event: {eventName}</p>
-              {isTeamEvent && <p>Code: {team.teamCode}</p>}
-              <p>Space Remaining: {spaceRemaining}</p>
-            </div>
+          <div>
+            {!all && members.length === 1 && (team.event.maxMembers - members.length > 0) ? (
+              <p className="mt-5">Invite members by sharing code!!</p>
+            ) : (
+              <ul className="member-list ">
+                <h5 className="font-bold">Members:</h5>
+                {members.map((member) => (
+                  <li
+                    key={member.user._id}
+                    className="member-item text-white flex justify-between items-center w-full"
+                  >
+                    <div className="flex items-center space-x-2 w-full">
+                      {member.user.name}
+                      {member.user._id === team.teamLeader && (
+                        <span className="ml-1 text-xs">(L)</span>
+                      )}
+                    </div>
 
-            {/* Members List */}
-            <div className="w-[50%]">
-              {isTeamEvent ? (
-                <>
-                  <h5 className="RemText">Members:</h5>
-                  <ul className="memberlist">
-                    {members.map((member) => (
-                      <li
-                        key={member.user._id}
-                        className="flex items-center justify-between"
-                      >
-                        <div className="flex items-center gap-1 truncate">
-                          <span className="truncate">{member.user.name}</span>
-                          {member.user._id === team.teamLeader && (
-                            <span className="text-xs">(L)</span>
-                          )}
-                        </div>
-                        {!all && isLeader && member.user._id !== user._id && (
-                          <button
-                            className="ml-2 font-semibold text-red-600 hover:text-red-800 transition-colors disabled:opacity-50"
-                            onClick={() => handleRemoveMember(member.user._id)}
-                            disabled={isProcessing}
-                            aria-label={`Remove ${member.user.name}`}
-                          >
-                            X
-                          </button>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : (
-                <div className="h-5" />
-              )}
-            </div>
-
-            {/* Action Buttons */}
-            {!all && (
-              <div className="w-[70%] flex items-center justify-center gap-4">
-                {isLeader ? (
-                  <>
-                    {members.length > 1 && (
+                    {!all && isLeader && member.user._id !== user._id && (
                       <button
-                        className="hover:scale-110 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                        onClick={() => setIsChangeLeaderModalOpen(true)}
-                        disabled={isProcessing}
-                        aria-label="Change team leader"
+                        className="remove-member-button text-xl ml-2 flex items-center justify-center text-red-600"
+                        onClick={() => handleRemoveMember(member.user._id)}
                       >
-                        <img
-                          src="/Teams/ChangeLeaderButton.webp"
-                          className="w-[100px] h-auto"
-                          alt="Change Leader"
-                        />
+                        x
                       </button>
                     )}
-{/* 
-                    {canUnregister ? ( */}
-                      <button
-                        className="hover:scale-110 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                        onClick={handleDeleteTeam}
-                        disabled={isProcessing}
-                        aria-label="Delete team"
-                      >
-                        <img
-                          src="/Teams/DeleteTeam.webp"
-                          className="w-[100px]"
-                          alt="Delete Team"
-                        />
-                      </button>
-                    {/* ) : (
-                      <p className="text-sm text-center">
-                        Thanks for participating!
-                      </p>
-                    )} */}
-                  </>
-                ) : (
-                  <button
-                    className="hover:scale-110 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                    onClick={handleLeaveTeam}
-                    disabled={isProcessing}
-                    aria-label="Leave team"
-                  >
-                    <img
-                      src="/Teams/LeaveTeam.webp"
-                      className="w-[100px]"
-                      alt="Leave Team"
-                    />
-                  </button>
-                )}
-              </div>
+                  </li>
+                ))}
+              </ul>
             )}
-
-            {/* Event Date */}
-            {/* <div className="flex justify-end w-full">
-              <span className="Time">{eventDate}</span>
-            </div> */}
           </div>
+          {
+            !all &&
+            <div className="bottom-4">
+              {team.teamLeader === user._id ? (
+                <>
+                  {members.length > 1 && <button
+                    className="delete-team-button ml-7 hover:scale-105 transition-all duration-500"
+                    onClick={() => setIsChangeLeaderModalOpen(true)}
+                    disabled={isProcessing}
+                  >
+                    <img src="/leadercard.png" alt="Change Leader" />
+                  </button>}
+
+                  <button
+                    className="delete-team-button ml-7 hover:scale-105 transition-all duration-500"
+                    onClick={handleDeleteTeam}
+                    disabled={isProcessing}
+                  >
+                    <img src="/deletecard.png" alt="Delete Team" />
+                  </button>
+                </>
+              ) : (
+                <button
+                  className="leave-team-button ml-7 hover:scale-105 transition-all duration-500"
+                  onClick={handleLeaveTeam}
+                  disabled={isProcessing}
+                >
+                  <img src="/leavecard.png" alt="Leave Team" />
+                </button>
+              )}
+            </div>
+          }
+
+          <div className="flex justify-end"> <span className="font-bold">{events.find(event => event.id === team.event.eventId).date}</span></div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

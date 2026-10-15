@@ -11,19 +11,10 @@ export default {
         }, // Replace with your actual vermilion color
       },
       fontFamily: {
-        rye: ['Rye', 'serif'],
-        'great-vibes': ['Great Vibes', 'cursive'],
-        'mate-sc': ['Mate SC', 'serif'],
         quicksand: ['Quicksand', 'sans-serif'],
         'robo-slab': ['Roboto Slab', 'serif'],
         pixel: ['"Press Start 2P"', 'sans-serif'],
         pixelifySans: ['Pixelify Sans', 'sans-serif'],
-        engagement:['Engagement','serif'],
-        alegreya:['Alegreya','serif'],
-        'alex-brush':['Alex Brush','serif'],
-        bree:['Bree Serif','serif'],
-        aladin:['Aladin','serif'],
-        'ingrid-darling':['Ingrid Darling','serif']
       },
     },
   },
